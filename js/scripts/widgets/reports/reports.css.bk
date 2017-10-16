@@ -1,0 +1,698 @@
+.custom_reports{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.custom_reports .HeaderSection{
+    position: absolute;
+    top:0px;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #BBBBBB;
+    text-align: left;
+}
+.custom_reports .dataSection{
+    position: absolute;
+    top:60px;
+    width:100%;
+    bottom: 0px;
+    overflow: auto;
+}
+
+.custom_reports .dataSection .section{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.custom_reports .buttonReport{
+    background: #9A9B9A;
+}
+.custom_reports .sectionButtons{
+    width:100%;
+    padding: 10px;
+    height: 60px;
+}
+
+.custom_reports .sectionButtons .btnLeft{
+    position: relative;
+    float: left;
+}
+.custom_reports .sectionButtons .btnRight{
+    position: relative;
+    float: right;
+}
+.custom_reports .boxContainer{ 
+  width: 80%;
+  height: 300px;
+  position: relative;
+  margin-top: 25px;
+  -webkit-box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.66);
+-moz-box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.66);
+box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.66);
+}
+
+.custom_reports .boxContainer{ 
+  width: 80%;
+  position: relative;
+  margin-top: 25px;
+}
+.custom_reports .boxContainer .titleBlock{
+    position: absolute;
+    top:0px;
+    width: 100%;
+    height: 50px;
+    background: #9A9B9A;
+    font-weight: bolder;
+}
+
+.custom_reports .titleBlock .label{
+      position: absolute;
+  left: 30px;
+  top: 15px;
+  color: #D9DAD9;
+  font-size: 130%;
+}
+.custom_reports .boxContainer .dataBlock{
+    position: absolute;
+    top:50px;
+    width: 100%;
+    bottom: 50px;
+    background: #FFF;
+    overflow: auto;
+}
+
+.custom_reports .dataBlock .itemFieldReport{
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #BBBBBB;
+        text-align: left;
+        font-size: 120%;
+        color:#808080;
+        cursor: pointer;
+}
+.custom_reports .itemFieldReport .label{
+    margin-left: 20px;
+}
+.custom_reports .itemFieldReport_selected{
+    color: #90A934 !important;
+    font-weight: bold;
+}
+.custom_reports .boxContainer .footerBlock{
+    position: absolute;
+    height: 50px;
+    width: 50%;
+    bottom: 0px;
+    background: #D9DAD9;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom_reports .boxContainer .footerBlock .label{
+    position: relative;
+  top: 4px;
+  display: inline-block;
+  color: #7B7D7F;
+  font-size: 120%;
+  font-weight: bold;
+    margin-left: 5px;
+  margin-right: 5px;
+}
+.custom_reports .boxContainer .footerBlock .icon{
+    position: relative;
+    top:10px;
+    display: inline-block;
+}
+
+/*************/
+.custom_reports .boxContainer .footerBlockAll{
+    position: absolute;
+     right: 0px;
+    height: 50px;
+    border-left: 1px solid #BBBBBB;
+    width: 50%;
+    bottom: 0px;
+    background: #D9DAD9;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom_reports .boxContainer .footerBlockAll .label{
+    position: relative;
+  top: 4px;
+  display: inline-block;
+  color: #7B7D7F;
+  font-size: 120%;
+  font-weight: bold;
+    margin-left: 5px;
+  margin-right: 5px;
+}
+.custom_reports .boxContainer .footerBlockAll .icon{
+    position: relative;
+    top:10px;
+    display: inline-block;
+}
+
+
+.custom_reports .step{
+    position: relative;
+    display: inline-block;
+}
+
+.custom_reports .step .vignette{
+    margin-left: 20px;
+  position: relative;
+  display: inline-block;
+  top: 12px;
+}
+
+.custom_reports .vignette .number{
+   position: absolute;
+  color: #fff;
+  font-size: 140%;
+  top: 6px;
+  left: 9px;
+}
+.custom_reports .step .label{
+    font-size: 130%;
+  color: #808080;
+  display: inline-block;
+  margin-left: 3px;
+    
+}
+
+.custom_reports .FieldReport{
+        position: relative;
+        border: 1px solid transparent;
+        padding-left: 10%;
+        text-align: left;
+}
+.custom_reports .FieldReport .label{
+    color: #7A7D7F;
+  float: left;
+  position: relative;
+  top: 15px;
+  font-size: 120%;
+  font-weight: bold;
+  
+}
+.custom_reports .titleSubsection{
+    font-weight:bold;
+    color:#90A934;
+    font-size: 140%;
+    margin-top:30px;
+}
+.custom_reports .FieldReport .textInput{
+   
+     outline: 0;
+  padding-left: 12px;
+  width: 100%;
+  /* padding-left: 10px; */
+  border: 1px solid #D7D7D7;
+  border-radius: 2px;
+  background-color: #fff;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  margin-top: 35px;
+  display: block;
+  color: #7A7D7F;
+  font-size: 120%;
+}
+
+.custom_reports .FieldReport .selectInput{
+    outline: 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #D7D7D7;
+  border-radius: 2px;
+  background-color: #fff;
+  background-image: none;
+  width: 90%;
+  margin-top: 35px;
+  display: block;
+  color: #7A7D7F;
+  font-size: 120%;
+}
+
+
+
+
+
+
+
+.template_reports{
+    background:url("img/reports.png") top left no-repeat;
+}
+
+.trep_row_right{
+      width: 25px;
+  height: 25px;
+  background-position: 2px -9px;
+}
+
+.trep_row_left{
+    width: 25px;
+  height: 25px;
+  background-position: -29px -9px;
+}
+
+.trep_vignette{
+    width: 45px;
+  height: 35px;
+  background-position: -341px -8px;
+  
+}
+
+.trep_columns{
+    width: 133px;
+  height: 52px;
+  background-position: -392px 0px;
+  margin-bottom:  10px;
+}
+.trep_rows{
+      width: 133px;
+  height: 52px;
+  background-position: -527px 0px;
+  
+   margin-bottom:  10px;
+}
+.trep_print{
+       width: 27px;
+  height: 31px;
+  background-position: -62px -12px;
+}
+.trep_pdf{
+      width: 27px;
+  height: 31px;
+  background-position: -119px -12px;
+
+}
+
+.trep_csv{
+         width: 27px;
+  height: 31px;
+  background-position: -665px -11px;
+ 
+}
+
+.trep_tabular{
+      width: 27px;
+  height: 31px;
+  background-position: -439px -12px;
+ 
+}
+
+.trep_graph{
+      width: 27px;
+  height: 31px;
+  background-position: -154px -12px;
+  
+}
+
+.custom_reports .activeVignette .trep_vignette{
+     background-position: -293px -9px !important;
+}
+.custom_reports  .activeVignette .label{
+     color:#90A934 !important;
+     font-weight: bold;
+}
+
+
+.custom_reports .section4 #btnStep4Back{
+    position: absolute;
+    float: left;
+      top: -11px;
+  left: 10px;
+}
+
+.custom_reports .section4 .Header{
+    position: relative;
+    width:100&;
+    border-bottom: 1px solid #BBBBBB;
+    height: 30px;
+}
+.custom_reports .section4 .exportOptions{
+    position: absolute;
+    float: left;
+    top:-9px;
+    right: 0px;
+}
+.custom_reports .section4 .infoReport{
+    position: absolute;
+    top:45px;
+    width:100%;
+    bottom: 0px;
+    overflow: auto;
+}
+.custom_reports .infoMultirecord{
+    position: absolute;
+    top:45px;
+    width:100%;
+    bottom: 0px;
+    z-index: 2;
+    overflow: auto;
+    background: #F2F2F2;
+}
+.custom_reports .section4 .tabsec4{
+    position: relative;
+    height: 100%;
+    width:100px;
+    background: red;
+    color:white;
+}
+.custom_reports .itemReport{
+    float: left;
+    position: relative;
+    margin-right: 15px;
+}
+.title_report{
+      width: 100%;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  background: #90A934;
+  color: #fff;
+  font-size: 150%;
+}
+.title_report_multirecord{
+      width: 100%;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  background: #90A934;
+  color: #fff;
+  font-size: 150%;
+}
+.results_table_filter .rowFilled{
+	background: #eee;
+}
+.results_table_filter .borderHeading{
+	
+	border-bottom: 1px solid #BBBBBB;
+}
+.results_table_filter .borderRow{
+	border-bottom: 1px solid #D7D7D7;
+}
+.results_table_filter
+    {
+        display: table;
+	width:100%;
+    }
+    
+    .results_table_filter .Heading
+    {
+        display: table-row;
+	font-weight: bold;
+	text-align: center;
+	font-size: 110%;
+	background: #D7D7D7;
+	color: #7B7D7F;
+    }
+    
+    .results_table_filter .Row
+    {
+        display: table-row;
+	font-size: 110%;
+	color:#7A7D7F;
+	background: #fff;
+    }
+    .results_table_filter .Cell
+    {
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    
+.results_table_filter .textButton{
+    background-color: #7B7D7F;
+    border-radius: 5px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.results_table_filter_multirecord .rowFilled{
+	background: #eee;
+}
+.results_table_filter_multirecord .borderHeading{
+	
+	border-bottom: 1px solid #BBBBBB;
+}
+.results_table_filter_multirecord .borderRow{
+	border-bottom: 1px solid #D7D7D7;
+}
+.results_table_filter_multirecord
+    {
+        display: table;
+	width:100%;
+    }
+    
+    .results_table_filter_multirecord .Heading
+    {
+        display: table-row;
+	font-weight: bold;
+	text-align: center;
+	font-size: 110%;
+	background: #D7D7D7;
+	color: #7B7D7F;
+    }
+    
+    .results_table_filter_multirecord .Row
+    {
+        display: table-row;
+	font-size: 110%;
+	color:#7A7D7F;
+	background: #fff;
+    }
+    .results_table_filter_multirecord .Cell
+    {
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+.reportPrint{
+    position: absolute;
+    top:71px;
+    bottom: 0px;
+    width:100%;
+    z-index: 50000;
+     background: #fff;
+     text-align: center;
+}
+
+.reportPrintMultirecords .btnBackAll{
+          position: relative;
+  left: 9px;
+  float: left;
+  width: 25px;
+  height: 100%;
+  cursor: pointer;
+  top: 2px;
+}
+.reportPrintMultirecords .refFolio{
+      position: absolute;
+  left: 33px;
+  color: #fff;
+  font-size: 75%;
+  top: 1px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reportPrintMultirecords .fieldMulti{
+      position: absolute;
+  left: 170px;
+  color: #fff;
+  font-size: 85%;
+}
+.reportPrintMultirecords{
+    position: absolute;
+    top:71px;
+    bottom: 0px;
+    width:100%;
+    z-index: 50000;
+     background: #fff;
+     text-align: center;
+}
+.graphPrint{
+    position: absolute;
+    top:71px;
+    bottom: 0px;
+    width:100%;
+    z-index: 50000;
+    background: #fff;
+    text-align: center;
+}
+
+.graphPrint .containerg{
+    height: 600px;
+    margin-top: 50px;
+}
+
+
+.custom_reports .blocker{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_reports .blocker .veil{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #FFF;
+    -moz-opacity:0.50;
+    opacity:0.50;
+    filter:alpha(opacity=50);
+    z-index: 50000;
+}
+.custom_reports .blocker .loader{
+   position: relative;
+   width: 100px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   z-index: 50001;
+   margin-top: 20%;
+}
+.custom_reports .blocker .loader .label{
+   margin-top: 10px;
+   font-size: 200%;
+   color:  #90A934;
+   font-family: SoberanaSans_bold;
+}
+
+.custom_reports .itemRecordReport{
+     /* position: absolute; */
+  padding: 4px;
+  background: #9A9B9A;
+  color: #fff;
+  /* top: 9px; */
+  /* right: 10px; */
+  /* font-size: 80%; */
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  /*width:150px;*/
+}
+.custom_reports .btnBackAll{
+          position: relative;
+  left: 9px;
+  float: left;
+  width: 25px;
+  height: 100%;
+  cursor: pointer;
+  top: 2px;
+}
+.custom_reports .refFolio{
+      position: absolute;
+  left: 33px;
+  color: #fff;
+  font-size: 75%;
+  top: 1px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.custom_reports .fieldMulti{
+      position: absolute;
+  left: 170px;
+  color: #fff;
+  font-size: 85%;
+}
+.custom_reports .headerTabular{
+    position: absolute;
+    top: 85px;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.custom_reports .title_reportTabular{
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+    overflow: auto;
+    overflow-x: hidden;
+    height: 40px;
+    line-height: 37px;
+    text-align: center;
+    background: #90A934;
+    color: #fff;
+    font-size: 150%;
+    display: none;
+    
+}
+.custom_reports .headerTabular_Multirecord{
+    position: absolute;
+    top: 85px;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+    overflow: auto;
+    overflow-x: hidden;
+    display: none;
+    z-index: 3;
+}
+.custom_reports .title_reportTabular_Multirecord{
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    right: 0px;
+    z-index: 2;
+    overflow:hidden;
+    overflow-x: hidden;
+    height: 40px;
+    line-height: 37px;
+    text-align: center;
+    background: #90A934;
+    color: #fff;
+    display: none;
+    z-index: 3;
+    
+}
+
+
+.SectioN {
+        display: table;
+        width: 100%;
+      }
+      .SectioN > div {
+        display: table-cell;
+        overflow: hidden;
+      }
+      .SectioN ~ .SectioN > div:before {
+        content: "";
+        display: block;
+        margin-bottom: -7em; /* inverse of header height */
+	
+      }
+      .SectioN > div > div {
+        page-break-inside: avoid;
+        display: inline-block;
+        width: 100%;
+        vertical-align: top;
+      }
+      .HeadeR {
+      }
+      .ContenT .Cell p { /* this rule set just adds space between sections and is not required */
+        width: 120px;
+      }
+

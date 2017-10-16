@@ -1,0 +1,221 @@
+
+/*
+#555555;
+#BBBBBB;
+#f8f8f8;
+#EEEEEE;
+
+#E1E3E4;  --background
+box-shadow: 0px 1px 0px 1px #555555;
+*/
+
+@import url('template.css');
+
+.custom_upload{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 50000;
+}
+
+.custom_upload .veil_upload{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #000;
+    -moz-opacity:0.50;
+    opacity:0.50;
+    filter:alpha(opacity=50);
+    z-index: 1;
+}
+
+.custom_upload .modal_upload{
+    position: relative;
+  top: 80px;
+ 
+    z-index: 2;
+}
+
+.custom_upload .header_upload{
+    position:relative;border-bottom:2px solid #555555;height:45px;background:#555555;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+    border-top: 2px solid #BBBBBB;
+    border-left: 2px solid #BBBBBB;
+    border-right: 2px solid #BBBBBB;
+}
+
+.custom_upload .header_upload .label{
+    font-size: 140%;
+    position: absolute;
+    left: 20px;
+    top: 0px;
+    color: white;
+}
+.custom_upload .container_update{
+    background:#fff;
+    position: relative;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+    border-bottom: 2px solid #BBBBBB;
+    border-left: 2px solid #BBBBBB;
+    border-right: 2px solid #BBBBBB;
+}
+.custom_upload .container_update .data_container{
+    position: absolute;
+    top:5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.custom_upload .addFileContainer{
+    position:absolute;top:90px;left:15px;right:15px;height:50px;border: 2px dashed #BBBBBB;
+}
+.custom_upload .addFileContainer .icon{
+    position: absolute;
+    left: 10px;
+    top:11px;
+}
+.custom_upload .addFileContainer .label{
+    position: absolute;
+    left: 40px;
+    top: 14px;
+    right: 10px;
+    color: #9C9DA0;
+    font-size: 110%;
+}
+
+.custom_upload .fileSelected{
+    position:absolute;top:90px;left:15px;right:15px;height:50px;border: 2px dashed #BBBBBB;
+}
+.custom_upload .fileSelected .icon{
+    position: absolute;
+    left: 10px;
+    top:0px;
+}
+.custom_upload .fileSelected .label{
+   position: absolute;
+    left: 55px;
+    top: 13px;
+    right: 36px;
+    color: #106496;
+    font-size: 140%;
+    text-align: left;
+}
+.custom_upload .fileSelected .close{
+   position: absolute;
+    right: 10px;
+    top:11px;
+}
+
+.custom_upload .textButton{
+    background-color: #555555;
+    border-radius: 5px;
+    padding: 15px;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    color: white;
+    font-size: 250%;
+    width:50%;
+}
+.custom_upload .buttons_section{
+    position: absolute;
+    bottom: 0px;
+    width:100%;
+}
+
+.custom_upload .msgErrorUpload{
+    position: absolute;
+bottom: 60px;
+background: #D93A32;
+padding: 7px;
+-webkit-border-radius: 12px 12px 12px 12px;
+border-radius: 12px 12px 12px 12px;
+border: 1px solid #222;
+width: 90%;
+left: 6px;
+}
+.custom_upload .msgErrorUpload label{
+    color:white;
+   font-size: 140%;
+}
+
+.custom_upload .blocker{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_upload .blocker .veil{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #FFF;
+    /*
+    -moz-opacity:0.50;
+    opacity:0.50;
+    filter:alpha(opacity=50);
+    */
+    z-index: 50000;
+}
+.custom_upload .blocker .loader{
+   position: relative;
+   width: 150px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   z-index: 50001;
+   margin-top: 15%;
+}
+.custom_upload .blocker .loader .label{
+   margin-top: 10px;
+   font-size: 200%;
+   color:  #90A934;
+   font-family: SoberanaSans_bold;
+}
+
+.custom_upload .Field{
+    position: relative;
+  border: 1px solid transparent;
+  
+}
+
+.custom_upload .Field .label{
+    color: #7A7D7F;
+  float: left;
+  position: relative;
+  top: 15px;
+  font-size: 120%;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.custom_upload .Field .textInput{
+    outline: 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #D7D7D7;
+  border-radius: 2px;
+  background-color: #fff;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  margin-top: 35px;
+  display: block;
+  color: #7A7D7F;
+  font-size: 110%;
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modulo Maderable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- jQuery -->
+    <script src="js/libs/jquery-3.1.1.min.js"></script>
+    <script src="js/libs/amplify.js"></script>
+    <script src="js/myScript/controlSession.js"></script>
+    <script type="text/javascript">
+    amplify.store.controlPagesOnlyCoordinador('dataLoggingProbosque');
+    </script>
+    <script src="js/libs/jquery.dataTables.min.js"></script>
+    <script src="js/libs/blockUI.js"></script>
+    <script src="js/libs/bootstrap.js"></script>
+    <script src="js/libs/downloadFile.js"></script>
+    <!-- jQuery -->
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+</head>
+
+<body>
+    <div class="app_header">
+        <div class="section_header">
+            <div class="section_logo">
+                <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+                <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+                <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+                <div class="divisor"></div>
+                <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li><a href="../maderable/Bandeja.html">Bandeja de entrada</a></li>
+            <li><a href="../maderable/moduloCoordinador.html">Seguimiento de inspecciones</a></li>
+            <li><a href="../maderable/impugnaciones.html">Impugnaciones</a></li>
+            <li class="active"><a href="../maderable/listaSeguimiento.html">Listado de seguimiento</a></li>
+            <div class="text-right" style="margin-top:10px">
+                <label id="pendientesOficialiaTexto">Pendientes oficialia:</label>
+            </div>
+        </ul>
+        <br>
+    </div>
+    <!--INICIO DEL LADO DERECHO-->
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <!--INICIO PANEL DE EN TERMINO-->
+        <div class="panel panel-danger">
+            <div class="panel-heading">EXPEDIENTES CON IMPUGNACIONES Y CONMUTACION</div>
+            <div class="panel-body table-responsive">
+                <table id="tablaSeguimiento" class="display" cellspacing="0" width="100%" style="overflow-x:auto;">
+                    <thead>
+                        <tr>
+                            <th>No. de expediente</th>
+                            <th>Orden de inspección</th>
+                            <th>Acta de inspección</th>
+                            <th>Inspeccionado y/o presunto infractor</th>
+                            <th>Tipo</th>
+                            <th>Abogado</th>
+                            <th>Fecha de posible conclusión</th>
+                            <th>Resolución administrativa y/o acuerdo de archivo</th>
+                            <th>Semaforización programa madera legal</th>
+                            <th>Cantidad</th>
+                            <th>Observaciones</th>
+                            <th>Opción</th>
+                            <th>Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBodySeguimiento">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--FIN PANEL DE EN TERMINO-->
+    </div>
+     <!--INICIO MODAL HISTORIAL OBSERVACIONES -->
+    <div id="modalHistorialObservaciones" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridModalLabel"><b>HISTORIAL DE OBSERVACIONES</b></h4>
+                     <p id="labelExpediente">Expediente:</p>
+                </div>
+                <div class="modal-body" style="overflow-x:auto; max-height: 400px; overflow-y:auto;">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Abogado</th>
+                                        <th>Opción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyObservaciones">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+    <div id="modalDetalleObservacion" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridModalLabel">Detalle de observación</h4>
+                </div>
+                <div class="modal-body">
+                    <!--INICIO LADO IZQUIERDO-->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group-inline">
+                                <label>FECHA: </label>
+                                <input id="inputTextFecha" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <!--FIN LADO IZQUIERDO-->
+                        <!--INICIO LADO DERECHO-->
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group-inline">
+                                <label>ABOGADO: </label>
+                                <input id="inputTextAbogado" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <!--FIN LADO DERECHO-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>DETALLE: </label>
+                                <textarea textarea class="form-control" rows="5" id="inputTextArea" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+<div id="modalImpugnaciones" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-danger">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="color:#8A0808">Impugnar</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <center>
+                            <label id="msjConfirmarImpugnaciones"></label>
+                        </center>
+                        <br>
+                        <p>Si esta seguro elija la(s) opciones:</p>
+                        <ul id="listOptionImpug">
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="" name="37" class="checkListImpuga" value="Recurso de revisión"> Recurso de revisión
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="" name="38" class="checkListImpuga" value="Juicio de nulidad"> Juicio de nulidad
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="" name="41" class="checkListImpuga" value="Conmutación"> Conmutación
+                                </label>
+                            </div>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <center>
+                            <p style="color:red" id="errorImpugancion"></p>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="btnImpugancionAcept">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal de confirmacion -->
+    <div id="confirmacion" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" >
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header alert alert-danger">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridModalLabel" style="color:#8A0808"><b>Confirmación</b></h4>
+                </div>
+                <div class="modal-body">
+                    <!--INICIO LADO IZQUIERDO-->
+                    <div class="row">
+                        <div class="text-center">
+                            <label class="col-md-12 col-sm-12 col-xs-12" id="msjConfirmacion"></label>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8 col-sm-11 col-xs-11">
+                             <textarea textarea class="form-control" rows="5" id="addObservaciones" style="display: none" placeholder="Añadir observacion"></textarea>
+                        </div>
+                    </div>
+                    <center>
+                        <p style="color: red" id="errorAgregaObs"></p> 
+                    </center>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-confirmacion-Ok" onclick="sendStatus(this)">Aceptar</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+<!-- fin modal confirmacion -->
+    <div id="datosPrograma8"></div>
+    <div id="divmodalerror"></div>
+    <script type="text/javascript" src="js/myScript/program8.js"></script>
+    <script type="text/javascript" src="js/myScript/connections.js"></script>
+    <script type="text/javascript" src="js/myScript/blockWhileAJAX.js"></script>
+    <script type="text/javascript" src="js/myScript/seguimiento.js"></script>
+</body>
+
+</html>

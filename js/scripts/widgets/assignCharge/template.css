@@ -1,0 +1,23 @@
+.template_assignCharge{ background:url("img/assignCharge.png") top left no-repeat; }
+.addTool{ width:32px; height:32px; background-position:-34px -4px; }
+.addTool_active{
+    width:32px; height:32px; background-position:-146px -4px;
+}
+.deleteTool{ width:32px; height:32px; background-position:-4px -4px; }
+
+.deleteTool_active{
+   width:32px; height:32px; background-position:-116px -4px;
+}
+
+.poligonTool{ width:35px; height:35px; background-position:-10px -106px; }
+.searchTool{ width:22px; height:22px; background-position:-10px -151px; }
+.delTool{
+    width: 17px;
+    height: 20px;
+    background-position: -177px -20px;    
+}
+.arrowTool{ width:12px; height:12px; background-position:-32px -183px; }
+.ArrowDownTool{ width:8px; height:8px; background-position:-110px -28px; }
+
+.leftRow{ width:20px; height:20px; background-position:-190px -18px; }
+

@@ -1,0 +1,13 @@
+.template_modal{ background:url("img/modal.png") top left no-repeat; }
+
+.tmm_close{  background-position: -72px -2px !important;
+  width: 35px;
+  height: 35px;}
+.tmm_back{
+    background-position: 3px -8px !important;
+  width: 30px;
+  height: 26px; }
+.tmm_add{background-position: -148px 0px !important;
+  width: 54px;
+  height: 50px;}
+.tmm_info{background-position: 0px 0px !important;width: 20px;height: 20px; }

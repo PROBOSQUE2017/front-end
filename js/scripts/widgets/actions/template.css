@@ -1,0 +1,22 @@
+.template_actions{ background:url("img/actions.png") top left no-repeat;}
+.ta_acept{
+    width: 23px;
+    height: 23px;
+    background-position: -29px -6px;
+}
+.ta_acept:hover{
+    width: 23px;
+    height: 23px;
+    background-position: -51px -6px;
+}
+.ta_cancel{
+    width: 23px;
+    height: 23px;
+    background-position: -73px -6px;
+}
+.ta_cancel:hover{
+    width: 23px;
+    height: 23px;
+    background-position: -96px -6px;
+}
+

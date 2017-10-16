@@ -1,0 +1,18 @@
+{  
+   "response":{  
+      "sucessfull":true,
+      "message":"OK"
+   },
+   "data":{  
+      "userInfo":{  
+         "password":null,
+         "username":"admin",
+         "id":1,
+         "firstname":"Administrador",
+         "lastname":"",
+         "program":1,
+         "privileges":"1,2,3",
+         "privacy":1
+      }
+   }
+}

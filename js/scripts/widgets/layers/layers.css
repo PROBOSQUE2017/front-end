@@ -1,0 +1,214 @@
+
+.custom_layers_data{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_layers_data .item_layer_head{
+    position: relative;
+    border-bottom: 2px solid #555555;
+    height: 47px;
+    width: 300px;
+    left: 0px;
+    background: #007B42;
+    color:#fff;
+}
+.custom_layers_data .item_layer_head{
+    background: #7B7D7F !important;
+}
+
+.custom_layers_data .userTools{
+    position: absolute;
+    right: 10px;
+    top: 12px;
+}
+.custom_layers_data .userTools .icon_upload{
+    float: right;
+    top: 2px;
+    position: relative;
+    margin-right: 8px;
+}
+
+.custom_layers_data .userTools .icon_download{
+    float: right;
+    top: 2px;
+    position: relative;
+    margin-right: 8px;
+}
+
+.custom_layers_data .item_layer_head .layer_alias{
+    font-size: 130%;
+    position: absolute;
+    left: 30px;
+    top: 13px;
+}
+
+.custom_layers_data .item_layer_head .user_role{
+    font-size: 110%;
+    position: absolute;
+    left: 30px;
+    top: 26px;
+    color: white;
+}
+
+.custom_layers_data .item_layer_head .user_charge{
+    position:absolute;right:5px;border:1px solid black;top:7px;
+    -webkit-border-radius: 20px 20px 20px 20px;border-radius: 20px 20px 20px 20px;padding:3px;font-size:120%;
+}
+
+.custom_layers_data .item_layer_head .user_progress{
+    position: absolute;
+    left: 20px;
+    height: 3px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.custom_layers_data .item_layer_head .user_back{
+    position:absolute;left:2px;top:10px;
+}
+
+.custom_layers_data .data_blocks{
+    position: absolute;
+    top:49px;
+    bottom: 3px;
+    left:0px;
+    right: 0px;
+}
+
+.custom_layers_data .data_blocks .options{
+    position: absolute;
+    top: 0px;
+    height: 45px;
+    left: 0px;
+    right: 0px;
+    background: #F4F4F4;
+    box-shadow: 1px 2px 10px 1px #555555;
+}
+
+.custom_layers_data .data_blocks .options .option_selected_layers{
+    background: #E1E3E4 !important;
+}
+.custom_layers_data .data_blocks .options .label{
+    position: absolute;
+    /* top: 20px; */
+    width: 100%;
+    line-height: 43px;
+}
+.custom_layers_data .data_blocks .options .total{
+    position: absolute;
+    /* top: 20px; */
+    width: 100%;
+    line-height: 60px;
+}
+.custom_layers_data .data_blocks .options #bases{
+    position: relative;
+    width:99px;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+    float: left;
+    cursor: pointer;
+}
+.custom_layers_data .data_blocks .options #overlays{
+    position: relative;
+    width:99px;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid #BBBBBB;
+    border-bottom:1px solid #BBBBBB;
+    float: left;
+    cursor: pointer;
+}
+.custom_layers_data .data_blocks .options #programs{
+    position: relative;
+    width:99px;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid #BBBBBB;
+    border-bottom:1px solid #BBBBBB;
+    float: left;
+    cursor: pointer;
+}
+.custom_layers_data .data_blocks .list_data{
+    position: absolute;
+    top: 46px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.custom_layers_data .data_blocks .list_data .rows{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_layers_data .section_tools{
+   position: absolute;
+    height: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: #E1E3E4;
+    border-top: 1px solid #BBBBBB;
+}
+
+.custom_layers_data .section_tools .assignTools{
+   position: absolute;
+    top: 3px;
+    left: 5px;
+    height: 42px;
+    width: 56px;
+    background: #BBBBBB;
+    border: 1px solid #555;
+}
+
+.custom_layers_data .section_tools .assignTools .otherOptions{
+    position: absolute;
+    width: 43px;
+    right: -1px;
+    /* height: 200px; */
+    background: #fff;
+    top: -86px;
+    border: 1px solid #555; 
+    }
+
+.custom_layers_data .section_tools .assignTools .otherOptions .itemTool{
+    padding: 2px;
+}
+.custom_layers_data .section_tools .assignTools .otherOptions .itemTool:hover{
+    background: #F4F4F4 !important;
+}
+
+.custom_layers_data .section_tools .assingButton{
+    position: absolute;
+    top: 5px;
+    right: 9px;
+    /* height: 20px; */
+    /* width: 20px; */
+}
+.custom_layers_data .section_tools .cancelButton{
+    position: absolute;
+    top: 5px;
+    right: 120px;
+    /* height: 20px; */
+    /* width: 20px; */
+}
+.custom_layers_data .section_tools .button{
+   
+    background-color: #007B42;
+    border-radius: 5px;
+    padding: 7px;
+    /* -webkit-transform-origin: 50% 50%; */
+    -ms-transform-origin: 50% 50%;
+    /* transform-origin: 50% 50%; */
+    width: 100px;
+    color: white;
+    font-size: 120%;
+
+}

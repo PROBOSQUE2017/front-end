@@ -1,0 +1,21 @@
+{  
+   "response":{  
+      "message":"valido",
+      "sucessfull":true
+   },
+   "data":[
+      {  
+         "id":1,
+         "label":"Incendios"
+      },
+      {  
+         "id":2,
+         "label":"Reforestacion"
+      },
+      {  
+         "id":3,
+         "label":"Informacion adicional"
+      }
+   
+   ] 
+}

@@ -1,0 +1,36 @@
+{  
+   "response":{  
+      "message":"valido",
+      "sucessfull":true
+   },
+   "data":{
+      "layers":[
+         {  
+            "id":1,
+            "label":"Incendios"
+         },
+         {  
+            "id":2,
+            "label":"Reforestacion"
+         },
+         {  
+            "id":3,
+            "label":"Informacion adicional"
+         }
+      ],
+      "themes"[
+         {  
+            "id":1,
+            "label":"Tema1"
+         },
+         {  
+            "id":2,
+            "label":"Tema 2"
+         },
+         {  
+            "id":3,
+            "label":"Tema 3"
+         }
+      ]
+   }
+}

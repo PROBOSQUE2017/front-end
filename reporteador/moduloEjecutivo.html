@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modulo Ejecutivo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+     
+    <script src="libs/jquery/jquery.min.js"></script>
+    <script src="libs/jquery/jquery-ui.js"></script>
+  
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+       
+    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/SIFEM/js/libs/amplify/amplify.js"></script>
+    <script type="text/javascript" src="js/sesionOk.js"></script>
+    <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+    <link rel="stylesheet" type="text/css" href="css/charts.css">
+    <link rel="stylesheet" type="text/css" href="css/multiple-select.css">
+    <script src="libs/jquery/multiple-select.js"></script>
+    <script src="libs/jquery/base64.js"></script>
+
+   
+  </head>
+
+  <body>
+    <div class="app_header">
+         <div class="section_header">
+            <div class="section_logo">
+               <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+               <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+               <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+               <div class="divisor"></div>
+               <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+         </div>
+      </div>
+    <div class="container-fluid">
+      <hr>
+      <div class="row">
+          <div class="col-md-12">
+                  <div class="panel panel-success" hidden="true">
+                      <div class="panel-heading">1. Seleccionar ubicación  <input id="ubicacionchek" type="checkbox" name="ubicacion" value="1"></div>
+                      <div class="panel-body" id="contenidoSpecifico" style="background-color:#E6E6E6">
+                        <div class="row">
+                            <div class="col-md-3">
+                              <table width="100%">
+                                <tr>
+                                  <td width="10%"> Estado:</td>
+                                  <td width="90%">
+                                       <select id="estado" class="form-control" disabled="true">
+                                            <option value="-2" selected>México</option>
+                                        </select>
+                                  </td>
+                                <tr>
+                              </table>
+                            </div>
+                            <div class="col-md-3">
+                              <table width="100%">
+                                <tr>
+                                  <td width="10%"> Region: </td>
+                                  <td width="90%">
+                                       <select id="region" class="form-control" disabled="true" >
+                                            <option value="-2ws" selected>Seleccione</option>
+                                            <option value="01">I Toluca</option>
+                                            <option value="02">II Zumpango</option>
+                                            <option value="03">III Texcoco</option>
+                                            <option value="04">IV Tejupilco</option>
+                                            <option value="05">V Atlacomulco</option>
+                                            <option value="06">VI Coatepec Harinas</option>
+                                            <option value="07">VII Valle de Bravo</option>
+                                            <option value="08">VIII Jilotepec</option>
+                                        </select>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td></td>
+                                  <td><div id="errormsgRegion" style="color:red"></div></td>
+                                </tr>
+                              </table>
+                            </div>
+
+                             <div class="col-md-3">
+                              <table width="100%">
+                                <tr>
+                                  <td width="10%"> Municipio: </td>
+                                  <td width="90%">
+                                       <select id="municipio" class="form-control" disabled="true">
+                                            <option value="-2ws" selected>Seleccione</option>
+                                      </select>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td></td>
+                                  <td><div id="errormsgMunicipio" style="color:red"></div></td>
+                                </tr>
+                              </table>
+                            </div>
+
+                            <div class="col-md-3">
+                              <table width="100%">
+                                <tr>
+                                  <td width="10%"> Localidad: </td>
+                                  <td width="90%">
+                                       <select id="localidad" class="form-control" disabled="true">
+                                            <option value="-2ws" selected>Seleccione</option>
+                                          
+                                        </select>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td></td>
+                                  <td><div id="errormsgLocalidad" style="color:red"></div></td>
+                                </tr>
+                              </table>
+                            </div>
+
+                        </div>                   
+                      </div>
+                  </div>  
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-success">
+                <div class="panel-heading">1. Seleccionar predio o representante
+                </div>
+                <div class="panel-body" style="margin-top: -15px;">
+                    <div class="table-responsive">
+                        <div id="errormsgBusqueda" style="color: red"></div>
+                        <table class="table table-fixed" id="tabla" width="100%">
+                            <thead class="acomodar" style="margin-top: -15px;">
+                              <tr>
+                                <th width="23%">Clave del predio</th>
+                                <th width="50%" id="headInfo">Descripción</th>
+                                <th>Buscar:</th>
+                                <th>  
+                                    <select id="opcionBusqueda" style="width: 200px;">
+                                        <option value="-2ws" selected>Seleccione</option>
+                                        <option value="0">Predio</option>
+                                        <option value="1">Representante</option>
+                                    </select>
+                                </th>
+                                <th width="23%" style="margin-bottom: -20px"><input id="buscar" type="text" class="form-control peticionAjax" placeholder="Buscar" /></th>
+                              </tr>
+                            </thead>
+                            <tbody class="acomodar showBarsV" id="bodyAllPredios">
+                                     
+                            </tbody>
+                        </table>
+                    </div> 
+              </div>
+            </div>
+        </div>
+            <div class="col-md-3">
+              <div class="row">
+                <div class="col-md-12">
+                      <div class="panel panel-success">
+                          <div class="panel-heading" id="">Detalle del predio seleccionado</div>
+                          <div class="panel-body" style="height: 230px;">
+                          	<div class="row">
+                          	  <div class="col-md-12">
+			                       <b>Tipo tenencia:</b>
+			                       <label id="textTipoTenencia" style="font-weight: normal !important;">&nbsp;</label>
+                          	  </div>
+                          	</div>
+                          	<div class="row">
+                          		<div class="col-md-12" >
+	                          	  <b>Región:</b>
+	                          	  <label id="textClave" style=" font-weight: normal !important;">&nbsp;</label>
+                          	    </div>
+                          	</div>
+                          	<div class="row">
+                          		<div class="col-md-12">
+			                          <b>Municipio:</b>
+			                          <label id="textNombrePredio" style=" font-weight: normal !important;">&nbsp;</label>
+                          		</div>
+                            </div>
+                          	<div class="row">
+                          		  <div class="col-md-12">
+			                           <b>Localidad:</b>
+			                           <label id="textResponsable" style=" font-weight: normal !important;">&nbsp;</label>
+                          		  </div>
+                          	</div>
+                          	<div class="row">
+                          		  <div class="col-md-12">
+			                           <label id="seleccionBusquedaShow"></label>
+			                           <label id="textoResultPreRes" style=" font-weight: normal !important;">&nbsp;</label>
+                          		  </div>
+                          	</div>
+                          	<div class="row">
+                          		<div class="col-md-12">
+                          			<a id="showPredio" name="" href="#">Ver predio en mapa</a>
+                          		</div>
+                          	</div>
+
+                          </div>
+                      </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+       	  <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">2. Seleccionar año y programa</div>
+                <div class="panel-body">
+                  <div class="row">
+                  		  <div class="col-md-3">
+		                  <table border="0">
+		                              <tr>
+		                                <td>Año(s)</td>
+		                                <td>
+		                                  <select id="anioSeleccion" multiple="multiple" style="width: 200px; height:50px;">
+		                                        <option value="1995" selected>1995</option>
+		                                        <option value="1996" selected>1996</option>
+		                                        <option value="1997" selected>1997</option>
+		                                        <option value="1998" selected>1998</option>
+		                                        <option value="1999" selected>1999</option>
+		                                        <option value="2000" selected>2000</option>              
+		                                        <option value="2001" selected>2001</option>
+		                                        <option value="2002" selected>2002</option> 
+		                                        <option value="2003" selected>2003</option>              
+		                                        <option value="2004" selected>2004</option>
+		                                        <option value="2005" selected>2005</option>
+		                                        <option value="2006" selected>2006</option>              
+		                                        <option value="2007" selected>2007</option>
+		                                        <option value="2008" selected>2008</option> 
+		                                        <option value="2009" selected>2009</option>              
+		                                        <option value="2010" selected>2010</option>
+		                                        <option value="2011" selected>2011</option>
+		                                        <option value="2012" selected>2012</option>
+		                                        <option value="2013" selected>2013</option> 
+		                                        <option value="2014" selected>2014</option>
+		                                        <option value="2015" selected>2015</option>
+		                                        <option value="2016" selected>2016</option>
+		                                        <option value="2017" selected>2017</option>
+		                                        <option value="2018" selected>2018</option>
+		                                        <option value="2019" selected>2019</option>
+		                                        <option value="2020" selected>2020</option>
+		                                        <option value="2021" selected>2021</option>
+		                                                                                
+		                                        <option value="2022" selected>2022</option>
+		                                        <option value="2023" selected>2023</option> 
+		                                        <option value="2024" selected>2024</option>
+		                                        <option value="2025" selected>2025</option>
+		                                        <option value="2026" selected>2026</option>
+		                                        <option value="2027" selected>2027</option>
+		                                        <option value="2028" selected>2028</option>
+		                                        <option value="2029" selected>2029</option>
+		                                        <option value="2030" selected>2030</option>
+
+		                                        <option value="2031" selected>2031</option>
+		                                        <option value="2032" selected>2032</option>
+		                                        <option value="2033" selected>2033</option> 
+		                                        <option value="2034" selected>2034</option>
+		                                        <option value="2035" selected>2035</option>
+		                                        <option value="2036" selected>2036</option>
+		                                        <option value="2037" selected>2037</option>
+		                                        <option value="2038" selected>2038</option>
+		                                        <option value="2039" selected>2039</option>
+		                                        <option value="2040" selected>2040</option>
+		                                                     
+		                                  </select>
+		                                </td>
+		                              </tr>
+		                         </table>
+		                         </div>
+		                         <div class="col-md-3">
+		                         <table>
+		                              <tr>
+		                                <td></td>
+		                                <td>
+		                                   <div id="errormsgAnio" style="color:red"></div>
+		                                </td>
+		                              </tr>
+		                              <tr>
+		                                <td>
+		                                Programa(s)
+		                                </td>
+		                                <td>
+		                                   <select id="programaSeleccion" multiple="multiple" style="width: 200px;">
+		                                        <option value="1" selected>Prog. 1</option>
+		                                        <option value="2" selected>Prog. 2</option>
+		                                        <option value="3" selected>Prog. 3</option>
+		                                        <option value="5" selected>Prog. 5</option>
+		                                        <option value="6" selected>Prog. 6</option>
+		                                        <option value="7" selected>Prog. 7</option> 
+		                                        <option value="8" selected>Prog. 8</option>
+		                                        <!--<option value="9" selected>Prog. 9</option>-->
+		                                        <option value="10" selected>Prog. 10</option>
+		                                        <option value="11" selected>Prog. 11</option>
+		                                        <option value="12" selected>Prog. 12</option>        
+		                                  </select>
+		                                </td>
+		                              </tr>
+		                              <tr>
+		                                <td><br></td>
+		                                <td>
+		                                     <div id="errormsgProgram" style="color:red"></div>
+		                                </td>
+		                              </tr>
+		                          </table>
+			                   </div>
+	                          <div class="col-md-1">
+	                          		<button  class="btn btn-success btn-block" id="btnbusqueda"><span class="glyphicon glyphicon-play"></span></button>	
+	                          </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                      <div class="panel panel-success">
+                          <div class="panel-heading" id="titlePredio">3. Reporte Generado</div>                    
+                          <div class="panel-body table-responsive">
+                          <div id="pestania"></div>
+                          <div id="spaceTables"  class="tab-content"></div>
+                          </div>
+                      </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+  </body>
+  <link rel="stylesheet" type="text/css" href="css/estilos_ejecutivo.css">
+  <link rel="stylesheet" type="text/css" href="css/dnd.css">
+  <script type="text/javascript"  src="js/BuilederTableMeto.js" ></script> 
+  <script type="text/javascript" src="js/dnd.js"></script>
+  <script type="text/javascript"  src="libs/jquery/tabletopdfq.js"></script>  
+  <script type="text/javascript"  src="js/configEventPDF.js" ></script>
+  <script type="text/javascript"  src="js/JsonEjecutivo.js" ></script>
+  <script type="text/javascript" src="js/findElementTable.js"></script>
+  </html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Modulo Web Reportes</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <!-- jQuery -->   
+     <script src="libs/jquery/jquery.min.js"></script>
+     <!-- jQuery -->   
+     <!-- Bootstrap 3 -->
+          <!-- Bootstrap 3css-->
+          <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+          <!-- Bootstrap 3 js-->
+         <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+         <link rel="stylesheet" href="css/jquery-ui.css">
+         <script src="libs/jquery/jquery-ui.js"></script>
+    <!-- Bootstrap 3 -->
+
+    <!-- JQuery UI-->
+    <script type="text/javascript" src="libs/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="/SIFEM/js/libs/amplify/amplify.js"></script>
+    <script type="text/javascript" src="js/sesionOk.js"></script>
+    
+    <!-- Estilos drag and drop-->
+    <link rel="stylesheet" type="text/css" href="css/dnd.css">
+    <link rel="stylesheet" type="text/css" href="css/charts.css">
+    <!-- Script drag and drop-->
+    <!--<script type="text/javascript" src="js/dnd.js" id="dnd"></script> -->
+    <script type="text/javascript" src="libs/jquery/blockUI.js"></script>
+    
+    <!-- JQuery para las gráficas-->
+    <script type="text/javascript" src="libs/jquery/charts.js"></script>
+    <script src="libs/jquery/highcharts.js"></script>
+    <script src="libs/jquery/exporting.js"></script>
+    <!-- <script src="libs/jquery/offline-exporting.js"></script> solo si no tiene conexion a internet pero no genere pdf -->
+   
+    <!-- JQuery para dibujar graficas-->
+    <script type="text/javascript"  src="js/eventGraphic.js" ></script>  
+    <!-- JQuery para graficas -->
+    <script type="text/javascript" src="/SIFEM/js/libs/jquery/jquery.datetimepicker.full.js"></script>
+    <script type="text/javascript" src="/SIFEM/js/libs/jquery/datetimepicker.js"></script>
+
+
+  
+        <link rel="stylesheet" href="libs/jquery/exportPDF/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="libs/jquery/exportPDF/buttons.dataTables.min.css">
+        <script src="libs/jquery/exportPDF/jquery.dataTables.min.js"></script>
+        <script src="libs/jquery/exportPDF/dataTables.buttons.min.js"></script>
+        <script src="libs/jquery/exportPDF/pdfmake.min.js"></script>
+        <script src="libs/jquery/exportPDF/vfs_fonts.js"></script>
+        <script src="libs/jquery/exportPDF/buttons.html5.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+
+  </head>
+
+  <body>
+    <div class="app_header">
+         <div class="section_header">
+            <div class="section_logo">
+               <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+               <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+               <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+               <div class="divisor"></div>
+               <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+         </div>
+      </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">                                    
+                  <hr>        
+            </div>
+        </div>
+        <div class="row">
+
+          <diV class="col-md-1">
+            <br><br>
+            <button type="button" class="btn btn-success btn-block"  id="esci"><span class="glyphicon glyphicon-log-out"></span></button>
+             <button  class="btn btn-success btn-block" id="btnexppdf1" disabled="true"><span class="glyphicon glyphicon-cog"></span></button>
+          </diV> 
+           <div class="col-md-11">
+            <div class="table-responsive">
+              <table class="table table-striped table-hover table-fixed" width="100%" id="tabla">
+                  <thead id="tableCabecera">
+                    <tr>
+                      <th width="1%">No</th>
+                      <th width="65%">Nombre del Reporte</th>
+                      <th width="20%"><input id="buscar" type="text" class="form-control" placeholder="Escriba para filtrar" /></th>
+                    </tr>
+                  </thead>
+                  <tbody id="listaReportes">
+                  </tbody>
+              </table>
+              </div>       
+            </div>     
+        </div>
+        <div class="row">
+            <br>
+          
+            <div class="col-md-12">
+                    <div class="panel panel-default"   id="contendedor">
+                        <div class="panel-heading" id="cabe"> <font size="4"><b><div id="NameReporte">No de reporte:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre: </div></b></font></div>
+                        <div class="panel-body">
+                            <div id="spaceTable2" class="table-responsive" style="clear:both;overflow-x:auto; max-height: 500px; overflow-y:auto;">
+                                  <br>
+                                  <table id="tableData2" class="display" cellspacing="0" width="100%">                
+                                 </table>
+                                 <div id="img_wait"></div>
+                            </div>
+                        </div>
+                    </diV>
+            </div>
+        </div>
+    </div>
+    <!-- Inicio modal configuracion -->
+   <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog"> 
+
+      <div class="modal-content">
+        <div class="modal-header" id="cabe">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+            
+             <div id="nameFilePdf" class="table-responsive">
+                 <input type="text" name="writeNameFilepdf" id="writeNameFilepdf" placeholder="Escribe título a la lista" value=""/>
+                 <input type="text" id="fechaReporte" placeholder="Agregar fecha al reporte">
+                <div class="col-md-6">
+                 <form>
+                    <fieldset>
+                    <b><p>Tamaño de página:</p></b>&nbsp;
+                    <input type="radio" name="size" value="LETTER" checked="checked">Carta&nbsp;
+                    <input type="radio" name="size" value="LEGAL">Oficio&nbsp;
+                  </fieldset>      
+                </form>
+                </div>
+                 <form>
+                    <fieldset>
+                    <b><p>Orientación de página:</p></b>&nbsp;
+                    <input type="radio" name="pageOr" value="portrait" checked="checked">Vertical&nbsp;
+                    <input type="radio" name="pageOr" value="landscape">Horizontal&nbsp;
+                  </fieldset>      
+                </form>        
+                <hr>
+                <div class="col-md-12">
+                 <form>
+                  <fieldset>      
+                    <b><p>Encabezado con Imágen:</p></b>&nbsp;
+                    <input type="radio" name="gender"  id="radioCustomDeafult" value="1" checked="checked">Si (Imagen por defecto)  &nbsp;&nbsp;
+                    <input type="radio" name="gender" id="radioCustomImage" value="2">Si (Imagen personalizada) &nbsp;&nbsp;
+                    <input type="radio" name="gender"  id="radioCustomImageno"  value="0">No
+                  </fieldset>                   
+                </form>
+                <br>
+                 <form action="" method="post" hidden="true" id="cargarImgane">
+                      <input type="file" id="subirImagen" accept=".png, .jpg, .jpeg"/>
+                </form> 
+                </div>                 
+            </div>
+            
+             <div id="errorNumber" style="color:red"></div>
+        </div>
+        <div class="modal-footer" id="accions">
+        </div>
+      </div>   
+     </div>
+  </div>
+  <!-- Fin modal configuracion -->
+  </body>
+  <script type="text/javascript"  src="js/eventosReporte.js" ></script>
+  <script type="text/javascript"  src="js/BuilederTableMeto.js" ></script>
+  <script type="text/javascript" src="js/findElementTable.js"></script>
+  <script type="text/javascript"  src="libs/jquery/tabletopdfq.js"></script>  
+  <script type="text/javascript"  src="js/principalModuloWeb.js" ></script>
+  <script type="text/javascript"  src="js/configEventPDF.js" ></script>
+  </html>

@@ -1,0 +1,113 @@
+@import url('template.css');
+.custom_actions {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 3000;
+    background:#F9F6EE;
+}
+.custom_actions .header_actions{
+    position: absolute;
+    border-bottom: 2px solid #555555;
+    height: 47px;
+    width: 300px;
+    left: 0px;
+    background: #007B42;
+    color:#fff;
+}
+
+.custom_actions .header_actions .label{
+    font-size: 130%;
+    position: absolute;
+    left: 30px;
+    top: 13px;
+}
+.custom_actions .header_actions .back_actions{
+    position:absolute;left:2px;top:10px;
+}
+.custom_actions .actions_data{
+	position: absolute;
+	top: 51px;
+	left: 2px;
+	right: 2px;
+	bottom: 2px;
+	overflow: auto;
+}
+
+
+.custom_actions .item_action{
+	position:relative;border-bottom:2px solid #555555;height:45px;
+}
+
+.custom_actions .item_action .action_description{
+	font-size: 130%;
+	position: absolute;
+	left: 10px;
+	top: 6px;
+	right: 80px;
+}
+
+
+.custom_actions .item_action .action_progress{
+	position:absolute;left:20px;height:3px;right:5px;bottom:5px;
+}
+
+.custom_actions .item_action .action_tools{
+	position: absolute;
+	right: 0px;
+	top: 8px;
+}
+
+.custom_actions .item_action .action_tools .action_finish{
+	float: right;
+	margin-right: 8px;
+}
+.custom_actions .item_action .action_tools .action_acept{
+	float: right;
+	margin-right: 8px;
+}
+.custom_actions .item_action .action_tools .action_refuse{
+	float: right;
+	margin-right: 8px;
+}
+
+.custom_actions .blocker{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_actions .blocker .veil{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #FFF;
+    -moz-opacity:0.50;
+    opacity:0.50;
+    filter:alpha(opacity=50);
+    z-index: 50000;
+}
+.custom_actions .blocker .loader{
+   position: relative;
+   width: 100px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   z-index: 50001;
+   margin-top: 50%;
+}
+.custom_actions .blocker .loader .label{
+   margin-top: 10px;
+   font-size: 200%;
+   color:  #007B42;
+   font-family: SoberanaSans_bold;
+}
+
+.custom_actions .emty{
+    font-size:130%;margin-top:20px;text-align:center;
+}

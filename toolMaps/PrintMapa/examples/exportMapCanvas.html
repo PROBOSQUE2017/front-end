@@ -1,0 +1,449 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+     <meta charset="UTF-8">
+        <title>OpenLayers Export Map Example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
+        <script src="../lib/OpenLayers.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <style type="text/css">
+    @media print {
+      @page { 
+        size: auto;   /* auto is the initial value */ 
+        /* this affects the margin in the printer settings */ 
+        /*arriba, derecha, abajo, izquierda*/
+        margin: 5mm 7mm 5mm 10mm; 
+      }
+  }
+  </style>
+        <script type="text/javascript" crossorigin="anonymous">
+            var map;
+            var exportMapControl;
+        
+            function init(){
+                map = new OpenLayers.Map('map');
+                
+                var wmsBase = new OpenLayers.Layer.WMS("OpenLayers WMS", 
+                    "http://vmap0.tiles.osgeo.org/wms/vmap0", 
+//                    "proxy.cgi?url=http://labs.metacarta.com/wms/vmap0?",
+                    {
+                        layers: 'basic'
+                    }, 
+                    {
+                        useCanvas: OpenLayers.Layer.Grid.ONECANVASPERLAYER
+                    });
+                
+                var wmsOverlay = new OpenLayers.Layer.WMS("FAO GeoNetwork: Suitability of currently available land for rainfed production of oil crops", 
+                    "http://geonetwork3.fao.org/ows/14097?",
+//                    "proxy.cgi?url=http://geonetwork3.fao.org/ows/14097?", 
+                    {
+                        layers: "currently_oil_crops_intermediate_level_inputs",
+                        transparent: true
+                    }, 
+                    {
+                        useCanvas: OpenLayers.Layer.Grid.ONECANVASPERLAYER,
+                        isBaseLayer: false
+                    });
+                
+                var vector = new OpenLayers.Layer.Vector("GML", {
+                    strategies: [new OpenLayers.Strategy.Fixed()],
+                    protocol: new OpenLayers.Protocol.HTTP({
+                        url: "gml/polygon.xml",
+                        format: new OpenLayers.Format.GML()
+                    }),
+                    styleMap: new OpenLayers.StyleMap({
+                        "default": new OpenLayers.Style({
+                            fillColor: "#ffffff",
+                            strokeColor: "#000000",
+                            strokeWidth: 2
+                        })
+                    }),
+                    renderers: ["Canvas", "SVG", "VML"]
+                });
+                
+                map.addLayers([wmsBase, wmsOverlay, vector]);
+                
+                exportMapControl = new OpenLayers.Control.ExportMap();
+                map.addControl(exportMapControl);
+                map.addControl(new OpenLayers.Control.LayerSwitcher());
+                
+                map.zoomToExtent(new OpenLayers.Bounds(-11.8296875, 39.54021484375, 10.6703125, 50.79021484375));
+            }
+            
+            function exportMap() {
+
+                var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+                var diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+                var f = new Date();
+                document.getElementById("tiempo").innerHTML = /*"Hoy " + diasSemana[f.getDay()] + ", " +*/ f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
+
+                $("#head").show(); //Encabezado Probosque
+                $("#bg").show(); //Marco Escala
+                $("#wind").show();//Rosa de los vientos
+                $("#region").show();//region
+                $("#title").hide();
+                $("#shortdesc").hide();
+                $("#docs").hide();
+                $("#exportedImage").show(); //Canvas
+                $("#contorno").show();
+                $("#contorno2").show();
+                //$("#contorno3").show();
+
+                setTimeout(function() {
+                    $("#map").hide(); //Mapa OpenLayers
+                    $("#txt").hide();
+                    $("#btn").hide();
+                });
+
+                var canvas = OpenLayers.Util.getElement("exportedImage");
+                exportMapControl.trigger(canvas);
+                
+                setTimeout(function() {
+                    window.print(); //Ventana de Impresion
+                }, 100);
+
+                setTimeout(function() {
+                $("#title").show();
+                $("#shortdesc").show();
+                $("#docs").show();
+                $("#exportedImage").hide();
+                $("#map").show();
+                $("#txt").show();
+                $("#btn").show();
+                $("#bg").hide();
+                $("#head").hide();
+                $("#wind").hide();
+                $("#region").hide();
+                $("#contorno").hide();
+                $("#contorno2").hide();
+                //$("#contorno3").hide();
+                }, 100);
+                //window.open(document.getElementById("exportedImage").toDataURL());  
+            }
+        </script>
+    <style type="text/css">
+#bg {
+  position: fixed; 
+  top: 40px; 
+  left: 10px; 
+  width: 50%; 
+  height: 50%;
+  z-index: -1;
+  /*border: 5px solid #ccc;*/
+  display: none;
+}
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  width: 720px;
+  height: 800px;
+}
+  div.pageHeader{
+    position: fixed;
+    top: 0 no-repeat;
+    margin-top: -.4cm;
+    margin-left: -0.5cm;
+    display: inline-block;
+    /*border: 5px solid #ccc;*/
+    display: none;
+  }
+
+  div.pageWind
+  {
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 3cm;
+    margin-left: 1.5cm;
+    display: none;
+  }
+
+  div.pageRegion
+  {
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 18.5cm;
+    margin-left: 5cm;
+    display: none;
+  }
+
+  div.pageContorno
+  {
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 17.7cm;
+    margin-left: 4.8cm;
+    display: inline-block;
+    border: 2px solid #000000;
+    width: 515px;
+    height: 233px;
+    display: inline-block;
+  }
+
+  div.pageContorno2
+  {
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 17.7cm;
+    margin-left: 10.2cm;
+    display: inline-block;
+    /*border: 2px solid #00FF00;*/
+    width: 312px;
+    height: 210px;
+    overflow: hidden;/* "overflow" value must be different from "visible" */ 
+    text-overflow: ellipsis;
+    display: none;
+  }
+
+  div.pageContorno3
+  {
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 23.3cm;
+    margin-left: 10.2cm;
+    display: inline-block;
+    /*border: 2px solid #0404B4;*/
+    width: 312px;
+    height: 20px;
+  }
+
+  div.pageContorno4
+  {
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 17.7cm;
+    margin-left: -.3cm;
+    display: inline-block;
+    border: 2px solid #000000;
+    width: 180px;
+    height: 233px;
+  }
+
+  div.pageFoot
+  {
+    position: fixed;
+    top: 0 no-repeat;
+    margin-top: 24.5cm;
+    margin-left: -0.4cm; 
+    display: inline-block;
+  }
+
+  #contorno p{
+    text-align: left;
+    margin-left: 1.4cm;
+    margin-top: 0.3cm;
+  }
+
+  #contorno2 p{
+    text-align: left;
+    margin-left: 0.1cm;
+    margin-top: 0.1cm;
+     /*font-family: "Times New Roman", Times, serif;
+     font-size: 14px;*/
+  }
+
+  #contorno3 p{
+    text-align: right;
+    margin-right: 0.1cm;
+    margin-top: 0.1cm;
+  }
+
+  #contorno4 p{
+    text-align: left;
+    margin-left: 1.2cm;
+    margin-top: 0.3cm;
+    font-size: 13px;
+  }
+
+  div.cube1{
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: .1cm;
+    margin-left: -2.2cm;
+    display: inline-block;
+    border: 2px solid #000000;
+    width: 15px;
+    height: 15px;
+    background: #40FF00;
+  }
+
+ #cube1 p{
+    text-align: left;
+    margin-left: .7cm;
+    margin-top: 0cm;
+    /*font-size: 13px;*/
+ }
+
+  div.cube2{
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: .9cm;
+    margin-left: -2.2cm;
+    display: inline-block;
+    /*border: 2px solid #000000;*/
+    width: 15px;
+    height: 15px;
+  }
+
+  #cube2 p{
+    text-align: left;
+    margin-left: .7cm;
+    margin-top: 0cm;
+    /*font-size: 13px;*/
+ }
+
+  div.cube3{
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 1.7cm;
+    margin-left: -2.2cm;
+    display: inline-block;
+    /*border: 2px solid #000000;*/
+    width: 15px;
+    height: 15px;
+  }
+
+  #cube3 p{
+    text-align: left;
+    margin-left: .7cm;
+    margin-top: 0cm;
+    /*font-size: 13px;*/
+ }
+
+  div.cube4{
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 2.5cm;
+    margin-left: -2.2cm;
+    display: inline-block;
+    /*border: 2px solid #000000;*/
+    width: 15px;
+    height: 15px;
+  }
+
+  #cube4 p{
+    text-align: left;
+    margin-left: .7cm;
+    margin-top: 0cm;
+    /*font-size: 13px;*/
+ }
+
+  div.cube5{
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 3.3cm;
+    margin-left: -2.2cm;
+    display: inline-block;
+    /*border: 2px solid #000000;*/
+    width: 15px;
+    height: 15px;
+  }
+
+  #cube5 p{
+    text-align: left;
+    margin-left: .7cm;
+    margin-top: 0cm;
+    /*font-size: 13px;*/
+ }
+
+  div.cube6{
+    position:absolute; 
+    z-index:2;
+    top: 0 no-repeat;
+    margin-top: 4.1cm;
+    margin-left: -2.2cm;
+    display: inline-block;
+    /*border: 2px solid #000000;*/
+    width: 15px;
+    height: 15px;
+  }
+
+  #cube6 p{
+    text-align: left;
+    margin-left: .7cm;
+    margin-top: 0cm;
+    /*font-size: 13px;*/
+ }
+
+  #exportedImage{
+    margin-left: 1cm;
+    margin-top: 3cm;
+    width: 620px;
+  height: 440px;
+}
+  .mapita{
+    position: absolute; top: 100px; bottom: 0px; left: 0px; right: 0px;
+        z-index: 35;
+  }
+    </style>
+    </head>
+    <body onload="init()">
+        <div id="head" class="pageHeader" align="center">
+            <img width="730" height="80" src="probosque.png" alt="logo">
+        </div>
+        <div id="bg">
+            <img src="IMAGEN.png" alt="">
+        </div>
+        <div id="wind" class="pageWind" align="center">
+            <img width="108" height="177" src="wind.png" alt="logo">
+        </div>
+         <div id="region" class="pageRegion" align="center">
+            <img width="200" height="200" src="mini1.png" alt="logo">
+        </div>
+        <div id="contorno" class="pageContorno" align="center">
+            <p><strong>UBICACIÓN<strong></p>
+        </div>
+        <div id="contorno2" class="pageContorno2" align="center">
+            <p><strong>Para el Estado de México, preservar el entorno ecológico es una prioridad, de ahí la voluntad de fortalecer la participación social en la tarea de conservar y desarrollar los recursos forestales, motivo que representa el actuar de PROBOSQUE, que mediante sus áreas operativas finca su razón en un sólo objetivo: lograr el desarrollo forestal sustentable de la Entidad.
+La Protectora de Bosques del Estado de México (PROBOSQUE), es un Organismo Público descentralizado, con personalidad jurídica y patrimonio propio, creado en 1990 y sectorizado a la Secretaría del Medio Ambiente a partir de noviembre 15 de 2011.<strong></p>
+        </div>
+         <div id="contorno3" class="pageContorno3" align="center">
+            <p><small id="tiempo"><small></p>
+        </div>
+        <div id="contorno4" class="pageContorno4" align="center">
+            <p><strong>SIMBOLOGIA<strong></p>
+            <div id="cube1" class="cube1" style="background-color: rgb(255, 0, 0);"><p>ABC00106<p></div>
+            <div id="cube2" class="cube2" style="background: #FF0000;"><p>DEF00205<p></div>
+            <div id="cube3" class="cube3" style="background: #0000FF;"><p>GHI00404<p></div>
+            <div id="cube4" class="cube4" style="background: #848484;"><p>JKL00503<p></div>
+            <div id="cube5" class="cube5" style="background: #F7FE2E;"><p>MNO00602<p></div>
+            <div id="cube6" class="cube6" style="background: #FF00FF;"><p>PQR00701<p></div>
+        </div>
+        <div id="foot" class="pageFoot" align="center">
+    <img width="730" height="80" src="foot.png" alt="logo">
+  </div>
+        <h1 id="title">Export Map</h1>
+        <p id="shortdesc">
+            Export map as image file.
+        </p>
+        <div id="map" class="smallmap"></div>
+        
+        <div>
+            <input id="btn" type="button" value="Export Map" onClick="exportMap()" /> <br />
+            <p id="txt">Exported map:</p>
+            <canvas style="display: none" id="exportedImage"></canvas> <br />
+            <!--<a id="downloadLink" href="" target="_blank">Download Image</a>-->
+        </div>
+        
+        <div id="docs">
+            Click on <b>Export Map</b> to render all canvas layers on a single 
+            canvas. Firefox users can download the exported image with <b>Rightclick ->
+            Save Image As</b>. On other browsers a download URL can be generated with
+            <b>Canvas.toDataURL()</b>, but then all images must be requested through a
+            proxy.
+        </div>
+    </body>
+</html>

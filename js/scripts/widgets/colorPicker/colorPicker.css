@@ -1,0 +1,167 @@
+@import url('template.css');
+.custom_colorPicker {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow: auto;
+	z-index: 5000;
+}
+
+.custom_colorPicker .mainContainer{
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	right: 0px;
+	bottom: 65px;
+}
+.custom_colorPicker .veil{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background: #212121;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.custom_colorPicker .w100 {
+  width: 100%;
+}
+.custom_colorPicker .column {
+  position: relative;
+  float: left;
+  height: 200px;
+}
+
+.custom_colorPicker .column .container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: #fff;
+  -webkit-box-shadow: 1px 1px 1px 1px #787878;
+  box-shadow: 1px 1px 1px 1px #787878;
+}
+
+.custom_colorPicker .column .container .data {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+
+
+.custom_colorPicker .Header {
+	position: relative;
+	top: 0px;
+	width: 100%;
+	height: 60px;
+	background: #D7D7D7;
+	z-index: 1;
+	-webkit-box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.61);
+-moz-box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.61);
+box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.61);
+}
+.custom_colorPicker .Header .label{
+	  position: absolute;
+	top: 18px;
+	left: 60px;
+	color: #7B7D7F;
+	font-size: 130%;
+
+}
+.custom_colorPicker .Header .icon{
+	  position: absolute;
+	top: 17px;
+	left: 12px;
+}
+.custom_colorPicker .titles{
+	position: relative;
+	top:0px;
+	width:100%;
+	height: 35px;
+	background: #F2F2F2;
+}
+
+.custom_colorPicker .newRecord .label{
+	position: absolute;
+	top:0px;
+	left: 10px;
+}
+.custom_colorPicker .iconAdd{
+  position: absolute;
+  top: 37px;
+  right: 10px;
+  z-index: 1;
+}
+.custom_colorPicker .formRecords{
+	position: absolute;
+	width:100%;
+	top:0px;
+	bottom: 0px;
+	background: #fff;
+	z-index: 2;
+}
+.custom_colorPicker .iconClose{
+	  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 2;
+}
+.custom_colorPicker .formRecords .fields{
+	position: absolute;
+	top:60px;
+	width:100%;
+	bottom: 0px;
+	z-index: 0;
+}
+.custom_colorPicker .dataColors{
+	position: absolute;
+	top:60px;
+	bottom: 0px;
+	width: 100%;
+	overflow: auto;
+}
+.custom_colorPicker .itemColor {
+	height: 72px;
+}
+.custom_colorPicker .itemColor:hover .border{
+	position: relative;
+	float: left;
+	top: -56px;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	border: 4px dotted #fff;
+	height: 40px;
+	width: 95%;
+}
+.custom_colorPicker .itemColorSelected .border{
+	float: left;
+	position: relative;
+	top: -56px;
+	left: 5px;
+	right: 5px;
+	bottom: 5px;
+	border: 4px dotted #fff;
+	height: 40px;
+	width: 95%;
+}
+/*
+.custom_colorPicker .itemColor:hover p{
+   border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 0 4px #ff0030;
+}
+
+.custom_colorPicker .itemColorSelected p {
+  border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 0 4px #ff0030;
+}
+*/

@@ -1,0 +1,52 @@
+.custom_baseLayer{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+.custom_baseLayer .item_layer{
+    background: #F4F4F4;
+    border: 1px solid #BBBBBB;
+    position: relative;
+    float: left;
+    color: #313131;
+    margin-top: 15px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.custom_baseLayer .item_layer:hover{
+    border: 1px solid #313131 !important;
+}
+.custom_baseLayer .item_layer_selected{
+    background: #F4F4F4;
+    border: 1px solid #D7D7D7;
+    position: relative;
+    float: left;
+    color: #313131;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.custom_baseLayer .item_layer .image{
+    width: 120px;
+    height: 100px;
+    background: white;
+}
+
+.custom_baseLayer .item_layer_selected{
+    background: #7B7D7F;
+}
+
+.custom_baseLayer .item_layer_selected .label{
+    color: #fff !important;
+}
+
+.custom_baseLayer .item_layer .label{
+    width:100%;
+    text-align: center;
+    font-size:120%;
+    color:#222;
+    margin-top: 5px;
+margin-bottom: 5px;
+}

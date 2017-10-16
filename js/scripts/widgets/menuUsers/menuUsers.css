@@ -1,0 +1,101 @@
+
+@import url('template.css');
+
+.background_menuUsers{
+	position: absolute;
+	top:0px;
+	left:0px;
+	bottom: 0px;
+	right: 0px;
+	background: #F9F6EE;
+	z-index: 3000;
+}
+
+.background_menuUsers .title_section{
+	position: absolute;
+	left: 0px;
+	width:45%;
+	top:0px;
+	bottom: 0px;
+	background: #007B42;
+}
+
+
+.background_menuUsers .options_section{
+	position: absolute;
+	right: 0px;
+	width:55%;
+	top:0px;
+	bottom: 0px;
+	background: #F9F6EE;
+	padding: 20px;
+	overflow: auto;
+	
+}
+
+
+.title_section .item{
+	position: absolute;
+	display: inline;
+	top:30%;
+	border: none !important;
+}
+
+.title_section .back_button{
+	position: absolute;
+	top:10px;
+	left:10px;
+	cursor: pointer;
+}
+
+.title_section .item .icon{
+	position: relative;
+	top:0px;
+	
+}
+.title_section .item .label{
+	text-align: center;
+	color:#FFF;
+	font-size: 200%;
+	position: relative;
+	bottom: 0px;
+	width:100%;
+	
+}
+
+.options_section .item{
+	position: relative;
+	float: left;
+	display: inline;
+	width:150px;
+	height: 130px;
+	background: #eee;
+	-webkit-border-radius: 12px 12px 12px 12px;
+	border-radius: 12px 12px 12px 12px;
+	border: 1px solid #CCC;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+
+.options_section .item:hover{
+	box-shadow: 10px 10px 5px #888888;
+}
+
+
+.options_section .item .icon{
+	position: absolute;
+	top:0px;
+	width:100%;
+	height: 80px;
+	margin-top: 10px;
+	
+}
+.options_section .item .label{
+	text-align: center;
+	color:#7F7E80;
+	font-size: 200%;
+	position: absolute;
+	bottom: 8px;
+	width:100%;
+	
+}

@@ -1,0 +1,261 @@
+<html lang="es">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <title>Sistema de Información Forestal del Estado de México</title>
+      <link rel="stylesheet" type="text/css" href="css/structure.css">
+      <link rel="stylesheet" type="text/css" href="css/loging.css">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/datepicker.css">
+      <style type="text/css">
+         input#search{
+         background:url(js/scripts/widgets/search/img/search.png);
+         background-repeat: no-repeat;
+         width:40px;
+         height:35px;
+         border: 0;
+         border: 2px solid #d7d7d7;
+         background-color: #d7d7d7;
+         }
+         .app_program .label2{
+         line-height: 26px;
+         font-size: 120%;
+         color: #7B7D7F;
+         font-weight: bold;
+         position: absolute;
+         float:right;
+         left: 20px;
+         box-sizing: initial;
+         cursor:pointer;
+         }
+         .app_program .label3{
+         line-height: 26px;
+         font-size: 120%;
+         color: #7B7D7F;
+         font-weight: bold;
+         position: absolute;
+         float:right;
+         left: 200px;
+         box-sizing: initial;
+         cursor:pointer;
+         }
+         input:focus {
+            background-color: yellow;
+         }
+         select:focus {
+            background-color: yellow;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="app_header">
+         <div class="section_header">
+            <div class="section_logo">
+               <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+               <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+               <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+               <div class="divisor"></div>
+               <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+         </div>
+      </div>
+      <div class="app_program">
+         <div class="label" style="font-size: 98%;">Colecta de Semilla</div>
+         <div class="label2 alert-primary" style="font-size: 96%;" onclick="ViewBGP()"><span id="label2" class="glyphicon glyphicon-share-alt" style="color:red" aria-hidden="true"></span>Banco de Germoplasma</div>
+         <div class="label3" style="font-size: 96%;" onclick="ViewDGP()"><span id="label3" style="color:red"></span>Destino de germoplasma</div>
+      </div>
+      <div class="row">
+         <br/>
+      </div>
+      <div id="BGP">
+      <div class="container">
+            <div class="col-md-2"></div>
+            <form class="form-inline">
+               <div div="uno" class="form-group col-md-2.5">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myModal" rel="tooltip" data-placement="left" title="Instrucciones!"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
+                  &nbsp; &nbsp;
+               </div>
+               <div class="input-group col-md-6">
+  				<span class="input-group-addon" id="basic-addon3">Banco Germoplasma</span>
+  				<input type="text" class="form-control" id="bgp" aria-describedby="basic-addon3" placeholder="Nombre Común o Nombre Científico">
+			   </div>
+			   <div class="input-group col-md-1">
+               	<span class="input-group-btn">
+                <input type="button" id="search" onclick="Buscar()">
+                </span>
+               </div>
+               <!-- /input-group -->
+            </form>
+
+          <div id="alerta" class="alert alert-danger alert-dismissible col-sm-4 col-sm-offset-4 text-center" role="alert" style="display: none">
+            <strong>NO!!</strong> Se encontraron datos!!
+         </div>
+
+            <div id="content" class="table-responsive col-md-10.5 col-md-offset-.5 pre-scrollable">
+            <table id="tblBG" class="table table-striped" style="display: none">
+               <thead>
+                  <tr class="success" style="font-size:80%;">
+                     <th>Nombre Común</th>
+                     <th>Nombre Científico</th>
+                     <th>Region</th>
+                     <th>Municipio</th>
+                     <th>Procedencia</th>
+                     <th>Fecha de Alta</th>
+                     <th>Lote de Semilla</th>
+                     <th>% de Viabilidad</th>
+                     <th>Cantidad (Kg)</th>
+                  </tr>
+               </thead>
+               <tfoot>
+               		<tr style="font-weight: normal; font-size:80%;">
+                     	<th colspan="7"></th>
+                      	<th>Total (Kg)</th>
+                     	<th>3500</th>
+                  	</tr>
+               </tfoot>
+               <tbody id="body">
+                  <tr style="font-weight: normal; font-size:80%;">
+                     <th>Pino</th>
+                     <th>Pino ayacahuite</th>
+                     <th>Lote de semilla</th>
+                     <th>Nuevo</th>
+                     <th>5000</th>
+                     <th>GC 2015</th>
+                     <th>1</th>
+                     <th>12</th>
+                     <th>3500</th>
+
+                  </tr>
+                   <tr style="font-weight: normal; font-size:80%;">
+                     <th>Pino</th>
+                     <th>Pino ayacahuite</th>
+                     <th>Lote de semilla</th>
+                     <th>Nuevo</th>
+                     <th>5000</th>
+                     <th>GC 2015</th>
+                     <th>1</th>
+                     <th>12</th>
+                     <th>3500</th>
+
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         </div>
+         </div>
+
+         <div id="DGP" style="display: none;">
+         	<div class="container">
+            <div class="col-md-1"></div>
+            <form class="form-inline">
+               <div div="uno" class="form-group col-md-2.5">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myModal" rel="tooltip" data-placement="left" title="Instrucciones!"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
+                  &nbsp; &nbsp;
+               </div>
+               <div class="input-group col-md-7">
+  				<span class="input-group-addon" id="basic-addon3">Destino Germoplasma</span>
+  				<input type="text" class="form-control" id="dgp" aria-describedby="basic-addon3" placeholder="Nombre del vivero o Venta o Donacion o Convenio">
+			   </div>
+			   <div class="input-group col-md-2">
+  				<input type="text" class="form-control" id="anio" aria-describedby="basic-addon3" placeholder="Año">
+			   </div>
+			   <div class="input-group col-md-1">
+               	<span class="input-group-btn">
+                <input type="button" id="search" onclick="Buscar2()">
+                </span>
+               </div>
+               <!-- /input-group -->
+            </form>
+            <div id="alerta2" class="alert alert-danger alert-dismissible col-sm-4 col-sm-offset-4 text-center" role="alert" style="display: none">
+            <strong>NO!!</strong> Se encontraron datos!!
+         </div>
+
+            <div id="content" class="table-responsive col-md-10.5 col-md-offset-.5 pre-scrollable">
+            <table id="tblDG" class="table table-striped" style="display: none">
+               <thead>
+                  <tr class="success" style="font-size:80%;">
+                     <th>Nombre Científico</th>
+                     <th>Nombre Común</th>
+                     <th>Procedencia</th>
+                     <th>Fecha de Alta</th>
+                     <th>Lote de Semilla</th>
+                     <th>% de Viabilidad</th>
+                     <th>Cantidad (Kg)</th>
+                     <th>Costo ($)</th>
+                  </tr>
+               </thead>
+               <tbody id="2016">
+                  <tr class="info" style="font-weight: normal; font-size:80%;">
+                     <th><strong>2016</strong></th>
+                  </tr>
+                   <tr style="font-weight: normal; font-size:80%;">
+                     <th>Pino</th>
+                     <th>Pino ayacahuite</th>
+                     <th>Lote de semilla</th>
+                     <th>Nuevo</th>
+                     <th>5000</th>
+                     <th>GC 2015</th>
+                     <th>1</th>
+                     <th>12</th>
+                  </tr>
+                  <tr style="font-weight: normal; font-size:80%;">
+                     <th>Pino</th>
+                     <th>Pino ayacahuite</th>
+                     <th>Lote de semilla</th>
+                     <th>Nuevo</th>
+                     <th>5000</th>
+                     <th>GC 2015</th>
+                     <th>1</th>
+                     <th>12</th>
+                  </tr>
+                  <tr class="warning" style="font-weight: normal; font-size:80%;">
+                     <th colspan="5"></th>
+                     <th>Total</th>
+                     <th>1</th>
+                     <th>12</th>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+         </div>
+         </div>
+      
+      <div class="app_foot">
+         <div style="position:absolute;left:0px;right:0px;top:5px;bottom:5px;border-top:3px solid #fff;border-bottom:3px solid #fff;">
+            <div style="float: left;  top: 4px;  position: relative;  margin-left: 15px;  color: #fff;  font-size: 91%;">
+               <div>Gobierno del Estado de México</div>
+               <div>Secretaría del Medio Ambiente</div>
+               <div>Protectora de Bosques</div>
+            </div>
+            <div style="float: left;  top: 4px;  position: relative;  margin-left: 40px;color:#fff;font-size:91%;">
+               <div>Rancho Guadalupe S/N Conjunto SEDAGRO</div>
+               <div>Metepec, Teléfonos: (722) 2710779 2710789</div>
+               <div>E-mail: probosque.apo@edomex.gob.mx</div>
+            </div>
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+      <script type="text/javascript" src="js/libs/amplify/amplify.js"></script>
+      <script type="text/javascript" src="js/JSCS.js"></script>
+      <script src="js/bootstrap-datepicker.js"></script>
+      <script type="text/javascript">
+         $('#anio').datepicker({ 
+         format: " yyyy", // Notice the Extra space at the beginning
+         viewMode: "years", 
+         minViewMode: "years"}).on('changeDate',function(ev){
+            $(this).datepicker('hide');
+         });
+         
+         $(document).ready(function(){
+    		$('[rel="tooltip"]').tooltip();
+		});
+      </script>
+   </body>
+</html>

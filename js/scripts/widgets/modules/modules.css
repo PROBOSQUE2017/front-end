@@ -1,0 +1,80 @@
+@import url('template.css');
+
+.custom_modules{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.custom_modules .btnBack{
+    position: relative;
+    left: 5px;
+    float: left;
+    width: 25px;
+    height: 100%;
+    cursor: pointer;
+}
+.custom_modules .btnBack .icon{
+    top: 5px;
+    left: 5px;
+    position: relative;
+}
+.custom_modules .mainItem{
+  text-transform: uppercase;
+  height: 100%;
+  margin-left: 5px;
+  color: #7B7D7F;
+  float: left;
+  position: relative;
+  padding-left: 15px;
+  line-height: 29px;
+  padding-right: 40px;
+  cursor: pointer;
+ 
+}
+
+.custom_modules .mainItem .label{
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.custom_modules .sectionItem{
+  text-transform: capitalize;
+  height: 100%;
+  color: #7B7D7F;
+  float: left;
+  font-size: 110%;
+  font-weight: bold;
+  position: relative;
+  padding-left: 15px;
+  line-height: 29px;
+  padding-right: 15px;
+  
+}
+
+
+.custom_modules .sectionItem .label{
+    position: relative;
+}
+
+.custom_modules .sectionItem .border{
+    height:80%;
+    width:1px;
+    background:#7C7D7F;
+    position:absolute;
+    left:0px;
+    top:3px;
+}
+
+.custom_modules .sectionItem:hover{
+    background: #7A7D7F ;
+    color: #D7D7D7;
+    cursor: pointer;
+}
+.custom_modules .sectionItem_selected{
+    background: #7A7D7F !important;
+    color: #D7D7D7 !important;
+    cursor: pointer;
+}

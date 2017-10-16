@@ -1,0 +1,250 @@
+@font-face
+{
+   font-family: "SoberanaSans_regular";
+   src: url("fonts/SoberanaSans-Regular-webfont.eot");
+   src: url("fonts/SoberanaSans-Regular-webfont.eot?#amocristalab") format("embedded-opentype"),
+        url("fonts/SoberanaSans-Regular-webfont.woff") format("woff"),
+        url("fonts/SoberanaSans-Regular-webfont.ttf") format("truetype"),
+        url("fonts/SoberanaSans-Regular-webfont.svg#soberana_sansregular") format("svg");
+}
+
+@font-face
+{
+   font-family: "SoberanaSans_light";
+   src: url("fonts/SoberanaSans-Light-webfont.eot");
+   src: url("fonts/SoberanaSans-Light-webfont.eot?#amocristalab") format("embedded-opentype"),
+        url("fonts/SoberanaSans-Light-webfont.woff") format("woff"),
+        url("fonts/SoberanaSans-Light-webfont.ttf") format("truetype"),
+        url("fonts/SoberanaSans-Light-webfont.svg#soberana_sanslight") format("svg");
+}
+@font-face
+{
+   font-family: "SoberanaSans_black";
+   src: url("fonts/SoberanaSans-Black-webfont.eot");
+   src: url("fonts/SoberanaSans-Black-webfont.eot?#amocristalab") format("embedded-opentype"),
+        url("fonts/SoberanaSans-Black-webfont.woff") format("woff"),
+        url("fonts/SoberanaSans-Black-webfont.ttf") format("truetype"),
+        url("fonts/SoberanaSans-Black-webfont.svg#soberana_sansbold") format("svg");
+}
+@font-face
+{
+   font-family: "SoberanaSans_bold";
+   src: url("fonts/SoberanaSans-Bold-webfont.eot");
+   src: url("fonts/SoberanaSans-Bold-webfont.eot?#amocristalab") format("embedded-opentype"),
+        url("fonts/SoberanaSans-Bold-webfont.woff") format("woff"),
+        url("fonts/SoberanaSans-Bold-webfont.ttf") format("truetype"),
+        url("fonts/SoberanaSans-Bold-webfont.svg#soberana_sans_lightbold") format("svg");
+}
+
+@font-face
+{
+   font-family: "SoberanaSans_titular_bold";
+   src: url("fonts/SoberanaTitular-Bold-webfont.eot");
+   src: url("fonts/SoberanaTitular-Bold-webfont.eot?#amocristalab") format("embedded-opentype"),
+        url("fonts/SoberanaTitular-Bold-webfont.woff") format("woff"),
+        url("fonts/SoberanaTitular-Bold-webfont.ttf") format("truetype"),
+        url("fonts/SoberanaTitular-Bold-webfont.svg#soberana_titularbold") format("svg");
+}
+
+@font-face
+{
+   font-family: "SoberanaSans_titular_regular";
+   src: url("fonts/SoberanaTitular-Regular-webfont.eot");
+   src: url("fonts/SoberanaTitular-Regular-webfont.eot?#amocristalab") format("embedded-opentype"),
+        url("fonts/SoberanaTitular-Regular-webfont.woff") format("woff"),
+        url("fonts/SoberanaTitular-Regular-webfont.ttf") format("truetype"),
+        url("fonts/SoberanaTitular-Regular-webfont.svg#soberana_titularregular") format("svg");
+}
+html, body{     margin: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                font-size: 78%;
+                font-family: SoberanaSans_regular;
+}
+
+.Loging {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #F2F2F2;
+    
+}
+.hidden{
+    display:none;
+    visibility: hidden;
+}
+.spinner{
+    background:url("../img/spinner.gif") top left no-repeat;
+    width:31px; height:31px;
+    margin-top: 20px;
+}
+
+.Loging .Header{
+    position:absolute;top:0px;left:0px;right:0px;z-index: 1;background: white;
+}
+.Loging .Section .Nav .Title{
+    position: relative;
+    font-weight: 100;
+    line-height: 1;
+    margin: 0;
+    color: white;
+    padding-top: 10.66667vh;
+    padding-bottom: 16.66667vh;
+    font-size: 400%;
+    left: 10%;
+}
+.Loging .Section{
+    position:absolute;top:50px;left:0px;right:0px;bottom:0px;
+}
+.Loging .Section .Nav{
+    position:absolute;top:15px;left:0px;right:0px;height:60%;
+    background-image: url("../img/login/texture.jpg");
+    background-repeat: repeat-x;
+}
+.Loging .Bg{
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    background-image: url(../img/login/background.jpg);
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    /* right: 0px; */
+    height: 100%;
+    z-index: 0;
+}
+
+.Loging .Section .Foot{
+    /*position:absolute;bottom:0px;left:0px;right:0px;height:50%;background:#F9F6EE;*/ 
+    
+}
+.Loging .Section .divisor{
+    width:100%;background:#007B42;height:15px;
+}
+
+.Foot .textInput{
+    outline: 0;
+    padding: 7px;
+    /* width: 100%; */
+    border: 1px solid #D7D7D7;
+    background: #fff;
+    border-radius: 2px;
+    background-color: #F2F2F2;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 70%;
+    margin-top: 15px;
+    height: 20px;
+    display: block;
+    font-size: 120%;
+    color: #7A7D7F;
+    /* position: relative; */
+    /* left: 0px; */
+    /* right: 0px; */
+}
+
+.Foot .textButton{
+      top: -5px;
+      position: relative;
+    background-color: #7A7D7F;
+    border-radius: 5px;
+   /* padding: 10px;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    */
+    color: white;
+    /*font-size: 300%;*/
+}
+
+.Foot .msgError{
+    background: #A12215;
+    padding: 10px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+   border-radius: 6px 6px 6px 6px;
+    border: 1px solid #7A7D7F;
+    width:70%;
+    margin-top: 20px;
+}
+
+.Foot .msgError label{
+   color:white;
+   font-size: 140%;
+}
+
+.info_login{
+    position: absolute;
+    bottom: 25%;
+    width:100%;
+}
+.Loging .modalLogin{
+    height: 300px;
+    width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+}
+
+.Loging .modalLogin .title{
+   position: relative;
+   top: 0px;
+   width: 100%;
+   height:28px;
+   background: #7C7D7F;
+   border-bottom: 1px solid #BBBBBB;
+   border-top: 1px solid #BBBBBB;
+   border-left: 1px solid #BBBBBB;
+    border-right: 1px solid #BBBBBB;
+}
+.Loging .modalLogin .title .label{
+    position: absolute;
+    top: 2px;
+    left: 21px;
+    color: #fff;
+    font-size: 120%;
+    font-weight: bold;
+}
+.Loging .modalLogin .content{
+    position: relative;
+    height: 160px;
+    width: 100%;
+    border-left: 1px solid #D7D7D7;
+    border-right: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7;
+}
+.Loging .modalLogin .content .background_content{
+    height: 100%;
+    width:100%;
+    background: #F2F2F2;
+    
+    /*background: black;*/
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+
+    position: absolute;
+}
+
+
+
+
+
+
+.Loging .modalLogin .content .data{
+    position: absolute;
+    height: 100%;
+    width:100%;
+    /*background:#fff;*/
+    
+}

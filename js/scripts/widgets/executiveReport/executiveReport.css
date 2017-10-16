@@ -1,0 +1,633 @@
+.custom_executiveReport{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.custom_executiveReport .HeaderSection{
+    position: absolute;
+    top:0px;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #BBBBBB;
+    text-align: left;
+}
+.separator_executive{
+    width:100%;
+    height: 50px;
+}
+.custom_executiveReport .dataSection{
+    position: absolute;
+    top:60px;
+    width:100%;
+    bottom: 0px;
+    overflow: auto;
+    z-index: 0;
+}
+
+.custom_executiveReport .dataSection .section{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_executiveReport .subRow{
+    padding: 5px;
+    height: 35px;
+}
+.custom_executiveReport .buttonReport{
+    background: #9A9B9A;
+}
+.custom_executiveReport .sectionButtons{
+    width:100%;
+    padding: 10px;
+    height: 60px;
+}
+
+.custom_executiveReport .sectionButtons .btnLeft{
+    position: relative;
+    float: left;
+}
+.custom_executiveReport .sectionButtons .btnRight{
+    position: relative;
+    float: right;
+}
+.custom_executiveReport .boxContainer{ 
+  width: 80%;
+  height: 300px;
+  position: relative;
+  margin-top: 25px;
+  -webkit-box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.66);
+-moz-box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.66);
+box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.66);
+}
+
+.custom_executiveReport .boxContainer{ 
+  width: 80%;
+  position: relative;
+  margin-top: 25px;
+}
+.custom_executiveReport .boxContainer .titleBlock{
+    position: absolute;
+    top:0px;
+    width: 100%;
+    height: 50px;
+    background: #9A9B9A;
+    font-weight: bolder;
+}
+
+.custom_executiveReport .titleBlock .label{
+      position: absolute;
+  left: 30px;
+  top: 15px;
+  color: #D9DAD9;
+  font-size: 130%;
+}
+.custom_executiveReport .boxContainer .dataBlock{
+    position: absolute;
+    top:50px;
+    width: 100%;
+    bottom: 50px;
+    background: #FFF;
+    overflow: auto;
+}
+
+.custom_executiveReport .dataBlock .itemFieldReport{
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #BBBBBB;
+        text-align: left;
+        font-size: 120%;
+        color:#808080;
+        cursor: pointer;
+}
+.custom_executiveReport .itemFieldReport .label{
+    margin-left: 20px;
+}
+.custom_executiveReport .itemFieldReport_selected{
+    color: #90A934 !important;
+    font-weight: bold;
+}
+.custom_executiveReport .boxContainer .footerBlock{
+    position: absolute;
+    height: 50px;
+    width: 50%;
+    bottom: 0px;
+    background: #D9DAD9;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom_executiveReport .boxContainer .footerBlock .label{
+    position: relative;
+  top: 4px;
+  display: inline-block;
+  color: #7B7D7F;
+  font-size: 120%;
+  font-weight: bold;
+    margin-left: 5px;
+  margin-right: 5px;
+}
+.custom_executiveReport .boxContainer .footerBlock .icon{
+    position: relative;
+    top:10px;
+    display: inline-block;
+}
+
+/*************/
+.custom_executiveReport .boxContainer .footerBlockAll{
+    position: absolute;
+     right: 0px;
+    height: 50px;
+    border-left: 1px solid #BBBBBB;
+    width: 50%;
+    bottom: 0px;
+    background: #D9DAD9;
+    text-align: center;
+    cursor: pointer;
+}
+
+.custom_executiveReport .boxContainer .footerBlockAll .label{
+    position: relative;
+  top: 4px;
+  display: inline-block;
+  color: #7B7D7F;
+  font-size: 120%;
+  font-weight: bold;
+    margin-left: 5px;
+  margin-right: 5px;
+}
+.custom_executiveReport .boxContainer .footerBlockAll .icon{
+    position: relative;
+    top:10px;
+    display: inline-block;
+}
+
+
+.custom_executiveReport .step{
+    position: relative;
+    display: inline-block;
+}
+
+.custom_executiveReport .step .vignette{
+    margin-left: 20px;
+  position: relative;
+  display: inline-block;
+  top: 12px;
+}
+
+.custom_executiveReport .vignette .number{
+   position: absolute;
+  color: #fff;
+  font-size: 140%;
+  top: 6px;
+  left: 9px;
+}
+.custom_executiveReport .step .label{
+    font-size: 130%;
+  color: #808080;
+  display: inline-block;
+  margin-left: 3px;
+    
+}
+
+.custom_executiveReport .FieldReport{
+        position: relative;
+        border: 1px solid transparent;
+        padding-left: 10%;
+        text-align: left;
+}
+.custom_executiveReport .FieldReport .label{
+    color: #7A7D7F;
+  float: left;
+  position: relative;
+  top: 15px;
+  font-size: 120%;
+  font-weight: bold;
+  
+}
+.custom_executiveReport .titleSubsection{
+    font-weight:bold;
+    color:#90A934;
+    font-size: 140%;
+    margin-top:30px;
+}
+.custom_executiveReport .FieldReport .textInput{
+   
+     outline: 0;
+  padding-left: 12px;
+  width: 100%;
+  /* padding-left: 10px; */
+  border: 1px solid #D7D7D7;
+  border-radius: 2px;
+  background-color: #fff;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 90%;
+  margin-top: 35px;
+  display: block;
+  color: #7A7D7F;
+  font-size: 120%;
+}
+
+.custom_executiveReport .FieldReport .selectInput{
+    outline: 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #D7D7D7;
+  border-radius: 2px;
+  background-color: #fff;
+  background-image: none;
+  width: 90%;
+  margin-top: 35px;
+  display: block;
+  color: #7A7D7F;
+  font-size: 120%;
+}
+
+.template_executiveReports{
+    background:url("img/executiveReport.png") top left no-repeat;
+}
+
+.terep_row_right{
+      width: 25px;
+  height: 25px;
+  background-position: 2px -9px;
+}
+
+.terep_row_left{
+    width: 25px;
+  height: 25px;
+  background-position: -29px -9px;
+}
+
+.terep_vignette{
+    width: 45px;
+  height: 35px;
+  background-position: -341px -8px;
+  
+}
+
+.terep_columns{
+    width: 133px;
+  height: 52px;
+  background-position: -392px 0px;
+  margin-bottom:  10px;
+}
+.terep_rows{
+      width: 133px;
+  height: 52px;
+  background-position: -527px 0px;
+  
+   margin-bottom:  10px;
+}
+.terep_print{
+       width: 27px;
+  height: 31px;
+  background-position: -62px -12px;
+}
+.terep_pdf{
+      width: 27px;
+  height: 31px;
+  background-position: -119px -12px;
+
+}
+
+.terep_csv{
+         width: 27px;
+  height: 31px;
+  background-position: -665px -11px;
+ 
+}
+
+.terep_tabular{
+      width: 27px;
+  height: 31px;
+  background-position: -439px -12px;
+ 
+}
+
+.terep_graph{
+      width: 27px;
+  height: 31px;
+  background-position: -154px -12px;
+  
+}
+
+.custom_executiveReport .activeVignette .terep_vignette{
+     background-position: -293px -9px !important;
+}
+.custom_executiveReport  .activeVignette .label{
+     color:#90A934 !important;
+     font-weight: bold;
+}
+
+
+.custom_executiveReport .section3 #btnStep4Back{
+    position: absolute;
+    float: left;
+      top: -11px;
+  left: 10px;
+}
+
+.custom_executiveReport .section3 .Header{
+    position: relative;
+    width:100&;
+    border-bottom: 1px solid #BBBBBB;
+    height: 30px;
+}
+.custom_executiveReport .section3 .exportOptions{
+    position: absolute;
+    float: left;
+    top:-9px;
+    right: 0px;
+}
+.custom_executiveReport .section3 .infoReport{
+    position: absolute;
+    top:45px;
+    width:100%;
+    bottom: 0px;
+    overflow: auto;
+}
+.custom_executiveReport .infoMultirecord{
+    position: absolute;
+    top:45px;
+    width:100%;
+    bottom: 0px;
+    z-index: 2;
+    overflow: auto;
+    background: #F2F2F2;
+}
+.custom_executiveReport .section3 .tabsec4{
+    position: relative;
+    height: 100%;
+    width:100px;
+    background: red;
+    color:white;
+}
+.custom_executiveReport .itemReport{
+    float: left;
+    position: relative;
+    margin-right: 15px;
+}
+.title_executiveReport{
+      width: 100%;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  background: #90A934;
+  color: #fff;
+  font-size: 150%;
+}
+.title_executiveReport_multirecord{
+      width: 100%;
+  height: 40px;
+  line-height: 37px;
+  text-align: center;
+  background: #90A934;
+  color: #fff;
+  font-size: 150%;
+}
+.executiveResults_extable_filter .rowFilled{
+	background: #eee;
+}
+.executiveResults_extable_filter .rowWhite{
+	background: #fff;
+}
+.executiveResults_extable_filter .borderHeading{
+	
+	border-bottom: 1px solid #BBBBBB;
+}
+.executiveResults_extable_filter .borderRow{
+	border-bottom: 1px solid #D7D7D7;
+}
+.executiveResults_extable_filter
+    {
+        display: table;
+	width:100%;
+    }
+    
+    .executiveResults_extable_filter .Heading
+    {
+        display: table-row;
+	font-weight: bold;
+	text-align: center;
+	font-size: 110%;
+	background: #D7D7D7;
+	color: #7B7D7F;
+    }
+    
+    .executiveResults_extable_filter .Row
+    {
+        display: table-row;
+	font-size: 110%;
+	color:#7A7D7F;
+	background: #fff;
+    }
+    .executiveResults_extable_filter .Cell
+    {
+        display: table-cell;
+        border-width: thin;
+       /* padding-left: 5px;
+        padding-right: 5px;*/
+    }
+    
+    
+.executiveResults_extable_filter .textButton{
+    background-color: #7B7D7F;
+    border-radius: 5px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.executiveResults_extable_filter_multirecord .rowFilled{
+	background: #eee;
+}
+.executiveResults_extable_filter_multirecord .borderHeading{
+	
+	border-bottom: 1px solid #BBBBBB;
+}
+.executiveResults_extable_filter_multirecord .borderRow{
+	border-bottom: 1px solid #D7D7D7;
+}
+.executiveResults_extable_filter_multirecord
+    {
+        display: table;
+	width:100%;
+    }
+    
+    .executiveResults_extable_filter_multirecord .Heading
+    {
+        display: table-row;
+	font-weight: bold;
+	text-align: center;
+	font-size: 110%;
+	background: #D7D7D7;
+	color: #7B7D7F;
+    }
+    
+    .executiveResults_extable_filter_multirecord .Row
+    {
+        display: table-row;
+	font-size: 110%;
+	color:#7A7D7F;
+	background: #fff;
+    }
+    .executiveResults_extable_filter_multirecord .Cell
+    {
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+.executiveReportPrint{
+    position: absolute;
+    top:71px;
+    bottom: 0px;
+    width:100%;
+    z-index: 50000;
+     background: #fff;
+     text-align: center;
+}
+
+.executiveReportPrintMultirecords .btnBackAll{
+          position: relative;
+  left: 9px;
+  float: left;
+  width: 25px;
+  height: 100%;
+  cursor: pointer;
+  top: 2px;
+}
+.executiveReportPrintMultirecords .refFolio{
+      position: absolute;
+  left: 33px;
+  color: #fff;
+  font-size: 75%;
+  top: 1px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.executiveReportPrintMultirecords .fieldMulti{
+      position: absolute;
+  left: 170px;
+  color: #fff;
+  font-size: 85%;
+}
+.executiveReportPrintMultirecords{
+    position: absolute;
+    top:71px;
+    bottom: 0px;
+    width:100%;
+    z-index: 50000;
+     background: #fff;
+     text-align: center;
+}
+.executiveGraphPrint{
+    position: absolute;
+    top:71px;
+    bottom: 0px;
+    width:100%;
+    z-index: 50000;
+    background: #fff;
+    text-align: center;
+}
+
+.executiveGraphPrint .containerg{
+    height: 600px;
+    margin-top: 50px;
+}
+
+
+.custom_executiveReport .blocker{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_executiveReport .blocker .veil{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #FFF;
+    -moz-opacity:0.50;
+    opacity:0.50;
+    filter:alpha(opacity=50);
+    z-index: 50000;
+}
+.custom_executiveReport .blocker .loader{
+   position: relative;
+   width: 100px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   z-index: 50001;
+   margin-top: 20%;
+}
+.custom_executiveReport .blocker .loader .label{
+   margin-top: 10px;
+   font-size: 200%;
+   color:  #90A934;
+   font-family: SoberanaSans_bold;
+}
+
+.custom_executiveReport .itemRecordReport{
+     /* position: absolute; */
+  padding: 4px;
+  background: #9A9B9A;
+  color: #fff;
+  /* top: 9px; */
+  /* right: 10px; */
+  /* font-size: 80%; */
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  width:150px;
+}
+.custom_executiveReport .btnBackAll{
+          position: relative;
+  left: 9px;
+  float: left;
+  width: 25px;
+  height: 100%;
+  cursor: pointer;
+  top: 2px;
+}
+.custom_executiveReport #fields_report{
+    position: relative;
+    width: 100%;
+    height: 85%;
+    text-align: left;
+}
+.custom_executiveReport #fields_aniosAndPrograms{
+     position: relative;
+    width: 100%;
+    height: 85%;
+    text-align: left;
+}
+.custom_executiveReport .refFolio{
+      position: absolute;
+  left: 33px;
+  color: #fff;
+  font-size: 75%;
+  top: 1px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.custom_executiveReport .fieldMulti{
+      position: absolute;
+  left: 170px;
+  color: #fff;
+  font-size: 85%;
+}

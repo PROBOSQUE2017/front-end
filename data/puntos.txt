@@ -1,0 +1,70 @@
+{  
+   "response":{  
+      "message":"valido",
+      "sucessfull":true
+   },
+   "data":{  
+      "features":[  
+         {  
+            "id":4545,
+            "wkt":"POINT(-102 22)",
+            "status":1
+         },
+         {  
+            "id":4546,
+            "wkt":"POINT(-101 20)",
+            "status":2
+         },
+         {  
+            "id":4547,
+            "wkt":"POINT(-99 19)",
+            "status":3
+         },
+         {  
+            "id":4548,
+            "wkt":"POINT(-100 22)",
+            "status":1
+         },
+         {  
+            "id":4549,
+            "wkt":"POINT(-101 18)",
+            "status":2
+         },
+         {  
+            "id":4550,
+            "wkt":"POINT(-102 17)",
+            "status":3
+         },
+         {  
+            "id":4551,
+            "wkt":"POINT(-101 16)",
+            "status":1
+         },
+         {  
+            "id":4552,
+            "wkt":"POINT(-102 15)",
+            "status":1
+         },
+         {  
+            "id":4553,
+            "wkt":"POINT(-101 22)",
+            "status":2
+         },
+         {  
+            "id":4554,
+            "wkt":"POINT(-101 21)",
+            "status":3
+         },
+         {  
+            "id":4555,
+            "wkt":"POINT(-102 21)",
+            "status":1
+         },
+         {  
+            "id":4556,
+            "wkt":"POINT(-99 21)",
+            "status":1
+         }
+      ]
+   }
+}

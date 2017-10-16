@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Auditorias</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="reporteador/libs/jquery/jquery.min.js"></script>
+    <script src="reporteador/libs/jquery/jquery-ui.js"></script>
+    <script src="/SIFEM/js/libs/amplify/amplify.js"></script>
+    <script type="text/javascript" src="reporteador/js/accesoAuditoriaUser.js"></script>
+    <link rel="stylesheet" href="reporteador/libs/bootstrap/css/bootstrap.min.css">
+    <script src="reporteador/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/SIFEM/maderable/js/libs/moment.min.js"></script>
+    <script src="/SIFEM/maderable/js/libs/daterangepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/maderable/css/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+</head>
+
+<body>
+    <div class="app_header">
+        <div class="section_header">
+            <div class="section_logo">
+                <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+                <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+                <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+                <div class="divisor"></div>
+                <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+      <br/>
+        <div class="row">
+          <div class="col-md-5 col-xs-12 col-lg-5">
+            <button type="button" class="btn btn-success"  id="btnRegresar">
+               Regresar
+            </button>
+            <button type="button" class="btn btn-success" data-toggle="tooltip" id="btnhelpme">
+               Ayuda
+            </button>
+          </div>
+           <div class="col-md-7 col-xs-12 col-lg-7">
+           <h4><b>Programa de madera legal</b></h4>
+           </div>
+        </div>
+        <div class="row">
+           <br/>
+            <div class="col-md-9">
+                <div class="panel panel-success">
+                    <div class="panel-heading">1. Seleccionar predio o representante
+                    </div>
+                    <div class="panel-body" style="margin-top: -15px;">
+                        <div class="table-responsive">
+                            <table class="table table-fixed" id="tabla" width="100%">
+                                <thead class="acomodar" style="margin-top: -5px;">
+                                    <tr>
+                                        <th width="23%">Clave única de identificación</th>
+                                        <th width="50%" id="headInfo">Descripción</th>
+                                        <th>Buscar:</th>
+                                        <th>
+                                            <div id="errormsgBusqueda" style="color: red"></div>
+                                            <select id="opcionBusqueda" style="width: 200px;">
+                                                <option value="-2ws" selected>Seleccione</option>
+                                                <option value="getPredio">Predio</option>
+                                                <option value="getRepresentantes">Representante</option>
+                                            </select>
+                                        </th>
+                                        <th width="23%" style="margin-bottom: -20px">
+                                            <input id="buscar" type="text" class="form-control peticionAjax" placeholder="Buscar" />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="acomodar showBarsV" id="bodyAllPredios">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-success">
+                            <div class="panel-heading" id="">Ubicación del predio seleccionado</div>
+                            <div class="panel-body" style="height: 230px;">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <b>Región:</b>
+                                        <label id="textoRegion" style=" font-weight: normal !important;">&nbsp;</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <b>Municipio:</b>
+                                        <label id="textoMunicipio" style=" font-weight: normal !important;">&nbsp;</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <b>Localidad:</b>
+                                        <label id="textoLocalidad" style=" font-weight: normal !important;">&nbsp;</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a id="showPredio" onclick="showPredio(this)" href="#">Ver detalle del predio</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">2. Agregar auditoría técnica preventiva</div>
+                    <div class="panel-body">
+                    
+                          <div class="col-md-3 col-sm-3 col-xs-12">
+                              <label>Solicito auditoría técnica preventiva</label>
+                              <select name="solicitudAuditoriaName" id="solicitudAuditoria" class="form-control" disabled>
+                                  <option value="true">SI</option>
+                                  <option value="false" selected>NO</option>
+                              </select>
+                          </div>
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                              <label>Fecha de auditoría técnica</label>
+                              <input type="text" name="fechaAuditoriaName" id="fechaAuditoria" data-info="tmp" class="form-control" disabled>
+                              <div id="errorFecha" style="color:red"></div>                  
+                          </div>
+
+                            <div class="col-md-3 col-sm-3 col-xs-12" style="margin-top: 25px;">
+                                  <button type="button" class="btn btn-success btn-sm" data-info="" id="agregaAuditoria" style="font: icon;" disabled>
+                                          Agregar
+                                   </button>
+                                  <button type="button" class="btn btn-default" data-info="" id="btn-Historial" disabled>Ver historial</button>
+                              </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Inicio del modal de ficha -->
+    <div class="modal fade" id="modalFichaDetalle" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><a href="#" id="flechaRegreso" data-seccion="principal" data-option="principal" style="display: none"><span class="glyphicon glyphicon-chevron-left"></span></a><b id="tituloModal">Detalle</b></h4>
+                </div>
+                <div class="modal-body" style="max-height: 400px; overflow-y:auto;">
+                    <div id="fichaPrincipal"></div>
+                    <div id="multiRegistros" style="display: none"></div>
+                    <div id="detalleMultiRegistro" style="display: none"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin modal ficha -->
+
+<!-- Inicio del modal de ficha -->
+<div id="historial" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Historial</b></h4><p id="etiquetaFolio"></p>
+            </div>
+            <div class="modal-body" style="max-height: 400px; overflow-y:auto;">
+            </div>
+             <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
+        </div>
+    </div>
+</div>
+<!-- Fin modal Historial -->
+
+</body>
+<link rel="stylesheet" type="text/css" href="reporteador/css/auditoria.css">
+<link rel="stylesheet" type="text/css" href="reporteador/css/dnd.css">
+<script type="text/javascript" src="reporteador/js/BuilederTableMeto.js"></script>
+<script type="text/javascript" src="reporteador/js/findElementTable.js"></script>
+<script type="text/javascript" src="reporteador/js/auditoria.js"></script>
+
+</html>

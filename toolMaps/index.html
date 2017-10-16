@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Sistema de Información Forestal del Estado de México</title>
+      
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+    <style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style>
+    <style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style>
+
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome/css/font-awesome.min.css"/>
+    
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/template.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/charts.css">
+    <link rel="stylesheet" href="assets/css/jquery.toolbar.css"/>
+    <link rel="stylesheet" href="css/image-picker.css">
+    <!-- MiniColors -->
+    <link rel="stylesheet" href="assets/css/jquery.minicolors.css">
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="assets/js/excanvas.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.flot.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.flot.axislabels.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.flot.tooltip.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.flot.categories.js"></script>
+    <script type="text/javascript" src="assets/js/charts.js"></script>
+    <script type="text/javascript" src="js/herramientas.js"></script>
+    <script type="text/javascript" src="js/indicadores.js"></script>
+    <script type="text/javascript" scr="js/image-picker.min.js"></script>
+    <!-- MiniColors -->
+    <script src="assets/js/jquery.minicolors.js"></script>
+   
+
+    <script type="text/javascript" src="js/libs/OpenLayers-2.13.1/OpenLayers.js"></script>
+    
+    <script type="text/javascript" src="assets/js/jquery.toolbar.js"></script>
+    <script src="js/mandar.js"></script>
+    <script src="js/selectorBases.js"></script>
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.12&amp;key=AIzaSyDLSfypF5ragJoM1-NR7tBest1CRyqWz38&amp;sensor=false"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/23/10/intl/es_ALL/common.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/23/10/intl/es_ALL/map.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/23/10/intl/es_ALL/util.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/23/10/intl/es_ALL/onion.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/23/10/intl/es_ALL/controls.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/23/10/intl/es_ALL/stats.js"></script>-->
+
+     <script >
+       $( document ).ready(function() {
+        init();
+        });
+     </script>
+  
+  </head>
+  <body>
+   <div class="container">
+      <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <div style="display:block;background-image:url(../img/logo.png);overflow:hidden;width: 270px;height: 52px;">
+            </div>
+            
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              
+              <li><div>Sistema de Informaci&oacute;n Forestal</div><div>del Estado de M&eacute;xico v.0.1</div></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+              <div style="display:block;background-image:url(../img/probosque.png);overflow:hidden;width: 148px;height: 41px;">
+            </div>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+         </nav>
+        </div>
+      </nav>
+
+
+
+  <div class="navbar-offset"></div>
+    <div id="map"></div>
+      <div class="row main-row">
+        <!-- INICIO DE PANEL IZQUIERDO -->
+        <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
+          <div class="panel-group sidebar-body" id="accordion-left">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#properties">
+                    <i class="fa fa-bar-chart"></i>
+                    Gr&aacute;fica
+                  </a>
+                  <span class="pull-right slide-submenu">
+                    <i class="fa fa-chevron-left"></i>
+                  </span>
+                </h4>
+              </div>
+              <div id="properties" class="collapse">
+                <div class="panel-body">
+                  <div id="flot-placeholder" style="width:300px;height:150px;"></div>
+                  <!--rubi-->
+                    <!--<div id="btn_graph">
+                      <a href="#" class="button medium radius">
+                        <span class="icon-code"></span> Graficar
+                     </a> 
+                    </div>-->
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#layers">
+                    <i class="fa fa-list-alt"></i>
+                    Información detallada
+                  </a>
+                </h4>
+              </div>
+              <div id="layers" class="collapse">
+                <div class="panel-body" style="max-height: 400px; overflow-y:scroll;">
+                  
+                  <table id="tblCarto" class="table table-striped">
+                    <thead><tr><th>Campo</th><th>Valores</th></tr></thead>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-6 mid"></div>
+        <div class="col-sm-4 col-md-3 sidebar sidebar-right pull-right">
+          <div class="panel-group sidebar-body " id="accordion-right">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#funciones">
+                    <i class="fa fa-map-signs"></i>
+                    1.0 Funciones
+                  </a>
+                  <span class="pull-right slide-submenu">
+                    <i class="fa fa-chevron-right"></i>
+                  </span>
+                </h4>
+              </div>
+              <div id="funciones" class="collapse">
+                <div class="panel-body">
+                  <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                      <img class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#modalPoligono" src="img/img2.png">
+                      &nbsp;&nbsp;&nbsp;&nbsp;Figura
+                    </div>
+                    <div class="btn-group" role="group">
+                      <img class="btn btn-default btn-lg" type="image" src="img/img1.png" >
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mapa
+                    </div>
+                    <div class="btn-group" role="group">
+                      <img class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalRaster" src="img/img3.png" >
+                      &nbsp;&nbsp;&nbsp;&nbsp;Raster
+                    </div>
+                    <div class="btn-group" role="group">
+                      <img class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalTema" src="img/img3.png" >
+                      &nbsp;&nbsp;&nbsp;&nbsp;Tema
+                    </div>
+                  </div>
+                  <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                      <img class="btn btn-default btn-lg btn-block" data-toggle="modal" data-target="#modalFiguraManual" src="img/img2.png">
+                      Fig. Manual
+                    </div>
+                    <div class="btn-group" role="group">
+                      <img class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalKML" src="img/img2.png">
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KML
+                    </div>
+                    <div class="btn-group" role="group">
+                      <img class="btn btn-default btn-lg" data-toggle="modal" data-target="#modalShape" src="img/img2.png" >
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shape
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#servicios">
+                    <i class="fa fa-file-image-o"></i>
+                    2.0 Servicios
+                  </a>
+                </h4>
+              </div>
+              <div id="servicios" class="collapse">
+                <div class="panel-body" style="max-height: 150px; overflow-y:scroll;">
+                  <div class="form-group">
+                    <label for="">Nombre del servicio</label>
+                    <input type="text" id="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Token</label>
+                    <input type="text" id="" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="">URL</label>
+                    <input type="text" id="" class="form-control">
+                  </div>
+                    <button type="button" class="btn btn-primary" id="btnVerTema">Subir Servicio</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-info hidden">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#mapas">
+                    <i class="fa fa-map-o"></i>
+                    Mapas
+                  </a>
+                </h4>
+              </div>
+              <div id="mapas" class="collapse">
+                <div class="panel-body">
+                  <div class="form-group">
+                  <label>Elige un tipo de mapa</label>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="radioMapas" id="mapasPublicos" value="1" checked>
+                          Mapas públicos
+                      </label>
+                    </div>
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="radioMapas" id="mapasPrivados" value="2">
+                        Mapas privados
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group" id="eligeMapaPublico">
+                    <label>Elige un mapa</label>
+                    <select multiple class="form-control" id="selectMapasPublicos">
+                      <option>Mapa Público 1</option>
+                      <option>Mapa Público 2</option>
+                      <option>Mapa Público 3</option>
+                      <option>Mapa Público 4</option>
+                      <option>Mapa Público 5</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="eligeMapaPrivado">
+                    <label>Elige un mapa</label>
+                    <select multiple class="form-control" id="selectMapasPrivados">
+                      <option>Mapa Privado 1</option>
+                      <option>Mapa Privado 2</option>
+                      <option>Mapa Privado 3</option>
+                      <option>Mapa Privado 4</option>
+                      <option>Mapa Privado 5</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#temas">
+                    <i class="fa fa-map-o"></i>
+                    3.0 Temas
+                  </a>
+                </h4>
+              </div>
+              <div id="temas" class="collapse">
+                <div class="panel-body">
+                    <div class="form-group">
+                      <label>Elige un tema</label>
+                      <select multiple="multiple" class="form-control" id="selectTemasPoligonos">
+                        
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="letter-case">Elige el color del tema</label>
+                      <input type="text" id="fillColor" class="form-control demo" data-format="rgb" data-opacity="1" data-position="bottom" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="#000">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnVerTema">Ver Tema</button>
+              </div><!-- Fin del panel body-->
+            </div>
+          </div>
+            <!-- AQUI EMPIEZA LA ZONA DE LOS INDICADORES-->
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#indicadores">
+                    <i class="fa fa-map-pin"></i>
+                    4.0 Indicadores
+                  </a>
+                </h4>
+              </div>
+              <div id="indicadores" class="collapse">
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label for="nombreIndicador">Elige la imagen</label>
+                    <select class="form-control" id="imagenIndicador">
+                      <option value="fuego.png">Fuego</option>
+                      <option value="arbol.png">Árbol</option>
+                      <option value="persona.png">Persona</option>
+                      <option value="construccion.png">Contrucción</option>
+                    </select>
+                    <!--<input type="text" class="form-control" id="nombreIndicador" placeholder="">-->
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Coordenada x</label>
+                      <input id="coordenadaPx" class="form-control" placeholder="-99.69453">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Coordenada y</label>
+                      <input id="coordenadaPy" class="form-control" placeholder="19.29156">
+                    </div>
+                  </div>
+                  <!--<div class="form-group">
+                    <label for="nombreIndicador">Rango</label>
+                    <input type="text" class="form-control" id="nombreIndicador" placeholder="Elige el número de indicadores">
+                  </div>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalIndicadores">Elige tus imágenes</button>-->
+                  <button type="button" id="btnIndicadores" class="btn btn-success">Aceptar</button>
+                </div>
+              </div>
+            </div> 
+            <!--  AQUI TERMINA LA ZONA DE INDICADORES-->
+          </div>
+        </div>
+
+      <div class="mini-submenu mini-submenu-left pull-left">
+        <i class="fa fa-file-text-o"></i>
+      </div>
+      <div class="mini-submenu mini-submenu-right pull-right">
+        <i class="fa fa-wrench"></i>
+      </div>
+
+      <div class="navbar-fixed-bottom hidden">
+        <div class="container-fluid hidden">       
+          <div class="col-md-6 col-md-offset-6">
+            <div id="user-toolbar-options" class="hidden">
+               <!--<a id=""><i class="fa fa-globe"></i></a>
+               <a id=""><i class="fa fa-search-plus"></i></a>
+               <a id=""><i class="fa fa-search-minus"></i></a>
+               <a id=""><i class="fa fa-hand-stop-o"></i></a>
+               <a id=""><i class="fa fa-binoculars"></i></a>
+               <a id=""><i class="fa fa-object-ungroup"></i></a>--><!--fa-pin   fa-compass-->
+               <a id=""><i class="fa fa-arrows-h"></i></a>
+               <a id=""><i class="fa fa-print"></i></a>
+            </div>
+            <div class="btn-toolbar btn-toolbar-light" id="user-toolbar" style=""><i class="fa fa-gear"></i></div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Modal Configuracion de Polígonos -->
+      <div id="modalPoligono" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="gridModalLabel">Configuración de Polígono</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid bd-example-row">
+                  <div class="form-group">
+                    <label for="folioPoligono">Folio</label>
+                    <input type="text" class="form-control" id="folioPlyn" placeholder="">
+                  </div>
+                  <!--<div class="row">-->
+                  <!--<div class="col-md-6">
+                    <div class="form-group">
+                      <label>Elecciòn de tema</label>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="temaPoligono" id="temaPoligonoNuevo" value="1" checked>
+                          Nuevo
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="temaPoligono" id="temaPoligonoNuevo" value="2">
+                          Existente
+                        </label>
+                      </div>
+                    </div>
+                  </div>-->
+                  <!--<div class="col-md-6">
+                    <div class="form-group" id="temaNuevo">
+                      <label for="temaPoligono">Escribe el nombre del tema</label>
+                      <input type="text" class="form-control" id="temaPlyn" placeholder="">
+                      <br>
+                    </div>-->
+                    <div class="form-group"> <!--id="temaExistente" -->
+                      <label for="temaPoligono">Elige un tema</label>
+                      <select class="form-control" id="temaPlynExistentes"> <!--name="SelectTemaPlyn" -->
+                        
+                      </select>
+                    </div>
+                  <!--</div>-->
+                  <!--</div>-->
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="letter-case">Color del relleno</label>
+                      <input type="text" id="fillColor" class="form-control demo" data-format="rgb" data-opacity="1" data-position="bottom" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="#000">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="letter-case">Color del contorno</label>
+                      <input type="text" id="strokeColor" class="form-control demo" data-format="rgb" data-opacity="1" data-position="bottom right" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="#000">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="temas">Descripción</label>
+                      <textarea class="form-control" rows="3" id="descripcionPlyn"></textarea>
+                  </div>
+              </div>
+            </div><!--Final Modal Body -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnGuadarConfigPlyn">Guardar configuración</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- Final del Modal de Poligono -->
+
+      <!--Modal Importación de KML -->
+      <div id="modalKML" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="gridModalLabel">Importación de archivo KML</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid bd-example-row">
+                  <div class="form-group">
+                    <label for="folioKML">Folio</label>
+                    <input type="text" class="form-control" id="folioKML" placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label for="selectTema">Selecciona el tema al que irá tu archivo KML</label>
+                    <select class="form-control" id="selectTema">
+                      <option>Tema1</option>
+                      <option>Tema2</option>
+                      <option>Tema3</option>
+                      <option>Tema4</option>
+                      <option>Tema5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Archivo</label>
+                    <input type="file" id="exampleInputFile">
+                  </div>
+              </div>
+            </div><!--Final Modal Body -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnSubirKML">Subir KML</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- Final del modal de KML -->
+
+
+       <!--Modal Importación de SHAPE -->
+      <div id="modalShape" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="gridModalLabel">Importación de archivo Shape</h4>
+            </div>
+            <!--<form role="form" method=post id="formShape" enctype="">-->
+              <div class="modal-body">
+                <div class="container-fluid bd-example-row">
+                  <style>
+                  #myProgress {
+                    position: relative;
+                    width: 100%;
+                    height: 30px;
+                    background-color: #ddd;
+                  }
+
+                  #progress-bar {
+                    position: absolute;
+                    width: 1%;
+                    height: 100%;
+                    background-color: #4CAF50;
+                  }
+                  </style>
+                  <script>
+                  function move() {
+                    var elem = document.getElementById("myBar");
+                    var width = 1;
+                    var id = setInterval(frame, 5000);
+                    function frame() {
+                      if (width >= 100) {
+                        clearInterval(id);
+                      } else {
+                        width++;
+                        elem.style.width = width + '%';
+                      }
+                    }
+                  }
+                  </script>
+                    <div class="form-group">
+                      <label>Elige tu archivo</label>
+                      <input type="file" name="archivo"></input>
+                      <br>
+                      <div class="progress">
+                        <div class="progress-bar" id="myBar"></div>
+                      </div>
+                    </div>
+                </div>
+              </div><!--Final Modal Body -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" onclick="move()" >Subir Shape</button>
+              </div>
+            <!--</form>-->
+          </div>
+        </div>
+      </div><!-- Final del modal de SHAPE -->
+
+
+      <!--Modal Importación de RASTER -->
+      <div id="modalRaster" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="gridModalLabel">Figura Raster</h4>
+            </div>
+              <div class="modal-body">
+                <div class="container-fluid bd-example-row">
+                    <div class="form-group">
+                      <label for="nombreRaster">Nombre de la figura Raster</label>
+                      <input type="text" class="form-control" id="nombreRaster" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="rasterFile">Imagen</label>
+                      <input type="file" id="rasterFile" name="rasterFile">
+                    </div>
+                    <br>
+                    <label for="esquinasRaster">Cuadratura que delimitan la figura</label>
+                    <div class="form-group">
+                      <div class="col-md-6">
+                      <input type="text" class="form-control" id="coordenadaSI" placeholder="Esquina superior izquierda">
+                      <input type="text" class="form-control" id="coordenadaII" placeholder="Esquina inferior izquierda">
+                      </div>
+                      <div class="col-md-6">
+                      <input type="text" class="form-control" id="coordenadaSD" placeholder="Esquina superior derecha">
+                      <input type="text" class="form-control" id="coordenadaID" placeholder="Esquina inferior derecha">
+                      </div>
+                    </div>
+                    <p><br>
+                    <br></p>
+                    <label for="tamañoRaster">Tamaño de la figura</label>
+                    <div class="form-group">
+                      <div class="col-md-6">
+                      <input type="text" class="form-control" id="rasterWidth" placeholder="Ancho">
+                      </div>
+                      <div class="col-md-6">
+                      <input type="text" class="form-control" id="rasterHeight" placeholder="Alto">
+                      </div>
+                    </div>
+                </div>
+              </div><!--Final Modal Body -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnSubirRaster" name="btnSubirRaster" data-dismiss="modal">Subir Raster</button>
+              </div>
+          </div>
+        </div>
+      </div><!-- Final del modal de RASTER -->
+
+       <!--Modal de INDICADORES -->
+      <div id="modalIndicadores" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="gridModalLabel">Elige tus indicadores</h4>
+            </div>
+              <div class="modal-body" style="max-height: 400px; overflow-y:scroll;">
+                <!--<select class="image-picker" multiple="multiple">
+                  <option data-img-src="img/icons/fuego.png" value="1">Cute Kitten 1</option>
+                  <option data-img-src="img/icons/arbol.png" value="2">Cute Kitten 2</option>
+                  <option data-img-src="img/icons/construccion.png" value="3">Cute Kitten 3</option>
+                  <option data-img-src="img/icons/persona.png" value="4">Cute Kitten 4</option>
+                </select>-->
+                <img src="img/icons/fuego.png" class="img-circle" width="304" height="236">
+                <img src="img/icons/arbol.png" class="img-circle" width="304" height="236">
+                <img src="img/icons/construccion.png" class="img-circle" width="304" height="236">
+                <img src="img/icons/persona.png" class="img-circle" width="304" height="236">
+                <img src="img/icons/personas.png" class="img-circle" width="304" height="236">
+              </div><!--Final Modal Body -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnSubirRaster" name="" data-dismiss="modal">Terminar</button>
+              </div>
+          </div>
+        </div>
+      </div><!-- Final del modal de INDICADORES -->
+
+
+      <!-- MODAL DE SUBI FIGURA MANUAL -->
+      <div id="modalFiguraManual" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="gridModalLabel">Configuración de Polígono</h4>
+            </div>
+            <div class="modal-body" style="max-height: 400px; overflow-y:scroll;">
+              <div class="container-fluid bd-example-row">
+                  <div class="form-group">
+                    <label for="folioPoligono">Folio</label>
+                    <input type="text" class="form-control" id="folioPlynManual" placeholder="">
+                  </div>
+                    <div class="form-group"> <!--id="temaExistente" -->
+                      <label for="temaPoligono">Elige un tema</label>
+                      <select class="form-control" id="temaFigManual"> <!--name="SelectTemaPlyn" -->
+                        
+                      </select>
+                    </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="letter-case">Color del relleno</label>
+                      <input type="text" id="fillColorManual" class="form-control demo" data-format="rgb" data-opacity="1" data-position="bottom" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="#000">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="letter-case">Color del contorno</label>
+                      <input type="text" id="strokeColorManual" class="form-control demo" data-format="rgb" data-opacity="1" data-position="bottom right" data-swatches="#fff|#000|#f00|#0f0|#00f|#ff0|rgba(0,0,255,0.5)"  value="#000">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="temas">Descripción</label>
+                      <textarea class="form-control" rows="3" id="descripcionPlynManual"></textarea>
+                  </div>
+                  <label>Configuración de coordenadas</label>
+                  <div class="form-group">
+                  <label class="radio-inline"><input type="radio" name="optradio">Geográficas</label>
+                  <label class="radio-inline"><input type="radio" name="optradio">UTM</label>
+                  </div>
+                  <div class="form-group">
+                    <label for="figuraManual">Ingresa tus figuras</label>
+                    <textarea class="form-control" rows="3" id="figuraManual" placeholder="ej. POINT(123.123,123.123), POLYGON((123.123 123.123, 567.567 567.567, 123.123 123.123))"></textarea>
+                  </div>
+              </div>
+            </div><!--Final Modal Body -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnSubirFigManual">Subir figura</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- Final del Modal de Subir figura manual -->
+
+      <!--Modal de CREACIÓN DE TEMA -->
+      <div id="modalTema" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="gridModalLabel">Creación de tema</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid bd-example-row">
+                <div class="form-group">
+                  <label for="nombreTemaNuevo">Nombre del tema</label>
+                  <input type="text" class="form-control" id="nombreTemaNuevo" placeholder="">
+                </div>
+              </div>
+            </div><!--Final Modal Body -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnCrearTema">Crear</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- Final del modal de CREACIÓN DE TEMA -->
+
+  </body>
+  <script type="text/javascript" src="assets/js/template.js"></script>  
+
+ <!--<script type="text/javascript" src="js/validacion.js"></script>-->
+ <script type="text/javascript" src="../js/libs/amplify/amplify.js"></script>
+ <script type="text/javascript" src="../js/JSCartografico.js"></script>
+ <script type="text/javascript" src="js/colors.js"></script>
+ <script type="text/javascript" src="js/herramientas.js"></script>
+
+</html>

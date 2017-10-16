@@ -1,0 +1,795 @@
+define(["validator","connections","restrictions","structure","Alert","dataSelect"], function(validator,connections,restrictions,structure,Alert,dataSelect){
+$.widget( "custom.customSubtable", {
+	  options:{
+                    data:[],
+                    addExecutive:false,
+                    action:'',
+                    fields:{},
+                    operations:[]
+                    
+          },
+          FieldsCalculated:{},
+          multiselect:{},
+          forms:{},
+	  _init:function(){
+                    
+	  },
+          getTitle:function(opc){
+                    var title = '';
+                    switch (opc) {
+                              case 'new':title='Nuevo usuario';
+                                        break;
+                              case 'delete':title='Eliminar usuario';
+                                        break;
+                              case 'edit':title='Editar usuario';
+                                        break;
+                              case 'consult':title='Consulta de usuario';
+                                        break;
+                    }
+                    return title;
+          },
+          update:function(data){
+                   this.buildStructure();
+                   this.events();
+          },
+          getSelect:function(i){
+                    //id,idSelected,field
+                    var user = this.options.userActive;
+                    var chain='<select class="selectInput" id="'+i.id+'" datatype="'+i.datatype+'" field="'+i.field+'" >';
+                    var selected = ' selected="selected" ';
+          
+                    chain+='<option value="-1" selected="selected">Seleccione una opci&oacute;n</option>';
+                    for(var x in i.list.list){
+                              var e = i.list.list[x];
+                              chain+='<option value="'+e.value+'" '+'>'+e.label+'</option>';
+                    }
+                    chain+='</select>';
+                    return chain;
+          },
+          getValueSelect:function(list,value){
+                    var response='';
+                    for(var x in list){
+                          if(list[x].value==value){
+                              response = list[x].label;
+                              break;
+                         }   
+                    }
+                    return response;
+          },
+          getInput:function(i){
+                    var obj = this;
+                    obj.options.fields[i.field]=i;
+                    var r = restrictions.roles;
+                    var action = this.options.action;
+                    i.id = 'sub_add_'+i.field;
+                    var readOnly='';
+                    if (i.field=='consecutivo') {
+                              obj.consecutive = i.value;
+                    }
+                    switch (action) {
+                              case 'consult':
+                              case 'delete':
+                                        readOnly=' readonly ';
+                                        break;
+                    }
+                    if (!i.editable) {
+                              readOnly=' readonly ';
+                    }
+                    var id = ' id="'+i.id+'"';
+                    var type = ' type="'+i.type+'"';
+                    var datatype = ' datatype="'+i.datatype+'"';
+                    var field = ' field="'+i.field+'"';
+                    var clase = '';
+                    switch (i.type) {
+                              case 'multiselect':
+                                        clase =' class="multiselect"';
+                              break;
+                              case 'form':
+                                        clase =' class="formInput"';
+                              break;
+                              case 'edit':
+                                        clase =' class="textInput"';
+                              break;
+                    }
+                    if ((i.type=='select')&&(i.list.list.length==0)) {
+                             clase =' class="textInput"';
+                    }
+                    if ((i.type=='select')&&(readOnly!='')) {
+                              clase =' class="textInput"';
+                              i.value = (i.list.list.length==0)?i.value:obj.getValueSelect(i.list.list,i.value);
+                    }
+                    var value = ' value="'+((typeof i.value === "undefined")?'':i.value)+'"'; 
+                    var maxLength = (i.maxLength)?' maxlength="'+i.maxLength+'"':'';
+                    var minLength = (i.minLength)?' minlength="'+i.minLength+'"':'';
+                    
+                    var data = id+field+type+datatype+value+maxLength+minLength+clase+readOnly;
+                    
+                    var input = '';
+                    if ((i.type=='select')&&(readOnly=='')) {
+                              
+                              if (i.list.list.length>0) {
+                                        input = this.getSelect(i);
+                              }else{
+                                        input = '<input '+data+' />';
+                              }
+                    }else{
+                              switch (i.type) {
+                                        case 'multiselect':
+                                                  input = '<div '+data+'>De clic para seleccionar</div>';
+                                                  obj.multiselect[i.field]=i;
+                                        break;
+                                        case 'form':
+                                                  input =   '<div '+data+'>De clic para agregar registros'+
+                                                                      '<div class="records">4 Registros</div>'+
+                                                            '</div>';
+                                                  
+                                                  obj.forms[i.field]=i;
+                                        break;
+                                        case 'select':
+                                        case 'edit':
+                                                  input = '<input '+data+' />';
+                                        break;
+                              }
+                    }
+                    var chain = '<div class="Field" id="field_'+i.id+'"><div class="label">'+i.label+'</div>'+input+'</div>';
+                    return chain;
+          },
+          getButton:function(action){
+                    var buttons=[];
+                    switch (action) {
+                              case 'new':
+                                        buttons=[
+                                                 {label:'Aceptar',action:action},
+                                                 {label:'Cancelar',action:'cancel'}
+                                        ];
+                                        break;
+                              case 'delete':
+                                        buttons=[
+                                                 {label:'Aceptar',action:action},
+                                                 {label:'Cancelar',action:'cancel'}
+                                        ];
+                                        break;
+                              case 'edit':
+                                        buttons=[
+                                                 {label:'Aceptar',action:action},
+                                                 {label:'Cancelar',action:'cancel'}
+                                        ];
+                                        break;
+                              case 'consult':
+                                        buttons=[
+                                                 {label:'Aceptar',action:'cancel'}
+                                        ];
+                                        break;
+                              
+                    }
+                    var chain='';
+                    for(var x in buttons){
+                              var b = buttons[x];
+                              chain+= '<button class="textButton" id="'+b.action+'_subtable">'+b.label+'</button>';
+                    }
+                    
+                    return chain;
+          },
+	  buildStructure:function(){
+                    var obj=this;
+                    var o = obj.options;
+                    obj.multiselect=null;
+                    obj.multiselect={};
+                    obj.forms=null;
+                    obj.forms={};
+                    var chain='<div class="background_subtable">';
+                    obj.options.fields=null;
+                    obj.options.fields={};
+                    //chain +='<div class="row">';
+                    var contador=0;
+                    for(var x in o.data){
+                              //chain+=obj.getInput(o.data[x]) ;
+                              if (contador==2) {
+                                    contador=0;
+                              }
+                              if(contador==0){chain +='<div class="row">';}
+                              chain+='<div class="col s12 m6 l6">'+obj.getInput(o.data[x])+'</div>';
+                              if((contador==1)||((o.data.length-1)==x)){chain+='</div>';}
+                              contador+=1;
+                    }
+                    chain+='</div>';
+                    chain+='<div class="ButtonSection" align="center">';
+                    chain+=obj.getButton(o.action);
+                    chain+='</div>';
+                    chain+='</div>';
+                    
+                    $(".background_subtable").remove();
+                    
+                    this.element.append(chain);
+	  },
+          
+          eventScrolling:function(){
+                    $(window).scroll(function() {
+                              if ($(this).scrollTop() > 0) {
+                                  // apply effects and animations
+                              }
+                    });    
+          },
+          remove:function(){
+                    //$(".form_message").remove();
+                    $(".app_selected").html('');
+          },
+          showMessage:function(msg,type,event){
+                    var obj=this;
+                    var typeMessage='type_'+type;
+                    
+                    var messages='';
+                    for(var x in msg){
+                              messages+='<div class="item_error">'+msg[x]+'</div>';
+                    }
+                    var chain = '<div class="form_message_veil"></div>'+
+                                '<div class="form_message">'+
+                                        '<div class="header '+typeMessage+'">'+
+                                                  '<div class="close"><div class="template_custom_subtable_close" type="'+type+'"></div></div>'+
+                                                  '<div class="label">Mensaje</div>'+
+                                        '</div>'+
+                                        '<div class="container">'+
+                                                  messages+
+                                        '</div>'+
+                                        
+                              '</div>';
+                    $(".form_message").remove();
+                    $("body").append(chain);
+                    $(".form_message .close").click(function(){
+                              if (type=="info") {
+                                        $(".icon_search").click();
+                                        obj.hide();
+                              }
+                              $(".form_message,.form_message_veil").remove();
+                    })
+          },
+          
+          request : function(params){
+                    
+                    obj=this;
+                    var action = obj.options.action;
+                    var idDiv  = obj.element.attr('id'); 
+                    params = (params)?params:{};
+                    var clase='hidden';
+                    var msg = 'Servicio no disponible intente m&aacute;s tarde';
+                    var r= {
+                            success:function(json,estatus){
+                                var valid=false;
+                                
+                                if (json){
+                                    if (json.response.sucessfull){
+                                        valid=true;
+                                        switch (obj.options.action) {
+                                                  case 'delete':
+                                                            //obj.showMessage(['Usuario eliminado satisfactoriamente'],'info');
+                                                            
+                                                            $('body').multirecords('closeWindow');
+                                                            $('body').multirecords('updateRecordList');
+                                                            Alert.show({
+                                                                      title:'Notificaci&oacute;n',
+                                                                      type:'notification',
+                                                                      messages:['Registro eliminado satisfactoriamente'],
+                                                                      buttons:[{label:'Cerrar',event:function(){$(".custom_menu").hide();$(".app_"+obj.options.module).search('reset');}}]
+                                                            });
+                                                            //mostrar ventana y cerrar formulario
+                                                            
+                                                            break;
+                                                  case 'new':
+                                                            //obj.showMessage(['El usuario se ha agregado satisfactoriamente'],'info');
+                                                            $('body').multirecords('closeWindow');
+                                                            $('body').multirecords('updateRecordList');
+                                                            Alert.show({
+                                                                      title:'Notificaci&oacute;n',
+                                                                      type:'notification',
+                                                                      messages:['El registro se ha agregado satisfactoriamente'],
+                                                                      buttons:[{label:'Cerrar',event:function(){$(".custom_menu").hide();$(".app_"+obj.options.module).search('reset');}}]
+                                                            });
+                                                            //mostrar ventana y cerrar formulario
+                                                           
+                                                            break;
+                                                            
+                                                  case 'edit':
+                                                            //obj.showMessage(['El usuario ha sido editado satisfactoriamente'],'info');
+                                                            $('body').multirecords('closeWindow');
+                                                            $('body').multirecords('updateRecordList');
+                                                            Alert.show({
+                                                                      title:'Notificaci&oacute;n',
+                                                                      type:'notification',
+                                                                      messages:['El registro ha sido editado satisfactoriamente'],
+                                                                      buttons:[{label:'Cerrar',event:function(){$(".custom_menu").hide();$(".app_"+obj.options.module).search('reset');}}]
+                                                            });
+                                                           
+                                                            //mostrar ventana y cerrar formulario
+                                                            break;
+                                                  
+                                        }
+                                    }else{
+                                        msg=json.response.message;
+                                    }
+                                }
+                                if (!valid) {
+                                    //obj.showMessage([msg],'error');
+                                         Alert.show({
+                                                  title:'Notificaci&oacute;n',
+                                                  type:'error',
+                                                  messages:[msg],
+                                                  buttons:[{label:'Cerrar'}]
+                                        });
+                                }
+                                
+                            },
+                            beforeSend: function(xhr) {
+                                //xhr.withCredentials = true;
+                                //$(aditional.btn).addClass(clase);
+                                //$(aditional.spinner).removeClass(clase);
+                            },
+                            error: function(solicitudAJAX,errorDescripcion,errorExcepcion) {
+                                        //obj.showMessage([msg],'error');
+                                         Alert.show({
+                                                  title:'Notificaci&oacute;n',
+                                                  type:'error',
+                                                  messages:[msg],
+                                                  buttons:[{label:'Cerrar'}]
+                                        });
+                            },
+                            complete: function(solicitudAJAX,estatus) {
+                                //$(aditional.btn).removeClass(clase);
+                                //$(aditional.spinner).addClass(clase)
+                                
+                                
+                            }
+                            };
+                    var source='';
+                    var folio = obj.options.folio;
+                    var name = obj.options.subtable;
+                    var consecutivo = obj.consecutive;
+                    switch (action) {
+                              case 'new':source = connections.multirecords.add;
+                                        r = $.extend(r, source);
+                                        r.data = {action:'add',name:name,folio:folio,user:obj.options.userActive.id,json:JSON.stringify(params)};
+                                        //r.url=r.url+'&name='+name+'&folio='+folio+'&json='+JSON.stringify(params);
+                                        break;
+                              case 'edit':source=connections.multirecords.edit;
+                                        r = $.extend(r, source);
+                                        r.data = {action:'set',user:obj.options.userActive.id,name:name,folio:folio,consecutivo:consecutivo,json:JSON.stringify(params)};
+                                        //r.url=r.url+'&name='+name+'&folio='+folio+'&consecutivo='+consecutivo+'&json='+JSON.stringify(params);
+                                        break;
+                              case 'delete':
+                                        source=connections.multirecords.del;
+                                        r = $.extend(r, source);
+                                        //r.data = params;
+                                        r.url=r.url+'&name='+name+'&folio='+folio+'&consecutivo='+consecutivo+'&user='+obj.options.userActive.id;
+                                        //r.url=r.url+'&folio='+params.folio;
+                                        break;
+                    }
+                    /*
+                    r.xhrFields= {withCredentials: true};	    
+                    r.crossDomain= true;
+                    r.username=dataUsers.username;
+                    r.password=dataUsers.password;
+                    */
+                    //if ((action!='delete')&&(action!='edit')) {
+                    //          r.data=JSON.stringify(params);
+                    //}
+                   
+                    $.ajax(r);
+            },
+          updateMultiSelect:function(id,data){
+                    var obj = this;
+                    obj.multiselect[id] = data;
+                    var valores = [];
+                    for(var x in data.list.list){
+                              var i = data.list.list[x];
+                              if (i.selected) {
+                                       valores.push(i.value);
+                              }
+                    }
+                    $("#sub_add_"+id).attr('value',valores.join(','));
+          },
+          events:function(){
+                    var obj = this;
+                    var o = this.options.data;
+                    for(var x in o.buttons){
+                              var event = null;
+                              if (x=='cancel') {
+                                    event = obj.hide;
+                                    
+                              }else{
+                                    event = o.buttons[x].event;   
+                              }
+                              $("#"+x+"_subtable").click(function(){
+                                        event();
+                              });    
+                    }
+                    obj.eventScrolling();
+                    $(".back_users").click(function(){
+                              $(".background_subtable").remove();
+                    });
+                    $(".background_subtable .Field .textInput").each(function(){
+                              $(this).focus(function(){
+                                        $(this).removeClass('badInput');
+                              });
+                    });
+                    $(".background_subtable .Field .selectInput").each(function(){
+                              $(this).change(function(){
+                                        $(this).removeClass('badInput');
+                              });
+                    });
+                    $(".background_subtable .Field .formInput").each(function(){
+                              $(this).click(function(){
+                                        $(this).removeClass('badInput');
+                                        var field = $(this).attr('field');
+                                        var label = $(this).prev().html();
+                              });
+                    });
+                    
+                    $(".background_subtable .Field .multiselect").each(function(){
+                              $(this).click(function(){
+                                        $(this).removeClass('badInput');
+                                        var id = $(this).attr('id').replace('sub_add_','');
+                                        $(this).multiselect({data:{id:id,info:obj.multiselect[id],item:this.element}});
+                                        
+                              });
+                    });
+                    
+                    $("#cancel_subtable").click(function(){
+                              obj.hide();
+                              if (obj.options.action=='new') {
+                                        $(".sectionItem_selected").removeClass('sectionItem_selected');
+                              }else{
+                                        $(".app_"+obj.options.module).search('reset');
+                              }
+                              $('body').multirecords('closeWindow');
+                    });
+                    $("#new_subtable,#edit_subtable").click(function(){
+                              var a = obj.validateAddUser();
+			      if (a.messages.length==0) {
+                                        if (obj.options.action=='edit') {
+                                                  a.params['id']=obj.options.data.id;
+                                        }
+                                        obj.request(a.params);
+					
+			      }else{
+					
+                                        //obj.showMessage(a.messages,'error');
+                                         Alert.show({
+                                                  title:'Notificaci&oacute;n',
+                                                  type:'error',
+                                                  messages:a.messages,
+                                                  buttons:[{label:'Cerrar'}]
+                                        });
+			      }
+                    });
+                    $("#delete_subtable").click(function(){
+                               Alert.show({
+                                        title:'Notificaci&oacute;n',
+                                        type:'notification',
+                                        messages:['&iquest;Realmente desea eliminar este registro?'],
+                                        buttons:[
+                                                  
+                                                  {label:'Si',event:function(){
+                                                            obj.request({action:"delete",folio:obj.options.data[0].value});
+                                                  }},
+                                                  {label:'No'},
+                                                  ]
+                              });
+                              
+                    });
+                    //$("#fm_add_rol").selectmenu();
+                    $(".background_subtable .selectInput").each(function(){
+                              var field = $(this).attr('field');
+                              if ((typeof(obj.options.fields[field])!='undefined')&&(obj.options.action!='new')) {
+                                        //$(this).val(obj.options.fields[value].value);
+                                        var valor = parseInt(obj.options.fields[field].value);
+                                        if (valor>0) {
+                                                  $(this).val(obj.options.fields[field].value);
+                                        }
+                              }
+                              
+                             
+                    });
+                    if (obj.options.action=='new') {
+                              $("#fm_add_rol").change(function(){
+                                        var value = $("#fm_add_rol option:selected").val();
+                                        if (value=='2'){
+                                                  $("#field_fm_add_privacy").hide();
+                                        }else{
+                                                  $("#field_fm_add_privacy").show();
+                                        }
+                              });
+                    }
+                    
+                    $( ".background_subtable input[datatype='numeric']").bind("keypress", function(evt) {
+                                      var otherresult = 12;
+                                        if(window.event != undefined){
+                                              otherresult = window.event.keyCode;
+                                        }
+                                        var charCode = (evt.which) ? evt.which : otherresult;  
+                                        var keyChar = String.fromCharCode(charCode);
+                                        var keyChar2 = keyChar.toLowerCase();
+                                        var re =   /^(-)?(\d*)$/
+                                        var result = re.test(keyChar2);
+                                        return result;                               
+                    }).bind("paste",function(event){
+                              var item = $(this);
+                              setTimeout(function(){
+                                        var value = item.val();
+                                        var re =   /^(-)?(\d*)$/
+                                        var result = re.test(value);
+                                        if (!result) {
+                                              item.val('');
+                                        }
+                              },100);
+                              
+                    });
+                    $( ".background_subtable input[datatype='real']").bind("keypress", function(evt) {
+                                      var otherresult = 12;
+                                        if(window.event != undefined){
+                                              otherresult = window.event.keyCode;
+                                        }
+                                        var charCode = (evt.which) ? evt.which : otherresult;  
+                                        var keyChar = String.fromCharCode(charCode);
+                                        var keyChar2 = keyChar.toLowerCase();
+                                        var re =   /^(-)?(\d*)(\.?)(\d*)$/
+                                        var result = re.test(keyChar2);
+                                        var item = $(this);
+                                        var maxDecimals = parseInt(item.attr('minlength'));
+                                        setTimeout(function(){
+                                                  var value = item.val();
+                                                  var result = re.test(value);
+                                                  if (maxDecimals) {
+                                                            var cadena = value+'';
+                                                            cadena = cadena.split('.');
+                                                            if (cadena[1]) {
+                                                                     if (cadena[1].length>maxDecimals) {
+                                                                                result=false;
+                                                                      } 
+                                                            }
+                                                  }
+                                                  if (!result) {
+                                                            value = value.substring(0,value.length-1);
+                                                            item.val(value);
+                                                  }
+                                                  
+                                        },100);
+                                        return result;                               
+                    }).bind("paste",function(event){
+                              var item = $(this);
+                              var maxDecimals = parseInt(item.attr('minlength'));
+                              setTimeout(function(){
+                                        var value = item.val();
+                                        var re =   /^(-)?(\d*)(\.?)(\d*)$/
+                                        var result = re.test(value);
+                                        if (maxDecimals) {
+                                                            var cadena = value+'';
+                                                            cadena = cadena.split('.');
+                                                            if (cadena[1]) {
+                                                                     if (cadena[1].length>maxDecimals) {
+                                                                                result=false;
+                                                                      } 
+                                                            }
+                                        }
+                                        if (!result) {
+                                              item.val('');
+                                        }
+                              },100);
+                              
+                    });
+                    
+                    $( ".background_subtable input[datatype='date']").bind("keypress", function(evt) {
+                              return false;
+                    }).bind("paste",function(event){
+                              return false;
+                    }).datepicker({
+                        yearRange: "-20:+20", 
+                        changeMonth: true,
+                        changeYear: true
+                    });
+                    obj.FieldsCalculated=null;
+                    obj.FieldsCalculated={};
+                    obj.createCalculatedFields(obj.options.operations);
+          },
+          createCalculatedFields:function(data){
+                    var obj=this;
+                    /*
+                    data = [
+                              {operation:'superficie_inscrita + cantidad_planta_nuevas_ref + cantidad_planta_mtto', destiny:'densidad_plantacion',datatype:'real'}
+                    ];
+                    */
+                    for(var x in data){
+                              var i = data[x];
+                              var fields = obj.getFieldsToCalculate(i.operation);
+                              for(var y in fields){
+                                        var f = fields[y];
+                                        if (!obj.FieldsCalculated[f]) {
+                                                  obj.FieldsCalculated[f]=[];
+                                        }
+                                        obj.FieldsCalculated[f].push({operation:i.operation,destiny:i.destiny,typeOperation:i.datatype});
+                                        $("#sub_add_"+f).keyup(function(){
+                                                  var field = $(this).attr('field');
+                                                  for(var n in obj.FieldsCalculated[field]){
+                                                            var e = obj.FieldsCalculated[field][n];
+                                                            var result = obj.getCalculate(e.operation,e.typeOperation);
+                                                            $("#sub_add_"+e.destiny).val(result);
+                                                  }
+                                                  
+                                        });
+                              }
+                    }
+          },
+          getCalculate:function(operation,type){
+                    var chain='';
+                    var data = operation.split(' ');
+                    for(var x in data){
+                              var i = data[x];
+                              if (i.length>1) {
+                                        var valor = validator.removeSpaces($("#sub_add_"+i).val());
+                                        if (type!='string') {
+                                                  valor = (valor.length>0)?valor:'0';
+                                        }
+                                        chain+=valor;
+                              }else{
+                                        if (type!='string') {
+                                                  chain+=i;
+                                        }
+                                        
+                              }
+                    }
+                    var response = (type=='string')?chain:eval(chain);
+                    return response;
+          },
+          getFieldsToCalculate:function(operation){
+                    var fields =[];
+                    var data = operation.split(' ');
+                    for(var x in data){
+                              var i = data[x];
+                              if (i.length>1) {
+                                        fields.push(i);
+                              }
+                    }
+                    return fields;
+          },
+          validateAddUser : function(){
+                    var obj=this;
+                    var params=[];
+                    var valid=true;
+                    var msg=[];
+                    $(".background_subtable .textInput").each(function(){
+                        var item = $(this);
+                        var id=item.attr('id');
+                        var field=item.attr('field');
+                        var datatype = item.attr('datatype');
+                        var value = item.val();
+                        value = validator.replaceTags(value);
+                        var label = item.prev().html();
+                        var value2='x';
+                        if (validator.isEmpty(value2)) {
+                            valid=false;
+                            item.addClass('badInput');
+                        }else{
+                            switch (field) {
+                                case 'phone':
+                                    if (!validator.isPhone(value)) {
+                                        msg.push('Telefono no valido');
+                                        item.addClass('badInput');
+                                        
+                                    }
+                                    break;
+                                case 'email':
+                                    if (!validator.isEmail(value)) {
+                                        msg.push('Email no valido');
+                                        item.addClass('badInput');
+                                    }
+                                    break;
+                                
+                            }
+                            params.push({field:field,value:value,datatype:datatype,label:label});
+                        }
+                    });
+                    $(".background_subtable .multiselect").each(function(){
+                        var item = $(this);
+                        var id=item.attr('id');
+                        var field=item.attr('field');
+                        var datatype = item.attr('datatype');
+                        var value = item.attr('value');
+                        var label = item.prev().html();
+                        var value2='x';
+                        item.removeClass('badInput');
+                        
+                        if (validator.isEmpty(value2)) {
+                            valid=false;
+                            item.addClass('badInput');
+                        }else{
+                            params.push({field:field,value:value,datatype:datatype,label:label});
+                        }
+                    });
+                    //var roleSelected = $("#fm_add_rol option:selected").val();
+                    if (obj.options.action=='new') {
+                          var roleSelected = (obj.options.addExecutive)?6:obj.options.userActive.roleId+1;
+                    }else{
+                          var roleSelected = obj.options.data.roleId;
+                    }
+                    
+                    $(".background_subtable .selectInput").each(function(){
+                              var item = $(this);
+                              var id=item.attr('id');
+                              var field=item.attr('field');
+                              var display= item.attr('display');
+                              var datatype = item.attr('datatype');
+                              var value = $("#"+id+" option:selected").val();
+                              var label = item.prev().html();
+                              //if (value!='-1') {
+                                        params.push({field:field,value:value,datatype:datatype,label:label});
+                                        //params[field]=value;
+                              //}else{
+                              //          if (display!='none') {
+                              //                    item.addClass('badInput');
+                              //                    valid=false;
+                              //          }
+                                        
+                              //}
+                              
+                              
+                    });
+                    if ($("#fm_add_rol option:selected").val()=='2') {
+                              params['privacy']="0";
+                    }
+                    if (!valid) {
+                        msg.push("Llene los campos faltantes");
+                    }
+                    if ($("#fm_add_password").val()!=$("#fm_add_c_password").val()) {
+                        $("#fm_add_password,#fm_add_c_password").addClass('badInput');
+                        msg.push('La contrase&ntilde;a no corresponde a la confirmaci&oacute;n');
+                    }
+                    params.enabled=true;
+                    return {params:params,messages:msg};
+          },
+          new_user:function(){
+                    
+          },
+          delete_user:function(){
+                    
+          },
+          edit_user:function(){
+                    
+          },
+          hide:function(){
+                     $(".background_subtable").remove();
+                     $('.option_item_back').click();
+          },
+          _create: function() {
+		this.buildStructure();
+                this.events();
+                //this.eventsToItems();
+          },
+      
+          _refresh: function(){
+            // trigger a callback/event
+            this._trigger( "change" );
+          },
+         
+          _destroy: function() {
+              this.element.remove();
+          },
+          
+          
+          _setOption: function(key, value){
+                    this.options[key] = value;
+                              this.options.addExecutive=false;
+                              switch(key){
+                                        case "addExecutive":
+                                                  this.options.addExecutive=value;
+                                                  break;
+                                        case "action":
+                                                  this.options.action=value;
+                                                  break;
+                                        case "data":
+                                                  this.options.data = value;
+                                                  this.update();
+                                        break;
+                                                          
+                              }
+		    }
+	  }
+);
+});

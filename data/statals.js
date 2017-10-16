@@ -1,0 +1,1 @@
+{"response":{"message":"valido","sucessfull":true},"data":{"active":{"parent":1,"id":1,"alias":"Administrador","charge":45,"total":100},"total":{"charge":500},"users":[{"id":3,"alias":"perez","color":"#B39EB5","charge":45,"total":100},{"id":9,"alias":"aristeo","color":"#B39EB5","charge":45,"total":100}]}}

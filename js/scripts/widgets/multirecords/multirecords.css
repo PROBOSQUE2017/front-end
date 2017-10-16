@@ -1,0 +1,178 @@
+@import url('template.css');
+.custom_multirecords {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	overflow: auto;
+	z-index: 5000;
+}
+
+.custom_multirecords .mainContainer{
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	right: 0px;
+	bottom: 65px;
+}
+.custom_multirecords .veil{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background: #212121;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.custom_multirecords .w100 {
+  width: 100%;
+}
+.custom_multirecords .column {
+  position: relative;
+  float: left;
+  height: 200px;
+}
+
+.custom_multirecords .column .container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: #fff;
+  -webkit-box-shadow: 1px 1px 1px 1px #787878;
+  box-shadow: 1px 1px 1px 1px #787878;
+}
+
+.custom_multirecords .column .container .data {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+
+
+.custom_multirecords .Header {
+	position: relative;
+	top: 0px;
+	width: 100%;
+	height: 60px;
+	background: #D7D7D7;
+	z-index: 1;
+	-webkit-box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.61);
+-moz-box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.61);
+box-shadow: -1px 3px 10px -1px rgba(0,0,0,0.61);
+}
+.custom_multirecords .Header .label{
+	  position: absolute;
+	top: 18px;
+	left: 60px;
+	color: #7B7D7F;
+	font-size: 130%;
+
+}
+.custom_multirecords .Header .icon{
+	  position: absolute;
+	top: 17px;
+	left: 12px;
+}
+.custom_multirecords .titles{
+	position: relative;
+	top:0px;
+	width:100%;
+	height: 35px;
+	background: #F2F2F2;
+}
+
+.custom_multirecords .newRecord .label{
+	position: absolute;
+	top:0px;
+	left: 10px;
+}
+.custom_multirecords .iconAdd{
+	  position: absolute;
+  top: 37px;
+  right: 10px;
+  z-index: 1;
+}
+.custom_multirecords .formRecords{
+	position: absolute;
+	width:100%;
+	top:0px;
+	bottom: 0px;
+	background: #fff;
+	z-index: 2;
+}
+.custom_multirecords .iconClose{
+	  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 2;
+}
+.custom_multirecords .formRecords .fields{
+	position: absolute;
+	top:60px;
+	width:100%;
+	bottom: 0px;
+	z-index: 0;
+}
+.custom_multirecords .dataRecords{
+	position: absolute;
+	top:60px;
+	bottom: 0px;
+	width: 100%;
+	overflow: auto;
+}
+
+
+/***************************/
+
+.multirecords_table_rows .rowFilled{
+	background: #F2F2F2;
+}
+.multirecords_table_rows .borderHeading{
+	
+	border-bottom: 1px solid #BBBBBB;
+	padding: 10px;
+}
+.multirecords_table_rows .borderRow{
+	border-bottom: 1px solid #D7D7D7;
+}
+.multirecords_table_rows
+    {
+        display: table;
+	width:100%;
+    }
+    
+    .multirecords_table_rows .Heading
+    {
+        display: table-row;
+	font-weight: bold;
+	
+	font-size: 120%;
+	background: #F2F2F2;
+	color: #7B7D7F;
+	/*color: #7B7D7F;*/
+    }
+    
+    .multirecords_table_rows .Row
+    {
+        display: table-row;
+	font-size: 120%;
+	color:#7A7D7F;
+	background: #fff;
+	cursor: pointer;
+    }
+    .multirecords_table_rows .Cell
+    {
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+

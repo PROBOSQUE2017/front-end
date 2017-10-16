@@ -1,0 +1,16 @@
+{
+            data:{
+                        total:{
+                                    charge:500
+                        },
+                        users:[
+                                    {id:1,alias:'Coordinador',color:'#B39EB5',charge:45,total:100},
+                                    {id:2,alias:'Coordinador',color:'#03C03C',charge:45,total:100},
+                                    {id:3,alias:'Coordinador',color:'#759CC9',charge:45,total:100},
+                                    {id:4,alias:'Coordinador',color:'#FEB146',charge:45,total:100},
+                                    {id:5,alias:'Coordinador',color:'#946ED4',charge:45,total:100},
+                                    {id:6,alias:'Coordinador',color:'#816850',charge:45,total:100},
+                                    {id:7,alias:'Coordinador',color:'#FBFB95',charge:45,total:100}
+                        ]
+            }
+}

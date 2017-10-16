@@ -1,0 +1,119 @@
+
+/*
+#555555;
+#BBBBBB;
+#f8f8f8;
+#EEEEEE;
+
+#E1E3E4;  --background
+*/
+
+@import url('template.css');
+
+.demo{
+    position: absolute;
+    top:50px;
+    left: 0px;
+    right:0px;
+    bottom: 0px;
+    background: #BBBBBB;
+}
+
+.custom_assignUsers {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.custom_assignUsers .item_user{
+	position: relative;
+	float:left;
+	margin-left: 20px;
+    margin-top: 20px;
+    border: 2px solid #EEEEEE;
+}
+
+.custom_assignUsers .item_user .information{
+    position: relative;
+   display: inline;
+    
+}
+.custom_assignUsers .item_user .container_users{
+    padding-left: 13px;
+}
+.custom_assignUsers .item_user .filled{
+     position: absolute;top: 0px;width:13px;background:gray;bottom: 0px;
+    
+}
+.custom_assignUsers .item_user .icon{
+    position: relative;
+    background: #f8f8f8;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.custom_assignUsers .item_user .foot{
+    position: relative;
+    height: 20px;
+    background: #E1E3E4;
+    width:100%;
+    
+}
+.custom_assignUsers .drag_section{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 300px;
+    bottom:0px;
+    overflow: auto;
+}
+
+.custom_assignUsers .info_users{
+    position: absolute;
+    top:0px;
+    width: 300px;
+    right: 0px;
+    bottom:0px;
+}
+
+.custom_assignUsers .info_users .title{
+    position: absolute;
+    top:0px;
+    height:30px;
+    left: 0px;
+    right: 0px;
+}
+
+.custom_assignUsers .info_users .list_users{
+    position: absolute;
+    top:30px;
+    bottom:0px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+}
+
+
+.custom_assignUsers .list_table{
+    width:100%;
+    display: table;
+    background:#FFF;
+}
+
+.custom_assignUsers .list_table .list_row{
+    /*display: table-row;*/
+    border-bottom: 1px solid #BBBBBB;
+}
+
+.custom_assignUsers .list_table .list_cell{
+    display: table-cell;
+    
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

@@ -1,0 +1,417 @@
+.custom_reports{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.custom_reports .boxToSearch{
+	  position: absolute;
+  left: 15px;
+  right: 50%;
+  top: 17px;
+  /* float: left; */
+}
+
+.custom_reports .boxToSearch .icon{
+	position:absolute;top:5px;left: 5px;
+}
+
+.custom_reports .search_results{
+	position: absolute;top:100px;left: 10px;right: 10px;bottom: 10px;overflow:auto;
+}
+
+.custom_reports .textInput{
+    outline: 0;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
+    background-color: #fff;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width:100%;
+    margin-top: 30px;
+    /*display: block;*/
+    color:#7A7D7F;
+}
+
+.custom_reports .icon_report{
+    position: absolute;
+  top: 31px;
+  right: -25px;
+  background: #D7D7D7;
+  width: 41px;
+  height: 39px;
+  cursor: pointer;
+}
+.custom_reports .report_results{
+	position: absolute;
+        top:100px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        overflow:auto;
+}
+
+.custom_reports .item_report{
+    position: relative;
+    width:50%;
+    margin-bottom: 20px;
+    float: left;
+    height: 50px;
+}
+
+.item_report .content{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+        border: 1px solid #BBBBBB;
+  background-color: #fff;
+}
+
+.item_report .checkbox{
+    position: absolute;
+    float: left;
+    top: 10px;
+  left: 7px;
+}
+
+.item_report .label{
+    position: absolute;
+    float: left;
+    top:10px;
+    left: 31px;
+    color: #7A7D7F;
+  font-size: 130%;
+  font-weight: bold;
+    
+}
+
+.item_report .Selector{
+      position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  cursor: pointer;
+}
+
+.custom_reports .selection_fields{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_reports .section_filter{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom:0px;
+}
+.custom_reports .section_tabular{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom:0px;
+}
+
+.custom_reports .labelOption{
+   position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #7B7D7F;
+  font-size: 150%;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.custom_reports .buttonNext{
+    background-color: #7A7D7F;
+    border-radius: 5px;
+    padding: 10px;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    
+    color: white;
+    font-size: 300%;
+}
+
+.custom_reports .sf_fields{
+      position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 50%;
+}
+.custom_reports .sf_fields .infoContent{
+    position: absolute;
+    top:10px;
+    left: 15px;
+    right: 10px;
+    bottom:15px;
+    border: 1px solid #BBBBBB;
+    overflow: auto;
+}
+.custom_reports .sf_fields .content .item{
+    
+}
+
+.custom_reports .sf_filter{
+      position: absolute;
+  top: 0px;
+  bottom: 0px;
+  /* width: 50%; */
+  left: 50%;
+  right: 0px;
+}
+
+.custom_reports .sf_filter .infoContent{
+    position: absolute;
+    top:10px;
+    left: 10px;
+    right: 15px;
+    bottom:15px;
+    border: 1px solid #BBBBBB;
+    overflow: auto;
+}
+
+.custom_reports .section_filter .options_filter{
+    position: absolute;
+    top:100px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.custom_reports .section_tabular .options_tabular{
+    position: absolute;
+    top:100px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+}
+
+
+
+
+
+
+.results_table_filter .rowFilled{
+	background: #eee;
+}
+.results_table_filter .borderHeading{
+	border-top: 1px solid #BBBBBB;
+	border-bottom: 1px solid #BBBBBB;
+}
+.results_table_filter .borderRow{
+	border-bottom: 1px solid #D7D7D7;
+}
+.results_table_filter
+    {
+        display: table;
+	width:80%;
+    }
+    
+    .results_table_filter .Heading
+    {
+        display: table-row;
+	font-weight: bold;
+	text-align: center;
+	font-size: 130%;
+	background: #D7D7D7;
+	color: #7B7D7F;
+    }
+    
+    .results_table_filter .Row
+    {
+        display: table-row;
+	font-size: 120%;
+	color:#7A7D7F;
+	background: #fff;
+    }
+    .results_table_filter .Cell
+    {
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    
+    
+.results_table_filter .textButton{
+    background-color: #7B7D7F;
+    border-radius: 5px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom_reports .item_field{
+    position: relative;
+    width:100%;
+    margin-bottom: 10px;
+    float: left;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+.item_field .content{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+        border: 1px solid #BBBBBB;
+  background-color: #fff;
+}
+
+.item_field .content:hover{
+
+    background: #7B7D7F !important;
+    color: #F2F2F2 !important;
+
+}
+
+.item_field .content:hover .label{
+
+   color :#D7D7D7 !important;
+
+}
+.item_field_selected .content{
+
+    background: #7A7D7F  !important;
+    color: #F2F2F2 !important;
+
+}
+
+.item_field .label{
+    position: absolute;
+    float: left;
+    top:10px;
+    left: 31px;
+    color: #7A7D7F;
+  font-size: 130%;
+  font-weight: bold;
+    
+}
+.item_field_selected .label{
+    color :#D7D7D7 !important;
+}
+
+.custom_reports .sf_filter .label{
+        color: #7A7D7F;
+  /* float: left; */
+  position: absolute;
+  top: 10px;
+  font-size: 130%;
+  font-weight: bold;
+  left: 29px;
+}
+.custom_reports .sf_filter .textInput{
+    outline: 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #D7D7D7;
+  border-radius: 2px;
+  background-color: #fff;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 80%;
+  margin-top: 35px;
+  display: block;
+  color: #7A7D7F;
+}
+
+
+
+
+
+.custom_reports .item_filter{
+    position: relative;
+    width:100%;
+    margin-bottom: 10px;
+    float: left;
+    height: 50px;
+    cursor: pointer;
+}
+
+
+.item_filter .content{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+        border: 1px solid #BBBBBB;
+  background-color: #fff;
+}
+
+.item_filter .content:hover{
+
+    background: #7B7D7F !important;
+    color: #F2F2F2 !important;
+
+}
+
+.item_filter .content:hover .label{
+
+   color :#D7D7D7 !important;
+
+}
+.item_filter_selected .content{
+
+    background: #7A7D7F  !important;
+    color: #F2F2F2 !important;
+
+}
+
+.item_filter .label{
+    position: absolute;
+    float: left;
+    top:10px;
+    left: 31px;
+    color: #7A7D7F;
+  font-size: 130%;
+  font-weight: bold;
+    
+}
+.item_filter_selected .label{
+    color :#D7D7D7 !important;
+}

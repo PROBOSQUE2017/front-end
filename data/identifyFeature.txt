@@ -1,0 +1,221 @@
+{  
+   "response":{  
+      "message":"valido",
+      "sucessfull":true
+   },
+   "data":{  
+      "shape":[  
+         {  
+            "alias":"Año",
+            "value":""
+         },
+         {  
+            "alias":"Región",
+            "value":""
+         },
+         {  
+            "alias":"Folio",
+            "value":"1"
+         },
+         {  
+            "alias":"Fecha",
+            "value":""
+         },
+         {  
+            "alias":"Tipo de Propiedad",
+            "value":""
+         },
+         {  
+            "alias":"Nombre del Núcleo Agrario",
+            "value":""
+         },
+         {  
+            "alias":"Latitud",
+            "value":""
+         },
+         {  
+            "alias":"Longitud",
+            "value":""
+         },
+         {  
+            "alias":"Dirección",
+            "value":""
+         },
+         {  
+            "alias":"Teléfono",
+            "value":""
+         },
+         {  
+            "alias":"Teléfono 1",
+            "value":""
+         },
+         {  
+            "alias":"Municipio",
+            "value":""
+         },
+         {  
+            "alias":"Tipo de Apoyo",
+            "value":""
+         },
+         {  
+            "alias":"Nombre del Beneficiario del Proyecto",
+            "value":""
+         },
+         {  
+            "alias":"Aportación Gubernamental",
+            "value":""
+         },
+         {  
+            "alias":"Aportación del Productor",
+            "value":""
+         },
+         {  
+            "alias":"Total",
+            "value":""
+         },
+         {  
+            "alias":"Cobertura Social",
+            "value":""
+         },
+         {  
+            "alias":"Nivel de Participación",
+            "value":""
+         },
+         {  
+            "alias":"Empleos Generados",
+            "value":""
+         },
+         {  
+            "alias":"Recurso",
+            "value":""
+         },
+         {  
+            "alias":"Sector",
+            "value":""
+         },
+         {  
+            "alias":"Subsector",
+            "value":""
+         },
+         {  
+            "alias":"Proyecto",
+            "value":""
+         },
+         {  
+            "alias":"Activo",
+            "value":""
+         },
+         {  
+            "alias":"Observaciones",
+            "value":""
+         }
+      ],
+
+      "tabular":[  
+         {  
+            "alias":"Año",
+            "value":""
+         },
+         {  
+            "alias":"Región",
+            "value":""
+         },
+         {  
+            "alias":"Folio",
+            "value":"1"
+         },
+         {  
+            "alias":"Fecha",
+            "value":""
+         },
+         {  
+            "alias":"Tipo de Propiedad",
+            "value":""
+         },
+         {  
+            "alias":"Nombre del Núcleo Agrario",
+            "value":""
+         },
+         {  
+            "alias":"Latitud",
+            "value":""
+         },
+         {  
+            "alias":"Longitud",
+            "value":""
+         },
+         {  
+            "alias":"Dirección",
+            "value":""
+         },
+         {  
+            "alias":"Teléfono",
+            "value":""
+         },
+         {  
+            "alias":"Teléfono 1",
+            "value":""
+         },
+         {  
+            "alias":"Municipio",
+            "value":""
+         },
+         {  
+            "alias":"Tipo de Apoyo",
+            "value":""
+         },
+         {  
+            "alias":"Nombre del Beneficiario del Proyecto",
+            "value":""
+         },
+         {  
+            "alias":"Aportación Gubernamental",
+            "value":""
+         },
+         {  
+            "alias":"Aportación del Productor",
+            "value":""
+         },
+         {  
+            "alias":"Total",
+            "value":""
+         },
+         {  
+            "alias":"Cobertura Social",
+            "value":""
+         },
+         {  
+            "alias":"Nivel de Participación",
+            "value":""
+         },
+         {  
+            "alias":"Empleos Generados",
+            "value":""
+         },
+         {  
+            "alias":"Recurso",
+            "value":""
+         },
+         {  
+            "alias":"Sector",
+            "value":""
+         },
+         {  
+            "alias":"Subsector",
+            "value":""
+         },
+         {  
+            "alias":"Proyecto",
+            "value":""
+         },
+         {  
+            "alias":"Activo",
+            "value":""
+         },
+         {  
+            "alias":"Observaciones",
+            "value":""
+         }
+      ]
+   }
+}

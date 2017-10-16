@@ -1,0 +1,268 @@
+@import url('template.css');
+.custom_assignCharge{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_assignCharge .item_user{
+    position: relative;
+    border-bottom: 2px solid #555555;
+    height: 47px;
+    width: 300px;
+    left: 0px;
+    background: #007B42;
+    color:#fff;
+}
+.custom_assignCharge .item_user{
+    background: #007B42 !important;
+}
+
+.custom_assignCharge .item_user .user_alias{
+    font-size: 130%;
+    position: absolute;
+    left: 30px;
+    top: 5px;
+}
+
+.custom_assignCharge .item_user .user_role{
+    font-size: 110%;
+    position: absolute;
+    left: 30px;
+    top: 26px;
+    color: white;
+}
+
+.custom_assignCharge .item_user .user_charge{
+    position:absolute;right:5px;border:1px solid black;top:7px;
+    -webkit-border-radius: 20px 20px 20px 20px;border-radius: 20px 20px 20px 20px;padding:3px;font-size:120%;
+}
+
+.custom_assignCharge .item_user .user_progress{
+    position: absolute;
+    left: 20px;
+    height: 3px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.custom_assignCharge .item_user .user_back{
+    position:absolute;left:2px;top:10px;
+}
+
+.custom_assignCharge .data_blocks{
+    position: absolute;
+    top:49px;
+    bottom: 50px;
+    left:0px;
+    right: 0px;
+}
+
+.custom_assignCharge .data_blocks .options{
+    position: absolute;
+    top: 0px;
+    height: 45px;
+    left: 0px;
+    right: 0px;
+    background: #F4F4F4;
+    box-shadow: 1px 2px 10px 1px #555555;
+}
+
+.custom_assignCharge .data_blocks .options .option_selected{
+    background: #E1E3E4 !important;
+}
+.custom_assignCharge .data_blocks .options .label{
+    position: absolute;
+    /* top: 20px; */
+    width: 100%;
+    line-height: 35px;
+}
+.custom_assignCharge .data_blocks .options .total{
+    position: absolute;
+    /* top: 20px; */
+    width: 100%;
+    line-height: 60px;
+}
+.custom_assignCharge .data_blocks .options #dataAssigned{
+    position: relative;
+    width:99px;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid #BBBBBB;
+    border-bottom: 1px solid #BBBBBB;
+    float: left;
+}
+.custom_assignCharge .data_blocks .options #dataSelected{
+    position: relative;
+    width:99px;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid #BBBBBB;
+    border-bottom:1px solid #BBBBBB;
+    float: left;
+}
+.custom_assignCharge .data_blocks .options #dataNotAssigned{
+    position: relative;
+    width:99px;
+    height: 100%;
+    text-align: center;
+    float: left;
+    border-bottom:1px solid #BBBBBB;
+}
+.custom_assignCharge .data_blocks .list_data{
+    position: absolute;
+    top: 46px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow: auto;
+}
+
+.custom_assignCharge .data_blocks .list_data .rows{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    overflow: auto;
+}
+.custom_assignCharge .section_tools{
+   position: absolute;
+    height: 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: #E1E3E4;
+    border-top: 1px solid #BBBBBB;
+}
+
+.custom_assignCharge .section_tools .assignTools{
+   position: absolute;
+    top: 3px;
+    left: 5px;
+    height: 42px;
+    width: 56px;
+    background: #BBBBBB;
+    border: 1px solid #555;
+}
+
+.custom_assignCharge .section_tools .assignTools .otherOptions{
+    position: absolute;
+    width: 43px;
+    right: -1px;
+    /* height: 200px; */
+    background: #fff;
+    top: -86px;
+    border: 1px solid #555; 
+    }
+
+.custom_assignCharge .section_tools .assignTools .otherOptions .itemTool{
+    padding: 2px;
+}
+.custom_assignCharge .section_tools .assignTools .otherOptions .itemTool:hover{
+    background: #F4F4F4 !important;
+}
+
+.assignTools .selector{
+    left:0px;width:13px;height:100%;background:#BBBBBB;position: absolute;float: left;
+}
+.assignTools .tool_selected{
+    left:13px;right:0px;height:100%;background:#fff;float: left;position: absolute;
+}
+.assignTools .tool_selected_active{
+    
+}
+.custom_assignCharge .section_tools .assingButton{
+    position: absolute;
+    top: 5px;
+    right: 9px;
+    /* height: 20px; */
+    /* width: 20px; */
+}
+.custom_assignCharge .section_tools .cancelButton{
+    position: absolute;
+    top: 5px;
+    right: 120px;
+    /* height: 20px; */
+    /* width: 20px; */
+}
+.custom_assignCharge .section_tools .button{
+   
+    background-color: #007B42;
+    border-radius: 5px;
+    padding: 7px;
+    /* -webkit-transform-origin: 50% 50%; */
+    -ms-transform-origin: 50% 50%;
+    /* transform-origin: 50% 50%; */
+    width: 100px;
+    color: white;
+    font-size: 120%;
+
+}
+
+
+/**/
+.assign_table_results{
+        display: table;
+	width:100%;
+        margin-top: 3px;
+}
+.assign_table_results .rowFilled{
+	background: #F4F4F4;
+}
+.assign_table_results .row_selected{
+	background: #F4F4F4;
+}
+.assign_table_results .borderHeading{
+	border-top: 1px solid #222;
+	border-bottom: 1px solid #222;
+}
+.assign_table_results .borderRow{
+	border-left: 1px solid #bbb;
+}
+
+    
+.assign_table_results .Heading{
+        display: table-row;
+	font-weight: bold;
+	text-align: center;
+	font-size: 130%;
+	background: #007B42;
+	color: white;
+}
+    
+.assign_table_results .Row{
+        display: table-row;
+	font-size: 120%;
+}
+
+.assign_table_results .Row:hover{
+    background: #E1E3E4 !important;
+}
+.assign_table_results .Cell{
+        display: table-cell;
+        border-width: thin;
+        padding: 5px;
+}
+
+
+.assign_table_results .text_center{
+    text-align: center;
+}
+    
+.assign_table_results .textButton{
+    background-color: #007B42;
+    border-radius: 5px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.assign_table_results .optionDelete{
+    position: relative;
+    top: 2px;
+    float: right;
+    right: 0px;
+    display: inline;
+}

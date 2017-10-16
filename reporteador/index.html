@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reporteador</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+     <!-- jQuery -->   
+     <script src="libs/jquery/jquery.min.js"></script>
+     <!-- jQuery -->   
+     <!-- Bootstrap 3 -->
+          <!-- Bootstrap 3css-->
+          <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+          <!-- Bootstrap 3 js-->
+         <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+         <!-- Estilos de calendario -->
+         <link rel="stylesheet" href="/SIFEM/js/libs/jquery/jquery.simple-dtpicker.css">
+         <link rel="stylesheet" href="css/jquery-ui.css">
+         <script src="libs/jquery/jquery-ui.js"></script>
+    <!-- Bootstrap 3 -->
+
+    <!-- JQuery UI-->
+    <script type="text/javascript" src="libs/jquery/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="/SIFEM/js/libs/amplify/amplify.js"></script>
+     <script type="text/javascript" src="js/sesionOk.js"></script>
+    
+    <!-- Estilos drag and drop-->
+    <link rel="stylesheet" type="text/css" href="css/dnd.css">
+    <link rel="stylesheet" type="text/css" href="css/charts.css">
+    <!-- JQuery para las gráficas-->
+    <script type="text/javascript" src="libs/jquery/charts.js"></script>
+    <script src="libs/jquery/highcharts.js"></script>
+  	<script src="libs/jquery/exporting.js"></script>
+   
+    <!-- JQuery para dibujar graficas-->
+    <script type="text/javascript"  src="js/eventGraphic.js" ></script>  
+    <!-- JQuery para graficas -->
+    <script type="text/javascript" src="libs/jquery/blockUI.js"></script>
+    
+
+  
+        <link rel="stylesheet" href="libs/jquery/exportPDF/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="libs/jquery/exportPDF/buttons.dataTables.min.css">
+        <script src="libs/jquery/exportPDF/jquery.dataTables.min.js"></script>
+        <script src="libs/jquery/exportPDF/dataTables.buttons.min.js"></script>
+        <script src="libs/jquery/exportPDF/pdfmake.min.js"></script>
+        <script src="libs/jquery/exportPDF/vfs_fonts.js"></script>
+        <script src="libs/jquery/exportPDF/buttons.html5.min.js"></script>
+        <script src="libs/jquery/exportPDF/jszip.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/multiple-select.css">
+        <script src="libs/jquery/multiple-select.js"></script>
+        <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+             
+  </head>
+
+  <body>
+        <div class="app_header">
+         <div class="section_header">
+            <div class="section_logo">
+               <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+               <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+               <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+               <div class="divisor"></div>
+               <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+         </div>
+      </div>
+      <hr>
+     <!-- Herramientas -->
+          <div class="col-md-12" >
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                  Herramientas   
+              </h3>
+            </div>
+            
+            <button type="button" class="btn btn-default" id="esci" data-toggle="tooltip" title="Salir del reporteador"><span class="glyphicon glyphicon-log-out"></span></button>
+            <button class="btn btn-default" id="btnGraficaOk" disabled="true">
+            		<span class="glyphicon glyphicon-plus"></span>&nbsp;Grafica
+            </button>
+            <button class="btn btn-default" id="btnGraficaDe" disabled="true">
+            		<span class="glyphicon glyphicon-minus"></span>&nbsp;Grafica
+            </button>
+            <button class="btn btn-default" id="btnexppdf" disabled="true">
+            		<span class="glyphicon glyphicon-cog"></span>&nbsp;PDF
+            </button>
+            <button class="btn btn-default" id="btnexpexcel" disabled="true">Exportar Excel</button>
+            <button class="btn btn-default" id="saveReport" disabled="true">
+            		<span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Reporte
+            </button>
+            <button class="btn btn-default" id="saveCuadr" disabled="true">
+            		<span class="glyphicon glyphicon-floppy-disk"></span>&nbsp;Cuadro estadistico
+            </button>
+            <button class="btn btn-default" id="exeReport"  disabled="true">
+            		<span class="glyphicon glyphicon-play"></span>&nbsp;Reporte
+            </button>
+            <button class="btn btn-default" id="viewReport">
+            		<span class="glyphicon glyphicon-eye-open"></span>&nbsp;Reportes
+            </button>
+            <button class="btn btn-default" id="createReport">Regresar al Reporteador</button>
+            
+          </div>
+        </div>
+        <!-- Fin de herramientas -->
+<div id="div_reporteador">
+    <div class="container-fluid">
+      <div class="row">
+      <div class="col-md-12">
+      <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Configuración del reporte 
+        </h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-12">
+          <!--Selección-->
+                <div class="">
+                  <div class="col-md-2">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <table width="100%">
+                            <tr>
+                              <td>
+                                 <h3 class="panel-title">Campos disponibles</h3>
+                              </td>
+                              <td>
+                               <!-- <a id="passCampos" class="selectOption" data-toggle="tooltip" title="Seleccionar todo">
+                                <span class="glyphicon glyphicon-arrow-right"></span></a>-->
+                              </td>
+                            </tr>
+                        </table>
+                      </div>
+                      <div class="panel-body">
+                        <div class="">
+                          <div class="left">
+                            <ul class="fuente" id="list">
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <table>
+                        <tr>
+                           <td width="20%">
+                              <a id="backFields" class="selectOption" data-toggle="tooltip" title="Regresar todos">
+                              <span class="glyphicon glyphicon-arrow-left"></span></a>
+                          </td>
+                          <td>
+                               <h3 class="panel-title">Mostrar Campos</h3>
+                          </td>
+                        </tr>
+                      </table>
+                      </div>
+                      <div class="panel-body">
+                        <ul class="fuente s_objetivo" id="select">                       
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">
+                      <table width="100%">
+                        <tr>
+                          <td>
+                             <h3 class="panel-title">Filtrado</h3>
+                          </td>
+                          <td>
+                              <a id="deletefilters" class="deleFil" data-toggle="tooltip" title="Eliminar todos">
+                              <span class="glyphicon glyphicon-trash"></span></a>
+                          </td>
+                        </tr>
+                      </table>
+                       
+                      </div>
+                      <div class="panel-body">
+                        <ul class="f_objetivo" id="filtrado">
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">
+                        <table width="100%">
+                        <tr>
+                          <td>
+                             <h3 class="panel-title">Ordenado</h3>
+                          </td>
+                          <td>
+                              <a id="deleteOrden" class="deleFil" data-toggle="tooltip" title="Eliminar todos">
+                              <span class="glyphicon glyphicon-trash"></span></a>
+                          </td>
+                        </tr>
+                      </table>
+                      </div>
+                      <div class="panel-body">
+                        <ul class="o_objetivo" id="ordenado">                       
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">
+                      <table width="100%">
+                        <tr>
+                          <td>
+                            <h3 class="panel-title">Operaciones</h3>
+                          </td>
+                          <td>
+                              <a id="deleteOperaciones" class="deleFil" data-toggle="tooltip" title="Eliminar todos">
+                              <span class="glyphicon glyphicon-trash"></span></a>
+                          </td>
+                        </tr>
+                      </table>
+                      </div>
+                      <div class="panel-body">                   
+                            <ul class="a_objetivo" id="agrupado">
+                            </ul> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                      <a id="viewFilterFields" style="color: green">Ver configuración</a>
+                  </div>
+                </div>
+              </div>
+            </div>                 
+            </div>
+          </div>
+        </div>
+        </div>
+        <!--Listado generado en tiempo real-->
+        <div class="col-md-12" >
+          <div class="panel panel-success" >
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                  Reporte
+              </h3>
+            </div>
+             <div id="spaceTable" class="" style="overflow-x:auto; max-height: 600px; overflow-y:auto;">
+             	    <!--<div id="img_wait"></div>-->
+                  <table id="tableData" class="display" cellspacing="0" width="100%"  style="overflow-x:auto;">                   
+                 </table>
+             </div>
+            </div>
+        </div>
+        <!-- Gráficas-->
+        <div class="col-md-12" id="graficas">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                  Gráficas
+              </h3>
+            </div>
+            <div class="panel-body">
+              <div class="col-md-6">
+                <!--Panel configuracion de gráficas-->
+                <div class="col-md-12">
+                  <div class="panel panel-danger">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">
+                        Configuración de la gráfica
+                      </h3>
+                    </div>
+                    <div class="panel-body" style="overflow: auto;height: 300px;">
+                      <div class="col-md-12">
+                      <h4>Selección de la gráfica</h4>
+                        <div role="group">
+                            <button class="btn btn-default" id="pastel">Gráfica de pastel</button>
+                            <button class="btn btn-default" id="barras">Gráfica de barras</button>
+                            <button class="btn btn-default" id="lineal">Gráfica lineal</button>
+                        </div>
+
+                      </div>
+                       <div class="col-md-12" id="div_lineal_op">
+                            <hr>   
+                            <h4>Opciones.</h4>
+                            <h6>Selecciona los registros en la tabla y luego grafica.</h6>
+                            <div id="errorRegisNon" style="color:red"></div>
+                            <div id="comboLineaGraphics">
+                                <select id="comboSelectCampoLineas" class="size">
+                                </select>
+                                <button class="btn btn-default" id="lineasRowsSelect">Graficar los registros seleccionados</button>                    
+                            </div>  
+                           
+                       </div>
+
+                      <div class="col-md-12" id="div_ejes">
+                       <hr>   
+                        <h4>Selección de ejes</h4>
+                         <h6>Esta opción grafica todos los registros mostrados en la página actual de la tabla.</h6>                      
+                         <select id="ejeX" class="size">
+                             <option value="-1ab2" selected>seleccione</option>
+                          </select>                          
+                          <select id="ejeY" class="size">
+                            <option value="-1ab2" selected>seleccione</option>
+                          </select>                      
+                      </div>
+                    </div>  <!-- Panel Body Configuración de la gráfica-->
+                  </div>  <!-- Panel Configuración de la gráfica-->
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="col-md-12">
+                  <div class="panel panel-danger">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Gráfica</h3>
+                    </div>
+                    <div id="spaceGraphics" class="panel-body" style="overflow: auto;">
+                    <button class="btn btn-default" id="configuracion"><span class="glyphicon glyphicon-cog"></span></button>
+                    <div id="container" style="overflow: auto; height: 400px; width:500px;"></div>                   
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- Panel Body Gráficas-->
+          </div> <!--Panel de Gráficas -->
+        </div> <!-- col-md-12-->
+      </div> <!--Fin de row-->   
+    </div> <!--Fin de container-->
+    <div>
+    </div>
+    <!-- Inicia codigo modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog"> 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="font-weight: bold;color: white; background-color: #28A026;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+           <!-- Codigo para cadenas -->
+	         <div id="ValidaTexto"></div>	
+           <!-- Fin codigo cadenas -->         
+           <!-- Codigo para numeros y reales -->
+           <div id="validaNumeros"></div>
+           <div id="introNum"></div>
+           <!-- fin  codigo de numeros -->
+           <div id="validaDate"></div>
+           <div id="selecDate">
+                    <div id="uno">                                      
+                      <input type="text" id="date" placeholder="Fecha inicial">
+                    </div>
+                    <div id="entre">
+                      <input type="text" id="Startdate" placeholder="Fecha inicial">
+                      <input type="text" id="Enddate" placeholder="Fecha final">    
+                    </div>
+                                    
+           </div>
+	         <!-- codigo para dar nombre archivo -->
+	         <div id="nameFile" class="table-responsive">
+		         <input type="text" name="writeNameFile" id="writeNameFile" placeholder="Escribe" value="" />
+	         </div>
+	         <!-- Fin codigo nombre archivo -->
+           <!-- Inicio nombre lista pdf-->
+            <div id="nameFilePdf" class="table-responsive">
+             <input type="text" name="writeNameFilepdf" id="writeNameFilepdf" placeholder="Escribe título a la lista" value=""/>
+             <input type="text" id="fechaReporte" placeholder="Agregar fecha al reporte">
+            <div class="col-md-6">
+             <form>
+                <fieldset>
+                <b><p>Tamaño de página:</p></b>&nbsp;
+                <input type="radio" name="size" value="LETTER" checked="checked">Carta&nbsp;
+                <input type="radio" name="size" value="LEGAL">Oficio&nbsp;
+              </fieldset>      
+            </form>
+            </div>
+             <form>
+                <fieldset>
+                <b><p>Orientación de página:</p></b>&nbsp;
+                <input type="radio" name="pageOr" value="portrait" checked="checked">Vertical&nbsp;
+                <input type="radio" name="pageOr" value="landscape">Horizontal&nbsp;
+              </fieldset>      
+            </form>        
+            <hr>
+            <div class="col-md-12">
+             <form>
+              <fieldset>      
+                <b><p>Encabezado con Imágen:</p></b>&nbsp;
+                <input type="radio" name="gender"  id="radioCustomDeafult" value="1" checked="checked">Si (Imagen por defecto)  &nbsp;&nbsp;
+                <input type="radio" name="gender" id="radioCustomImage" value="2">Si (Imagen personalizada) &nbsp;&nbsp;
+                <input type="radio" name="gender"  id="radioCustomImageno"  value="0">No
+              </fieldset>                   
+            </form>
+            <br>
+             <form action="" method="post" hidden="true" id="cargarImgane">
+                  <input type="file" id="subirImagen" accept=".png, .jpg, .jpeg"/>
+            </form> 
+            </div>
+
+           
+            
+            </div>
+
+           <!-- Fin nombre lista pdf-->
+           <div id="div_item_order">
+              <select id="select_orden">
+                <option value="-234a">Selecione</option>
+                <option value="ascendente">Ascendente</option>
+                <option value="descendete">Descendente</option>
+              </select>
+           </div>
+           <div id="div_agrupador">
+      
+          </div>
+	         <div id="error" style="color:red"></div>
+
+        </div>
+        <div class="modal-footer">
+          <div id="accions">
+            <!--
+            <button id="filtraFechas" type="submit" class="btn btn-primary" style="color: white; background-color: #3579B3;">Filtrar</button>
+            <button id="orderField" type="submit" class="btn btn-primary" style="color: white; background-color: #3579B3;">Ordenar</button>
+            -->
+          </div>
+        </div>
+      </div>   
+    </div>
+  </div>
+   <!-- fin codigo modal -->
+    <div class="modal fade" id="configurationModal" role="dialog">
+    <div class="modal-dialog"> 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="font-weight: bold;color: white; background-color: #28A026;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Configuración de Grafica</h4>
+        </div>
+        <div class="modal-body">
+        <div id="config_graphics"></div> 
+        </div>
+        <div class="modal-footer" id="div_configuration_btns">
+          <div>                   
+          </div>
+        </div>
+      </div>   
+     </div>
+    </div>
+   <!-- modal configuracion de grafica -->
+   <!-- fon modal configuracion de grafica -->
+   <!-- Inicia modal guardar reporte -->
+<div class="modal fade" id="guardarReporte" role="dialog">
+    <div class="modal-dialog"> 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header cabecera" style="font-weight: bold;color: white; background-color: #28A026;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+             <h6><div id="Save_warnning" style="color:orange"></div></h6>
+             <input type="text" name="nameSaveReport" id="nameSaveReport" placeholder="Escribe" value="" />
+             <div id="errort" style="color:red"></div>
+             <div id="success" style="color:green"></div>
+        </div>
+        <div class="modal-footer" id="guadarReport">
+        </div>
+      </div>   
+     </div>
+</div>
+   <!-- Fin modal guardar reporte -->
+   <!-- Inicio modal para insertar fila o eliminar -->
+   <div class="modal fade" id="viewFilterModal" role="dialog">
+    <div class="modal-dialog"> 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="font-weight: bold;color: white; background-color: #28A026;">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Configuración del reporte</h4>
+        </div>
+        <div class="modal-body"  style="max-height: 300px; overflow-y:auto;">
+             <div id="divShowFilter" class="row">
+                <div class="col-md-12">                  
+                      <table width="100%" class="table table-striped">
+                        <thead>
+                          <tr><td colspan="2" class="ConfTitle">Campos Filtrados</td></tr>
+                        </thead>
+                        <tbody id="tablaFiltros">
+                          
+                        </tbody>
+                     </table>            
+                 </div>
+             </div>
+             <div id="divShowSort" class="row">
+             <br>
+                <div class="col-md-12">
+                   <table width="100%"  id="tablaOrdenar" class="table table-striped">
+                        <thead>
+                          <tr><td colspan="2" class="ConfTitle">Campos Ordenados</td></tr>
+                        </thead>
+                        <tbody id="tablaOrden">
+                          
+                        </tbody>
+                     </table>    
+                </div>
+             </div>
+            <div id="divShowGroup" class="row">
+             <br>
+                <div class="col-md-12">
+                     <table width="100%"  id="tablaAgrupar" class="table table-striped">
+                        <thead>
+                          <tr><td colspan="2" class="ConfTitle">Operaciones sobre campos</td></tr>
+                        </thead>
+                        <tbody id="tablaAgrupador">
+                          
+                        </tbody>      
+                     </table>    
+                </div>
+             </div>
+             <br>
+        </div>
+        <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>   
+     </div>
+  </div>
+   <!-- Fin modal para insertar fil o eliminar -->
+
+   <!-- Modal que se muestra para generar pdf-->
+   <!-- Modal Confirm pagina guardada -->
+    <strong><div class="modal fade" id="myModal_confirmacion_pagina_guardada" data-keyboard="false" data-backdrop="static"></strong>
+                  <table width="100%" height="100%">
+                  <tr>
+                    <td width="100%" height="100%" align="center" valign="center">
+                     <div class="modal-dialog">
+                         <br><h4 style="color:white" id="titulopdf"><b>Generando PDF. Por favor espere ...</b></h4>
+                     </div><!-- /.modal-dialog -->
+                     </td>
+                   </tr>
+                 </table>
+               </div><!-- /.modal -->
+           <!-- Modal Confirm Delete -->
+
+   <!-- Fin de modal que muestra cuando genera PDF -->
+</div>
+
+<!-- Reportes guardados-->
+<div id="reportesGuardados">
+ <div class="col-md-12">
+   <div class="table-responsive">
+              <table class="table table-striped table-hover table-fixed" width="100%" id="tabla">
+                  <thead id="tableCabecera">
+                    <tr>
+                      <th width="1%">No.</th>
+                      <th width="65%">Nombre del Reporte</th>
+                      <th width="35%" colspan="2"><input id="buscar" type="text" class="form-control" placeholder="Escriba para filtrar" /></th>
+                    </tr>
+                  </thead>
+                  <tbody id="listaReportes">
+                  </tbody>
+              </table>
+  </div>
+  <br>
+   <div class="panel panel-success">
+                        <div class="panel-heading"><div id="NameReporte">No del reporte:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nombre:</div></div>
+                        <div class="panel-body">
+                            <div id="spaceTable2" class="table-responsive" style="overflow-x:auto; max-height: 600px; overflow-y:auto;">
+                                  <div id="img_wait"></div>
+                                  <table id="tableData3" class="display" cellspacing="0" width="100%">                
+                                 </table>
+                               
+                            </div>
+                        </div>
+                    </diV> 
+</div>
+<!-- Fin reportes guardados -->
+  </body> 
+  <script type="text/javascript"  src="js/principal.js" id="principal"></script>
+  <script type="text/javascript"  src="js/draggable.js" ></script>
+  <script type="text/javascript"  src="js/BuilederTableMeto.js" ></script> 
+  <script type="text/javascript"  src="js/JsonSaveReport.js" ></script>
+  <script type="text/javascript"  src="js/sendJSONQueryReportGral.js" ></script>
+  <script type="text/javascript"  src="libs/jquery/tabletopdfq.js"></script>
+  <script type="text/javascript"  src="js/findElementTable.js" ></script>
+  <script type="text/javascript"  src="js/configEventPDF.js" ></script>  
+</html>

@@ -1,0 +1,120 @@
+
+@import url('template.css');
+
+.custom_branch_users{
+	position: absolute;top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.custom_branch_users .button_add_user{
+	position:relative;border-bottom:2px solid #555555;height:40px;background: #E1E3E4;
+}
+.custom_branch_users .button_add_user .label{
+	font-size:130%;position:absolute;left:30px;top:12px;
+}
+
+.custom_branch_users .button_add_user .icon{
+	position:absolute;left:5px;top:12px;
+}
+
+.custom_branch_users .button_add_user_executive{
+	position:relative;border-bottom:2px solid #555555;height:40px;background: #E1E3E4;
+}
+.custom_branch_users .button_add_user_executive .label{
+	font-size:130%;position:absolute;left:30px;top:12px;
+}
+
+.custom_branch_users .button_add_user_executive .icon{
+	position:absolute;left:5px;top:12px;
+}
+
+.custom_branch_users .divisor{
+	position: absolute;
+	left:0px;
+	right: 0px;
+	height: 30px;
+}
+
+.custom_branch_users .item_user{
+	position:relative;border-bottom:2px solid #555555;height:45px;
+}
+
+.custom_branch_users  .item_user .user_color{
+	position:absolute;left:5px;width:10px;top:5px;bottom:5px;
+}
+
+.custom_branch_users .item_user .user_alias{
+	font-size:130%;position:absolute;left:30px;top:7px;
+}
+.custom_branch_users .item_user .user_role{
+	font-size:100%;position:absolute;left:30px;top:22px;
+}
+
+.custom_branch_users .item_user .user_charge{
+	position:absolute;right:5px;border:1px solid black;top:7px;-webkit-border-radius: 20px 20px 20px 20px;border-radius: 20px 20px 20px 20px;padding:3px;font-size:120%;
+}
+
+.custom_branch_users .item_user .user_progress{
+	position:absolute;left:20px;height:3px;right:5px;bottom:5px;
+}
+
+.custom_branch_users .item_user .user_tools{
+	position: absolute;
+	right: 10px;
+	top: 8px;
+}
+
+.custom_branch_users .item_user .user_tools .user_info{
+	float: right;
+	margin-right: 8px;
+}.custom_branch_users .item_user .user_tools .user_edit{
+	float: right;
+	margin-right: 8px;
+}.custom_branch_users .item_user .user_tools .user_delete{
+	float: right;
+	top: 2px;
+	position: relative;
+}
+
+.custom_branch_users .item_user .user_tools .user_upload{
+	float: right;
+	margin-right: 8px;
+}
+.custom_branch_users .item_user .user_tools .user_download{
+	float: right;
+	margin-right: 8px;
+}
+.custom_branch_users .item_user .user_tools .user_charge_icon{
+	float: right;
+	top: 2px;
+	position: relative;
+	margin-right: 8px;
+}
+.custom_branch_users .item_user .user_tools .user_finished{
+	float: right;
+	top: 2px;
+	position: relative;
+}
+
+.custom_branch_users .item_user_selected{
+	position:relative;border-bottom:2px solid #555555;height:45px;width:300px;left:0px;background:#007B42;
+}
+
+.custom_branch_users .item_user_selected .user_color{
+	position:absolute;left:5px;width:10px;top:5px;bottom:5px;
+}
+
+.custom_branch_users .item_user_selected .user_alias{
+	font-size:140%;position:absolute;left:30px;top:7px;color:white;
+}
+.custom_branch_users .item_user_selected .user_role{
+	font-size:110%;position:absolute;left:30px;top:26px;color:white;
+}
+.custom_branch_users .item_user_selected .user_charge{
+	color:white; position:absolute;right:5px;border:2px solid white;top:7px;-webkit-border-radius: 20px 20px 20px 20px;border-radius: 20px 20px 20px 20px;padding:3px;font-size:121%;
+}
+.custom_branch_users .item_user_selected .user_progress{
+	position:absolute;left:20px;height:3px;right:5px;bottom:5px;
+}

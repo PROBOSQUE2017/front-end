@@ -1,0 +1,113 @@
+    .tooltip {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    a[class=termino] {
+        color: green;
+    }
+    
+    a[class=retraso] {
+        color: #FF8000;
+    }
+    
+    a[class=vencido] {
+        color: #B40404;
+    }
+    
+    a[class=proceso] {
+        color: #AEB404;
+    }
+    
+    .btn-custom {
+        background-color: #ded517;
+        border-color: #ded517;
+        color: white
+    }
+    
+    .btn-custom:hover,
+    .btn-custom:focus,
+    .btn-custom:active,
+    .btn-custom.active {
+        color: white;
+        background-color: #c7bf15;
+        border-color: #b0a912;
+    }
+    
+    .btn-custom.disabled:hover,
+    .btn-custom.disabled:focus,
+    .btn-custom.disabled:active,
+    .btn-custom.disabled.active,
+    .btn-custom[disabled]:hover,
+    .btn-custom[disabled]:focus,
+    .btn-custom[disabled]:active,
+    .btn-custom[disabled].active,
+    fieldset[disabled] .btn-custom:hover,
+    fieldset[disabled] .btn-custom:focus,
+    fieldset[disabled] .btn-custom:active,
+    fieldset[disabled] .btn-custom.active {
+        color: white;
+        background-color: #ded517;
+        border-color: #ded517;
+    }
+    
+    .panel-warning > .panelproceso {
+        background: #ded517;
+        color: #B18904;
+        border-color: #ded517;
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+        /* For IE8 and earlier */
+    }
+    
+    .contorno {
+        border-color: #ded517;
+    }
+    
+    #titleCustom {
+        color: #434001;
+        opacity: 1.0;
+        filter: alpha(opacity=100);
+        /* For IE8 and earlier */
+        z-index: 1;
+    }
+    label>span{
+        color: red;
+    }
+
+    /* estilo para tabla inspeccion con medida de seguridad */
+
+    .panel-warning > .panelMedidaSeguridad {
+        background: #FFA422;
+        color: #B18904;
+        border-color: #ded517;
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+        /* For IE8 and earlier */
+    }
+
+    .contornoMedidaSeguridad {
+        border-color: #FFA422;
+    }
+
+    #titleMedidaSeguridad {
+        color: #7D4E0B;
+        opacity: 1.0;
+        filter: alpha(opacity=100);
+        /* For IE8 and earlier */
+        z-index: 1;
+    }
+
+    .btn-custom-medida {
+        background-color: #FFA422;
+        border-color: #FFA422;
+        color: white
+    }
+    
+    .btn-custom-medida:hover,
+    .btn-custom-medida:focus,
+    .btn-custom-medida:active,
+    .btn-custom-medida.active {
+        color: white;
+        background-color: #F38E00;
+        border-color: #F38E00;
+    }

@@ -1,0 +1,197 @@
+.custom_progress{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0;
+    overflow: auto;
+    background: #E1E3E4;
+}
+
+.custom_progress .column{
+    position: relative;
+    float: left;
+    height: 200px;		
+}
+.custom_progress .column .container .title{
+    position: absolute;
+    float: left;
+    color: #787878;
+    top: 0px;
+    left: 0px;
+    font-size: 120%;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-top: 5px;
+    z-index: 1;
+}
+.custom_progress .column .container2 .title{
+    position: absolute;
+    float: left;
+    color: #fff;
+    top: 0px;
+    left: 0px;
+    font-size: 120%;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-top: 5px;
+    z-index: 1;
+}
+.custom_progress .column .container{
+    position: absolute;
+    top:10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 1px 1px #787878;
+    box-shadow: 1px 1px 1px 1px #787878;
+}
+
+.custom_progress .column .container2{
+    position: absolute;
+    top:10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: #fff;
+    -webkit-box-shadow: 1px 1px 1px 1px #787878;
+    box-shadow: 1px 1px 1px 1px #787878;
+}
+
+.custom_progress .column .container .data{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.custom_progress .column .container2 .data{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+			
+.custom_progress .w100{
+    width:100%;
+}
+.custom_progress .w50{
+    width:50%;
+}
+.custom_progress  .w30{
+    width:30%;
+}
+.custom_progress  .w70{
+    width:70%;
+}
+.custom_progress  .w80{
+    width:80%;
+}
+.custom_progress  .w20{
+    width:20%;
+}
+
+.custom_progress #cp_na div{
+    background:#CFB53B;
+    font-size:200%;color:#fff;
+    width:100%;
+    text-align: center;
+    line-height:85px;
+    font-weight: bold;
+    height: 100%;
+}
+.custom_progress #cp_a div{
+    background:#319177;
+    font-size:200%;color:#fff;
+    width:100%;
+    text-align: center;
+    line-height:85px;
+    font-weight: bold;
+    height: 100%;
+}
+.custom_progress #cp_d div{
+    background:#738678;
+    font-size:200%;color:#fff;
+    width:100%;
+    text-align: center;
+    line-height:85px;
+    font-weight: bold;
+    height: 100%;
+}
+.custom_progress #cp_total div{
+    background: #006BA7;
+  font-size: 200%;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  line-height: 75px;
+  font-weight: bold;
+  height: 100%;
+}
+.custom_progress #cp_progress div{
+      /* background: #738678; */
+    font-size: 400%;
+    color: #319177;
+    width: 100%;
+    text-align: center;
+    line-height: 75px;
+    font-weight: bold;
+    height: 100%;
+}
+
+
+.custom_progress .progress_table_results .rowFilled{
+	/*background: #eee;*/
+}
+.custom_progress .progress_table_results .borderHeading{
+	  /* border-top: 1px solid #222; */
+	border-bottom: 1px solid #97C00E;
+}
+.custom_progress .progress_table_results .borderRow{
+	/*border-left: 1px solid #bbb;*/
+	border-bottom: 1px solid #bbb;
+	height: 25px;
+}
+.custom_progress .progress_table_results
+    {
+        display: table;
+	width:100%;
+    }
+    
+    .custom_progress .progress_table_results .Heading
+    {
+          display: table-row;
+	    font-weight: bold;
+	    text-align: center;
+	    font-size: 120%;
+	    background: #D9D9D7;
+	    color: #7B7D7F;
+    }
+    
+    .custom_progress .progress_table_results .Row
+    {
+        display: table-row;
+	font-size: 120%;
+    }
+    .custom_progress .progress_table_results .Cell
+    {
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+	
+    }
+    
+    
+.custom_progress .progress_table_results .textButton{
+    background-color: #007B42;
+    border-radius: 5px;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#cp_table{
+    overflow: auto;
+}

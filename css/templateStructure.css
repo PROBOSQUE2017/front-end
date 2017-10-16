@@ -1,0 +1,9 @@
+.template_structue{ background:url("../img/structure/structure.png") top left no-repeat; }
+
+.tst_layers{ width:25px; height:25px; background-position:-92px -9px; }
+.tst_layers:hover{ width:25px; height:25px; background-position:-118px -9px; }
+.tst_admon_users{ width:25px; height:25px; background-position:-146px -9px; }
+.tst_admon_users:hover{ width:25px; height:25px; background-position:-174px -9px; }
+.tst_user{ width:25px; height:25px; background-position:-200px -8px; }
+.tst_alert{ width:25px; height:25px; background-position:-6px -9px; }
+.tst_alert_active{ width:25px; height:25px; background-position:-36px -9px; }

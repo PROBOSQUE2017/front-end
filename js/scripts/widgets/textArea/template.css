@@ -1,0 +1,13 @@
+.template_textArea{ background:url("img/textArea.png") top left no-repeat; }
+
+.tta_close{  background-position: -72px -2px !important;
+  width: 35px;
+  height: 35px;}
+.tta_back{
+    background-position: 3px -8px !important;
+  width: 30px;
+  height: 26px; }
+.tta_add{background-position: -148px 0px !important;
+  width: 54px;
+  height: 50px;}
+.tta_info{background-position: 0px 0px !important;width: 20px;height: 20px; }

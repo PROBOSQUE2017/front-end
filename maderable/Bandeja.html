@@ -1,0 +1,715 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modulo Maderable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- jQuery -->
+    <script src="js/libs/jquery-3.1.1.min.js"></script>
+    <script src="js/libs/amplify.js"></script>
+    <script src="js/myScript/controlSession.js"></script>
+    <script type="text/javascript">
+    amplify.store.controlPagesOnlyCoordinador('dataLoggingProbosque');
+    </script>
+    <script src="js/libs/blockUI.js"></script>
+    <script src="js/libs/bootstrap.js"></script>
+    <script src="js/libs/validate.js"></script>
+    <script src="js/libs/downloadFile.js"></script>
+    <script src="js/libs/jquery-ui.js"></script>
+    <script src="js/libs/jquery.dataTables.min.js"></script>
+    <!-- jQuery -->
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+</head>
+
+<body>
+    <div class="app_header">
+        <div class="section_header">
+            <div class="section_logo">
+                <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+                <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+                <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+                <div class="divisor"></div>
+                <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+                <li class="active"><a href="../maderable/Bandeja.html">Bandeja de entrada</a></li>
+                <li><a href="../maderable/moduloCoordinador.html">Seguimiento de inspecciones</a></li>
+                <li><a href="../maderable/impugnaciones.html">Impugnaciones</a></li>
+                <li><a href="../maderable/listaSeguimiento.html">Listado de seguimiento</a></li>
+            <div class="text-right" style="margin-top:10px">
+                <label id="pendientesOficialiaTexto">Pendientes oficialia:</label>
+            </div>
+         
+        </ul>
+        <br>
+    </div>
+    <div class="row col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">BANDEJA DE ENTRADA</div>
+                <div class="panel-body">
+                    <table id="tableBandejaEntrada" class="display" cellspacing="0" width="100%" style="overflow-x:auto;">
+                        <thead>
+                            <tr>
+                                <th>No. de expediente</th>
+                                <th>Abogado</th>
+                                <th class="text-center">Observaciones</th>
+                                <th class="text-center">Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyBanjejaEntrada">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+   <!--INICIO MODAL ASIGNAR ESTATUS -->
+    <div id="modalAsignarEstatus" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div>
+                    <h4 class="modal-title" id="gridModalLabel"><b>ASIGNAR ESTATUS</b></h4>
+                    <p id="textoNumeroExpediente" style="display: inline-block"></p>&nbsp;&nbsp;<a href="#" class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar"  id="clicEditarExpediente"></a>
+                    </div>
+                    <div>
+                    <p id="textoAbogadoAsignado" style="display: inline-block"></p>&nbsp;&nbsp;<a href="#" class="glyphicon glyphicon-pencil" id="clicEditarAbogado" data-toggle="tooltip" title="Editar"></a>
+                    </div>
+                    <br>
+                    <ul class="nav nav-tabs nav-justified"">
+                              <li id="divOficialiaTab" class="active"><a href="#">Ambito oficialia de partes</a></li>
+                              <li id="divAbogadoTab" ><a href="#">Ambito abogado</a></li>
+                              <li id="divReforestemosTab"><a href="#" id="haSemaforo">Semaforización programa madera legal</a></li>
+                    </ul>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!--INICIO MODAL IZQUIERO-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <!--INICIO PANEL DE OFICIALIA DE PARTES-->
+                            <div class="panel panel-success" id="divOficialPartes">
+                                <div class="panel-heading"></div>
+                                <div class="panel-body">
+                                    <!--INICIO LADO DERECHO-->
+                                    <form onsubmit="return false" id="formularioOficialia">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="">
+                                            <ul>
+                                                <li>
+                                                    <div class="checkbox">
+                                                    <label>
+                                                    <input type="checkbox" id="check1"  value="Inspeccionado en proceso"><b>Inspeccionado en proceso</b>
+                                                    </label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                    <label>
+                                                    <input type="checkbox" id="check2" value="Inspeccionado con medida de seguridad"><b>Inspeccionado con medida de seguridad</b>
+                                                    </label>
+                                                    </div>
+                                                </li>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="checkbox">
+                                                            <label>
+                                                            <input type="checkbox" id="check3" value="Aseguramiento"> Aseguramiento
+                                                            </label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="checkbox">
+                                                            <label>
+                                                            <input type="checkbox" id="check4" value="Clausura"> Clausura
+                                                            </label>
+                                                            </div>
+                                                             <ul>
+                                                                <li>
+                                                                    <div class="checkbox">
+                                                                    <label>
+                                                                    <input type="checkbox" id="check5" value="Total"> Total
+                                                                    </label>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="checkbox">
+                                                                    <label>
+                                                                    <input type="checkbox" id="check6" value="Parcial"> Parcial
+                                                                    </label>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </li>                                                        
+                                                        <li>
+                                                            <div class="checkbox">
+                                                            <label>
+                                                            <input type="checkbox" id="check7" value="Suspensión"> Suspensión
+                                                            </label>
+                                                            </div>
+                                                            <ul>
+                                                                <li>
+                                                                    <div class="checkbox">
+                                                                    <label>
+                                                                    <input type="checkbox" id="check8" value="Total"> Total
+                                                                    </label>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="checkbox">
+                                                                    <label>
+                                                                    <input type="checkbox" id="check9" value="Parcial"> Parcial
+                                                                    </label>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>     
+                                                        </li>
+                                                    </ul>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                        <h5 id="validacionError" style="color: red"></h5>
+                                    </div>
+                                    </form>
+                                    <!--FIN LADO DERECHO-->
+                                </div>
+                                <!--FIN DEL BODY-->
+                            </div>
+                            <!--FIN PANEL DE AMBITO OFICIALIA DE PARTES-->
+                            <!--INICIO PANEL DE AMBITO ABOGADO-->
+                            <div class="panel panel-success"  id="divSemaforoReforestemos" style="display: none">
+                                <div class="panel-heading">SEMAFORIZACIÓN</div>
+                                <div class="panel-body">
+                                    <form onsubmit="return false" id="formularioSemaforo">
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label style="color:red">
+                                                    <input type="checkbox"  name="30" class="checkListSemaf chkx30" value="Amonestación">Amonestación</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label style="color:red">
+                                                <input type="checkbox" name="31" class="checkListSemaf chkx31" value="Multa">Multa</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label style="color:red">
+                                                    <input type="checkbox" name="32" class="checkListSemaf chkx32" value="Decomiso">Decomiso</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label style="color:red">
+                                                    <input type="checkbox" name="33" class="checkListSemaf chkx33" value="Revocación">Revocación</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label style="color:red">
+                                                    <input type="checkbox" name="34" class="checkListSemaf chkx34" value="Clausura Total Definitiva"> Clausura total definitiva
+                                                    </label>
+                                                    </div>
+                                            <div class="checkbox">
+                                                <label style="color:red">
+                                                    <input type="checkbox" id="" name="35" class="checkListSemaf chkx35" value="Suspensión"> Suspensión
+                                                    </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--FIN LADO IZQUIERDO-->
+                                    <!--INICIO LADO DERECHO-->
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <div id="divListSemaforo" class="">
+                                            <div class="checkbox">
+                                                <label style="color:green">
+                                                    <input type="checkbox" name="39" class="sinIrre chkx39" value="Inspección sin irregularidades">Inspección sin irregularidades</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label style="color:green">
+                                                    <input type="checkbox" name="40" class="sinSancion chkx40" value="Resolución administrativa sin sanción">Resolución administrativa sin sanción</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--FIN LADO DERECHO-->
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                                          <p style="color: red" id="errorSemaforo"></p>
+                                    </div>
+                                </div>
+                                <!--FIN DEL BODY-->
+                            </div>
+                             <!--INICIO PANEL DE AMBITO ABOGADO-->
+                            <div class="panel panel-success" id="divObservacionesPublicas" style="display: none">
+                                <div class="panel-heading">OBSERVACIONES PÚBLICAS</div>
+                                <div class="panel-body">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group">
+                                            <textarea textarea class="form-control" rows="5" id="observacionPublica" placeholder="Escriba ..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--FIN DEL BODY-->
+                            </div>
+                           </form>
+                            <!--FIN PANEL DE AMBITO ABOGADO-->
+                            <!--FIN PANEL DE AMBITO ABOGADO-->
+                        </div>
+                        <!--FINAL MODAL IZQUIERDO-->
+                        <!--INICIO MODAL DERECHO-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <!--INICIO PANEL DE AMBITO ABOGADO-->
+                            <div class="panel panel-success" id="divAmbitoAbogado" style="display: none">
+                                <div class="panel-heading"></div>
+                                <div class="panel-body">
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <form onsubmit="return false" id="formularioAbogado">
+                                        <div class="">
+                                            <input type="radio" value="0" name="estatus" id="radioProceso">
+                                            <label>En proceso</label>
+                                        </div>
+                                        <div  id="divProceso" class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="10"  class="groupChk chk10" value="En termino de 5 días">En termino de 5 días</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="11"  class="groupChk chk11" value="Primer dictamen">Primer dictamen</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="12"  class="groupChk chk12" value="Para emplazar">Para emplazar</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="13"  class="groupChk chk13" value="Emplazado 15 días">Emplazado 15 días</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="14"  class="groupChk chk14" value="Análisis de documentación 2do dictamen">Análisis de documentación 2do dictamen</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="15"  class="groupChk chk15" value="Alegatos">Alegatos</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="16"  class="groupChk chk16" value="Para emitir resolución">Para emitir resolución</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="17"  class="groupChk chk17" value="Resolución administrativa">Resolución administrativa</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="18"  class="groupChk chk18" value="Para notificar">Para notificar</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="19" class="groupChk chk19"  value="Resolución notificada">Resolución notificada</label>
+                                            </div>
+                                            <div id="calenadrio" style="display: none;">
+                                            <p><b>Fecha de conclusión</b></p>
+                                                <input type="text" name="" id="fechaConclusion">
+                                            </div>
+
+                                            <!--<div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" class="groupChk chk20"  value="Para emitir resolución">Para emitir resolución</label>
+                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <!--FIN LADO IZQUIERDO-->
+                                    <!--INICIO LADO DERECHO-->
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <input type="radio" value="1" id="radioConcluido" name="estatus">
+                                            <label>Concluido</label>
+                                         <div id="divConcluido" class="">
+                                            <ul>
+                                                <li>
+                                                     <div class="checkbox">
+                                                    <label>
+                                                    <input type="checkbox" class="chk20" name="20" value="Resolución administrativa">Resolución administrativa
+                                                    </label>
+                                                    </div>
+                                                    <ul id="listaResolucion">
+                                                        <li>
+                                                            <div class="checkbox">
+                                                            <label>
+                                                            <input type="checkbox" id="" name="21" class="chk21 grupoAdmon" value="Amonestación"> Amonestación
+                                                            </label>
+                                                            </div>
+                                                        </li>
+                                                         <li>
+                                                             <div class="checkbox">
+                                                             <label>
+                                                                <input type="checkbox" id="chkmultaId" name="22" class="chk22 grupoAdmon" value="Multa"> Multa
+                                                                <label id="inputCantidad" style="display: none">$
+                                                                        <input type="text" name="" id="cantidadInputData" placeholder="Ingrese la cantidad">
+                                                                </label>
+                                                            </label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                             <div class="checkbox">
+                                                             <label>
+                                                            <input type="checkbox" id="chkdecoId" name="23" class="chk23 grupoAdmon" value="Decomiso"> Decomiso
+                                                            </label></div>
+                                                        </li>
+                                                        <li>
+                                                             <div class="checkbox">
+                                                             <label>
+                                                            <input type="checkbox" id="" name="24" class="chk24 grupoAdmon" value="Revocación"> Revocación
+                                                            </label></div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="checkbox">
+                                                            <label>
+                                                            <input type="checkbox" id="" name="25" class="chk25 grupoAdmon" value="Clausura"> Clausura
+                                                            </label>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="checkbox">
+                                                            <label>
+                                                            <input type="checkbox" id="" name="26" class="chk26 grupoAdmon" value="Sin sanción"> Sin sanción
+                                                            </label>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                    <label>
+                                                    <input type="checkbox" id="" name="27" class="chk27" value="Acuerdo de archivo"> Acuerdo de archivo
+                                                    </label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                    <label>
+                                                    <input type="checkbox" id="" name="28" class="chk28" value="Acuerdo de cierre"> Acuerdo de cierre
+                                                    </label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                    <label>
+                                                    <input type="checkbox" id="acArchivo" name="29" class="chk29" value="Acuerdo de archivo y decomiso"> Acuerdo de archivo y decomiso
+                                                    </label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="36" class="chk36"  id="acuReincidente" value="Reincidente"> Reincidente
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xs-12 col-md-12">
+                                            <textarea placeholder="Escribe los detalles del decomiso" id="textAreaDecomiso" class="form-control" style="display: none"></textarea>
+                                        </div>
+                                    </div>
+                                    <!--FIN LADO DERECHO-->
+                                     <p style="color: red" id="erorAbogado"></p>
+                                    </form>                             
+                                    
+                                </div>
+                                <!--FIN DEL BODY-->
+                            </div>
+                            <!--FIN PANEL DE AMBITO ABOGADO-->
+                           
+                        </div>
+                        <!--FIN MODAL DERECHO-->
+                    </div>
+                    <p id="textImpugnacion" style="color: red"></p>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCancelarSalir">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="btnAceptOficial" onclick="ctrlCheckBox(this)">Guardar estatus oficialia</button>
+                    <button type="button" class="btn btn-success" id="btnAceptSemaforo" onclick="ctrlSemaforo(this)" style="display: none">Guardar estatus</button>
+                    <button type="button" class="btn btn-success" id="btnAceptAbogado" onclick= "ctrlCheckBoxAbogado(this)" style="display: none">Guardar estatus abogado</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+    <!-- FIN MODAL ASIGNAR ESTATUS -->
+    <!--INICIO MODAL DETALLE DE OBSERVACIÓN -->
+    <div id="confirmacion" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false" >
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridModalLabel"><b>Confirmación</b></h4>
+                </div>
+                <div class="modal-body">
+                    <!--INICIO LADO IZQUIERDO-->
+                    <div class="row">
+                        <div class="text-center">
+                            <label class="col-md-12 col-sm-12 col-xs-12" id="msjConfirmacion"></label>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8 col-sm-11 col-xs-11">
+                             <textarea textarea class="form-control" rows="5" id="addObservaciones" style="display: none" placeholder="Añadir observacion"></textarea>
+                        </div>
+                    </div>
+                    <center>
+                        <p style="color: red" id="errorAgregaObs"></p> 
+                    </center>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="btn-confirmacion-Ok" onclick="sendStatus(this)">Aceptar</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+    <!-- FIN MODAL DETALLE DE OBSERVACIÓN -->
+
+    <!--INICIO MODAL AÑADIR OBSERVACIÓN -->
+    <div id="modalAnadirObservacion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridModalLabel">Añadir observación</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!--INICIO LADO IZQUIERDO-->
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group-inline">
+                                <label>FECHA: </label>
+                                <input id="anadirFecha" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <!--FIN LADO IZQUIERDO-->
+                        <!--INICIO LADO DERECHO-->
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group-inline">
+                                <label>ABOGADO: </label>
+                                <input id="" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <!--FIN LADO DERECHO-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <br>
+                                <label>DETALLE: </label>
+                                <textarea textarea class="form-control" rows="5" id=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+    <!-- FIN MODAL AÑADIR OBSERVACIÓN -->
+    <!--INICIO MODAL HISTORIAL OBSERVACIONES -->
+    <div id="modalHistorialObservaciones" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridModalLabel"><b>HISTORIAL DE OBSERVACIONES</b></h4>
+                     <p id="labelExpediente">Expediente:</p>
+                </div>
+                <div class="modal-body" style="overflow-x:auto; max-height: 400px; overflow-y:auto;">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <table id="" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Abogado</th>
+                                        <th>Opción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyObservaciones">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+    <!-- FIN MODAL HISTORIAL OBSERVACIONES -->
+        <!--INICIO MODAL DETALLE DE OBSERVACIÓN -->
+    <div id="modalDetalleObservacion" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridModalLabel">Detalle de observación</h4>
+                </div>
+                <div class="modal-body">
+                    <!--INICIO LADO IZQUIERDO-->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group-inline">
+                                <label>FECHA: </label>
+                                <input id="inputTextFecha" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <!--FIN LADO IZQUIERDO-->
+                        <!--INICIO LADO DERECHO-->
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-group-inline">
+                                <label>ABOGADO: </label>
+                                <input id="inputTextAbogado" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <!--FIN LADO DERECHO-->
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label>DETALLE: </label>
+                                <textarea textarea class="form-control" rows="5" id="inputTextArea" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Final Modal Body -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+            <!--FINAL CONTENT-->
+        </div>
+    </div>
+     <div class="modal fade" id="modalOption" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="headerOption"></h4>
+                </div>
+                <div class="panel-body">
+                    <div id="bodyOption"></div>
+                </div>
+                 <div class="panel-footer" id="footerOption">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN MODAL DETALLE DE OBSERVACIÓN -->
+    <div id="datosPrograma8"></div>
+    <div id="divmodalerror"></div>
+    <script type="text/javascript" src="js/myScript/program8.js"></script>
+    <script type="text/javascript" src="js/myScript/connections.js"></script>
+    <script type="text/javascript" src="js/myScript/bandeja.js"></script>
+    <script type="text/javascript" src="js/myScript/blockWhileAJAX.js"></script>
+    <style type="text/css">
+        label>span{
+        color: red;
+    }
+    .tooltip {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    a[class=termino] {
+        color: green;
+    }
+    
+    a[class=retraso] {
+        color: #FF8000;
+    }
+    
+    a[class=vencido] {
+        color: #B40404;
+    }
+    
+    a[class=proceso] {
+        color: #AEB404;
+    }
+    
+    .btn-custom {
+        background-color: #ded517;
+        border-color: #ded517;
+        color: white
+    }
+    
+    .btn-custom:hover,
+    .btn-custom:focus,
+    .btn-custom:active,
+    .btn-custom.active {
+        color: white;
+        background-color: #c7bf15;
+        border-color: #b0a912;
+    }
+    
+    .btn-custom.disabled:hover,
+    .btn-custom.disabled:focus,
+    .btn-custom.disabled:active,
+    .btn-custom.disabled.active,
+    .btn-custom[disabled]:hover,
+    .btn-custom[disabled]:focus,
+    .btn-custom[disabled]:active,
+    .btn-custom[disabled].active,
+    fieldset[disabled] .btn-custom:hover,
+    fieldset[disabled] .btn-custom:focus,
+    fieldset[disabled] .btn-custom:active,
+    fieldset[disabled] .btn-custom.active {
+        color: white;
+        background-color: #ded517;
+        border-color: #ded517;
+    }
+    
+    .panel-warning > .panelproceso {
+        background: #ded517;
+        color: #B18904;
+        border-color: #ded517;
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+        /* For IE8 and earlier */
+    }
+    
+    .contorno {
+        border-color: #ded517;
+    }
+    
+    #titleCustom {
+        color: #434001;
+        opacity: 1.0;
+        filter: alpha(opacity=100);
+        /* For IE8 and earlier */
+        z-index: 1;
+    }
+    </style>
+</body>
+
+</html>

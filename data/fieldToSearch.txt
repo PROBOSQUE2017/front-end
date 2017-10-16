@@ -1,0 +1,43 @@
+{  
+   "response":{  
+      "message":"Busqueda",
+      "sucessfull":true
+   },
+   "data":[  
+      {  
+         "label":"Folio",
+         "field":"folio",
+         "datatype":"string"
+      },
+      {  
+         "label":"Expediente",
+         "field":"Expediente",
+         "datatype":"string"
+      },
+      {  
+         "label":"Región",
+         "field":"Region",
+         "datatype":"string"
+      },
+      {  
+         "label":"Municipio",
+         "field":"Municipio",
+         "datatype":"string"
+      },
+      {  
+         "label":"Nombre del Predio",
+         "field":"nom_predio",
+         "datatype":"string"
+      },
+      {  
+         "label":"Representante Actual",
+         "field":"rep_actual",
+         "datatype":"string"
+      },
+      {  
+         "label":"Representante Anterior",
+         "field":"rep_anterior",
+         "datatype":"string"
+      }
+   ]
+}

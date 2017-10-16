@@ -1,0 +1,22 @@
+{  
+   "response":{  
+      "message":"Valores asignados",
+      "sucessfull":true
+   },
+   "data":{  
+      "graph":[  
+         {  
+            "user":"mariano.lopez",
+            "assigned":23,
+            "delivered":23
+         }
+      ],
+	"totals":  
+         {  
+            "assigned":53,
+            "delivered":333,
+            "available":232
+         }
+      
+   }
+}

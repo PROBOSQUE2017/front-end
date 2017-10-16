@@ -1,0 +1,22 @@
+.custom_menu_back{
+    background:url("img/back.png") top left no-repeat;
+    width:27px;
+    height:42px;
+    background-position:0px 0px;
+}
+
+.custom_header_image{
+    position: absolute;
+    left:0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url("../../../../img/header/header.png");
+    background-repeat: repeat-x;
+}
+
+.custom_header_logo{
+    
+}
+
+

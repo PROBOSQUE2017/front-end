@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="refresh">
+    <title>Modulo maderable</title>
+    <script src="js/libs/jquery-3.1.1.min.js"></script>
+    <script src="js/libs/amplify.js"></script>
+    <script src="../maderable/js/myScript/controlSession.js"></script>
+</head>
+
+<body>
+	<center style="color: red">
+		<h1>ACCESO DENEGADO</h1>
+		<p> No puede acceder al sistema porque su actividad no es válida. Contacte al administrador del sistema</p>
+	</center>
+	<center>
+		<a href="#" id="exit">Salir del sistema</a>
+	</center>
+</body>
+<script type="text/javascript">
+	$('#exit').on('click', function () {
+		 amplify.store.logout('dataLoggingProbosque');
+		 window.location.assign('/SIFEM/');
+	});
+</script>
+</html>

@@ -1,0 +1,559 @@
+<html lang="es">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <title>Sistema de Información Forestal del Estado de México</title>
+      <link rel="stylesheet" type="text/css" href="css/structure.css">
+      <link rel="stylesheet" type="text/css" href="css/loging.css">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/datepicker.css">
+      <style type="text/css">
+         input#search{
+         background:url(js/scripts/widgets/search/img/search.png);
+         background-repeat: no-repeat;
+         width:40px;
+         height:35px;
+         border: 0;
+         border: 2px solid #d7d7d7;
+         background-color: #d7d7d7;
+         }
+         .app_program .label2{
+         line-height: 26px;
+         font-size: 120%;
+         color: #7B7D7F;
+         font-weight: bold;
+         position: absolute;
+         float:right;
+         left: 5px;
+         box-sizing: initial;
+         cursor:pointer;
+         }
+         .app_program .label3{
+         line-height: 26px;
+         font-size: 120%;
+         color: #7B7D7F;
+         font-weight: bold;
+         position: absolute;
+         float:right;
+         left: 150px;
+         box-sizing: initial;
+         cursor:pointer;
+         }
+         .app_program .label4{
+         line-height: 26px;
+         font-size: 120%;
+         color: #7B7D7F;
+         font-weight: bold;
+         position: absolute;
+         float:right;
+         left: 360px;
+         box-sizing: initial;
+         cursor:pointer;
+         }
+         input:focus {
+            background-color: yellow;
+         }
+         select:focus {
+            background-color: yellow;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="app_header">
+         <div class="section_header">
+            <div class="section_logo">
+               <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+               <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+               <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+               <div class="divisor"></div>
+               <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+         </div>
+      </div>
+      <div class="app_program">
+         <div class="label" style="font-size: 98%;">Producción de Planta</div>
+         <div class="label2 alert-primary" style="font-size: 96%;" onclick="ViewPA()"><span id="label2" class="glyphicon glyphicon-share-alt" style="color:red" aria-hidden="true"></span>Producción Actual</div>
+         <div class="label3" style="font-size: 96%;" onclick="ViewPAA()"><span id="label3" style="color:red"></span>Producción Años Anteriores</div>
+         <div class="label4" style="font-size: 96%;" onclick="ViewDP()"><span id="label4" style="color:red"></span>Destino Planta</div>
+      </div>
+      <div class="row">
+         <br/>
+      </div>
+      <div id="PPA">
+         <!--Producción de Planta-->
+         <div class="container">
+            <div class="col-md-2"></div>
+            <form class="form-inline">
+               <div div="uno" class="form-group col-md-2.5">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myModal" rel="tooltip" data-placement="left" title="Instrucciones!"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
+                  <select id="selpp" class="form-control">
+                     <option selected="selected" value="0">Seleccione una opción</option>
+                     <option value="Nombre_comun">Especie</option>
+                     <option value="Vivero">Vivero</option>
+                  </select>
+               </div>
+               <div id="dos" class="input-group col-md-3" style="display:none">
+
+               </div>
+               <div id="tres" class="input-group col-md-3" style="display:none">
+                  <input type="text" id="texto" class="form-control" placeholder="Especie">
+               </div>
+                <div id="cuatro" class="input-group col-md-3" style="display:none">
+
+               </div>
+               <div class="input-group col-md-1">
+                  <span class="input-group-btn">
+                  <input type="button" id="search" onclick="Buscar()" style="display:none">
+                  </span>
+               </div>
+               <!-- /input-group -->
+            </form>
+         </div>
+         <div id="alerta" class="alert alert-danger alert-dismissible col-sm-4 col-sm-offset-4 text-center" role="alert" style="display: none">
+            <strong>NO!!</strong> Se encontraron datos!!
+         </div>
+         <div id="content" class="table-responsive col-md-10.5 col-md-offset-.5 pre-scrollable">
+            <table id="tabla" class="table table-striped">
+               <thead>
+                  <tr id="porcentaje" style="font-size:80%;">
+                     <!--<th colspan="3" style="font-size:95%;">Avance de Producción: 80%</th>
+                        <th colspan="4" style="font-size:95%;"></th>
+                        <th style="font-size:95%;">Producción viveros</th>
+                        <th style="font-size:95%;">Gran Total</th>
+                        <th style="font-size:95%;">Gran Total</th>
+                        <th style="font-size:95%;">Gran Total</th>
+                        <th style="font-size:95%;">Gran Total</th>-->
+                  </tr>
+                  <tr class="success" style="font-size:80%;">
+                     <th>Nombre Común</th>
+                     <th>Nombre Científico</th>
+                     <th>Lote de semilla</th>
+                     <th>Tipo de producción</th>
+                     <th>Programado</th>
+                     <th>Recurso</th>
+                     <th>Envase</th>
+                     <th>Altura(cm)</th>
+                     <th>Producción</th>
+                     <th>Disponibilidad</th>
+                     <th>Entregada</th>
+                     <th>Existencia</th>
+                  </tr>
+               </thead>
+               <tbody id="TablaBody">
+                  <tr class="info">
+                     <th style="font-size:95%;">Vivero:</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">Programado</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">Producción</th>
+                     <th style="font-size:95%;">Disponibilidad</th>
+                     <th style="font-size:95%;">Entregada</th>
+                     <th style="font-size:95%;">Existencia</th>
+                  </tr>
+                  <tr>
+                     <th style="font-weight: normal; font-size:90%;">Pino</th>
+                     <th style="font-weight: normal; font-size:90%;">Pino ayacahuite</th>
+                     <th style="font-weight: normal; font-size:90%;">Lote de semilla</th>
+                     <th style="font-weight: normal; font-size:90%;">Nuevo</th>
+                     <th style="font-weight: normal; font-size:90%;">5000</th>
+                     <th style="font-weight: normal; font-size:90%;">GC 2015</th>
+                     <th style="font-weight: normal; font-size:90%;">1</th>
+                     <th style="font-weight: normal; font-size:90%;">12</th>
+                     <th style="font-weight: normal; font-size:90%;">3500</th>
+                     <th style="font-weight: normal; font-size:90%;">800</th>
+                     <th style="font-weight: normal; font-size:90%;">200</th>
+                     <th style="font-weight: normal; font-size:90%;">3300</th>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+                <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title text-center">- Producción Actual -</h4>
+        </div>
+        <div class="modal-body">
+          <h4 class="text-center"><strong>Instrucciones</strong></h4>
+          <ul>
+            <li>PUEDE REALIZAR CONSULTAS POR LOS SIGUIENTES DATOS ESPECIE O VIVERO:
+               <ul><br>
+                  <li><em>SI ELIJE ESPECIE, DEBE INDICAR EL NOMBRE COMUN O CIENTIFICO POR EL CUAL DESEA BUSCAR.</em></li><br>
+                  <li><em>SI ELIJE VIVERO, PUEDE SELECCIONAR DEL LISTADO EL VIVERO EN DONDE DESEA BUSCAR, SI NO SELECCIONA NADA POR DEFAULT SE MOSTRARA INFORMACION DE TODOS LOS VIVEROS REGISTRADOS ENLA BASE.</em></li>
+               </ul>
+            </li>
+         </ul>
+         
+          <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+      </div>
+      <div id="PPAA" style="display: none">
+         <!--Producción de Planta-->
+         <div class="container">
+            <div class="col-md-2"></div>
+            <form class="form-inline">
+               <div class="form-group col-md-2.5">
+               <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myModal2" rel="tooltip" data-placement="left" title="Instrucciones!"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
+                  <input type="text" id="anio" placeholder="Año" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"/>
+               </div>
+               <div class="input-group col-md-7">
+                  <select id="selvi" class="form-control">
+                  </select>
+                  <span class="input-group-btn">
+                  <input type="button" id="search" onclick="Buscar2()">
+                  </span>
+               </div>
+               <!-- /input-group -->
+            </form>
+         </div>
+         <div id="content" class="table-responsive col-md-10.5 col-md-offset-.5 pre-scrollable">
+            <div id="alerta2" class="alert alert-danger alert-dismissible col-sm-4 col-sm-offset-4 text-center" role="alert" style="display: none">
+               <strong>NO!!</strong> Se encontraron datos!!
+            </div>
+            <table id="tablapaa" class="table table-striped" style="display: none;">
+               <thead>
+                  <tr class="success">
+                     <th style="font-size:95%;">Nombre Común</th>
+                     <th style="font-size:95%;">Nombre Científico</th>
+                     <th style="font-size:95%;">Programado</th>
+                     <th style="font-size:95%;">Recurso</th>
+                     <th style="font-size:95%;">Envase</th>
+                     <th style="font-size:95%;">Producción</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="danger">
+                     <th class="text-left" colspan="6" style="font-size:95%;">Alameda 2000</th>
+                  </tr>
+                  <tr class="info">
+                     <th style="font-size:95%;">Produccion 2016</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">90000</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">95000</th>
+                  </tr>
+                  <tr class="warning">
+                     <th style="font-size:95%;">Nueva (2016)</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">90000</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">95000</th>
+                  </tr>
+                  <tr>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                  </tr>
+                  <tr class="warning">
+                     <th style="font-size:95%;">Mantenimiento (2016)</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">90000</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;">95000</th>
+                  </tr>
+                  <tr>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                     <th style="font-size:95%;">Prueba</th>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+                              <!-- Modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title text-center">- Producción Años Anteriores -</h3>
+        </div>
+        <div class="modal-body">
+          <h4 class="text-center"><strong>Instrucciones</strong></h4>
+          <ul>
+            <li>PUEDE ESPECIFICAR 2 CRITERIOS AÑO Y VIVERO:
+               <ul><br>
+                  <li><em>SI ELIJE AÑO, DEBE INDICAR EL AÑO POR EL QUE DESEA FILTRAR LA INFORMACION SI NO SELECCIONA NADA EL SISTEMA MOSTRARA LA INFORMACION DE TODOS LOS AÑOS REGISTRADOS EN LA BASE.</em></li><br>
+                  <li><em>SI SELECCIONA ALGUN VIVERO LA INFORMACION SE FILTRARA POR EL VIVERO SELECCIONADO, EN CASO DE NO ELEGIR NINGUNO SE MOSTRARA LA INFORMACION DE TODOS LOS VIVEROS.</em></li>
+               </ul>
+            </li>
+         </ul>
+         
+          <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+      </div>
+       <div id="DP" style="display: none">
+         <div class="container">
+            <div class="col-md-3"></div>
+            <form class="form-inline" id="myForm">
+               <div class="form-group col-md-2.5">
+               <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-target="#myModal3" rel="tooltip" data-placement="left" title="Instrucciones!"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></button>
+                 <div class="input-group">
+                  <span class="input-group-addon">
+                     <input type="radio" name="group1" value="anio">
+                  </span>
+                  <input type="text" id="anio2" class="form-control" placeholder="Año" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
+                 </div>
+               </div>
+               <div class="form-group col-md-2.5">
+                 <div class="input-group">
+                  <span class="input-group-addon">
+                    <input type="radio" name="group1" value="ciudadano">
+                  </span>
+                  <input type="text" id="txtciudadano" class="form-control" placeholder="Ciudadano">
+                 </div><!-- /input-group -->
+               </div><!-- /input-group -->
+                <div class="input-group col-md-1">
+                  <span class="input-group-btn">
+                  <input type="button" id="search" onclick="Buscar3()">
+                  </span>
+               </div>
+            </form>
+         </div>
+         <div class="table-responsive col-md-10.5 col-md-offset-.5 pre-scrollable">
+         <div id="alerta3" class="alert alert-danger alert-dismissible col-sm-4 col-sm-offset-4 text-center" role="alert" style="display: none">
+               <strong>NO!!</strong> Se encontraron datos!!
+            </div>
+            <table id="tablaDC" class="table table-striped" style="display: none;">
+               <thead>
+                  <tr class="success">
+                     <th style="font-size:95%;">Solicitante</th>
+                     <th style="font-size:95%;">Región</th>
+                     <th style="font-size:95%;">Municipio</th>
+                     <th style="font-size:95%;">Vale de Planta</th>
+                     <th style="font-size:95%;">Destino</th>
+                     <th style="font-size:95%;">Vivero</th>
+                     <th style="font-size:95%;">Nombre Común</th>
+                     <th style="font-size:95%;">Nombre Científico</th>
+                     <th style="font-size:85%;">Cantidad de Planta</th>
+                     <th style="font-size:85%;">Tipo de Salida</th>
+                  </tr>
+               </thead>
+               <tbody id="TablaBodyDC">
+                  <tr class="info">
+                     <th class="text-center" style="font-size:95%;">2015</th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                     <th style="font-size:95%;"></th>
+                  </tr>
+                  <tr>
+                     <th style="font-weight: normal; font-size:90%;">Pino</th>
+                     <th style="font-weight: normal; font-size:90%;">Pino ayacahuite</th>
+                     <th style="font-weight: normal; font-size:90%;">Lote de semilla</th>
+                     <th style="font-weight: normal; font-size:90%;">Nuevo</th>
+                     <th style="font-weight: normal; font-size:90%;">5000</th>
+                     <th style="font-weight: normal; font-size:90%;">GC 2015</th>
+                     <th style="font-weight: normal; font-size:90%;">1</th>
+                     <th style="font-weight: normal; font-size:90%;">12</th>
+                     <th style="font-weight: normal; font-size:90%;">3500</th>
+                     <th style="font-weight: normal; font-size:90%;">800</th>
+                  </tr>
+               </tbody>
+            </table>
+
+
+
+
+
+            <table id="TablaAnio" class="table table-striped table-bordered" style="display: none;">
+               <thead>
+               <tr class="success">
+                  <th class="text-center" colspan="2" style="font-size:85%;">Dependencias</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">PROBOSQUE</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">CEPANAF</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">CGCE</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">SECyBS</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">OTRO ESTATAL</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">SEMARNAT</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">CONAFOR</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">CONANP</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">CONAZA</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">CONAGUA</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">SEDESOL</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">DIB</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">OTRO FEDERAL</th>
+                     <th class="text-center" colspan="2" style="font-size:85%;">TOTAL</th>
+                  </tr>
+                  <tr class="warning">
+                     <th colspan="2" style="font-size:80%;"></th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                     <th style="font-size:80%;">Planta</th>
+                     <th style="font-size:80%;">Superficie</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <th colspan="2" style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                     <th style="font-size:80%;"></th>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+          <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title text-center">- Destino Planta -</h3>
+        </div>
+        <div class="modal-body">
+          <h4 class="text-center"><strong>Instrucciones</strong></h4>
+          <ul>
+            <li>PUEDE ESPECIFICAR 2 CRITERIOS DE BUSQUEDA POR AÑO Y POR CLIENTE:
+               <ul><br>
+                  <li><em>SI ELIJE AÑO, DEBE INDICARLO DE LO CONTRARIO EL SISTEMA MOSTRARA TODA LA INFORMACIÓN REGISTRADA DE LOS DIFERENTES AÑOS EN LA BASE DE DATOS.</em></li><br>
+                  <li><em>SI ELJE CIUDADANO, DEBE ESCRIBIR EL NOMBRE DE LA PERSONA DE LA CUAL DESEA BUSCAR INFORMACION.</em></li>
+               </ul>
+            </li>
+         </ul>
+         
+          <br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+       </div>
+      <div class="app_foot">
+         <div style="position:absolute;left:0px;right:0px;top:5px;bottom:5px;border-top:3px solid #fff;border-bottom:3px solid #fff;">
+            <div style="float: left;  top: 4px;  position: relative;  margin-left: 15px;  color: #fff;  font-size: 91%;">
+               <div>Gobierno del Estado de México</div>
+               <div>Secretaría del Medio Ambiente</div>
+               <div>Protectora de Bosques</div>
+            </div>
+            <div style="float: left;  top: 4px;  position: relative;  margin-left: 40px;color:#fff;font-size:91%;">
+               <div>Rancho Guadalupe S/N Conjunto SEDAGRO</div>
+               <div>Metepec, Teléfonos: (722) 2710779 2710789</div>
+               <div>E-mail: probosque.apo@edomex.gob.mx</div>
+            </div>
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+      <script type="text/javascript" src="js/libs/amplify/amplify.js"></script>
+      <script type="text/javascript" src="js/JSPP.js"></script>
+      <script src="js/bootstrap-datepicker.js"></script>
+      <script type="text/javascript">
+         $('#anio').datepicker({ 
+         format: " yyyy", // Notice the Extra space at the beginning
+         viewMode: "years", 
+         minViewMode: "years"}).on('changeDate',function(ev){
+            $(this).datepicker('hide');
+         });
+
+         $('#anio2').datepicker({ 
+         format: " yyyy", // Notice the Extra space at the beginning
+         viewMode: "years", 
+         minViewMode: "years"}).on('changeDate',function(ev){
+            $(this).datepicker('hide');
+         });
+
+         $(document).ready(function(){
+    $('[rel="tooltip"]').tooltip();
+});
+      </script>
+   </body>
+</html>

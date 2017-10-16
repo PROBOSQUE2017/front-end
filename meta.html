@@ -1,0 +1,167 @@
+<html lang="es">
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <meta charset="UTF-8">
+      <title>Sistema de Información Forestal del Estado de México</title>
+      
+      <link rel="stylesheet" type="text/css" href="css/structure.css">
+      <link rel="stylesheet" type="text/css" href="css/loging.css">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/datepicker.css">
+      <style>
+.datepicker{z-index:1151 !important;}
+</style>
+   </head>
+   <body>
+      <div class="app_header">
+         <div class="section_header">
+            <div class="section_logo">
+               <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+               <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+         </div>
+      </div>
+
+      <!-- Content Section -->
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <h2>Metas Anuales</h2>
+               <div class="pull-right">
+                  <button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal">Agregar Nueva Meta</button>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-md-12">
+               <h4>Registros:</h4>
+               <div class="records_content"></div>
+            </div>
+         </div>
+      </div>
+      <!-- /Content Section -->
+
+
+      <!-- Bootstrap Modal - To Add New Record -->
+      <!-- Modal -->
+      <div class="modal fade" id="add_new_record_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header alert alert-info">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Agregar Nuevo Registro</h4>
+               </div>
+               <div class="modal-body">
+                  <div class="form-group">
+                     <label for="region">Región</label>
+                     <select class="form-control" id="region">
+
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="anio">Año</label>
+                     <input type="text" id="anio" placeholder="De clic para seleccionar un año" class="form-control" readonly />
+                  </div>
+                  <div class="form-group">
+                     <label for="m_anual">Meta Anual (HA)</label>
+                     <input type="text" id="m_anual" onkeypress="return validateFloatKeyPress(this,event);" placeholder="" class="form-control" />
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" onclick="AddRegistro()">Guardar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Modal - Update User details -->
+      <div class="modal fade" id="update_user_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert alert-warning">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Actualizar Información</h4>
+            </div>
+            <div class="modal-body">
+ 
+                <div class="form-group">
+                     <label for="updateregion">Región</label>
+                     <select class="form-control" id="updateregion">
+
+                     </select>
+                  </div>
+                  <div class="form-group">
+                     <label for="updateanio">Año</label>
+                     <input type="text" id="updateanio" placeholder="De clic para seleccionar un año" class="form-control" readonly />
+                  </div>
+                  <div class="form-group">
+                     <label for="updatem_anual">Meta Anual (HA)</label>
+                     <input type="text" id="updatem_anual" onkeypress="return validateFloatKeyPress(this,event);" placeholder="" class="form-control" />
+                  </div>
+ 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="ActualizaMetaAnual()" >Guardar Cambios</button>
+                <input type="hidden" id="hidden_id_meta">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal -->
+
+      <div id="alerta" class="alert alert-danger alert-dismissible col-sm-6 col-sm-offset-3" role="alert" style="display: none">
+         <strong>No existen metas de Reforestacion</strong>
+      </div>
+
+      <div style="overflow-y: auto; height:200px; ">
+      <table id="TablaDatos" class="table table-bordered table-striped">
+         <thead id="TitulosTabla">
+         </thead>
+         <tbody id="TablaBody">
+         </tbody>
+      </table>
+      </div>
+
+      
+      <div class="app_foot">
+         <div style="position:absolute;left:0px;right:0px;top:5px;bottom:5px;border-top:3px solid #fff;border-bottom:3px solid #fff;">
+            <div style="float: left;  top: 4px;  position: relative;  margin-left: 15px;  color: #fff;  font-size: 85%;">
+               <div>Gobierno del Estado de México</div>
+               <div>Secretaría del Medio Ambiente</div>
+               <div>Protectora de Bosques</div>
+            </div>
+            <div style="float: left;  top: 4px;  position: relative;  margin-left: 40px;color:#fff;font-size:85%;">
+               <div>Rancho Guadalupe S/N Conjunto SEDAGRO</div>
+               <div>Metepec, Teléfonos: (722) 2710779 2710789</div>
+               <div>E-mail: probosque.apo@edomex.gob.mx</div>
+            </div>
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/JScript.js"></script>
+      <script src="js/bootstrap-datepicker.js"></script>
+      <script type="text/javascript">
+            $(function () {
+                $('#anio').datepicker({ 
+                 format: " yyyy", // Notice the Extra space at the beginning
+                 viewMode: "years", 
+                 minViewMode: "years"
+               });
+            });
+
+            $(function () {
+                $('#updateanio').datepicker({ 
+                 format: " yyyy", // Notice the Extra space at the beginning
+                 viewMode: "years", 
+                 minViewMode: "years"
+               });
+            });
+</script>
+   </body>
+</html>

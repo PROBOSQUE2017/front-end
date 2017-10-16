@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modulo Maderable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="/SIFEM/maderable/js/libs/jquery-3.1.1.min.js"></script>
+    <script src="/SIFEM/maderable/js/libs/amplify.js"></script>
+    <script src="/SIFEM/maderable/js/myScript/controlSession.js"></script>
+    <script type="text/javascript">
+        amplify.store.controlPagesOnlyPrograma8('dataLoggingProbosque');
+    </script>
+    <script src="/SIFEM/maderable/js/libs/blockUI.js"></script>
+    <script src="/SIFEM/maderable/js/libs/bootstrap.js"></script>
+    <script src="/SIFEM/maderable/js/libs/validate.js"></script>
+    <script src="/SIFEM/maderable/js/libs/moment.min.js"></script>
+    <script src="/SIFEM/maderable/js/libs/daterangepicker.js"></script>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" type="text/css" href="/SIFEM/maderable/css/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/maderable/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/maderable/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/maderable/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/maderable/css/loading.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+</head>
+
+<body>
+    <div class="app_header">
+        <div class="section_header">
+            <div class="section_logo">
+                <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+                <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+                <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+                <div class="divisor"></div>
+                <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!-- Pestañas -->
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="/SIFEM/maderable/padron/altas.html">Agregar registro</a></li>
+            <li><a href="/SIFEM/maderable/padron/modificaciones.html">Modificar registro</a></li>
+            <li><a href="/SIFEM/maderable/padron/eliminar.html">Eliminar registro</a></li>
+             <li><a id="linkEsci" href="/SIFEM/">Regresar</a></li>
+        </ul>
+        <div>
+            <form id="addForm">
+                <!-- Fin pestañas -->
+                <!-- Despliega Formulario -->
+                <br/>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label id="aux">Clave única de identificación</label>
+                        <input type="text" name="padron" id="padron" class="form-control" readonly>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Nombre</label>
+                        <input type="text" name="nombreName" id="nombre" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Razón Social</label>
+                        <input type="text" name="razonSocialName" id="razonSocial" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>RFC</label>
+                        <input type="text" name="rfcName" id="rfc" class="form-control">
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>RNF</label>
+                        <input type="text" name="rnfName" id="rnf" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                         <label>Región</label>
+                         <select name="region" id="Sregion" class="form-control">
+                             <option value="-1">SELECCIONE</option>
+                             <option value="1">I TOLUCA</option>
+                             <option value="2">II ZUMPANGO</option>
+                             <option value="3">III TEXCOCO</option>
+                             <option value="4">IV TEJUPILCO</option>
+                             <option value="5">V ATLACOMULCO</option>
+                             <option value="6">VI COATEPEC HARINAS</option>
+                             <option value="7">VII VALLE DE BRAVO</option>
+                             <option value="8">VIII JILOTEPEC</option>
+                         </select>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                         <label>Municipio</label>
+                         <select name="muni" id="Smuni" class="form-control">
+                             <option value="-1">SELECCIONE</option>
+                         </select>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                         <label>Localidad</label>
+                         <select name="loc" id="Sloc" class="form-control">
+                             <option value="-1">SELECCIONE</option>
+                         </select>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Colonia</label>
+                        <input type="text" name="coloniaName" id="colonia" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Calle</label>
+                        <input type="text" name="calleName" id="calle" class="form-control">
+                    </div>
+                     <div class="col-md-3 col-sm-3 col-xs-12">                       
+                        <label>No. Exterior</label>
+                        <input type="text" name="noExteriorName" id="noExterior" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>No. Interior</label>
+                        <input type="text" name="noInteriorName" id="noInterior" class="form-control">
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Teléfono</label>
+                        <input type="text" name="telefonoName" id="telefono" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Correo</label>
+                        <input type="text" name="correoName" id="correo" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Latitud</label>
+                        <input type="text" name="latitudName" id="latitud" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Longitud</label>
+                        <input type="text" name="longitudName" id="longitud" class="form-control">
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Tipo</label>
+                        <input type="text" name="tipoName" id="tipo" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Actividad</label>
+                        <select name="actividadName" id="actividad" class="form-control">
+                             <option value="-1">SELECCIONE</option>
+                             <option value="ASERRADERO">ASERRADERO</option>
+                             <option value="MADERERÍA">MADERERÍA</option>
+                             <option value="TARIMERA">TARIMERA</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Fecha de Alta</label>
+                        <input type="text" name="fechaAltaName" id="fechaAlta" class="form-control">
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Observaciones</label>
+                        <input type="text" name="observacionesName" id="observaciones" class="form-control">
+                    </div>
+                </div>
+                <br/>
+                 <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Solicito auditoría técnica preventiva</label>
+                        <select name="solicitudAuditoriaName" id="solicitudAuditoria" class="form-control">
+                             <option value="true">SI</option>
+                             <option value="false" selected>NO</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <label>Fecha de auditoría técnica</label>
+                        <input type="text" name="fechaAuditoriaName" id="fechaAuditoria" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-3 col-xs-12 text-center">
+                        <button id="btnAddPadron" type="submit" class="btn btn-success" style="margin-top: 30px;">Agregar</button>
+                        <button id="btnClean" type="reset" class="btn btn-default " style="margin-top: 30px;">Limpiar formulario</button>
+                    </div>
+                </div>
+                <br/>
+            </form>
+        </div>
+    </div>
+    <!-- Fin despliega formularios -->
+    <!-- Inicio modal Muestra respuesta Ok -->
+    <div class="modal fade" id="myModalRespCalif" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <center>
+                        <h4 id="msjResponseCalif"></h4>
+                        <br>
+                        <button type="button" class="btn btn-default" id="btnOkAdd" hidden>ACEPTAR</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnInt" hidden>INTENTAR</button>
+                        <button type="button" class="btn btn-danger" id="btnActivar" hidden>ACTIVAR</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="btn1Cancelar" hidden>CANCELAR</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    <!-- Fin modal muestra respuesta -->
+    <script src="/SIFEM/maderable/js/myScript/connections.js"></script>
+    <script src="/SIFEM/maderable/js/myScript/altas.js"></script>
+    <style type="text/css">
+    label > span {
+        color: #ff0000;
+    }
+    input {
+        text-transform: uppercase;
+    }
+    
+    </style>
+
+</body>
+
+</html>

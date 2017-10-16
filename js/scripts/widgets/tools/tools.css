@@ -1,0 +1,50 @@
+
+/*
+#555555;
+#BBBBBB;
+#f8f8f8;
+#EEEEEE;
+
+#E1E3E4;  --background
+*/
+
+@import url('template.css');
+
+.demo{
+    position: absolute;
+    top:0px;
+    width:40px;
+    bottom: 0px;
+    right: 0px;
+    background: #E1E3E4;
+    box-shadow: 0px 1px 0px 1px #555555;
+}
+
+.custom_tools {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+.custom_tools .item_tool{
+	position: relative;
+	left: 0px;
+	right: 0px;
+}
+
+.custom_tools .icon{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.custom_tools .border{
+	position: absolute;
+	bottom: 0px;
+	height: 2px;
+	left: 6px;
+	right: 6px;
+	border-bottom: 1px solid #BBBBBB;
+	
+}

@@ -1,0 +1,28 @@
+{  
+   "response":{  
+      "message":"valido",
+      "sucessfull":true
+   },
+   "data":[  
+      {  
+         "label":"",
+         "cve_ent":"",
+         "notassigned":""
+      },
+      {  
+         "label":"",
+         "cve_ent":"",
+         "notassigned":""
+      },
+      {  
+         "label":"",
+         "cve_ent":"",
+         "notassigned":""
+      },
+      {  
+         "label":"",
+         "cve_ent":"",
+         "notassigned":""
+      }
+      ]
+}

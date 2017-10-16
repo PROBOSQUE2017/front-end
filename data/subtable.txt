@@ -1,0 +1,236 @@
+{  
+   "response":{  
+      "message":"Formulario",
+      "sucessfull":true
+   },
+   "data":[  
+      {  
+         "type":"edit",
+         "label":"Folio",
+         "field":"folio",
+         "datatype":"string",
+         "maxLength":9,
+         "minLength":0,
+         "searchable":false,
+         "editable":false,
+         "value":""
+      },
+      {  
+         "type":"select",
+         "label":"Región",
+         "field":"id_region",
+         "datatype":"string",
+         "listname":"cat_region",
+         "maxLength":0,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "list":{  
+            "list":[  
+               {  
+                  "value":1,
+                  "label":"I Toluca"
+               },
+               {  
+                  "value":2,
+                  "label":"II Zumpango"
+               },
+               {  
+                  "value":3,
+                  "label":"III Texcoco"
+               },
+               {  
+                  "value":4,
+                  "label":"IV Tejupilco"
+               },
+               {  
+                  "value":5,
+                  "label":"V Atlacomulco"
+               },
+               {  
+                  "value":6,
+                  "label":"VI Coatepec Harinas"
+               },
+               {  
+                  "value":7,
+                  "label":"VII Valle de Bravo"
+               },
+               {  
+                  "value":8,
+                  "label":"VIII Jilotepec"
+               }
+            ]
+         },
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Tipo de evento",
+         "field":"tipo_evento",
+         "datatype":"string",
+         "maxLength":50,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Nombre del evento",
+         "field":"nombre_evento",
+         "datatype":"string",
+         "maxLength":255,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Lugar del evento",
+         "field":"lugar_evento",
+         "datatype":"string",
+         "maxLength":255,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Municipio",
+         "field":"id_municipio",
+         "datatype":"list",
+         "listname":"cat_municipio",
+         "maxLength":0,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "list":{  
+            "list":[  
+               {  
+                  "value":1,
+                  "label":"I Toluca"
+               },
+               {  
+                  "value":2,
+                  "label":"II Zumpango"
+               },
+               {  
+                  "value":3,
+                  "label":"III Texcoco"
+               },
+               {  
+                  "value":4,
+                  "label":"IV Tejupilco"
+               },
+               {  
+                  "value":5,
+                  "label":"V Atlacomulco"
+               },
+               {  
+                  "value":6,
+                  "label":"VI Coatepec Harinas"
+               },
+               {  
+                  "value":7,
+                  "label":"VII Valle de Bravo"
+               },
+               {  
+                  "value":8,
+                  "label":"VIII Jilotepec"
+               }
+            ]
+         },
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Latitud",
+         "field":"latitud",
+         "datatype":"numeric",
+         "maxLength":15,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Longitud",
+         "field":"longitud",
+         "datatype":"numeric",
+         "maxLength":15,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Fecha del evento",
+         "field":"fecha_evento",
+         "datatype":"date",
+         "maxLength":0,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Instructor",
+         "field":"instructor",
+         "datatype":"string",
+         "maxLength":150,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Dependencia imparte",
+         "field":"dependencia_imparte",
+         "datatype":"string",
+         "maxLength":100,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Unidad administrativa",
+         "field":"unidad_administrativa",
+         "datatype":"string",
+         "maxLength":100,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"edit",
+         "label":"Participantes",
+         "field":"participantes",
+         "datatype":"numeric",
+         "maxLength":5,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      },
+      {  
+         "type":"form",
+         "label":"Datos de participantes",
+         "field":"prog2_participantes",
+         "datatype":"records",
+         "maxLength":0,
+         "minLength":0,
+         "searchable":false,
+         "editable":true,
+         "value":""
+      }
+   ]
+}

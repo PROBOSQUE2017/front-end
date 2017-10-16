@@ -1,0 +1,125 @@
+.custom_overlays{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+   
+}
+.custom_overlays .item_group{
+    position: relative;
+    /* float: left; */
+    /* width: 300px; */
+    /*padding: 4px;*/
+    margin: 3px;
+   /* margin-top: 10px;*/
+    /*border: 1px solid #d2d6d5;*/
+    /*background: #F4F4F4;*/
+    margin-bottom: 5px;
+}
+.custom_overlays .item_group .title{
+    position: relative;
+    /* top: -21px; */
+    /* left: 10px; */
+    font-size: 120%;
+    font-weight: bold;
+    color: white;
+    background: #007B42;
+    padding: 5px;
+}
+.custom_overlays .item_layer{
+    margin-top: 8px;
+    border-bottom: 1px solid #BBBBBB;
+}
+
+.custom_overlays .item_layer .label{
+    position:relative;top:-3px;
+    font-size: 120%;
+    color:#555555;
+    width: 180px;
+}
+
+.custom_overlays .item_layer .color{
+    position: relative;
+  float: right;
+  top: 0px;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+.custom_overlays .delete_layer{
+     position: relative;
+  float: right;
+  top: 0px;
+  width: 18px;
+  height: 18px;
+  margin-right: 2px;
+}
+
+.custom_overlays .zoom_layer{
+    position: relative;
+  float: right;
+  top: 0px;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.custom_overlays .inputThemes{
+            outline: 0;
+  /* padding: 12px; */
+  width: 100%;
+  border: 1px solid #D7D7D7;
+  border-radius: 2px;
+  background-color: #fff;
+  background-image: none;
+  /* width: 90%; */
+  margin-top: 5px;
+  display: block;
+  color: #7A7D7F;
+  font-size:
+  120%;
+}
+.custom_overlays .title_theme{
+    width: 100%;
+  text-align: center;
+  font-size: 120%;
+  font-weight: bold;
+  color: #7B7D7F;
+  margin-top: 20px;
+}
+.custom_overlays .graphOverlay{
+    margin-top: 10px;
+    width:100%;
+    height: 70px;
+}
+
+.custom_overlays .list_dynamicLayers{
+    position: absolute;
+    top:0px;
+    width:100%;
+    bottom: 170px;
+    overflow: auto;
+}
+.custom_overlays .info_tematics{
+     position: absolute;
+    bottom:0px;
+    width:100%;
+    height: 170px;
+}
+
+
+.template_overlays{
+    background:url("img/close.png") top left no-repeat;
+}
+
+.tov_close{
+      width: 17px;
+  height: 18px;
+  background-position: -5px -4px;
+}
+.tov_zoom{
+      width: 17px;
+  height: 18px;
+  background-position: -27px -4px;
+}

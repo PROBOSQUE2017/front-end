@@ -1,0 +1,379 @@
+
+.background_tabular{
+    background:#F2F2F2;
+    position: absolute;
+    top: 0px;
+    left:0px;
+    right:0px;
+    bottom: 0px;
+    overflow: auto;
+    z-index: 3000;
+}
+.customTabular_header{
+    background: #222;
+    width:100%;
+    height:50px;
+}
+
+.customTabular_header .back_users{
+    color:white;font-size:200%;position:absolute;left:10px;top:10px;
+    z-index:2;
+    cursor: pointer;
+}
+
+.customTabular_header .title_header{
+    position: absolute;
+    left:0px;
+    right:0px;
+    top:10px;
+    z-index:1;
+    
+    color:white;font-size:200%;
+    text-align: center;
+}
+
+.background_tabular .Field{
+    position: relative;
+    border: 1px solid transparent;
+    padding-left: 10%;
+}
+.background_tabular .ButtonSection{
+     position: relative;
+    border: 1px solid #F9F6EE;
+}
+.background_tabular .Field .label{
+    
+    color: #7A7D7F;
+  /* float: left; */
+  position: absolute;
+  /* top: 15px; */
+  font-size: 110%;
+  font-weight: bold;
+  width: 90%;
+  bottom: 44px;
+  margin-top: 10px;
+}
+
+.background_tabular .Field .textInput{
+    outline: 0;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
+    background-color: #fff;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width:90%;
+    margin-top: 50px;
+    display: block;
+    color:#7A7D7F;
+    font-size: 110%;
+}
+.background_tabular .Field .multiselect{
+    outline: 0;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
+    background-color: #fff;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width:90%;
+    margin-top: 50px;
+    display: block;
+    color:#7A7D7F;
+    font-size: 110%;
+}
+.background_tabular .Field .form{
+    outline: 0;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
+    background-color: #fff;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width:90%;
+    margin-top: 50px;
+    display: block;
+    color:#7A7D7F;
+    font-size: 110%;
+}
+.background_tabular .Field .formInput .records{
+	position: absolute;
+	padding: 4px;
+	background: #4db6ac;
+	color: #fff;
+	top: 9px;
+	right: 10px;
+	font-size: 80%;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	
+}
+.background_tabular .Field .formInput{
+    cursor: pointer;
+    position: relative;
+    outline: 0;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
+    background-color: #fff;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width:90%;
+    margin-top: 50px;
+    display: block;
+    color:#7A7D7F;
+    font-size: 110%;
+}
+.background_tabular .Field .selectInput{
+    outline: 0;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
+    background-color: #fff;
+    background-image: none;
+    width:90%;
+    margin-top: 50px;
+    display: block;
+    color:#7A7D7F;
+}
+
+.background_tabular .Field .badInput{
+  background-color: #FF6961 !important;
+}
+
+.background_tabular .ButtonSection .textButton{
+    background-color: #7B7D7F;
+    border-radius: 5px;
+    padding: 15px;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    color: white;
+    font-size: 250%;
+}
+
+.tabular_message{
+    position:absolute;
+    top:30%;
+    left: 30%;
+    right: 30%;
+    bottom: 30%;
+    z-index: 5001;
+    border: 1px solid #222;
+}
+.tabular_message .header{
+    position: absolute;
+    height: 30px;
+    width:100%;
+    
+}
+.tabular_message .type_info{
+    background: #007B42;
+    color:#FFF;
+    
+}
+.tabular_message .type_error{
+    background: #C5002E;
+    color:#FFF;
+    
+}
+.tabular_message .header .close{
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    
+}
+.tabular_message .header  .label{
+    font-size: 200%;
+    margin-left: 12px;
+    margin-top: 2px;
+}
+.tabular_message .container{
+   position: absolute;
+top: 30px;
+width: 100%;
+bottom: 0px;
+background: #FFF;
+overflow-y: auto;
+overflow-x: hidden;
+font-size: 120%;
+}
+.tabular_message_veil{
+    position:absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    -moz-opacity:0.80;
+    opacity:0.80;
+    filter:alpha(opacity=80);
+    background: #eee;
+    z-index: 5000;
+}
+.tabular_message .item_error{
+    position: relative;
+    left:10px;
+    right: 10px;
+    margin-top:15px;
+}
+.template_custom_tabular_close{
+	display:block;background-image:url(../img/close.png);overflow:hidden;width:24px; height:24px; background-repeat:no-repeat;
+}
+.template_custom_tabular_image{
+	
+	display:block;background-image:url(img/images.png);overflow:hidden;background-repeat:no-repeat;
+}
+.tcti_close{
+	width:30px; height:30px;
+	background-position:0px 0px;
+}
+.tcti_image{
+	width: 40px;
+	height: 30px;
+	background-position: -37px 0px;
+}
+.background_tabular .image_delete{
+	position: absolute;
+	bottom: 5px;
+	right: 38px;
+	
+}
+.background_tabular .image_icon{
+	  position: absolute;
+	bottom: 6px;
+	right: 38px;
+}
+
+.contenedor1{
+    overflow-y: scroll;
+    overflow-x: scroll;
+    border-top: 4px solid #A2A2A2;
+    border-right: 4px solid #A2A2A2;
+    border-bottom: 4px solid #A2A2A2;
+    border-left: 4px solid #A2A2A2; 
+    width:90%;
+    height:200px;   
+    }
+.contenedor2{
+    overflow-y: scroll;
+    border-top: 4px solid #636363;
+    border-right: 4px solid #636363;
+    border-bottom: 4px solid #636363;
+    border-left: 4px solid #636363; 
+    width:90%;
+    height:200px;   
+    }
+.contenedor3{
+    overflow-y: scroll;
+    border-top: 4px solid #FF0000;
+    border-right: 4px solid #FF0000;
+    border-bottom: 4px solid #FF0000;
+    border-left: 4px solid #FF0000; 
+    width:90%;
+    height:200px;   
+    }
+.contenedor4{
+    overflow-y: scroll;
+    border-top: 4px solid #01DF01;
+    border-right: 4px solid #01DF01;
+    border-bottom: 4px solid #01DF01;
+    border-left: 4px solid #01DF01; 
+    width:90%;
+    height:200px;   
+    }
+.contenedor5{
+    overflow-y: scroll;
+    border-top: 4px solid #190707;
+    border-right: 4px solid #190707;
+    border-bottom: 4px solid #190707;
+    border-left: 4px solid #190707; 
+    width:90%;
+    height:200px;   
+    }
+.titulosVentanilla{
+    margin-top:25px;
+    font-family:SoberanaSans_regular;
+    color:#006AC1;
+}
+
+.close {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 13px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.7;
+  filter: alpha(opacity=20);
+  text-decoration: none;
+}
+.close:hover {
+  color: #000000;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+.blanco {
+    text-align: left;
+    cursor:pointer;
+    /*background: #FFFFFF;*/
+    width: 200%;
+    margin-left: auto;
+    margin-right: auto; 
+    font-size:13px; 
+    font-weight:bold;
+    color:#009688;
+}
+
+.rojo {
+    text-align: left;
+    cursor:pointer;
+    background-size:cover;
+    /*background: #FF0000;*/
+    width: 1000%;
+    margin-left: auto;
+    margin-right: auto; 
+    font-size:13px; 
+    font-weight:bold;
+    color:#ff0000;
+    overflow: hidden;
+}
+
+.naranja {
+    text-align: left;
+    cursor:pointer;
+    /*background: #FA8E13;*/
+    width: 200%;
+    margin-left: auto;
+    margin-right: auto; 
+    font-size:13px; 
+    font-weight:bold;
+    color:#ff9800;
+}
+
+.verde {
+    text-align: left;
+    cursor:pointer;
+    background: #01DF01;
+    width: 200%;
+    margin-left: auto;
+    margin-right: auto; 
+    font-size:13px; 
+    font-weight:bold;
+    color:#000;
+}

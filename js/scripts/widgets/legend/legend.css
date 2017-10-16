@@ -1,0 +1,35 @@
+
+.custom_legend{
+    position: absolute;
+    z-index: 1200;
+    bottom: 37px;
+    right: 20px;
+    padding: 5px;
+    background: #fff;
+    -moz-box-shadow: 1px 1px 2px 0px #555;
+    -webkit-box-shadow: 1px 1px 2px 0px #555;
+    box-shadow: 1px 1px 2px 0px #555;
+    -webkit-border-radius: 10px 10px 10px 10px;
+border-radius: 10px 10px 10px 10px;
+}
+
+.custom_legend .item_option{
+    height: 20px;
+    width: 90px;
+    margin-bottom: 5px; 
+}
+
+.custom_legend .item_option .status{
+    height: 16px;
+    width:16px;
+    display: inline-block;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    position: relative;
+    top: 4px;
+}
+.custom_legend .item_option .label{
+    display: inline-block;
+    color:black;
+    margin-left: 10px;
+}

@@ -1,0 +1,109 @@
+.custom_alert{
+   position: absolute;
+   top:0px;
+   left:0px;
+   bottom: 0px;
+   right: 0px;
+   z-index: 50000;
+}
+
+.custom_alert .message{
+   position: relative;
+   width: 300px;  display: block;   margin-left: auto;   margin-right: auto;
+   z-index: 50001;
+   margin-top: 80px;
+   
+   -webkit-box-shadow: 3px 2px 2px 2px #555;
+   box-shadow: 3px 2px 2px 2px #555;
+
+   background:#fff;
+    
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    
+}
+
+.custom_alert .message .header{
+   width: 99%;
+   border-bottom:2px solid #555555;
+   height:45px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+    border-top: 2px solid #BBBBBB;
+    border-left: 2px solid #BBBBBB;
+    border-right: 2px solid #BBBBBB;
+    font-size: 120%;
+}
+
+.custom_alert .message .label{
+  position: relative;
+  color:#fff;
+ left:10px;
+ top:12px;
+ font-size: 120%;
+}
+
+.custom_alert .message .content{
+   padding-left: 7px;
+   padding-right: 7px;
+   padding-top: 5px;
+   padding-bottom: 7px;
+   border-bottom: 2px solid #BBBBBB;
+    border-left: 2px solid #BBBBBB;
+    border-right: 2px solid #BBBBBB;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+}
+.custom_alert .message .content p{
+   font-size: 120%;
+}
+.custom_alert .ui-widget-overlay{
+   z-index: -1 !important;
+}
+
+.custom_alert .notification{
+   background: #007B42;
+}
+
+.custom_alert .error{
+   background:#C5002E;
+}
+
+.custom_alert .buttons{
+   position: relative;
+   width: 100%;
+}
+
+.custom_alert .custom_alert_veil{
+   position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #000;
+    -moz-opacity:0.50;
+    opacity:0.50;
+    filter:alpha(opacity=50);
+    z-index: 50000;
+}
+
+.custom_alert .textButton_notification{
+   background-color: #007B42;
+}
+.custom_alert .textButton_error{
+   background-color: #C5002E;
+}
+.custom_alert .textButton{
+   
+    border-radius: 5px;
+    padding: 15px;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    color: white;
+    font-size: 250%;
+    width:140px;
+}

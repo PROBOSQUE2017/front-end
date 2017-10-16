@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link id="bootstrapCSS" href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link id="template" rel="stylesheet" href="assets/css/template.css" />
+    
+    <style type="text/css">
+        .olControlPanZoom {
+            margin-top: 50px;
+        }
+    </style>
+    <title>Sistema de Información Forestal del Estado de México</title>
+</head>
+
+<body>
+
+    
+    <div class="row">
+        
+            <div id="map" style="top: 0px;"></div>
+        
+    </div>
+</body>
+<script id="jQuery211" type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script id="amplify" type="text/javascript" src="../js/libs/amplify/amplify.js"></script>
+<script type="text/javascript" src="PrintMapa/lib/OpenLayers.js"></script>
+<script type="text/javascript">
+    /**
+    * @fileoverview Contiene la configuracion del mapa funciones para los poligonos 
+    *
+    * @author Ivan Tadeo Huerta
+    * @version 0.1
+    */
+    $(document).on('ready', function() {
+
+            /** 
+            * @constant {int}
+            * @default
+            */
+            const usuario = amplify.store('dataLoggingProbosque').id;
+           
+
+
+            /** 
+            * @constant {obj}
+            * @default
+            */
+            const datosPoligonos =  amplify.store('poligonosTmp');
+            /**
+            * Resetea variable de sesion poligonosTmp
+            */
+            amplify.store('poligonosTmp',null);
+
+            /**
+            * @constant {string}
+            * @default
+            */
+            const url = 'http://187.188.96.133:8080/ServiceBosque/ConectMapa';
+
+
+
+           /** 
+           * Representa el mapa
+           * @constructor 
+           */
+            var map = new OpenLayers.Map({
+                    div: "map",
+                                     
+                    layers: [
+                        new OpenLayers.Layer.OSM()
+                        ]
+            });
+
+
+
+            if (!map.getCenter()) map.zoomToMaxExtent();
+             
+            map.addControl(new OpenLayers.Control.LayerSwitcher());      
+            map.addControl(new OpenLayers.Control.MousePosition());
+            map.addControl(new OpenLayers.Control.ScaleLine());
+            map.addControl(new OpenLayers.Control.ExportMap());
+
+            map.setCenter(new OpenLayers.LonLat(-99.67274, 19.35743).transform(
+                new OpenLayers.Projection("EPSG:4326"),
+                new OpenLayers.Projection("EPSG:900913")
+            ), 8);
+
+
+            /**
+            * Envia peticion para cargar la capa de regiones
+            * @param  {int} user
+            * @param  {String} url
+            * @param  {String} accion 
+            * @return {String} 
+            */
+
+            let loadRegiones =(user,  url , accion ) => {
+                let params = { usuario: user , action : accion };
+                
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    datatype: 'json',
+                    data: params
+                }).done(function(data) {
+
+                    
+                    pintaCadena(data.data,'Regiones', null);
+
+                });
+            }
+
+
+            /**
+            * Obtiene la cadena wkt de cada objecto
+            * @param  {String} poligonos 
+            */
+
+            let loadPoligonos = function(poligonos){
+            
+                for(let objecto in poligonos){
+                    if(objecto == 'predioNuevo'){
+                        pintaCadena(poligonos.predioNuevo.wkt, 'Predio Nuevo',
+                           new OpenLayers.Style({
+                                        fillColor: '#FF0000',
+                                        fillOpacity: 0.5,
+                                        strokeColor: '#840000',
+                                        strokeWidth: 1,
+                                        strokeOpacity: 0.8 }),
+                            true, 
+                            poligonos.nombrePredio
+                        );
+
+                    }else if(objecto == 'predioViejo'){
+                        pintaCadena(poligonos.predioViejo.wkt, 'Predio Viejo',
+                            new OpenLayers.Style({
+                                        fillColor: '#3C00FF',
+                                        fillOpacity: 0.5,
+                                        strokeColor: '#1C0077',
+                                        strokeWidth: 1,
+                                        strokeOpacity: 0.8 }),
+                            false,
+                            poligonos.nombrePredio
+                        
+                        );
+                    }
+                }
+            }
+
+            /**
+            * Metodo generico para leer cadenas wkt
+            * @param  {String wkt} cadena 
+            * @param  {String wkt} nameVector 
+            * @param  {Object} style
+            * @param  {boolean} geolocalizar
+            */
+            
+            let pintaCadena = function(cadena=null,nameVector,style, geolocalizar=false, namePredio="Sin nombre"){
+
+                    
+                    let wktLayer = new OpenLayers.Layer.Vector(nameVector,
+                        {
+                        styleMap: style
+                        });
+
+                    map.addLayer(wktLayer);
+                    
+                    let in_options = { 
+                          internalProjection: new OpenLayers.Projection("EPSG:900913"), 
+                          externalProjection: new OpenLayers.Projection("EPSG:4326") 
+                    };
+            
+                    let feactures = new OpenLayers.Format.WKT(in_options).read(cadena);
+
+                    if(geolocalizar){
+                        let x = feactures.geometry.getBounds().getCenterLonLat().lon;
+                        let y = feactures.geometry.getBounds().getCenterLonLat().lat;
+                        map.setCenter(new OpenLayers.LonLat(x,y), 14);
+                        
+                    }
+
+                    if(nameVector == 'Predio Nuevo' || nameVector == 'Predio Viejo'){
+                        feactures.attributes.description = namePredio;
+                        let controls = {
+                            selector: new OpenLayers.Control.SelectFeature(wktLayer, { onSelect: createPopup, onUnselect: destroyPopup })
+                        };
+                               
+                        map.addControl(controls['selector']);
+                        controls['selector'].activate();
+                    }
+
+                    wktLayer.addFeatures(feactures);
+                    
+            }
+
+            /**
+            * Metodo para crear popUp a un feacture
+            * @param feature 
+            */
+
+            function createPopup(feature) {
+                feature.popup = new OpenLayers.Popup.FramedCloud("pop",
+                    feature.geometry.getBounds().getCenterLonLat(),
+                    null,
+                    '<div class="markerContent">'+feature.attributes.description+'</div>',
+                    null,
+                    false,
+                    null 
+                );
+                //feature.popup.closeOnMove = true;
+
+                map.addPopup(feature.popup);
+            }
+
+            /**
+            * Metodo para destruir popUp a un feacture
+            * @param feature 
+            */
+            
+            function destroyPopup(feature) {
+                //feature.popup.destroy();
+                //feature.popup = null;
+                map.removePopup(feature.popup);
+            }
+
+           
+    
+         
+            loadRegiones(usuario,  url , 'mostrarRegiones' );
+
+            loadPoligonos(datosPoligonos);
+
+    });
+</script>
+</html>

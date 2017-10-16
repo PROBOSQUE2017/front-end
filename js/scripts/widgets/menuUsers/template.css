@@ -1,0 +1,13 @@
+.menuUsers_template{ background:url("img/template.png") top left no-repeat; }
+.mu_logo{ width:162px; height:152px; background-position:0px -319px }
+.mu_add{ width:80px; height:80px; background-position:0px -76px; }
+.mu_add:hover{ width:80px; height:80px; background-position:0px -76px; }
+.mu_del{ width:80px; height:80px; background-position:0px 5px; }
+.mu_del:hover{ width:80px; height:80px; background-position:0px 5px; }
+.mu_edit{ width:80px; height:80px; background-position:0px -156px; }
+.mu_edit:hover{ width:80px; height:80px; background-position:0px -156px; }
+.mu_search{ width:80px; height:80px; background-position:0px -239px; }
+.mu_search:hover{ width:80px; height:80px; background-position:0px -239px; }
+
+
+.menuUsers_template_back{ background:url("img/back.png") top left no-repeat;width:64px; height:64px; background-position:0px 0px }

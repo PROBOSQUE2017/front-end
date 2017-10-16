@@ -1,0 +1,37 @@
+
+@import url('template.css');
+
+.custom_notification{
+	position: absolute;
+	top: 0px;
+	left: 20%;
+	right: 20%;
+	height: 0px;
+	z-index: 1000;
+}
+
+.custom_notification .item_notification{
+	position: absolute;
+	width:100%;
+	padding: 10px;
+	background: #fff;
+	font-size: 120%;
+	
+	-webkit-border-radius: 0 0 12px 12px;
+	border-radius: 0 0 12px 12px;
+	text-align: center;
+	-webkit-box-shadow: 1px 1px 1px 1px #858585;
+	box-shadow: 1px 1px 1px 1px #858585;
+}
+
+.custom_notification .item_notification .icon{
+	position: absolute;
+	right: 11px;
+	top: 7px;
+}
+
+.custom_notification .item_notification .label{
+	top:5px;
+	
+}
+

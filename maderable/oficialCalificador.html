@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modulo Maderable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- jQuery -->
+    <script src="js/libs/jquery-3.1.1.min.js"></script>
+    <script src="js/libs/amplify.js"></script>
+    <script src="js/myScript/controlSession.js"></script>
+    <script type="text/javascript">
+    amplify.store.controlPagesOnlyOficial('dataLoggingProbosque');
+    </script>
+    <script src="js/libs/blockUI.js"></script>
+    <script src="js/libs/bootstrap.js"></script>
+    <script src="js/libs/validate.js"></script>
+    <script src="js/libs/downloadFile.js"></script>
+    <script src="js/libs/jquery.dataTables.min.js"></script>
+    <!-- jQuery -->
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="/SIFEM/css/structure.css">
+</head>
+
+<body>
+    <div class="app_header">
+        <div class="section_header">
+            <div class="section_logo">
+                <div class="template_logo"></div>
+            </div>
+            <div class="section_logo_probosque">
+                <div class="template_logo_probosque"></div>
+            </div>
+            <div class="section_title_system">Sistema de Información Forestal del Estado de México</div>
+            <div class="section_info_user">
+                <div class="option_logout" style="font-size: 96%;">Cerrar sesión</div>
+                <div class="divisor"></div>
+                <div class="user_connected" style="font-size: 96%;"></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+            <h4><b>Recepción de inspecciones</b></h4>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+                <!--style="height: 300px;"-->
+                <div class="table-responsive">
+                    <table id="tablaNoDocumentos" class="display" cellspacing="0" width="100%" style="overflow-x:auto;">
+                        <thead>
+                            <tr>
+                                <th width="20%">NO. DOCUMENTO</th>
+                                <th width="20%">CLAVE ÚNICA DE IDENTIFICACIÓN</th>
+                                <th width="20%" class="text-center">EXPEDIENTE</th>
+                                <th class="text-center">ABOGADO</th>
+                                <th class="text-center">ESTATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaRecepcionExpediente">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td align="center">
+                                   No hay inspecciones por atender
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalOption" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="headerOption"></h4>
+                </div>
+                <div class="panel-body">
+                    <div id="bodyOption"></div>
+                </div>
+                 <div class="panel-footer" id="footerOption">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="datosPrograma8"></div>
+    <div id="divmodalerror"></div>
+    <script type="text/javascript" src="js/myScript/oficialCalificador.js"></script>
+    <script type="text/javascript" src="js/myScript/program8.js"></script>
+    <script type="text/javascript" src="js/myScript/connections.js"></script>
+    <script type="text/javascript" src="js/myScript/blockWhileAJAX.js"></script>
+    <style type="text/css">
+    .tooltip {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    label>span{
+        color: red;
+    }
+
+    </style>
+</body>
+
+</html>

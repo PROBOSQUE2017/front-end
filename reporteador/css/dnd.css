@@ -1,0 +1,143 @@
+﻿ul.fuente, ul.a_objetivo, ul.f_objetivo, ul.o_objetivo, ul.s_objetivo  {
+  min-height: 50px;
+  margin: 0px 0px 5px 0px;
+  padding: 2px;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  list-style-type: none;
+  list-style-position: inside;
+}
+ul.fuente {
+  border-color: #E1F1D6;
+}
+/*ul.a_objetivo {
+  border-color: #3579B3;
+}
+ul.f_objetivo {
+  border-color: #DFF1D7;
+} */
+ul.o_objetivo, ul.f_objetivo , ul.a_objetivo{
+  border-color: #F3DDE0;
+}
+ul.s_objetivo {
+  border-color: #E1F1D6;
+}
+
+/*   ---------INICIA CÓDIGO DE CAMBIO *NUEVO 29/06/16   */
+ul.objetivo{
+  border-color: #b1c9f8;
+}
+/*   ---------TERMINA CÓDIGO  29/06/16  */
+.a_objetivo li, .fuente li, .f_objetivo li,.o_objetivo li,.s_objetivo li,{
+  margin: 5px;
+  padding: 5px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/*.fuente li {
+  background-color: #E1F1D6;
+  border: 1px solid #E1F1D6;
+  color: #5E8055;
+} */
+
+.s_objetivo li,.fuente li{
+  background-color: #E1F1D6;
+  border: 1px solid #E1F1D6;
+  color: #5E8055;
+}
+/*.f_objetivo li {
+  background-color: #ebf5e6;
+  border: 1px solid #d6e9c6;
+  color: #468847;
+}
+.a_objetivo li {
+  background-color: #3779B3;
+  border: 1px solid #3779B3;
+  color: #ffffff;
+}*/
+.o_objetivo li, .a_objetivo li , .f_objetivo li  {
+  background-color: #F3DDE0;
+  border: 1px solid #F3DDE0;
+  color: #A3555C;
+}
+
+.sortable-dragging {
+  border-color: #ccc !important;
+  background-color: #fafafa !important;
+  color: #bbb !important;
+}
+.sortable-placeholder {
+  height: 40px;
+}
+.source .sortable-placeholder {
+  border: 2px dashed #302104 !important;
+  background-color: #fefcf5 !important;
+}
+.target .sortable-placeholder {
+  border: 2px dashed #1c2a10 !important;
+  background-color: #f6fbf4 !important;
+}
+#list,#select,#agrupado,#filtrado,#ordenado{
+overflow:auto;
+height: 120px;
+}
+
+#titulopdf {
+color: white; text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+#contendedor{
+-webkit-box-shadow: -2px 3px 24px 4px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 3px 24px 4px rgba(0,0,0,0.75);
+box-shadow: -2px 3px 24px 4px rgba(0,0,0,0.75);
+}
+
+#cabe {
+  background-color: #32A426;
+  color: white;
+}
+.seleccionadotable-hover{
+  background-color: #81F575;
+}
+
+#tableCabecera, #listaReportes { display: block; }
+#listaReportes {
+    height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.avaliable{
+color: #F79F81;
+}
+.selectOption{
+color: #298A08;
+}
+#mostrar{
+  background-color: green;
+}
+.ConfTitle{
+font-weight: bold;
+color: green;
+font-size:14px;
+}
+.tablashow{
+border-bottom: 1px solid #ddd;
+}
+.showBarsV{
+    height: 145px;       /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+.acomodar{
+display: block;
+}
+.seleccion{
+background-color: #95E192;
+color: black;
+}
