@@ -1,4 +1,4 @@
-StringUrl = 'http://187.188.96.133:8080/ServiceBosque/';
+StringUrl = 'http://localhost:8080/ServiceBosque/';
 
 var urlServiceOficial = {
     url: StringUrl + 'ConsultasOficialia',

@@ -1,4 +1,4 @@
-var url = "http://187.188.96.133:8082";
+var url = "http://localhost:8080";
 
 $( document ).ready(function() {
     //var string = numeral(95665908).format('0,0');

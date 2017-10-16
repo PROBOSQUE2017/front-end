@@ -20,7 +20,7 @@ $( "#listReport" ).change(function() {
 });
 
 $("#esci").on("click",function(){
-location.href = 'http://187.188.96.133:800/SIFEM/';
+location.href = 'http://localhost:800/SIFEM/';
 });
 
 
@@ -33,7 +33,7 @@ function sendJsonReporte(idReport,StringName)
 
     $.ajax({
             type: 'POST',
-            url: 'http://187.188.96.133:8080/ServiceBosque/Reporteador',
+            url: 'http://localhost:8080/ServiceBosque/Reporteador',
             data: {action:'getReporte',params:parametros},
             dataType: 'json',
             beforeSend: function (data) {

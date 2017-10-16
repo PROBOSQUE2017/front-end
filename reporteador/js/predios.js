@@ -11,7 +11,7 @@
   * @default
   */
 
-  const url= 'http://187.188.96.133:8080/' ;
+  const url= 'http://localhost:8080/' ;
   /**
   * @constant
   * @type {string} urlConexionCatalogos 
@@ -271,7 +271,7 @@
    * Construye y abre  una ventana 
    * @returns {object}
    */                              
-   const  openWindows = ()=> window.open('http://187.188.96.133:800/SIFEM/toolMaps/poligonos.html', 'Popup', caracteristicas);
+   const  openWindows = ()=> window.open('http://localhost:800/SIFEM/toolMaps/poligonos.html', 'Popup', caracteristicas);
 
 
 /**

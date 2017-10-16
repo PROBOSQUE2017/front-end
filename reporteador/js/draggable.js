@@ -1211,7 +1211,7 @@ $(document).ready(function () {
      
           $.ajax({
               type: 'POST',
-              url: 'http://187.188.96.133:8080/ServiceBosque/Reporteador',
+              url: 'http://localhost:8080/ServiceBosque/Reporteador',
               //url: 'http://localhost:8084/ServiceBosque/Reporteador',
               data: {action:'getReporte',noReporte:idReporte,user:getUsryProgram('UR')/5,activity: getUsryProgram('UPR'),params:parametros,paramsFil:filtros,paramsSort:orden,paramsGro:agrupador},
               dataType: 'json',
@@ -1803,7 +1803,7 @@ function emptyReferencia(){
 }
 
 $("#esci").on("click",function(){
-location.href = 'http://187.188.96.133:800/SIFEM/';
+location.href = 'http://localhost:800/SIFEM/';
 });
 
 

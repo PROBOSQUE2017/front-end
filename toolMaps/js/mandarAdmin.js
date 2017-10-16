@@ -134,7 +134,7 @@ var bases = function(){
 var mostrarTemas = function(usr, action, programa){
 	var params={"action":action,"usuario":usr,"programa":programa};
 	$.ajax({
-		url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+		url: 'http://localhost:8080/ServiceBosque/ConectMapa',
 		type: "POST",
 		datatype: 'json',
 		data:params

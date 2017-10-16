@@ -26,7 +26,7 @@ function getDatosURL(name) {
 function readDatos(user, action2) {
 	var dataf = 'action=' + action2 + '&user=' + user;
 	$.ajax({
-    	url: "http://187.188.96.133:8082/ServiceBosque/MetaAnual",
+    	url: "http://localhost:8080/ServiceBosque/MetaAnual",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -60,7 +60,7 @@ function readDatos(user, action2) {
 function readRegion(user, action, selected) {
 	var dataf = 'action=' + action + '&user=' + user;
 	$.ajax({
-    	url: "http://187.188.96.133:8082/ServiceBosque/MetaAnual",
+    	url: "http://localhost:8080/ServiceBosque/MetaAnual",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -138,7 +138,7 @@ function AddRegistro() {
 	if(ValidarCampos(id_region, anio, meta_anual)){
 		var dataf = 'action=' + action + '&id_region=' + id_region+ '&anio=' + anio+ '&meta_anual=' + meta_anual+ '&user=' + user;
 		$.ajax({
-    		url: "http://187.188.96.133:8082/ServiceBosque/MetaAnual",
+    		url: "http://localhost:8080/ServiceBosque/MetaAnual",
         	type: "post",
         	data: dataf,
         	dataType: "JSON",
@@ -179,7 +179,7 @@ function ModalUpdate(selected){
 	var action2 = "get";
 	var dataf = 'action=' + action + '&user=' + user+ '&id_meta_anual=' + selected;
 	$.ajax({
-    		url: "http://187.188.96.133:8082/ServiceBosque/MetaAnual",
+    		url: "http://localhost:8080/ServiceBosque/MetaAnual",
         	type: "post",
         	data: dataf,
         	dataType: "JSON",
@@ -252,7 +252,7 @@ function ModalDelete(selected){
 	if (confirm("Desea Eliminar el registro seleccionado?")) {
 		var dataf = 'action=' + action + '&user=' + user+ '&id_meta_anual=' + selected;
 		$.ajax({
-	    		url: "http://187.188.96.133:8082/ServiceBosque/MetaAnual",
+	    		url: "http://localhost:8080/ServiceBosque/MetaAnual",
 	        	type: "post",
 	        	data: dataf,
 	        	dataType: "JSON",

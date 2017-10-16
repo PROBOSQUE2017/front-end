@@ -19,7 +19,7 @@ function sendJsonSaveReport(parametro,name){
 
 	     $.ajax({
               type: 'POST',
-              url: 'http://187.188.96.133:8080/ServiceBosque/Reporteador',
+              url: 'http://localhost:8080/ServiceBosque/Reporteador',
               data: {action:'saveReport',user:getUsryProgram('UR')/5,activity: getUsryProgram('UPR'),noReporte:idReporte,campos:parametros,tipo:parametro,nameReport:name},
               dataType: 'json',
               beforeSend: function (data) {

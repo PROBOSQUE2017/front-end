@@ -1,4 +1,4 @@
- var urlService = 'http://187.188.96.133:8080/ServiceBosque/Ejecutivo';
+ var urlService = 'http://localhost:8080/ServiceBosque/Ejecutivo';
  //var urlService = 'http://localhost:8084/ServiceBosque/Ejecutivo';
  var programsSelected="";
  var controlSpecific = false;

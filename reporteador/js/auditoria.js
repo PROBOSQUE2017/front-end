@@ -10,7 +10,7 @@
   * @default
   */
 
-  const urlConexion = 'http://187.188.96.133:8080/ServiceBosque/AuditoriasPreventivas';
+  const urlConexion = 'http://localhost:8080/ServiceBosque/AuditoriasPreventivas';
 
 
  /**

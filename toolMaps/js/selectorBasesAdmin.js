@@ -1,4 +1,4 @@
-﻿var arregloTemas = [];
+var arregloTemas = [];
 var exportMapControl, map, formats, vectors;
 function init() {
 
@@ -357,7 +357,7 @@ function init() {
       var loadData = function(action,usr,tema){
         var params={ "action":action, "usuario":usr, "tema":JSON.stringify(tema)};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -381,7 +381,7 @@ function init() {
       var loadRegiones = function(action, usr){
             var params={ "action":action, "usuario":usr};
             $.ajax({
-              url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+              url: 'http://localhost:8080/ServiceBosque/ConectMapa',
               type: "POST",
               datatype: 'json',
               data:params
@@ -394,7 +394,7 @@ function init() {
       var loadLocalidades = function(action, usr){
             var params={ "action":action, "usuario":usr};
             $.ajax({
-              url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+              url: 'http://localhost:8080/ServiceBosque/ConectMapa',
               type: "POST",
               datatype: 'json',
               data:params
@@ -407,7 +407,7 @@ function init() {
       var loadRural = function(action, usr){
           var params={"action":action, "usuario":usr};
           $.ajax({
-            url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+            url: 'http://localhost:8080/ServiceBosque/ConectMapa',
             type: 'POST',
             datatype: 'json',
             data:params
@@ -421,7 +421,7 @@ function init() {
         var recPopUp;
         var params = {"action":action,"usuario":usr,"figura":fig}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -436,7 +436,7 @@ function init() {
         var area_Figura;
         var params = {"action":action,"usuario":usr,"tema":JSON.stringify(tema),"figura":fig, "typeFigura":typeFigura}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -450,7 +450,7 @@ function init() {
       var insertMapa = function(action, usr){
         var params = {"action":action, "usuario":usr}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -462,7 +462,7 @@ function init() {
       var insertTema = function(action, usr, tema){
         var params = {"action":action,"usuario":usr,"tema":tema}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -474,7 +474,7 @@ function init() {
       var insertTemaAdmin = function(action, usr, programa, tema, figuraType, colorTema){
         var params = {"action":action,"usuario":usr,"programa":programa,"tema":JSON.stringify(tema),"figuraType":figuraType,"colorTema":colorTema}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -486,7 +486,7 @@ function init() {
       var insertIndicadores = function(action, usr, nombreImagen, Px, Py){
         var params={ "action":action, "usuario":usr, "nombreImagen":nombreImagen, "px":Px, "py":Py};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: "POST",
           datatype: 'json',
           data:params
@@ -497,7 +497,7 @@ function init() {
         var tipo_Figura;
         var params = {"action":action,"usuario":usr,"programa":programa,"tema":JSON.stringify(tema)}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params,
@@ -511,7 +511,7 @@ function init() {
       var getListTemas = function(action, usr, idMapa){
         var params = {"action":action, "usuario":usr, "idMapa":idMapa}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -534,7 +534,7 @@ function init() {
       var getListIndicadores = function(action, usr, idMapa){
         var params = {"action":action, "usuario":usr, "idMapa":idMapa}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -557,7 +557,7 @@ function init() {
       var getListMapas = function(action, usr){
         var params={"action":action,"usuario":usr};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: "POST",
           datatype: 'json',
           data:params
@@ -605,7 +605,7 @@ function init() {
         var params = {"action":action, "usuario":usr, "tema":tema, "programa":programa}
         console.log(params);
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -622,7 +622,7 @@ function init() {
         var params = {"action":action, "usuario":usr, "idIndicador":idIndicador, "idMapa":idMapa}
         console.log(params);
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -636,7 +636,7 @@ function init() {
       var eliminarMapas = function(action, usr, idMapa){
         var params = {"action":action, "usuario":usr, "idMapa":idMapa}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -650,7 +650,7 @@ function init() {
       var guardarMapa = function(action, usr, nombreMapa){
         var params = {"action":action,"usuario":usr,"nombreMapa":nombreMapa}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -662,7 +662,7 @@ function init() {
       var pintarMapaTemas = function(action,usr,idMapa){
         var params={ "action":action, "usuario":usr, "idMapa":idMapa};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: "POST",
           datatype: 'json',
           data:params
@@ -675,7 +675,7 @@ function init() {
       var pintarMapaIndicador = function(action,usr,idMapa){
         var params={ "action":action, "usuario":usr, "idMapa":idMapa};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: "POST",
           datatype: 'json',
           data:params

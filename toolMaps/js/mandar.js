@@ -88,7 +88,7 @@ var mostrarTemas = function(usr, action){
 	var params={"action":action,"usuario":usr};
 	
 	$.ajax({
-		url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+		url: 'http://localhost:8080/ServiceBosque/ConectMapa',
 		type: "POST",
 		datatype: 'json',
 		data:params

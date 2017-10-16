@@ -544,7 +544,7 @@ function init() {
       var loadData = function(action,usr,tema){
         var params={ "action":action, "usuario":usr, "tema":JSON.stringify(tema)};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -571,7 +571,7 @@ function init() {
       var insertPolygon = function(poli,action){
         var params = {"action":action,"usuario":configuracionFigura.usuario,"folio":configuracionFigura.folio,"tema":configuracionFigura.tema,"tipoFigura":configuracionFigura.tipoFigura,"descripcion":configuracionFigura.descripcion,"colorRelleno":configuracionFigura.colorRelleno,"colorContorno":configuracionFigura.colorContorno,"cadenaFigura":poli};
         $.ajax({
-            url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+            url: 'http://localhost:8080/ServiceBosque/ConectMapa',
             type: "POST",
             datatype: 'json',
             data: params
@@ -582,7 +582,7 @@ function init() {
       var insertManual = function(poli,action,folioManual,temaManual,colorRellenoManual,colorContornoManual,descripcionManual,tipoCoordenadaManual){
         var params = {"action":action,"usuario":configuracionFigura.usuario,"folio":folioManual,"tema":temaManual,"colorRelleno":colorRellenoManual,"colorContorno":colorContornoManual,"cadenaFigura":poli,"descripcion":descripcionManual,"tipoCoordenada":tipoCoordenadaManual};
         $.ajax({
-            url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+            url: 'http://localhost:8080/ServiceBosque/ConectMapa',
             type: "POST",
             datatype: 'json',
             data: params
@@ -594,7 +594,7 @@ function init() {
         var descripcionPoligono;
         var params = {"action":action,"usuario":usr,"tema":JSON.stringify(tema),"figura":fig, "typeFigura":typeFigura}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -610,7 +610,7 @@ function init() {
       var loadRegiones = function(action, usr){
             var params={ "action":action, "usuario":usr};
             $.ajax({
-              url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+              url: 'http://localhost:8080/ServiceBosque/ConectMapa',
               type: "POST",
               datatype: 'json',
               data:params
@@ -624,7 +624,7 @@ function init() {
       var loadLocalidades = function(action, usr){
             var params={ "action":action, "usuario":usr};
             $.ajax({
-              url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+              url: 'http://localhost:8080/ServiceBosque/ConectMapa',
               type: "POST",
               datatype: 'json',
               data:params
@@ -638,7 +638,7 @@ function init() {
       var loadRural = function(action, usr){
           var params={"action":action, "usuario":usr};
           $.ajax({
-            url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+            url: 'http://localhost:8080/ServiceBosque/ConectMapa',
             type: 'POST',
             datatype: 'json',
             data:params
@@ -653,7 +653,7 @@ function init() {
       var uploadRaster = function(action){
         var params = {"action":action,"usuario":usuario, "nombreRaster":configuracionRaster.nombreRaster, "coordenadasLimite": configuracionRaster.coordenadasLimite, "tamañoRaster": configuracionRaster.tamañoRaster};
         $.ajax({
-            url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+            url: 'http://localhost:8080/ServiceBosque/ConectMapa',
             type: "POST",
             datatype: 'json',
             data: params
@@ -670,7 +670,7 @@ function init() {
       var insertTema = function(action, usr, tema){
         var params = {"action":action,"usuario":usr,"tema":tema}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -685,7 +685,7 @@ function init() {
         var folioPoligono;
         var params = {"action":action,"usuario":usr,"tema":JSON.stringify(tema),"figura":fig, "typeFigura":typeFigura}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -702,7 +702,7 @@ function init() {
         var tipo_Figura;
         var params = {"action":action, "usuario":usr, "tema":JSON.stringify(tema)}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -718,7 +718,7 @@ function init() {
         var area_Figura;
         var params = {"action":action,"usuario":usr,"tema":JSON.stringify(tema),"figura":fig, "typeFigura":typeFigura}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -733,7 +733,7 @@ function init() {
       var insertMapa = function(action, usr){
         var params = {"action":action, "usuario":usr}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -746,7 +746,7 @@ function init() {
       var insertTemaAdmin = function(action, usr, tema, colorTema){
         var params = {"action":action,"usuario":usr,"tema":JSON.stringify(tema),"colorTema":colorTema};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -758,7 +758,7 @@ function init() {
       var insertIndicadores = function(action, usr, nombreImagen, Px, Py){
         var params={ "action":action, "usuario":usr, "nombreImagen":nombreImagen, "px":Px, "py":Py};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -768,7 +768,7 @@ function init() {
       var getListMapas = function(action, usr){
         var params={"action":action,"usuario":usr};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -803,7 +803,7 @@ function init() {
       var guardarMapa = function(action, usr, nombreMapa){
         var params = {"action":action,"usuario":usr,"nombreMapa":nombreMapa}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/CartoAdmin',
+          url: 'http://localhost:8080/ServiceBosque/CartoAdmin',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -816,7 +816,7 @@ function init() {
       var getConfRaster = function(action, usr, verNombreRaster){
         var params = {"action":action,"usuario":usr,"verNombreRaster":verNombreRaster}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -831,7 +831,7 @@ function init() {
       var eliminarTema = function(action, usr, tema){
         var params = {"action":action,"usuario":usr,"tema":JSON.stringify(tema)}
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data: params
@@ -844,7 +844,7 @@ function init() {
       var pintarMapaTemas = function(action,usr,idMapa){
         var params={ "action":action, "usuario":usr, "idMapa":idMapa};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -863,7 +863,7 @@ function init() {
         var params = {"action":action, "usuario":usr}
         console.log(params);
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: 'POST',
           datatype: 'json',
           data:params,
@@ -878,7 +878,7 @@ function init() {
       var insertSimbTema = function(action, usr, nombreSimbolo, caracteristicaSimbolo){
         var params={ "action":action, "usuario":usr, "nombreSimbolo":nombreSimbolo, "caracteristicaSimbolo":caracteristicaSimbolo};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -888,7 +888,7 @@ function init() {
       var getListaServicio = function(action, usr){
         var params={"usuario":usr,"action":action};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -905,7 +905,7 @@ function init() {
       var mostrarServicio = function(usr, action, servicio){
         var params={"action":action,"usuario":usr, "servicio":servicio};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -919,7 +919,7 @@ function init() {
       var uploadServicio = function(action, usr, nombreServicio, urlServicio, tokenServicio){
         var params={ "action":action, "usuario":usr, "nombreServicio":nombreServicio, "urlServicio":urlServicio, "tokenServicio":tokenServicio};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -930,7 +930,7 @@ function init() {
       var loadEstado = function(action, usr){
             var params={ "action":action, "usuario":usr};
             $.ajax({
-              url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+              url: 'http://localhost:8080/ServiceBosque/ConectMapa',
               type: "POST",
               datatype: 'json',
               data:params
@@ -944,7 +944,7 @@ function init() {
       var limpiarBaseSim = function(action, usr){
         var params={ "action":action, "usuario":usr};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -955,7 +955,7 @@ function init() {
       var contadorTemas = function(action, usr){
         var params={ "action":action, "usuario":usr};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params
@@ -968,7 +968,7 @@ function init() {
       var eliminarTablaTema = function(action,usr,tema){
         var params={ "action":action, "usuario":usr, "tema":JSON.stringify(tema)};
         $.ajax({
-          url: 'http://187.188.96.133:8080/ServiceBosque/ConectMapa',
+          url: 'http://localhost:8080/ServiceBosque/ConectMapa',
           type: "POST",
           datatype: 'json',
           data:params

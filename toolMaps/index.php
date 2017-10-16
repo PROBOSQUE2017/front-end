@@ -902,7 +902,7 @@
                   var formData = new FormData($(this)[0]);
                   $("#errorImport").text("");
                    $.ajax({
-                          url: "http://187.188.96.133:8080/ServiceBosque/UploadShape",
+                          url: "http://localhost:8080/ServiceBosque/UploadShape",
                           type: 'POST',
                           data: formData,
                           async: false,

@@ -1,5 +1,5 @@
 var connection={
-				url:'http://187.188.96.133:8080/ServiceBosque/Reporteador',
+				url:'http://localhost:8080/ServiceBosque/Reporteador',
         //url: 'http://localhost:8084/ServiceBosque/Reporteador',
 				type:'post',
 				dataType:'json'

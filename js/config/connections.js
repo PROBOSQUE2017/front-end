@@ -2,79 +2,79 @@ define([], function(){
     return {
             users:{
                     login:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Login',
+                        url:'http://localhost:8080/ServiceBosque/Login',
                         //url:'data/loging.json',
                         type:'POST',
                         dataType:'json'//,
                         //contentType:'application/json'
                     },
                     logout:{
-                        url:'http://187.188.96.133:8082/siap/logout',
+                        url:'http://localhost:8080/siap/logout',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
                     },
                     add:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/User?action=set',
+                        url:'http://localhost:8080/ServiceBosque/User?action=set',
                         type:'POST',
                         dataType:'json'
                     },
                     edit:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/User?action=edit',
+                        url:'http://localhost:8080/ServiceBosque/User?action=edit',
                         type:'POST',
                         dataType:'json'
                     },
                     del:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/User?action=delete',
+                        url:'http://localhost:8080/ServiceBosque/User?action=delete',
                         type:'GET',
                         dataType:'json'
                     },
                     search:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/User?',
+                        url:'http://localhost:8080/ServiceBosque/User?',
                         type:'POST',
                         dataType:'json'
                     }
             },
             tabular:{
                     add:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?',
+                        url:'http://localhost:8080/ServiceBosque/Table?',
                         type:'POST',
                         dataType:'json'
                     },
                     edit:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?',
+                        url:'http://localhost:8080/ServiceBosque/Table?',
                         type:'POST',
                         dataType:'json'
                     },
                     del:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?action=delete',
+                        url:'http://localhost:8080/ServiceBosque/Table?action=delete',
                         type:'GET',
                         dataType:'json'
                     },
                     search:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?',
+                        url:'http://localhost:8080/ServiceBosque/Table?',
                         type:'POST',
                         dataType:'json'
                     },
                     get:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?',
+                        url:'http://localhost:8080/ServiceBosque/Table?',
                         type:'GET',
                         dataType:'json'
                     },
                     getFields:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?',
+                        url:'http://localhost:8080/ServiceBosque/Table?',
                                 type:'POST',
                                 dataType:'json'
                     },
                     getFolio:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Folio?',
+                        url:'http://localhost:8080/ServiceBosque/Folio?',
                                 type:'POST',
                                 dataType:'json'
                     },
 //   Servivio para la consulta del numero de incendio consecutivo por año para el programa de incendios 
 //        Mike Omar Martínez 16/06/2016
                      getNumIncendio:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/NumIncendio?',
+                        url:'http://localhost:8080/ServiceBosque/NumIncendio?',
                                 type:'POST',
                                 dataType:'json'
                     }
@@ -83,64 +83,64 @@ define([], function(){
 	    
             multirecords:{
                     getInputs:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Subtable?',
+                        url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'GET',
                         dataType:'json'
                     },
                     getList:{
-                         url:'http://187.188.96.133:8082/ServiceBosque/Subtable?',
+                         url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'GET',
                         dataType:'json'
                     },
                     deleteTemporal:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?',
+                        url:'http://localhost:8080/ServiceBosque/Table?',
                         type:'GET',
                         dataType:'json'
                     },
                     add:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Subtable?',
+                        url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'POST',
                         dataType:'json'
                     },
                     edit:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Subtable?',
+                        url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'POST',
                         dataType:'json'
                     },
                     del:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Subtable?action=delete',
+                        url:'http://localhost:8080/ServiceBosque/Subtable?action=delete',
                         type:'GET',
                         dataType:'json'
                     },
                     get:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Subtable?action=delete',
+                        url:'http://localhost:8080/ServiceBosque/Subtable?action=delete',
                         type:'GET',
                         dataType:'json'
                     },
                     getVolumen:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Subtable?',
+                        url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'GET',
                         dataType:'json'
                     },
                     getAnioAreaCorta:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Subtable?',
+                        url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'GET',
                         dataType:'json'
                     }
             },
             reports:{
                     getFields:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Table?',
+                        url:'http://localhost:8080/ServiceBosque/Table?',
                         type:'POST',
                         dataType:'json'
                     },
                     getReport:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Report?',
+                        url:'http://localhost:8080/ServiceBosque/Report?',
                         type:'POST',
                         dataType:'json'
                     },
                     getGraph:{
-                        url:'http://187.188.96.133:8082/ServiceBosque/Graph?',
+                        url:'http://localhost:8080/ServiceBosque/Graph?',
                         type:'POST',
                         dataType:'json'
                     }
@@ -148,14 +148,14 @@ define([], function(){
             workTeams:{
                     
                     getNodes:{
-                        url:'http://187.188.96.133:8082/siap/users/dependants',
+                        url:'http://localhost:8080/siap/users/dependants',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
                         
                     },
                     actions:{
-                        url:'http://187.188.96.133:8082/Service/Users?',
+                        url:'http://localhost:8080/Service/Users?',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
@@ -163,13 +163,13 @@ define([], function(){
             },
             actions:{
                 set:{
-                        url:'http://187.188.96.133:8082/Service/Actions?',
+                        url:'http://localhost:8080/Service/Actions?',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
                     },
                 get:{
-                        url:'http://187.188.96.133:8082/Service/Actions?',
+                        url:'http://localhost:8080/Service/Actions?',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
@@ -178,14 +178,14 @@ define([], function(){
             },
             assignCharge:{
                 getList:{
-                        url:'http://187.188.96.133:8082/Service/AssignCharge?',
+                        url:'http://localhost:8080/Service/AssignCharge?',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
                 },
                 setList:{
                         
-                        url:'http://187.188.96.133:8082/Service/AssignCharge?',
+                        url:'http://localhost:8080/Service/AssignCharge?',
                         type:'POST',
                         dataType:'json',
                         contentType:'application/json'
@@ -193,13 +193,13 @@ define([], function(){
             },
             deliveredCharge:{
                 getByDelivering:{
-                        url:'http://187.188.96.133:8082/Service/AssignCharge?',
+                        url:'http://localhost:8080/Service/AssignCharge?',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
                 },
                 getDelivered:{
-                        url:'http://187.188.96.133:8082/Service/AssignCharge?',
+                        url:'http://localhost:8080/Service/AssignCharge?',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
@@ -207,13 +207,13 @@ define([], function(){
             },
             validateCharge:{
                 get:{
-                        url:'http://187.188.96.133:8082/Service/ValidateCharge?',
+                        url:'http://localhost:8080/Service/ValidateCharge?',
                         type:'GET',
                         dataType:'json',
                         contentType:'application/json'
                 },
                 set:{
-                        url:'http://187.188.96.133:8082/Service/ValidateCharge?',
+                        url:'http://localhost:8080/Service/ValidateCharge?',
                         type:'POST',
                         dataType:'json',
                         contentType:'application/json'
@@ -221,20 +221,20 @@ define([], function(){
             },
             requestField:{
                     data:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/',
+                            url:'http://localhost:8080/ServiceBosque/',
                             type:'POST',
                             dataType:'json'
                     }
             },
             image:{
                     upload:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/QR?',
+                            url:'http://localhost:8080/ServiceBosque/QR?',
                             type:'POST',
                             dataType:'json',
                             contentType:'application/json'
                     },
                     get:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/QR?',
+                            url:'http://localhost:8080/ServiceBosque/QR?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
@@ -242,22 +242,22 @@ define([], function(){
             },
             charge:{
                     upload:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/UploadShape?',
+                            url:'http://localhost:8080/ServiceBosque/UploadShape?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
                     },
                     download:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/DownloadCSV?',
+                            url:'http://localhost:8080/ServiceBosque/DownloadCSV?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
                     },
                     predio:{
-                            url:'http://187.188.96.133:800/SIFEM/toolMaps/poligonos.html'
+                            url:'http://localhost:800/SIFEM/toolMaps/poligonos.html'
                     },
                     getSeed:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/CSV?',
+                            url:'http://localhost:8080/ServiceBosque/CSV?',
                             type:'POST',
                             dataType:'json',
                             contentType:'application/x-www-form-urlencoded'
@@ -265,13 +265,13 @@ define([], function(){
             },
             features:{
                     getPredios:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Predios?',
+                            url:'http://localhost:8080/ServiceBosque/Predios?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
                     },
                     getLayers:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Layers?',
+                            url:'http://localhost:8080/ServiceBosque/Layers?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
@@ -283,19 +283,19 @@ define([], function(){
                             contentType:'application/json'
                     },
                     getInfoTheme:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Totals?',
+                            url:'http://localhost:8080/ServiceBosque/Totals?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
                     },
                     getLayer:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Predios?',
+                            url:'http://localhost:8080/ServiceBosque/Predios?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
                     },
                     deleteLayer:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Layers?',
+                            url:'http://localhost:8080/ServiceBosque/Layers?',
                             type:'POST',
                             dataType:'json',
                             contentType:'application/x-www-form-urlencoded'
@@ -303,7 +303,7 @@ define([], function(){
             },
             identify:{
                     event:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Predios?',
+                            url:'http://localhost:8080/ServiceBosque/Predios?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
@@ -311,8 +311,8 @@ define([], function(){
             },
             search:{
                     event:{
-                            //url:'http://187.188.96.133:8082/Service/Predios?',
-                            url:'http://187.188.96.133:8082/ServiceBosque/Predios?',
+                            //url:'http://localhost:8080/Service/Predios?',
+                            url:'http://localhost:8080/ServiceBosque/Predios?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
@@ -320,7 +320,7 @@ define([], function(){
             },
             notification:{
                     event:{
-                            url:'http://187.188.96.133:8082/Service/Actions?',
+                            url:'http://localhost:8080/Service/Actions?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
@@ -328,7 +328,7 @@ define([], function(){
             },
             graph:{
                     bottom:{
-                            url:'http://187.188.96.133:8082/Service/Report?',
+                            url:'http://localhost:8080/Service/Report?',
                             type:'GET',
                             dataType:'json',
                             contentType:'application/json'
@@ -345,96 +345,96 @@ define([], function(){
             },
             tabulate:{
                     getFields:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/DataTable?',
+                            url:'http://localhost:8080/ServiceBosque/DataTable?',
                             type:'POST',
                             dataType:'json',
                             contentType: 'application/x-www-form-urlencoded'
                     },
                     getReport:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/DataTable?',
+                            url:'http://localhost:8080/ServiceBosque/DataTable?',
                             type:'POST',
                             dataType:'json',
                         contentType: 'application/x-www-form-urlencoded'
                     },
                     getGraph:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Graph?',
+                            url:'http://localhost:8080/ServiceBosque/Graph?',
                             type:'POST',
                             dataType:'json'
                     },
                     getSeed:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/CSV?',
+                            url:'http://localhost:8080/ServiceBosque/CSV?',
                             type:'POST',
                             dataType:'json'
                     },
                     downloadCvs:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/DownloadCSV?',
+                            url:'http://localhost:8080/ServiceBosque/DownloadCSV?',
                             type:'POST',
                             dataType:'json'
                     },
                     getSeedPdf:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/CSV?',
+                            url:'http://localhost:8080/ServiceBosque/CSV?',
                             type:'POST',
                             dataType:'json'
                     },
                     downloadPdf:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/DownloadPDF?',
+                            url:'http://localhost:8080/ServiceBosque/DownloadPDF?',
                             type:'POST',
                             dataType:'json'
                     }
             },
             executive:{
                     getFields:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/TablePredios?',
+                            url:'http://localhost:8080/ServiceBosque/TablePredios?',
                             type:'POST',
                             dataType:'json'//,
                             //contentType: 'application/x-www-form-urlencoded'
                     },
                     getAniosAndPrograms:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/TablePrediosAnios?',
+                            url:'http://localhost:8080/ServiceBosque/TablePrediosAnios?',
                             type:'POST',
                             dataType:'json'//,
                     },
                     getReport:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/ReportPredios?',
+                            url:'http://localhost:8080/ServiceBosque/ReportPredios?',
                             //url:'data/executive.txt',
 			    type:'POST',
                             dataType:'json'//,
 			    //contentType: 'application/x-www-form-urlencoded'
                     },
                     getGraph:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Graph?',
+                            url:'http://localhost:8080/ServiceBosque/Graph?',
                             type:'POST',
                             dataType:'json'
                     },
                     getSeed:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/CSV?',
+                            url:'http://localhost:8080/ServiceBosque/CSV?',
                             type:'POST',
                             dataType:'json'
                     },
                     downloadCvs:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/DownloadCSV?',
+                            url:'http://localhost:8080/ServiceBosque/DownloadCSV?',
                             type:'POST',
                             dataType:'json'
                     },
                     getSeedPdf:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/CSV?',
+                            url:'http://localhost:8080/ServiceBosque/CSV?',
                             type:'POST',
                             dataType:'json'
                     },
                     downloadPdf:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/DownloadPDFReport?',
+                            url:'http://localhost:8080/ServiceBosque/DownloadPDFReport?',
                             type:'POST',
                             dataType:'json'
                     }
             },
              UserLog:{
                 keylog:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Request_Log?',
+                            url:'http://localhost:8080/ServiceBosque/Request_Log?',
                             type:'POST',
                             dataType:'json'
                         },
                 keynombre:{
-                            url:'http://187.188.96.133:8082/ServiceBosque/Request_Log?',
+                            url:'http://localhost:8080/ServiceBosque/Request_Log?',
                             type:'POST',
                             dataType:'json'
                            }

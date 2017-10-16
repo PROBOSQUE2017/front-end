@@ -12,7 +12,7 @@ define([], function(){
                 b2:{
                         type:'WMS',
                         label:'Base Vector',
-                        path:'http://187.188.96.133:800/cgi-bin/mapserv.exe?map=D:/ms4w/Apache/htdocs/PROBOSQUE/maps/probosque_google.map',
+                        path:'http://localhost:800/cgi-bin/mapserv.exe?map=D:/ms4w/Apache/htdocs/PROBOSQUE/maps/probosque_google.map',
                         img:'vectorial.png',
                         data:{
                                 layers:'base_estado_probosque_google',
@@ -44,7 +44,7 @@ define([], function(){
             overlays:{
                 g1:{
                         label:'Capas de Referencia',
-                        path:'http://187.188.96.133:800/cgi-bin/mapserv.exe?map=D:/ms4w/Apache/htdocs/PROBOSQUE/maps/probosque_google.map',
+                        path:'http://localhost:800/cgi-bin/mapserv.exe?map=D:/ms4w/Apache/htdocs/PROBOSQUE/maps/probosque_google.map',
                         type:'WMS',
                         projection:'EPSG:3857',
                         layers:{

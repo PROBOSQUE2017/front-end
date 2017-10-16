@@ -15,7 +15,7 @@
   else
   {
     echo "<script>alert('Exito')</script>";
-    echo "<script>window.location.assign(\"http://187.188.96.133:800/SIFEM/toolMaps/index.php\");</script>";
+    echo "<script>window.location.assign(\"http://localhost:800/SIFEM/toolMaps/index.php\");</script>";
   }
 
   move_uploaded_file($_FILES['archivoRaster']['tmp_name'], "raster/" . $_FILES['archivoRaster']['name']);
@@ -28,15 +28,6 @@
 <body>
 </body>
 </html>
-<?php
-  if ($_FILES['archivoRaster']["error"] > 0) 
-  {
-    echo "Error".$_FILES['archivoRaster']["error"]."<br />";
-  }
-  else
-  {
-    echo "<script>alert('Exito')</script>";
-    echo "<script>window.location.assign(\"http://187.188.96.133:800/SIFEM/toolMaps/index.php\");</script>";
-  }
 
-  move_uploaded_file($_FILES['archivoRaster']['tmp_name'], "raster/" . $_FILES['ar
+
+  

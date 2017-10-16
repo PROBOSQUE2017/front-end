@@ -3,7 +3,7 @@ var actividadId;
 function sendJSONQueryReport(){
 	$.ajax({
         type: 'POST',
-        url: 'http://187.188.96.133:8080/ServiceBosque/Reporteador',
+        url: 'http://localhost:8080/ServiceBosque/Reporteador',
         data: {action:'getTitulosReportes',user:usuarioId,activity: actividadId},
         dataType: 'json',
         beforeSend: function (data) {
@@ -68,7 +68,7 @@ function viewReportGral(params){
 	insertName(name,idReporte);
 	$.ajax({
         type: 'POST',
-        url: 'http://187.188.96.133:8080/ServiceBosque/Reporteador',
+        url: 'http://localhost:8080/ServiceBosque/Reporteador',
         data: {action:'getReporteByID',noReporte:idReporte,user:usuarioId,activity: actividadId},
         dataType: 'json',
         beforeSend: function (data) {
@@ -112,7 +112,7 @@ function deleteReportGral(params){
 	var idReporte = $(params).attr("id");
 	$.ajax({
         type: 'POST',
-        url: 'http://187.188.96.133:8080/ServiceBosque/Reporteador',
+        url: 'http://localhost:8080/ServiceBosque/Reporteador',
         data: {action:'getBorrarReporte',noReporte:idReporte,user:usuarioId,activity: actividadId},
         dataType: 'json',
         beforeSend: function (data) {
