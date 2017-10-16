@@ -1,4 +1,4 @@
-var url = "http://187.188.96.133:8080";
+var url = "http://187.188.96.133:8082";
 var datas = amplify.store('dataLoggingProbosque');
 var bandera=0;
 //window.onload=function() {

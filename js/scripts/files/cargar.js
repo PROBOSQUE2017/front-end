@@ -1010,7 +1010,7 @@ function addFecha(user) {
 function addFechaExluida(action, user, fecha){
     var dataf = 'action=' + action + '&user=' + user + '&fecha=' + fecha;
     $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1033,7 +1033,7 @@ function addFechaExluida(action, user, fecha){
 function getFechaExluida(action, user){
     var dataf = 'action=' + action + '&user=' + user;
     $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1065,7 +1065,7 @@ function deleteFecha(user, indice) {
 function deleteFechaExluida(action, user, indice){
     var dataf = 'action=' + action + '&user=' + user + '&indice=' + indice;
     $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1089,7 +1089,7 @@ function getFechaExluida2(action, user){
     var dataf = 'action=' + action + '&user=' + user;
     var array = [];
     $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         async: false,
         type: "post",
         data: dataf,
@@ -1290,7 +1290,7 @@ Codigo Mike Ventanilla
 function ActualizarRechazo(action, user, folio, observaciones, consecutivo, nuevoEstatus, fecha_cambio_estatus, vuelta, estatus_anterior){
   var dataf = 'action=' + action + '&user=' + user + '&folio=' + folio+ '&observaciones=' + observaciones + '&consecutivo=' + consecutivo;
   $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1322,7 +1322,7 @@ function ActualizarRechazo(action, user, folio, observaciones, consecutivo, nuev
 function ActualizarEstatus(action, user, nuevoEstatus, folio){
   var dataf = 'action=' + action + '&user=' + user + '&folio=' + folio+ '&estatus=' + nuevoEstatus;
   $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1349,7 +1349,7 @@ function ActualizarEstatus(action, user, nuevoEstatus, folio){
 function InsertarRechazo(action, user, folio, fecha_cambio_estatus, observaciones, nuevoEstatus){
   var dataf = 'action=' + action + '&user=' + user + '&folio=' + folio+ '&fecha_cambio_estatus=' + fecha_cambio_estatus + '&observaciones=' + observaciones;
   $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1375,7 +1375,7 @@ function InsertarRechazo(action, user, folio, fecha_cambio_estatus, observacione
 function ActulizarDictaminacion(action, user, folio, dictamenJuridicoEnvio, dictamenTecnicoEnvio, dictamenAmbientalEnvio, dictamenTecnicoRecibido, dictamenJuridicoRecibido, dictamenAmbientalRecibido, observaciones, consecutivo, respuesta, nuevoEstatus, fecha_cambio_estatus){
   var dataf = 'action=' + action + '&user=' + user + '&folio=' + folio+ '&dje=' + dictamenJuridicoEnvio + '&dte=' + dictamenTecnicoEnvio + '&dae=' + dictamenAmbientalEnvio + '&djr=' + dictamenJuridicoRecibido + '&dtr=' + dictamenTecnicoRecibido + '&dar=' + dictamenAmbientalRecibido + '&observaciones=' + observaciones + '&consecutivo=' + consecutivo + '&respuesta=' + respuesta;
   $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1406,7 +1406,7 @@ function ActulizarDictaminacion(action, user, folio, dictamenJuridicoEnvio, dict
 function InsertaDictaminacion(action, user, folio, fecha_cambio_estatus, dictamenJuridicoEnvio, dictamenTecnicoEnvio, dictamenAmbientalEnvio, observaciones, nuevoEstatus, vuelta, estatus_anterior){
   var dataf = 'action=' + action + '&user=' + user + '&fecha_cambio_estatus=' + fecha_cambio_estatus + '&folio=' + folio+ '&dje=' + dictamenJuridicoEnvio + '&dte=' + dictamenTecnicoEnvio + '&dae=' + dictamenAmbientalEnvio + '&djr=' + "" + '&dtr=' + "" + '&dar=' + "" + '&observaciones=' + observaciones + '&respuesta=' + "" + '&estatus_anterior=' + estatus_anterior;
   $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1432,7 +1432,7 @@ function InsertaDictaminacion(action, user, folio, fecha_cambio_estatus, dictame
 function ActulizaVuelta(action, user, folio, nuevoEstatus, vuelta){
   var dataf = 'action=' + action + '&user=' + user + '&estatus=' + nuevoEstatus + '&folio=' + folio+ '&vuelta=' + vuelta;
     $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         type: "post",
         data: dataf,
         dataType: "JSON",
@@ -1460,7 +1460,7 @@ function SelectVuelta(action, user, folio){
     var vuelta = 0;
     var dataf = 'action=' + action + '&user=' + user + '&folio=' + folio;
     $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         async: false,
         type: "post",
         data: dataf,
@@ -1479,7 +1479,7 @@ function UltimaFecha(action, user, folio){
     var ultimaFecha = '';
     var dataf = 'action=' + action + '&user=' + user + '&folio=' + folio;
     $.ajax({
-        url: "http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+        url: "http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos",
         async: false,
         type: "post",
         data: dataf,
@@ -1661,8 +1661,8 @@ if(estatus_anterior!=9 && nuevoEstatus==9)
 }
 
 var connection={
-        //url:'http://187.188.96.133:8080/ServiceBosque/Reporteador',
-        url: 'http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos',
+        //url:'http://187.188.96.133:8082/ServiceBosque/Reporteador',
+        url: 'http://187.188.96.133:8082/ServiceBosque/VentanillaProcesos',
         type:'post',
         dataType:'json'
 };
@@ -1732,7 +1732,7 @@ function Regeneracion(user){
   var today = new Date(); 
 
   //Llena el contenedor "Inicio de Proceso"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
     { action:'get', folio:0, user:user, tipo:1 },
     function(data){
       var mires1 =$('#contenedor1');
@@ -1747,7 +1747,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Dictaminacion"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
     { action:'get', folio:0, user:user, tipo:2 },
     function(data){
       //alert(JSON.stringify(data));
@@ -1765,7 +1765,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Rechazo"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:user, tipo:3 },
     function(data){
       //alert(JSON.stringify(data));
@@ -1778,7 +1778,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Informacion Adicional"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
     { action:'get', folio:0, user:user, tipo:4 },
       function(data){
         //alert(JSON.stringify(data));
@@ -1791,7 +1791,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Comite de Fomento"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:user, tipo:5 },
     function(data){
       //alert(JSON.stringify(data));
@@ -1804,7 +1804,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Codigo de Identificacion"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:user, tipo:6 },
   function(data){
     //alert(JSON.stringify(data));
@@ -1817,7 +1817,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Negacion"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:user, tipo:7 },
   function(data){
     //alert(JSON.stringify(data));
@@ -1830,7 +1830,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Mia"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:user, tipo:10 },
   function(data){
     //alert(JSON.stringify(data));
@@ -1843,7 +1843,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Vencidas"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:user, tipo:8 },
   function(data){
     //alert(JSON.stringify(data));
@@ -1856,7 +1856,7 @@ function Regeneracion(user){
   });
 
   //Llena el contenedor "Autorizadas"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://187.188.96.133:8082/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:user, tipo:9 },
   function(data){
     //alert(JSON.stringify(data));
