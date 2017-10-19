@@ -601,17 +601,19 @@ function drawBienesTable(json) {
         for (var aux in json.data) {
             var fila = cuerpoTabla.insertRow();
             var consecutivo=null;
+            var folio = null;
             for (var tmp in json.data[aux]) {
                 if (tmp == "consecutivo") {
                     fila.insertCell(-1).innerHTML = json.data[aux][tmp];
                     consecutivo = json.data[aux][tmp];
                 } else if (tmp == "folio") {
+                    folio = json.data[aux][tmp];
                     fila.insertCell(-1).innerHTML = json.data[aux][tmp];
                 } else if (tmp == "tipo_producto") {
                     fila.insertCell(-1).innerHTML = json.data[aux][tmp];
                 }
             }
-            fila.insertCell(-1).innerHTML='<button onclick="verDetalleBienes(this)" conse="'+consecutivo+'" class="btn btn-default">VER</button>';
+            fila.insertCell(-1).innerHTML='<button onclick="verDetalleBienes(this)" fol="'+folio+'" conse="'+consecutivo+'" class="btn btn-default">VER</button>';
 
         }
     } else {
