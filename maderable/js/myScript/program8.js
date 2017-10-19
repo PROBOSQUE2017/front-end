@@ -103,7 +103,7 @@ var formPrincipalProgram8 = function(folio){
                                    '<label>Dependencias participantes</label>'+
                                   '<div class="input-group">'+
                                         '<input type="text" class="form-control"  placeholder="Haga clic para" readonly>'+
-                                        '<div onclick="verDependencias(this)" class="input-group-addon btn-success">'+
+                                        '<div onclick="verDependencias(this)" fol="'+folio.folio+'" class="input-group-addon btn-success">'+
                                           'ver'+
                                         '</div>'+
                                   '</div>'+
@@ -119,7 +119,7 @@ var formPrincipalProgram8 = function(folio){
                                   '<label>Vehículos Asegurados</label>'+
                                   '<div class="input-group">'+
                                         '<input type="text" class="form-control"  placeholder="Haga clic para" readonly disabled>'+
-                                        '<div onclick="verVehiculosAseg(this)" class="input-group-addon btn-success">'+
+                                        '<div onclick="verVehiculosAseg(this)" fol="'+folio.folio+'" class="input-group-addon btn-success">'+
                                           'ver'+
                                         '</div>'+
                                   '</div>'+
@@ -140,7 +140,7 @@ var formPrincipalProgram8 = function(folio){
                                   '<label>Personas aseguradas o infraccionadas</label>'+
                                   '<div class="input-group">'+
                                         '<input type="text" class="form-control"  placeholder="Haga clic para" readonly disabled>'+
-                                        '<div onclick="verPersonasAseg(this)" class="input-group-addon btn-success">'+
+                                        '<div onclick="verPersonasAseg(this)" fol="'+folio.folio+'" class="input-group-addon btn-success">'+
                                           'ver'+
                                         '</div>'+
                               '</div>'+
@@ -153,7 +153,7 @@ var formPrincipalProgram8 = function(folio){
                                    '<label>Bienes y Productos Asegurados</label>'+
                                   '<div class="input-group">'+
                                         '<input type="text" class="form-control"  placeholder="Haga clic para" readonly disabled>'+
-                                        '<div onclick="verBienesAseg(this)" class="input-group-addon btn-success">'+
+                                        '<div onclick="verBienesAseg(this)" fol="'+folio.folio+'" class="input-group-addon btn-success">'+
                                           'ver'+
                                         '</div>'+
                                   '</div>'+
@@ -162,7 +162,7 @@ var formPrincipalProgram8 = function(folio){
                                    '<label>Predios</label>'+
                                   '<div class="input-group">'+
                                         '<input type="text" class="form-control"  placeholder="Haga clic para" readonly disabled>'+
-                                        '<div onclick="verPredios(this)" class="input-group-addon btn-success">'+
+                                        '<div onclick="verPredios(this)" fol="'+folio.folio+'" class="input-group-addon btn-success">'+
                                           'ver'+
                                         '</div>'+
                                   '</div>'+
@@ -231,7 +231,7 @@ var formPrincipalProgram8 = function(folio){
                                   '<label>Archivos</label>'+
                                   '<div class="input-group">'+
                                         '<input type="text" class="form-control"  placeholder="Haga clic para" readonly disabled>'+
-                                        '<div onclick="verFiles(this)" class="input-group-addon btn-success">'+
+                                        '<div onclick="verFiles(this)" fol="'+folio.folio+'" class="input-group-addon btn-success">'+
                                           'ver'+
                                         '</div>'+
                                   '</div>'+
