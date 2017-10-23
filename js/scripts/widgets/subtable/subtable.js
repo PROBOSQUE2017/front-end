@@ -1456,13 +1456,13 @@ isImage:function(name){
                                         for(var x in typeValid){
                                                   var i = typeValid[x];
                                                        if (archivo.indexOf('.'+i)!=-1) {
-                                                             $('body').modal({data:{user:obj.options.userActive.id,folio:obj.Folio,path:connections.image.get.url,action:'get',consecutivo:obj.Consecutivo,field:'pdf'}});
+                                                             $('body').modal({data:{user:obj.options.userActive.id,folio:obj.Folio,path:connections.image.get.url,action:'get',consecutivo:obj.Consecutivo,field:field, tipoArchivo: 'pdf'}});
                                                              bandera=1;
                                                             break;
                                                                            }
                                                             } 
                                          if(bandera==0){
-                                                        $('body').modal({data:{user:obj.options.userActive.id,folio:obj.Folio,path:connections.image.get.url,action:'get',consecutivo:obj.Consecutivo,field:field}});
+                                                        $('body').modal({data:{user:obj.options.userActive.id,folio:obj.Folio,path:connections.image.get.url,action:'get',consecutivo:obj.Consecutivo,field:field, tipoArchivo:'otro'}});
                                            }
                                         
                                              //Fin codigo PDF e imagenes

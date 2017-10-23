@@ -9,7 +9,9 @@ $.widget( "custom.modal", {
                     action:'',
                     path:'',
                     consecutivo:'',
-                    field:''
+                    field:'',
+                    tipoArchivo:''
+
                  }
           },
 	  _init:function(){
@@ -32,9 +34,9 @@ $.widget( "custom.modal", {
                     var obj = this;
                     var o = obj.options.data;
                     var path=o.path+'action='+o.action+'&user='+o.user+'&folio='+o.folio+'&consecutivo='+o.consecutivo+'&field='+o.field; path=o.path+'action='+o.action+'&user='+o.user+'&folio='+o.folio+'&consecutivo='+o.consecutivo+'&field='+o.field;
-                    var archivo = o.field.substring(0,3);
-                    if (archivo == 'pdf') {
-                      path=o.path+'action='+o.action+'&user='+o.user+'&folio='+o.folio+'&consecutivo='+o.consecutivo+'&field=url';                      
+                    var tipo = o.tipoArchivo;
+                    if (tipo == 'pdf') {
+                      path=o.path+'action='+o.action+'&user='+o.user+'&folio='+o.folio+'&consecutivo='+o.consecutivo+'&field='+o.field;                      
                       var chain = '<div id="portapdf"> <object data="'+path+'" type="application/pdf" width="100%" height="500"></object> </div>'; 
                     }else{
                       var chain='<div class="dataRecords" align="center">'+
