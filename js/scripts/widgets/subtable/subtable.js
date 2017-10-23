@@ -1450,7 +1450,7 @@ isImage:function(name){
                                         var source = $(this).attr('path');
                                         var field = $(this).attr('field');
                                              //Codigo Para PDF e imagen Mike Martinez; Jonathan ALdama
-                                        var archivo=$("#sub_add_url").val() || $(this).val().trim();
+                                        var archivo=$("#sub_add_"+field).val() || $(this).val().trim();
                                         var typeValid = ['pdf'];
                                         var bandera=0;
                                         for(var x in typeValid){
