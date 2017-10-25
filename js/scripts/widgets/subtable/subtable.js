@@ -378,7 +378,33 @@ $.widget( "custom.customSubtable", {
                                         valid=true;
                                         switch (obj.options.action) {
                                                   case 'delete':
-                                                            //obj.showMessage(['Usuario eliminado satisfactoriamente'],'info');
+                                                            
+                                                              /*
+                                                                 * @Description
+                                                                 * Issue para actualizar el recuadro verde de la cantidad de multiregistros
+                                                                 * aumenta en caso de que el registro sea exitoso
+                                                                 */
+
+                                                                   let texto = $("div[id='tb_add_"+obj.options.subtable+"_records']").html();
+                                                                    cantidad = texto.trim().split(' ')[0]
+                                                                    try {
+                                                                       cantidad = parseInt(cantidad)
+                                                                       cantidad--
+                                                                    }
+                                                                    catch(err) {
+                                                                       cantidad = err
+                                                                    }
+
+
+                                                                    $("div[id='tb_add_"+obj.options.subtable+"']").val(cantidad);
+                                                                    $("div[id='tb_add_"+obj.options.subtable+"_records']").html(cantidad+" Registros");
+
+
+
+                                                                 /*
+                                                                  * Fin issue
+                                                                  */
+
                                                             
                                                             $('body').multirecords('closeWindow');
                                                             $('body').multirecords('updateRecordList');
