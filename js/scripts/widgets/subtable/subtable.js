@@ -249,7 +249,7 @@ $.widget( "custom.customSubtable", {
                                         break;
                               case 'delete':
                                         buttons=[
-                                                 {label:'Aceptar',action:action},
+                                                 {label:'Eliminar',action:action},
                                                  {label:'Cancelar',action:'cancel'}
                                         ];
                                         break;
