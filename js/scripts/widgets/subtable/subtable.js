@@ -722,9 +722,9 @@ $.widget( "custom.customSubtable", {
                      
                     });
                     $("#delete_subtable").click(function(){
-                               Alert.show({
+                               Alert.eliminarMulti({
                                         title:'Notificaci&oacute;n',
-                                        type:'notification',
+                                        type:'error',
                                         messages:['&iquest;Realmente desea eliminar este registro?'],
                                         buttons:[
                                                   

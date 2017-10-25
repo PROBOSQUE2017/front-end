@@ -8,6 +8,8 @@ define(["connections","validator"], function(connections,validator){
 
     var errorMultiRegistro=function(params){
     	let content = params.messages;
+    	let buttons = params.buttons;
+
     	if($(".custom_alert").length>0)$(".custom_alert").remove();
 		let templateString = '<div class="custom_alert '+((params.clase)?params.clase:'')+'">'+
 			'<div class="custom_alert_veil"></div>'+
@@ -16,7 +18,7 @@ define(["connections","validator"], function(connections,validator){
 				'<div class="content" align="center">'+
 				    '<b>'+content+'</b>'+
 				    '<div class="buttons" align="center">'+
-						'<button class="textButton textButton_error errorMultiregistro">Cerrar</button>'+
+						  getButtonsSubtable(params)
 				    '</div>'+
 				'</div>'+
 			'</div>'+
@@ -42,6 +44,101 @@ define(["connections","validator"], function(connections,validator){
 
     /*
      * Fin event
+     */
+
+   /*
+    * @function eliminarMultiregistro
+    * @param {String} mensaje. Mensaje que se mostrará al usuario
+    * @param {String }textobtn. Texto del boton
+    */
+
+    var eliminarMultiregistro=function(params){
+    	let content = params.messages;
+    	let buttons = params.buttons;
+    	
+    	if($(".custom_alert").length>0)$(".custom_alert").remove();
+		let templateString = '<div class="custom_alert '+((params.clase)?params.clase:'')+'">'+
+			'<div class="custom_alert_veil"></div>'+
+			'<div class="message">'+
+				'<div class="header '+params.type+'"><div class="label">'+params.title+'</div></div>'+
+				'<div class="content" align="center">'+
+				    '<b>'+content+'</b>'+
+				    '<div class="buttons" align="center">'+
+						  getButtonsSubtableEliminar(params)
+				    '</div>'+
+				'</div>'+
+			'</div>'+
+		    '</div>';
+
+		   $('body').append(templateString);
+
+		   eventEliminar(params);
+
+    };
+
+    /*
+     * Fin function errorMultiRegistro
+     */
+
+	/*
+	 * @function eventEliminar
+	 * @param {Object} params. Boton con el evento para eliminar
+	 */
+	var eventEliminar = function(params) {
+	    
+	    if (params.buttons[0]) {
+	        $(".custom_alert button:first").click(function() {
+	            if (params.buttons[0].event) {
+	                params.buttons[0].event();
+	            }
+	        });
+	    }
+
+	}
+	/*
+	 * Fin 
+	 */
+
+    /*
+     * @function getButtonsSubtableEliminar
+     * @param {Object} params. Botones que serán mostrados
+     *
+     */
+    var getButtonsSubtableEliminar = function(params) {
+        var buttons = params.buttons;
+        var chain = '';
+        if (buttons[0]) {
+            chain +=  '<button class="textButton textButton_error eliminarOk">'+buttons[0].label+'</button>';
+
+        }
+        if (buttons[1]) {
+           chain +=  '<button class="textButton errorMultiregistro" style="background-color:white; color:black">'+buttons[1].label+'</button>';
+        }
+        return chain;
+    };
+    /*
+     * Fin seccion 
+     */
+
+    /*
+     * @function getButtonsSubtable
+     * @param {Object} params. Botones que serán mostrados
+     *
+     */
+    var getButtonsSubtable = function(params) {
+        var buttons = params.buttons;
+        var chain = '';
+        if (buttons[0]) {
+            chain +=  '<button class="textButton textButton_error errorMultiregistro">'+buttons[0].label+'</button>';
+
+        }
+        if (buttons[1]) {
+           chain +=  '<button class="textButton errorMultiregistro" style="background-color:white; color:black">'+buttons[1].label+'</button>';
+        }
+        return chain;
+    };
+    /*
+     * Fin seccion 
      */
 
     var show=function(params){
@@ -122,6 +219,7 @@ define(["connections","validator"], function(connections,validator){
     return {
 	    show:show,
 	    error: errorMultiRegistro,
+	    eliminarMulti : eliminarMultiregistro,
 	    hide:hide
     }
     
