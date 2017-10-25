@@ -301,6 +301,8 @@ $.widget( "custom.multirecords", {
                               
                                                             var params={action:'new',data:json.data,operations:json.operations,userActive:obj.options.data.userActive,folio:obj.options.data.folio,subtable:obj.options.data.field,source:"."+obj.id+" .formRecords .fields",section:'subtable'};
                                                             //var params={action:obj.options.data.mode,data:json.data,operations:json.operations,userActive:obj.options.data.userActive,folio:obj.options.data.folio,subtable:obj.options.data.field};
+                                                           
+                                                           
                                                             $("."+obj.id+" .formRecords .fields").customSubtable(params);
                                                             
                                                   break;
