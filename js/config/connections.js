@@ -73,7 +73,7 @@ define([], function(){
                     },
 //   Servivio para la consulta del numero de incendio consecutivo por año para el programa de incendios 
 //        Mike Omar Martínez 16/06/2016
-                     getNumIncendio:{
+                    getNumIncendio:{
                         url:'http://localhost:8080/ServiceBosque/NumIncendio?',
                                 type:'POST',
                                 dataType:'json'
@@ -125,6 +125,11 @@ define([], function(){
                     getAnioAreaCorta:{
                         url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'GET',
+                        dataType:'json'
+                    },
+                    updateConglomerado:{
+                        url:'http://localhost:8080/ServiceBosque/Subtable?',
+                        type:'POST',
                         dataType:'json'
                     }
             },

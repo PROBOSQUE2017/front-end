@@ -758,6 +758,41 @@
         },
         //fin codigo Mike 16/06/2016
 
+        /*
+         * @Description
+         * Peticion http para actualizar el numero de conglomerado en los multi regitros
+         */
+         requestUpdateConglomerado: function(params) {
+            obj = this;
+            var msg = 'Servicio no disponible intente m&aacute;s tarde';
+            var r = {
+                success: function(json, estatus) {
+                  console.log('respuesta del servidor: ' +json)
+                   alert('parametros enviados:'+params.action + ' folio: '+params.folio + ' conglo: '+params.numero_conglomerado)
+                },
+                beforeSend: function(xhr) {
+
+                },
+                error: function(solicitudAJAX, errorDescripcion, errorExcepcion) {
+
+                    Alert.show({
+                        title: 'Notificaci&oacute;n',
+                        type: 'error',
+                        messages: [msg],
+                        buttons: [{ label: 'Cerrar' }]
+                    });
+                },
+                complete: function(solicitudAJAX, estatus) {
+
+                }
+            };
+            r = $.extend(r, connections.multirecords.updateConglomerado);
+            r.data = params;
+            $.ajax(r);
+        },
+        /*
+         * Fin
+         */
         request: function(params) {
 
             obj = this;
@@ -915,6 +950,7 @@
             $("#tb_add_" + id).html(value);
             $("#tb_add_" + id).attr('value', valores.join(','));
         },
+
         events: function() {
             var obj = this;
             var o = this.options.data;
@@ -1826,6 +1862,33 @@
                 $("#tb_add_hectareas_saneadas").number(true, 2);
                 $("#tb_add_asistencia_tecnica_ha").number(true, 2);
                 $("#tb_add_volumen_saneado").number(true, 2);
+            }
+            if (obj.options.userActive.program == '12') {
+                /*
+                 * @Description
+                 * Evento para actualizar el numero de conglomerado en los multi registros
+                 * Envia la peticion si existe folio en caso contrario notifica al usuario
+                 * que tiene que generar el folio
+                 */
+
+                $('#tb_add_num_conglomerado').on('change', function() {
+                   let folio = $('#tb_add_folio').val().trim();
+                   let numero_conglomerado = $(this).val().trim();
+                    if(!validator.isEmpty(folio)){
+                       var params = { action: 'numero_conglomerado', num_programa: obj.options.userActive.program, folio: folio, numero_conglomerado: numero_conglomerado };
+                       obj.requestUpdateConglomerado(params);
+                    }else{
+                      $(this).val('') 
+                      Alert.error({
+                            title: 'Notificaci&oacute;n',
+                            type: 'error',
+                            messages: ['Para agregar/actualizar el número de conglomerado correctamente genere el folio'],
+                            content: '',
+                            buttons: [{ label: 'Aceptar' }]
+                      })
+                    } 
+                 
+                });
             }
             if (obj.options.userActive.program == '13') {
                 $("#tb_add_superficie").number(true, 2);
