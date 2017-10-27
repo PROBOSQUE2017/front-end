@@ -1449,9 +1449,11 @@ isImage:function(name){
                                                 var nameFile = (typeof(d.name)!="undefined")?d.name:d.fileName;
                                                 var valid = obj.isImage(nameFile);
                                                 if(valid){
+                                                    var pdfMayus = ".PDF";
+                                                    var pdfMinus = ".pdf";
                                                     data.url=serviceUpload;
                                                     obj.attachment[idForm] = data;
-                                                    $("#"+id).val(nameFile);
+                                                    $("#"+id).val(nameFile.replace(pdfMayus,pdfMinus));
                                                 }else{
                                                     obj.attachment[idForm] = null;
                                                     Alert.show({
