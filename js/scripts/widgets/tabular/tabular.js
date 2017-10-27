@@ -2515,7 +2515,48 @@ $("#tb_add_pasto").keyup(function(){
                                      case 'superficie_otros_usos':
 
                                          if (!validator.isNumNoDec(value.trim())) {
-                                             msg.push('Verifique el campo ' + label);
+                                             item.addClass('badInput');
+                                             control=true;
+                                         }
+                                         break;
+                                 }
+                             }
+                         }
+                         /*
+                          * Fin bloque issue
+                          */
+
+                         /*
+                          * @Description
+                          * issue validacion para el formulario principal del programa10
+                          * superficies con decimales 
+                          * ITH 
+                          */
+                         if (numero_programa == 10) {
+                             if (datatype == 'real' && !validator.isEmpty(value) && value!='0') {
+
+                                 switch (field) {
+                                     case 'superficie_total':
+                                     case 'superficie_arbolada':
+                                     case 'superficie_aprobada_anio_anterior':
+                                     case 'superficie_solicitada':
+                                     case 'plantacion_navidad_superficie':
+                                     case 'plantacion_maderable_superficie':
+                                     case 'superficie_total_plantaciones':
+                                     case 'sup_intervenir_aprov_maderable':
+                                     case 'superficie_apoyada':
+                                     case 'superficie_conafor_fondo_concurrente':
+                                     case 'superficie_conafor':
+                                     case 'superficie_aprobada':
+                                     case 'superficie_documentacion':
+                                     case 'superficie_factible_validada':
+                                     case 'suerficie_preaprobacion':
+                                     case 'superficie_aprobada_2':
+                                     case 'superficie_aprobada_fc_ha':
+
+
+
+                                         if (!validator.isNumNoDec(value.trim())) {
                                              item.addClass('badInput');
                                              control=true;
                                          }
@@ -2588,7 +2629,9 @@ $("#tb_add_pasto").keyup(function(){
                     });
                     
                     if(control && numero_programa == '1'){
-                         msg.push("<b>Las superfices deben contener max 5 enteros y max 3 decimales</b>");
+                         msg.push("<b>Las superficies deben contener max 5 enteros y max 3 decimales</b>");
+                    }else if(control && numero_programa == '10'){
+                          msg.push("<b>Verifique las superficies marcadas en rojo deben contener max 5 enteros y max 3 decimales</b>");
                     }
 
                     if ($("#fm_add_rol option:selected").val()=='2') {
