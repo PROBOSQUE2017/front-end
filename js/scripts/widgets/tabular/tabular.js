@@ -768,7 +768,7 @@
             var r = {
                 success: function(json, estatus) {
                   console.log('respuesta del servidor: ' +json)
-                   alert('parametros enviados:'+params.action + ' folio: '+params.folio + ' conglo: '+params.numero_conglomerado)
+                  alert('parametros enviados:'+params.action + ' folio: '+params.folio + ' conglo: '+params.numero_conglomerado)
                 },
                 beforeSend: function(xhr) {
 
@@ -1875,7 +1875,7 @@
                    let folio = $('#tb_add_folio').val().trim();
                    let numero_conglomerado = $(this).val().trim();
                     if(!validator.isEmpty(folio)){
-                       var params = { action: 'editNoConglomerado', numeroPrograma: obj.options.userActive.program, folio: folio, numeroConglomerado: numero_conglomerado };
+                       var params = { action: 'editNoConglomerado', user: obj.options.userActive.id, folio: folio, numeroConglomerado: numero_conglomerado };
                        obj.requestUpdateConglomerado(params);
                     }else{
                       $(this).val('') 
