@@ -2553,8 +2553,9 @@ $("#tb_add_pasto").keyup(function(){
                                      case 'suerficie_preaprobacion':
                                      case 'superficie_aprobada_2':
                                      case 'superficie_aprobada_fc_ha':
-
-
+                                     case 'prorrim':
+                                     case 'plantacion_restauracion':
+                                     case 'fondos_concurrentes_conafor':
 
                                          if (!validator.isNumNoDec(value.trim())) {
                                              item.addClass('badInput');
