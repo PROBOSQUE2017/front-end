@@ -767,8 +767,7 @@
             var msg = 'Servicio no disponible intente m&aacute;s tarde';
             var r = {
                 success: function(json, estatus) {
-                  console.log('respuesta del servidor: ' +json)
-                  alert('parametros enviados:'+params.action + ' folio: '+params.folio + ' conglo: '+params.numero_conglomerado)
+                      console.log(json)
                 },
                 beforeSend: function(xhr) {
 
