@@ -1875,7 +1875,7 @@
                    let folio = $('#tb_add_folio').val().trim();
                    let numero_conglomerado = $(this).val().trim();
                     if(!validator.isEmpty(folio)){
-                       var params = { action: 'numero_conglomerado', num_programa: obj.options.userActive.program, folio: folio, numero_conglomerado: numero_conglomerado };
+                       var params = { action: 'editNoConglomerado', numeroPrograma: obj.options.userActive.program, folio: folio, numeroConglomerado: numero_conglomerado };
                        obj.requestUpdateConglomerado(params);
                     }else{
                       $(this).val('') 
