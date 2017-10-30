@@ -1863,6 +1863,16 @@
                 $("#tb_add_volumen_saneado").number(true, 2);
             }
             if (obj.options.userActive.program == '12') {
+                let conglomeradoGlobal = null
+
+                 /*
+                 * @Description
+                 * Evento para obtener el valor del conglomenrado antes de que sea modificado
+                 */
+                 $('#tb_add_num_conglomerado').focus(function(){
+                    conglomeradoGlobal = $(this).val().trim()
+                 });
+
                 /*
                  * @Description
                  * Evento para actualizar el numero de conglomerado en los multi registros
@@ -1874,8 +1884,20 @@
                    let folio = $('#tb_add_folio').val().trim();
                    let numero_conglomerado = $(this).val().trim();
                     if(!validator.isEmpty(folio)){
-                       var params = { action: 'editNoConglomerado', user: obj.options.userActive.id, folio: folio, numeroConglomerado: numero_conglomerado };
-                       obj.requestUpdateConglomerado(params);
+
+                         Alert.show({
+                              title: 'Notificaci&oacute;n',
+                              type: 'error',
+                              messages: ['<b>¿Está seguro de usar '+ numero_conglomerado +' como número de conglomerado?.</b><br>El número de conglomerado se actualizará en los multiregistros'],
+                              buttons: [{label:'No', event: function(){
+                                               $('#tb_add_num_conglomerado').val(conglomeradoGlobal)
+                                            }},
+                                        { label: 'Si', event: function() {
+                                                var params = { action: 'editNoConglomerado', user: obj.options.userActive.id, folio: folio, numeroConglomerado: numero_conglomerado };
+                                                      obj.requestUpdateConglomerado(params);
+                                              } 
+                                        }]
+                         });
                     }else{
                       $(this).val('') 
                       Alert.error({
