@@ -37,11 +37,28 @@ $.widget( "custom.customSubtable", {
                    this.events();
           },
           getSelect:function(i){
-                    //id,idSelected,field
-                    /*let soloLectura='';
-                    if(i.editable && (i.field == 's400_numero_sitio' || i.field == 'numero_arbol')){
-                          soloLectura = 'disabled';
-                    }*/
+                    
+                    /*
+                     * @Description
+                     * Issue para filtrar el combo de numero de arbol en base al numero de sitio
+                     */
+               
+                    if(i.editable && i.field == 'numero_arbol'){
+                          let sitio = i.value.split('-')[0]
+                          let arbolSitio =  i.list.list 
+                          
+                          let result = arbolSitio.filter(data => {
+                                    let value = data.value.split('-')[0]
+                                    return value == sitio
+                          })
+                          
+                          i.list.list = result
+
+                    }
+                    /*
+                     * Fin issue
+                     */
+
                     var user = this.options.userActive;
                     var chain='<select class="selectInput" id="'+i.id+'" datatype="'+i.datatype+'" field="'+i.field+'">';
                     var selected = ' selected="selected" ';
