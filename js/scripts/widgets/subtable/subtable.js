@@ -2299,7 +2299,26 @@ requestNumMujeres : function(params){
                           */
 
                                             
+                           /*
+                            * @Description
+                            * issue validacion para el formulario participantes de multiRegitros del programa2
+                            * ITH 
+                            */
+                              if(numero_programa == 2){
+                                   switch(field){
+                                        case 'nombre':
+                                        if(validator.isEmpty(value)){
+                                             msg.push('Introduce ' + label +' del participante <br>');
+                                             item.addClass('badInput');
+                                        }
+                                        break;
+                                   }
 
+                              }
+
+                              /*
+                               * Fin issue
+                               */
 
 
                             params.push({field:field,value:value,datatype:datatype,label:label});
@@ -2362,6 +2381,29 @@ requestNumMujeres : function(params){
                                    }
 
                               }
+
+
+                           /*
+                            * @Description
+                            * issue validacion para el formulario participantes de multiRegitros del programa2
+                            * ITH 
+                            */
+                              if(numero_programa == 2){
+                                   switch(field){
+                                        case 'genero':
+                                        if(value == -1){
+                                             msg.push('Seleccione ' + label +'<br>');
+                                             item.addClass('badInput');
+                                        }
+                                        break;
+                                   }
+
+                              }
+
+                              /*
+                               * Fin issue
+                               */
+
                               params.push({field:field,value:value,datatype:datatype,label:label});
                          
                               
