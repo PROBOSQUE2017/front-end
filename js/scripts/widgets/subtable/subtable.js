@@ -473,6 +473,32 @@ $.widget( "custom.customSubtable", {
                                                                   * Fin issue
                                                                   */
 
+                                                                 /*
+                                                                  * @Description
+                                                                  * Consulta el total de mujeres / hombres si se inserto corectamente
+                                                                  *
+                                                                  */
+                                                                     if (obj.options.userActive.program == 2) {
+
+                                                                            let params = { anio: 'totalmujeres', region: obj.Folio };
+
+                                                                            (function(p, objeto){
+                                                                              obj.requestNumMujeres(p);
+                                                                            }(params,obj));
+
+
+                                                                            let param = { anio: 'totalhombres', region: obj.Folio };
+
+                                                                                (function(p, objeto){
+                                                                                  obj.requestNumHombres(p);
+                                                                                }(param,obj));
+
+                                                                     }
+
+                                                                  /*
+                                                                   * Fin issue
+                                                                   */
+
                                                                  $('body').multirecords('closeWindow');
                                                                  $('body').multirecords('updateRecordList');
                                                             }else{
@@ -756,16 +782,7 @@ $.widget( "custom.customSubtable", {
                                          setTimeout(function(){obj.requestNumCombatientes(params)},3000);
                                         //Fin codigo Mike 
                                          }
-                                       /*ini rubi*/           
-                       if(obj.options.userActive.program==2)
-                       {                    
-                            
-                            setTimeout(function(){var params= {anio:'totalmujeres',region:obj.Folio};                 
-                                                  obj.requestNumMujeres(params)},2000);
-                                           
-                          var params= {anio:'totalhombres',region:obj.Folio};                 
-                         setTimeout(function(){obj.requestNumHombres(params)},1000);
-                          }
+                                       
 
                                if(obj.options.userActive.program==8 )
                                         {                    
@@ -776,7 +793,7 @@ $.widget( "custom.customSubtable", {
                                         //Fin codigo Mike 
                                          }
 
-                       /* fin rubi */      
+                           
 
 			      }else{
 					
