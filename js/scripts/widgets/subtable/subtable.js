@@ -539,6 +539,31 @@ $.widget( "custom.customSubtable", {
                                                             
                                                   case 'edit':
                                                             //obj.showMessage(['El usuario ha sido editado satisfactoriamente'],'info');
+                                                                 /*
+                                                                  * @Description
+                                                                  * Consulta el total de mujeres / hombres si se inserto corectamente
+                                                                  *
+                                                                  */
+                                                                     if (obj.options.userActive.program == 2) {
+
+                                                                            let params = { anio: 'totalmujeres', region: obj.Folio };
+
+                                                                            (function(p, objeto){
+                                                                              obj.requestNumMujeres(p);
+                                                                            }(params,obj));
+
+
+                                                                            let param = { anio: 'totalhombres', region: obj.Folio };
+
+                                                                                (function(p, objeto){
+                                                                                  obj.requestNumHombres(p);
+                                                                                }(param,obj));
+
+                                                                     }
+
+                                                                  /*
+                                                                   * Fin issue
+                                                                   */
                                                             $('body').multirecords('closeWindow');
                                                             $('body').multirecords('updateRecordList');
                                                             Alert.show({
