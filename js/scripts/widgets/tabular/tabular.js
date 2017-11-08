@@ -73,14 +73,40 @@
             this.events();
         },
         getSelect: function(i) {
-            //id,idSelected,field
+            
             var user = this.options.userActive;
             var chain = '<select class="selectInput" id="' + i.id + '" datatype="' + i.datatype + '" field="' + i.field + '" >';
-            var selected = ' selected="selected" ';
-            chain += '<option value="-1" selected="selected" >Seleccione una opci&oacute;n</option>';
+            var selected = '';
+            let b = false;
+             /**
+              * Seleccionado en el combo
+              * @const {string} valor
+              * Recupera el valor seleccionado en el combo
+              */
+              const  valor  = i.value
+            /*
+             * Fin issue
+             */
+
+             if(valor == -1 || valor == null || typeof valor === "undefined" || valor == '' ){
+                selected = 'selected="selected"';
+                b = false;
+             }else {
+                selected = '';
+                b = true;
+             }
+
+            
+
+            chain += '<option value="-1" '+selected+' >Seleccione una opci&oacute;n</option>';
             for (var x in i.list.list) {
                 var e = i.list.list[x];
-                chain += '<option value="' + e.value + '" ' + '>' + e.label + '</option>';
+
+                if(b){
+                    selected = (e.value == valor)? 'selected="selected"' : '';
+                }
+
+                chain += '<option value="' + e.value + '" ' + selected +' >' + e.label + '</option>';
             }
             chain += '</select>';
             return chain;
