@@ -99,6 +99,7 @@
             
 
             chain += '<option value="-1" '+selected+' >Seleccione una opci&oacute;n</option>';
+            selected = '';
             for (var x in i.list.list) {
                 var e = i.list.list[x];
 
