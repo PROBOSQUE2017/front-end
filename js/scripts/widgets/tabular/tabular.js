@@ -63,9 +63,30 @@
                     obj.requestFolio(params);
                     // Se lanza una peticion AJAX para traer el numero de incendio , funciona para el programa de incendios 
                     //Mike Martínez 16/06/2016
-                    obj.requestNumIncendio(params);
+                    //Solo ejecutar para el programa de incendios
+                    if(obj.options.userActive.program == 7){
+                      obj.requestNumIncendio(params);
+                    }
                     //fin codigo Mike 
+                }else if(anio == '-1' || region == -1){
+                    $("#tb_add_folio").val('');
                 }
+
+                /*
+                 * @Description
+                 * Issue para filtrar municipios en base a la region
+                 */
+                 if( region != -1 ){
+                    let json = { region : region};
+                    obj.requestLugares($('#tb_add_modulopredio_municipio'),json,connections.tabular.getMunicipios);
+                 }else {
+                    let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
+                    $('#tb_add_modulopredio_municipio').html(option);
+                 }
+                 /*
+                  * Fin issue
+                  */
+
             }, 100);
         },
         update: function(data) {
@@ -728,6 +749,72 @@
             r.data = { action: 'get', user: obj.options.userActive.id, anio: params.anio, id_region: params.region };
             $.ajax(r);
         },
+
+        /*
+        * Peticion http para consultar
+        * @function requestMunicipio
+        * @param { Object DOM } combo - Combo que será llenado con la respuesta del servidor 
+        * @param { JSON } data - JSON que será enviado
+        * @param { String } url - Direccion del service 
+        */
+        requestLugares: function( combo , data , url){
+            var msg = 'Servicio no disponible intente m&aacute;s tarde';
+            var r = {
+                success: function(json, estatus) {
+                    var valid = false;
+
+                    if ((json) && (json.response)) {
+
+                        if (json.response.sucessfull) {
+                            valid = true;
+                            let options = '<option value="-1" selected="selected">Seleccione una opción</option>';
+                            json.data.list.map(function(element){
+                                options += '<option value=":value:">:descriptivo:</option>'
+                                                .replace(':value:', element.value)
+                                                .replace(':descriptivo:', element.label);
+                            });
+                            
+                            combo.html(options);
+
+                        } else {
+                            msg = json.response.message;
+                        }
+                    }
+                    if (!valid) {
+
+                        Alert.show({
+                            title: 'Notificaci&oacute;n',
+                            type: 'error',
+                            messages: [msg],
+                            buttons: [{ label: 'Cerrar' }]
+                        });
+                    }
+                },
+                beforeSend: function(xhr) {
+
+                },
+                error: function(solicitudAJAX, errorDescripcion, errorExcepcion) {
+
+                    Alert.show({
+                        title: 'Notificaci&oacute;n',
+                        type: 'error',
+                        messages: [msg],
+                        buttons: [{ label: 'Cerrar' }]
+                    });
+                },
+                complete: function(solicitudAJAX, estatus) {
+
+                }
+            };
+            r = $.extend(r, url);
+            r.data = data;
+            $.ajax(r);
+        },
+
+        /*
+         * Fin issue 
+         */
+
         /*
           Objeto que lanza una peticion ajax para la construccion del numero consecutivo de incendio 
           funciona para el programa de incendios, validado, no causa conficlto con ninguno de los otros 
@@ -1379,12 +1466,25 @@
             //
             /*evento nuevo Edgar R. Zamora */
             /* get selct */
+            /*$('#tb_add_region').change(function() {
+                let option = '<option value="-1">Seleccione una opción</option>';
+                //Limpia los cambos
+                $('#tb_add_modulopredio_municipio,#tb_add_modulopredio_localidad,#tb_add_localidad,#tb_add_modulopredio_cup').html(option);
+                
+            });*/
+
             $("#tb_add_modulopredio_municipio").change(function() {
-                $("#tb_add_modulopredio_municipio option:selected").each(function() {
-                    //elegido=$(this).val();
+                let valorSelected  = $(this).val().trim();
+
+                if(valorSelected == -1){
+                    let option = '<option value="-1">Seleccione una opción</option>';
+                    $('#tb_add_modulopredio_localidad').html(option);
+                    $('#tb_add_modulopredio_cup').html(option);
+                }
+                /*$("#tb_add_modulopredio_municipio option:selected").each(function() {
                     $('#tb_add_municipio').val($(this).val());
                     $('#tb_add_id_municipio').val($(this).val());
-                });
+                });*/
             });
 
             $("#tb_add_modulopredio_localidad").change(function() {
@@ -1466,7 +1566,7 @@
                 $("#tb_add_modulopredio_localidad").change(function() {
                     $("#tb_add_modulopredio_localidad option:selected").each(function() {
                         elegido = $(this).val();
-                        var elemnt = document.getElementById('tb_add_localidad');
+                        var elemnt = document.getElementById('tb_add_modulopredio_localidad');
                         elemnt.value = elegido;
                     });
                 });
