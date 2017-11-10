@@ -47,7 +47,7 @@
                 clearTimeout(obj.clockFolio);
             }
         },
-        getFolio: function() {
+        getFolio: function(field) {
             var obj = this;
             obj.clearClockFolio();
             var folio = $("#tb_add_folio").val() + '';
@@ -72,17 +72,21 @@
                     $("#tb_add_folio").val('');
                 }
 
+
+                  
                 /*
                  * @Description
                  * Issue para filtrar municipios en base a la region
                  */
-                 if( region != -1 ){
-                    let json = { region : region};
-                    obj.requestLugares($('#tb_add_modulopredio_municipio'),json,connections.tabular.getMunicipios);
-                 }else {
-                    let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
-                    $('#tb_add_modulopredio_municipio').html(option);
-                 }
+                 if( field == 'region' ){
+                     if( region != -1 ){
+                        let json = { region : region};
+                        obj.requestLugares($('#tb_add_modulopredio_municipio'),json,connections.tabular.getMunicipios);
+                     } else {
+                        let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
+                        $('#tb_add_modulopredio_municipio').html(option);
+                     }
+                }
                  /*
                   * Fin issue
                   */
@@ -1314,7 +1318,8 @@
             //Agregar el modulo ventanilla para obtener folio Victor Porcayo Altamirano
             if (obj.options.module == 'tabular' || obj.options.module == 'ventanilla') {
                 $('#tb_add_anio,#tb_add_region').change(function() {
-                    obj.getFolio();
+                    let disparaEvento = $(this).attr('field') || ''; 
+                    obj.getFolio(disparaEvento);
                 });
             }
             $(obj.mainClass + " .Field .comment").each(function() {
