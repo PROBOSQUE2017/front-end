@@ -79,12 +79,13 @@
                  * Issue para filtrar municipios en base a la region
                  */
                  if( field == 'region' ){
+                     let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
                      if( region != -1 ){
+                        $('#tb_add_modulopredio_localidad').html(option);
                         let json = { region : region};
                         obj.requestLugares($('#tb_add_modulopredio_municipio'),json,connections.tabular.getMunicipios);
                      } else {
-                        let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
-                        $('#tb_add_modulopredio_municipio').html(option);
+                        $('#tb_add_modulopredio_municipio,#tb_add_modulopredio_localidad').html(option);
                      }
                 }
                  /*
@@ -1470,13 +1471,6 @@
             /* E. Zamora El troll */
             //
             /*evento nuevo Edgar R. Zamora */
-            /* get selct */
-            /*$('#tb_add_region').change(function() {
-                let option = '<option value="-1">Seleccione una opción</option>';
-                //Limpia los cambos
-                $('#tb_add_modulopredio_municipio,#tb_add_modulopredio_localidad,#tb_add_localidad,#tb_add_modulopredio_cup').html(option);
-                
-            });*/
 
             $("#tb_add_modulopredio_municipio").change(function() {
                 let valorSelected  = $(this).val().trim();
@@ -1485,7 +1479,11 @@
                     let option = '<option value="-1">Seleccione una opción</option>';
                     $('#tb_add_modulopredio_localidad').html(option);
                     $('#tb_add_modulopredio_cup').html(option);
+                }else{
+                    let json = { modulopredio_municipio : valorSelected };
+                    obj.requestLugares( $('#tb_add_modulopredio_localidad') , json , connections.tabular.getLocalidades);
                 }
+                
                 /*$("#tb_add_modulopredio_municipio option:selected").each(function() {
                     $('#tb_add_municipio').val($(this).val());
                     $('#tb_add_id_municipio').val($(this).val());

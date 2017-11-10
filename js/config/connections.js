@@ -76,6 +76,11 @@ define([], function(){
                                 type:'POST',
                                 dataType:'json'
                     },
+                    getLocalidades:{
+                        url:'http://localhost:8080/ServiceBosque/Localidad?',
+                                type:'POST',
+                                dataType:'json'
+                    },
 //   Servivio para la consulta del numero de incendio consecutivo por año para el programa de incendios 
 //        Mike Omar Martínez 16/06/2016
                     getNumIncendio:{
