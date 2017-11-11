@@ -81,11 +81,11 @@
                  if( field == 'region' ){
                      let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
                      if( region != -1 ){
-                        $('#tb_add_modulopredio_localidad').html(option);
+                        $('#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
                         let json = { region : region};
                         obj.requestLugares($('#tb_add_modulopredio_municipio'),json,connections.tabular.getMunicipios);
                      } else {
-                        $('#tb_add_modulopredio_municipio,#tb_add_modulopredio_localidad').html(option);
+                        $('#tb_add_modulopredio_municipio,#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
                      }
                 }
                  /*
@@ -1474,14 +1474,15 @@
 
             $("#tb_add_modulopredio_municipio").change(function() {
                 let valorSelected  = $(this).val().trim();
+                let option = '<option value="-1">Seleccione una opción</option>';
 
                 if(valorSelected == -1){
-                    let option = '<option value="-1">Seleccione una opción</option>';
-                    $('#tb_add_modulopredio_localidad').html(option);
-                    $('#tb_add_modulopredio_cup').html(option);
+                    $('#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
                 }else{
                     let json = { modulopredio_municipio : valorSelected };
+                    $("#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup").html(option);
                     obj.requestLugares( $('#tb_add_modulopredio_localidad') , json , connections.tabular.getLocalidades);
+                    
                 }
                 
                 /*$("#tb_add_modulopredio_municipio option:selected").each(function() {
@@ -1491,12 +1492,19 @@
             });
 
             $("#tb_add_modulopredio_localidad").change(function() {
-                $("#tb_add_modulopredio_localidad option:selected").each(function() {
+                let idRegion = $('#tb_add_region').val().trim() || '';
+                let idMunicipio =   $('#tb_add_modulopredio_municipio').val().trim() || '';
+                let idLocalidad = $(this).val().trim() || '';
+
+                let jsonPredios = { modulopredio_estado: 15 , region: idRegion, modulopredio_municipio: idMunicipio , modulopredio_localidad: idLocalidad };
+
+                obj.requestLugares( $('#tb_add_modulopredio_cup') , jsonPredios , connections.tabular.getPredios);
+                /*$("#tb_add_modulopredio_localidad option:selected").each(function() {
                     var $options = $("#tb_add_modulopredio_localidad > option").clone();
                     $('#tb_add_localidad').empty();
                     $('#tb_add_localidad').append($options);
                     $('#tb_add_localidad').val($(this).val());
-                });
+                });*/
 
                 //Procedimeinto para obtener  tipo inspeccion 
 
@@ -1514,11 +1522,6 @@
 
 
                 }
-
-
-
-
-
 
             });
 
