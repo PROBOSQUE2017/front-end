@@ -79,7 +79,8 @@
                  * Issue para filtrar municipios en base a la region
                  */
                  if( field == 'region' ){
-                     let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
+                    let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
+                    $('#tb_add_nombre_predio').val('');
                      if( region != -1 ){
                         $('#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
                         let json = { region : region};
@@ -1456,6 +1457,9 @@
             $("#tb_add_modulopredio_cup").change(function() {
                 var cambio = $("#tb_add_modulopredio_cup option:selected").text();
                 $("#tb_add_predio").val(cambio);
+
+                cambio = ($(this).val() == -1)?'':cambio;
+
                 $("#tb_add_nombre_predio").val(cambio);
 
                 if (obj.options.userActive.program == 8 && ($("#tb_add_tipo_accion option:selected").val() == 3 || $("#tb_add_tipo_accion option:selected").val() == 4 || $("#tb_add_tipo_accion option:selected").val() == 7 || $("#tb_add_tipo_accion option:selected").val() == 6 || $("#tb_add_tipo_accion option:selected").val() == 8)) {
@@ -1477,6 +1481,11 @@
                 let option = '<option value="-1">Seleccione una opción</option>';
 
                 if(valorSelected == -1){
+                    if($(this).val() == -1){
+                         $('#tb_add_nombre_predio').val('');
+
+                    }
+                   
                     $('#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
                 }else{
                     let json = { modulopredio_municipio : valorSelected };
@@ -1495,6 +1504,11 @@
                 let idRegion = $('#tb_add_region').val().trim() || '';
                 let idMunicipio =   $('#tb_add_modulopredio_municipio').val().trim() || '';
                 let idLocalidad = $(this).val().trim() || '';
+
+                 if($(this).val() == -1){
+                        $('#tb_add_nombre_predio').val('');
+
+                }
 
                 let jsonPredios = { modulopredio_estado: 15 , region: idRegion, modulopredio_municipio: idMunicipio , modulopredio_localidad: idLocalidad };
 
