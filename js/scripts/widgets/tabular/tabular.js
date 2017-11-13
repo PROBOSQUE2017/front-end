@@ -1482,13 +1482,9 @@
             $("#tb_add_modulopredio_municipio").change(function() {
                 let valorSelected  = $(this).val().trim();
                 let option = '<option value="-1">Seleccione una opción</option>';
-
+                $('#tb_add_nombre_predio').val('');
                 if(valorSelected == -1){
-                    if($(this).val() == -1){
-                         $('#tb_add_nombre_predio').val('');
-
-                    }
-                   
+  
                     $('#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
                 }else{
                     let json = { modulopredio_municipio : valorSelected };
@@ -1508,10 +1504,10 @@
                 let idMunicipio =   $('#tb_add_modulopredio_municipio').val().trim() || '';
                 let idLocalidad = $(this).val().trim() || '';
 
-                 if($(this).val() == -1){
-                        $('#tb_add_nombre_predio').val('');
+                 
+                $('#tb_add_nombre_predio').val('');
 
-                }
+                
 
                 let jsonPredios = { modulopredio_estado: 15 , region: idRegion, modulopredio_municipio: idMunicipio , modulopredio_localidad: idLocalidad };
 
