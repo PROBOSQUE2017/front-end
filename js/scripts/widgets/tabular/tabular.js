@@ -82,11 +82,11 @@
                     let option = '<option value="-1" selected="selected">Seleccione una opción</option>';
                     $('#tb_add_nombre_predio').val('');
                      if( region != -1 ){
-                        $('#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
+                        $('#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup,#tb_add_id_municipio').html(option);
                         let json = { region : region};
-                        obj.requestLugares($('#tb_add_modulopredio_municipio'),json,connections.tabular.getMunicipios);
+                        obj.requestLugares($('#tb_add_modulopredio_municipio'),json,connections.tabular.getMunicipios,$('#tb_add_id_municipio'));
                      } else {
-                        $('#tb_add_modulopredio_municipio,#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup').html(option);
+                        $('#tb_add_modulopredio_municipio,#tb_add_modulopredio_localidad,#tb_add_modulopredio_cup,#tb_add_id_municipio').html(option);
                      }
                 }
                  /*
@@ -762,8 +762,9 @@
         * @param { Object DOM } combo - Combo que será llenado con la respuesta del servidor 
         * @param { JSON } data - JSON que será enviado
         * @param { String } url - Direccion del service 
+        * @param { Object DOM } copiaCombo - combo que debe contener la misma info 
         */
-        requestLugares: function( combo , data , url){
+        requestLugares: function( combo , data , url , copiaCombo = null){
             var msg = 'Servicio no disponible intente m&aacute;s tarde';
             var r = {
                 success: function(json, estatus) {
@@ -779,7 +780,9 @@
                                                 .replace(':value:', element.value)
                                                 .replace(':descriptivo:', element.label);
                             });
-                            
+                            if(copiaCombo != null){
+                                copiaCombo.html(options);
+                            }
                             combo.html(options);
 
                         } else {
@@ -1494,10 +1497,10 @@
                     
                 }
                 
-                /*$("#tb_add_modulopredio_municipio option:selected").each(function() {
+                $("#tb_add_modulopredio_municipio option:selected").each(function() {
                     $('#tb_add_municipio').val($(this).val());
                     $('#tb_add_id_municipio').val($(this).val());
-                });*/
+                });
             });
 
             $("#tb_add_modulopredio_localidad").change(function() {
@@ -1513,12 +1516,12 @@
                 let jsonPredios = { modulopredio_estado: 15 , region: idRegion, modulopredio_municipio: idMunicipio , modulopredio_localidad: idLocalidad };
 
                 obj.requestLugares( $('#tb_add_modulopredio_cup') , jsonPredios , connections.tabular.getPredios);
-                /*$("#tb_add_modulopredio_localidad option:selected").each(function() {
+                $("#tb_add_modulopredio_localidad option:selected").each(function() {
                     var $options = $("#tb_add_modulopredio_localidad > option").clone();
                     $('#tb_add_localidad').empty();
                     $('#tb_add_localidad').append($options);
                     $('#tb_add_localidad').val($(this).val());
-                });*/
+                });
 
                 //Procedimeinto para obtener  tipo inspeccion 
 
