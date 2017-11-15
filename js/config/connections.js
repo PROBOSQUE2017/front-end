@@ -146,6 +146,11 @@ define([], function(){
                         url:'http://localhost:8080/ServiceBosque/Subtable?',
                         type:'POST',
                         dataType:'json'
+                    },
+                    updateCountS400:{
+                        url:'http://localhost:8080/ServiceBosque/Subtable?',
+                        type:'POST',
+                        dataType:'json'
                     }
             },
             reports:{

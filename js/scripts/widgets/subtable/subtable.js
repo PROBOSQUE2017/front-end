@@ -395,7 +395,7 @@ $.widget( "custom.customSubtable", {
                                         valid=true;
                                         switch (obj.options.action) {
                                                   case 'delete':
-                                                            
+                                                              
                                                               /*
                                                                  * @Description
                                                                  * Issue para actualizar el recuadro verde de la cantidad de multiregistros
@@ -444,6 +444,19 @@ $.widget( "custom.customSubtable", {
 
                                                                      }
 
+                                                                  /*
+                                                                   * Fin issue
+                                                                   */
+
+                                                                  /*
+                                                                   * @Description
+                                                                   * Actualizacion en el conteo de multiregistros s400 cuando se elimina un sitio
+                                                                   */
+                                                                     if (obj.options.userActive.program == 12) {
+                                                                          if(params.subtable == 'formularios.sitios'){
+                                                                               obj.updateCountS400({folio: obj.Folio});
+                                                                          }
+                                                                     }
                                                                   /*
                                                                    * Fin issue
                                                                    */
@@ -859,6 +872,7 @@ $.widget( "custom.customSubtable", {
                      
                     });
                     $("#delete_subtable").click(function(){
+
                                Alert.eliminarMulti({
                                         title:'Notificaci&oacute;n',
                                         type:'error',
@@ -866,7 +880,7 @@ $.widget( "custom.customSubtable", {
                                         buttons:[
                                                   
                                                   {label:'Si',event:function(){
-                                                            obj.request({action:"delete",folio:obj.options.data[0].value});
+                                                            obj.request({action:"delete",folio:obj.options.data[0].value, subtable: obj.options.subtable});
                                                   }},
                                                   {label:'No'},
                                                   ]
@@ -2112,6 +2126,25 @@ requestNumHombres : function(params){
                     $.ajax(r);
           },
 
+          updateCountS400: function(params){
+                    obj=this;
+                    var r= {
+                            success:function(json,estatus){
+                              
+                                var valid=false;
+                                
+                                if ((json)&&(json.response)){
+                                        
+                                    if (json.response.sucessfull){
+                                       $("div[id='tb_add_formularios.s400_records']").html(json.data +" Registros");
+                                    }
+                                }
+                            }
+                  };
+                  r = $.extend(r, connections.multirecords.updateCountS400);
+                  r.data = {action: 'updateCountS400',user:obj.options.userActive.id, folio: params.folio};
+                  $.ajax(r);
+          },
 
 requestNumMujeres : function(params){
                     obj=this;
