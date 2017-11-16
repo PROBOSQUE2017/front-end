@@ -2343,6 +2343,15 @@ requestNumMujeres : function(params){
                                                   item.addClass('badInput');
                                              }
                                         break;
+
+                                        case 'anio':
+                                                  if(!validator.isEmpty(value)){
+                                                    if(!validator.isYearPrograma1(value)){
+                                                  msg.push('Año incorrecto <br>');
+                                                  item.addClass('badInput');
+                                                }
+                                             }
+                                        break;
                                    }
                              }else if (datatype == 'real' && !validator.isEmpty(value) && value!='0') {
 

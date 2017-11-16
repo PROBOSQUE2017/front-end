@@ -197,6 +197,13 @@ define([], function(){
 	 */
     let isNumICAPrograma1 = (numero) =>  /^[0-9]{0,3}(\.[0-9]{1,3})*$/.test(numero);
 
+    /**
+	 * @function isYearPrograma1
+	 * @param  {int} anio - Numero que valida que sea un año
+	 * @return  boolean
+	 */
+    let isYearPrograma1 = (anio) =>  /^[0-9]{4}/.test(anio);
+
     return {
     	 //Edgar R. Zamora
     	escapeHtml:escapeHtml,
@@ -217,7 +224,8 @@ define([], function(){
 	    isNumNoDec: isNumberSuperficie,
 	    isNumNoVolumen: numberVolumenPrograma1,
 	    isNumNoIC: isNumNoICPropuestaPrograma1,
-	    isNumICA: isNumICAPrograma1
+	    isNumICA: isNumICAPrograma1,
+	    isYearPrograma1: isYearPrograma1
     }
     
 });
