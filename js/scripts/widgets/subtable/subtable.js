@@ -885,6 +885,15 @@ $.widget( "custom.customSubtable", {
                                                   {label:'No'},
                                                   ]
                               });
+
+                              if(obj.options.userActive.program==7 && $("#sub_add_num_combatientes").length>0 )
+                                {                    
+                                  //codigo Ramiro Luna Obtiene el numero total de combatientes para el programa de incendios cuando es eliminado
+                                  //23/01/2018
+                                  var params= {anio:'combatientes',region:obj.Folio};                 
+                                  setTimeout(function(){obj.requestNumCombatientes(params)},3000);
+                                  //Fin codigo Mike 
+                                }
                               
                     });
                     //$("#fm_add_rol").selectmenu();
