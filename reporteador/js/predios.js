@@ -189,6 +189,16 @@
   */
   let rowFind =  $('#rowFind'); 
 
+ 
+/**
+  * @constant
+  * @type {object jquery} btnSearch 
+  * @default
+  */
+  let btnSearch =  $('#btn-search'); 
+
+
+
   /**
   * @constant
   * @type {object jquery} addOptionMultiRegistro 
@@ -625,41 +635,24 @@ function LocalidadPorMunicipio(arg , idMunicipio){
     return  arg.filter((datos, index) => datos.id_municipio == idMunicipio);
 }
 
+  
+cajaDetexto.keypress(function(e){
+    if(e.which == 13) {
+       buscaPredio();
+    }           
+}); 
 
-cajaDetexto.keyup(function(){
 
-    let texto = $(this).val().trim()
-    let opcionCombo = combo.val()
-    
-    resetFormulario();
+btnSearch.on('click', function(){
+  buscaPredio();
+})
 
-    if(texto.length == 0){
-        mensajeError.html('')
-    }else if(texto.length > 0 && opcionCombo == '-2ws'){
-        mensajeError.html('Seleccione una opción')
-    }else if(texto.length > 4){
-        mensajeError.html('')
-        getPredios(texto,opcionCombo,urlConexionService)
-    }
-          
-});
 
 
 combo.change(function() {
-
-    let opcion = $(this).val()
-    let texto = cajaDetexto.val().trim()
-    
-
-    
     resetFormulario();
-    if (opcion != '-2ws' && texto.length > 0) {
-        mensajeError.html('')
-        getPredios(texto, opcion, urlConexionService)
-    } else if (opcion == '-2ws') {
-        $('#bodyAllPredios').empty();
-    }
-
+    mensajeError.html('');
+    $('#bodyAllPredios').html('');
 });
 
 
@@ -732,6 +725,26 @@ function eliminaElementoSeleccionado( arr, item ){
 
     return arr;
 };
+
+
+/**
+ * @function buscaPredio
+ */
+function buscaPredio(){
+    let texto = cajaDetexto.val().trim()
+    let opcionCombo = combo.val()
+    
+    resetFormulario();
+
+    if(texto.length == 0){
+        mensajeError.html('')
+    }else if(texto.length > 0 && opcionCombo == '-2ws'){
+        mensajeError.html('Seleccione una opción')
+    }else if(texto.length > 0){
+        mensajeError.html('')
+        getPredios(texto,opcionCombo,urlConexionService)
+    }
+}
 
 
 /*
