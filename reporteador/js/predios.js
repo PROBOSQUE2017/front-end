@@ -3431,19 +3431,19 @@ function validaFormulario(element) {
             },
 
             superficieTotal: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             superficieCartografica: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             superficieArbolada: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             superficieOtrosUsos: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             estatusPredio: {
@@ -3584,7 +3584,7 @@ jQuery.validator.addMethod("empty",
 
 jQuery.validator.addMethod("decimales",
     function(value, element) {
-        return this.optional(element) || /^[0-9]{1,9}(\.[0-9]{3})+$/.test(value.trim());
+        return this.optional(element) || /^[0-9]{1,5}(\.[0-9]{3})+$/.test(value.trim());
     }
 );
 
