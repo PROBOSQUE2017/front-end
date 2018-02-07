@@ -38,6 +38,15 @@
 
    /**
   * @constant
+  * @type {object jquery} modal 
+  * @default
+  */
+
+  const modalObsDesc =  $('#modalObservacionesDesc');
+
+
+   /**
+  * @constant
   * @type {object jquery} divContenidoCatalogos 
   * @default
   */
@@ -87,6 +96,24 @@
   */
 
   const multiRegistros =   modal.find('#multiRegistros');
+
+
+  /**
+  * @constant
+  * @type {object jquery} textoTmp 
+  * @default
+  */
+   const textoTmp = modalObsDesc.find('#texto');
+
+
+/**
+  * @constant
+  * @type {object jquery} cerrarDescObs 
+  * @default
+  */
+   const cerrarDescObs = modalObsDesc.find('#cerrarDescObs');
+
+   
 
  /**
   * @constant
@@ -407,7 +434,7 @@ var htmlFicha = (data, action,cRegiones,cMunicipio,cLocalidades,cTipoTenencia,cE
                     <br>
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <label>Descripción de cómo llegar al predio</label>
-                        <input type="text" name="descripcionComoLlegarPredio" value="${getTexto(data.llegada_predio)}" class="form-control">
+                        <input type="text" id="desc" name="descripcionComoLlegarPredio" value="${getTexto(data.llegada_predio)}" class="form-control" onclick="openModalObsDes(this,'Descripción de cómo llegar al predio')">
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <label>Latitud(UTM)</label>
@@ -468,7 +495,7 @@ var htmlFicha = (data, action,cRegiones,cMunicipio,cLocalidades,cTipoTenencia,cE
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <label>Observaciones del predio</label>
-                        <input type="text" name="observacionesPredio" value="${getTexto(data.observaciones)}" class="form-control">                        
+                        <input type="text" name="observacionesPredio" id="obs" value="${getTexto(data.observaciones)}" class="form-control" onclick="openModalObsDes(this,'Observaciones')">                        
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <label>Propietario o representante</label>
@@ -616,6 +643,42 @@ panelFicha.on('change','.comboMunicipio', function(){
 });
 
 
+cerrarDescObs.on('click',function(e){
+
+    if($(this).attr('data-info') == 'observaciones'){
+      $('#obs').val(textoTmp.val());
+      $('#obs').attr('disabled',false);
+    }else if( $(this).attr('data-info') == 'descripcion'){
+      $('#desc').val(textoTmp.val());
+      $('#desc').attr('disabled',false);
+    }
+
+
+});
+
+
+/*
+* @function openModalObsDes
+* @param {Object DOM} el - elemento del DOM
+* @Description Abre modal con el texto contenido en el input
+*/
+function openModalObsDes(el, titulo){
+    textoTmp.val($(el).val());
+
+    
+
+    $(el).attr('disabled',true);
+
+    if(titulo == 'Observaciones'){
+      cerrarDescObs.attr('data-info','observaciones');
+    }else{
+      cerrarDescObs.attr('data-info','descripcion');
+    }
+    
+    modalObsDesc.find('#titulo').html(titulo);
+    modalObsDesc.modal('show');
+}
+
 
 /*
 * @param {array} arg - Catalogo completo de municipios
@@ -645,7 +708,7 @@ cajaDetexto.keypress(function(e){
 
 btnSearch.on('click', function(){
   buscaPredio();
-})
+});
 
 
 
