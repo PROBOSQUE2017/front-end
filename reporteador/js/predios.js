@@ -1687,17 +1687,6 @@ function plantillaDetalleImagen(element , arregloCampos){
 
 
     }else if(option == 'update'){
-        botones = '<button type="submit" id="actualizarMultiImagen" class="btn btn-success">Actualizar</button>';
-        operacion = 'update';
-
-        btnFile = `<div class="col-md-2 col-sm-2 col-xs-12"> 
-                    <label>Archivo</label>
-                    <input type="button" value="Remplazar" data-info="no" class="form-control" onclick="agregaInputFile(this)">
-                    <input type="hidden" value="updateMultiregistroImagen" name="action">
-                  </div>
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                     <div id="espacioInput"></div>
-                  </div>`;
 
         let consecutivo = parseInt($(element).attr('data-consecutivo'));
     
@@ -1705,6 +1694,20 @@ function plantillaDetalleImagen(element , arregloCampos){
 
         (posicion > -1)? self = this[posicion] : '';
         (posicion > -1)? valueFolio =  self.folio : valueFolio='';
+
+        botones = '<button type="submit" id="actualizarMultiImagen" class="btn btn-success">Actualizar</button>';
+        operacion = 'update';
+
+        btnFile = `<div class="col-md-2 col-sm-2 col-xs-12"> 
+                    <label>Archivo</label>
+                    <input type="button" value="Remplazar" data-info="no" class="form-control" onclick="agregaInputFile(this)">
+                    <input type="hidden" value="updateMultiregistroImagen" name="action">
+                    <input type="hidden" value="${self.nombre_archivo}" name="nombre_archivo">
+                    <input type="hidden" value="${self.url}" name="url">
+                  </div>
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                     <div id="espacioInput"></div>
+                  </div>`;
     }
 
 
@@ -2130,7 +2133,7 @@ function eliminaMultiRegistro(el){
 /**
  * @function getPredios
  * @param  {string} texto - Cadena que va a buscar
- * @param  {string} accion - Contiene getPredio o getRepresentante
+ * @param  {string} accion - Contiene getPredio, getRepresentante, getClave o getMunicipio
  * @param  {string} url - url del service 
  * @return  {object}
  */
@@ -2204,6 +2207,10 @@ function getPredios(texto,accion,url) {
    
 }
 
+function textoCombo(arg = [], id){
+      let obj = arg.filter((element)=> element.value == id)[0]
+      return obj.text;
+}
 
 function getImagen(event, el){
     event.preventDefault();
@@ -2687,7 +2694,7 @@ function UploadShape(url, formulario) {
         dataType: 'json',
         beforeSend: function(data) {},
         success: function(data) {
-        
+            console.log('respuesta al cargar shape', data)
             if (data.response.sucessfull) {
                 amplify.store('poligonosTmp', data.data);
                 openWindows();
@@ -3000,36 +3007,19 @@ function updateMultiregistroImagen(url, action, imagenes, tbody, flechaRegreso) 
         dataType: 'json',
         beforeSend: function(data) {},
         success: function(data) {
-          
-            //let datos = JSON.parse(representante).representante[0];
+             
+            let datos = data.data;
+
+
             
             if (data.response.sucessfull) {
-               /*let renglon = $(tbody).find('.renglon'+datos.consecutivo);
-               renglon.children('td')[2].innerHTML =  datos.nombre_propietario_representante;
+               let renglon = $(tbody).find('.renglon'+datos.consecutivo);
+               renglon.children('td')[1].innerHTML =  datos.descripcion; 
+               renglon.children('td')[2].innerHTML =  datos.fecha;
+               renglon.children('td')[3].innerHTML =  '<a href="#" nombrearchivo="'+ datos.nombre_archivo +'" onclick="getImagen(event,this)">Ver Imagen</a>';
+               renglon.children('td')[4].innerHTML =  textoCombo(catalogosCampos,datos.id_campoasociado);
+               popArray(arregloDeImagenes,parseInt(datos.consecutivo), 'consecutivo');
 
-               popArray(arregloDeRepresentantes,parseInt(datos.consecutivo), 'consecutivo');
-
-                arregloDeRepresentantes.push({
-                    consecutivo: parseInt(datos.consecutivo),
-                    curp_propietario_o_representante: datos.curp_propietario_o_representante,
-                    fin_periodo:  datos.fin_periodo.trim(),
-                    folio: datos.folio,
-                    inicio_periodo:   datos.inicio_periodo.trim(),
-                    nombre_propietario_representante: datos.nombre_propietario_representante,
-                    nombre_secretario_representante_legal: datos.nombre_secretario_representante_legal,
-                    nombre_tesorero: datos.nombre_tesorero,
-                    observaciones_administracion: datos.observaciones_administracion
-
-                });
-
-                
-                $(flechaRegreso).trigger('click');
-                alertaExito(data.response.message);*/
-            } else {
-                alertaError(data.response.message);
-            }
-
-            /* let datos = data.data;
                 arregloDeImagenes.push({
                     consecutivo: parseInt(datos.consecutivo),
                     descripcion: datos.descripcion,
@@ -3042,23 +3032,12 @@ function updateMultiregistroImagen(url, action, imagenes, tbody, flechaRegreso) 
 
                 });
 
-                let renglon = `<tr class="renglon${datos.consecutivo}">
-                     <td>${datos.consecutivo}</td>
-                     <td>${datos.descripcion}</td>
-                     <td>${datos.fecha}</td>
-                     <td><a href="#" nombrearchivo="${datos.nombre_archivo}" onclick="getImagen(event,this)">Ver Imagen</a></td>
-                     <td>${datos.descripcion_campo}</td>
-                     <td><button type="button" class="btn btn-default" data-consecutivo="${datos.consecutivo}" data-folio="${datos.folio}" data-info="Imagen" onclick="eliminaMultiRegistro(this)">Eliminar</button></td>
-                </tr>`;
-
-
-                if($(tbody).find('.sinRegistros').length > 0){
-                    $(tbody).find('.sinRegistros').remove();
-                }
                 
-                $(tbody).append(renglon);
                 $(flechaRegreso).trigger('click');
-                alertaExito(data.response.message);*/
+                alertaExito(data.response.message);
+            } else {
+                alertaError(data.response.message);
+            }
 
         },
         error: function(err) {

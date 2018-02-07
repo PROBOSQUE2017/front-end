@@ -110,7 +110,7 @@
                     data: params
                 }).done(function(data) {
 
-                    
+                   
                     pintaCadena(data.data,'Regiones', null);
 
                 });
@@ -123,7 +123,8 @@
             */
 
             let loadPoligonos = function(poligonos){
-            
+                console.log( 'Imprime algo' )
+                 console.log( poligonos )
                 for(let objecto in poligonos){
                     if(objecto == 'predioNuevo'){
                         pintaCadena(poligonos.predioNuevo.wkt, 'Predio Nuevo',
