@@ -665,7 +665,7 @@ cerrarDescObs.on('click',function(e){
 function openModalObsDes(el, titulo){
     textoTmp.val($(el).val());
 
-    
+
 
     $(el).attr('disabled',true);
 
@@ -1443,6 +1443,7 @@ function plantillaImagenes(arr){
                      <td>:fecha:</td>
                      <td><a href="#" nombrearchivo=":nombreArchivo:" onclick="getImagen(event,this)">Ver Imagen</a></td>
                      <td>:campoAsociado:</td>
+                     <td><button type="button" class="btn btn-success" data-action="update" data-consecutivo=":consecutivo:" onclick="mostrarDetalleImagen(this)">Actualizar</button></td>
                      <td><button type="button" class="btn btn-default" data-consecutivo=":consecutivo:" data-folio=":folio:" data-info="Imagen" onclick="eliminaMultiRegistro(this)">Eliminar</button></td>
                   </tr>`;
 
@@ -1461,6 +1462,7 @@ function plantillaImagenes(arr){
                             <th>Fecha</th>
                             <th>Imagen</th>
                             <th>Campo Asociado</th>
+                            <th>Actualizar</th>
                             <th>Eliminar</th>
                           </tr>
                         </thead>
@@ -1698,7 +1700,7 @@ function plantillaDetalleImagen(element , arregloCampos){
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label>Campo Asociado</label>
                                         <select name="campoAsociado" class="form-control">
-                                              ${contruirComboSimple(arregloCampos, self.campoasociado)}
+                                              ${contruirComboSimple(arregloCampos, self.id_campoasociado)}
                                         </select>
                                     </div>
 
