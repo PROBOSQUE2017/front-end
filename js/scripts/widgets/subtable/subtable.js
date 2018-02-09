@@ -448,6 +448,33 @@ $.widget( "custom.customSubtable", {
                                                                    * Fin issue
                                                                    */
 
+                                                                 /*
+                                                                  * @Description
+                                                                  * Incrementa el valor del input de dependencias y vehiculos
+                                                                  *
+                                                                  */
+                                                                  if (obj.options.userActive.program == 8) {
+                                                                        
+
+                                                                    if(obj.options.subtable == "formularios.participantes"){
+                                                                        let cantidad = obj.options.data.filter( el => el.field == 'cantidad')[0].value;
+                                                                        let participantes =   $("#tb_add_total_participantes").val().trim();
+                                                                        $("#tb_add_total_participantes").val( parseInt(participantes) - parseInt(cantidad) );
+                                                                    }else if (obj.options.subtable == "formularios.vehiculos"){
+                                                                        let cantidad = obj.options.data.filter( el => el.field == 'cantidad')[0].value;
+                                                                        let vehiculos =   $("#tb_add_vehiculos_revisados").val().trim();
+                                                                        $("#tb_add_vehiculos_revisados").val( parseInt(vehiculos) - parseInt(cantidad) );
+                                                                        
+                                                                    }else if (obj.options.subtable == "formularios.infractores"){
+                                                                        $('#tb_add_total_personas').val(cantidad);
+                                                                    }
+                                                                }
+
+                                                                /*
+                                                                * Fin issue
+                                                                */
+
+
                                                                   /*
                                                                    * @Description
                                                                    * Actualizacion en el conteo de multiregistros s400 cuando se elimina un sitio
@@ -537,6 +564,65 @@ $.widget( "custom.customSubtable", {
                                                                    * Fin issue
                                                                    */
 
+                                                                  /*
+                                                                  * @Description
+                                                                  * Incrementa el valor del input de dependencias y vehiculos
+                                                                  *
+                                                                  */
+                                                                  if (obj.options.userActive.program == 8) {
+                                                                        
+
+                                                                        if(obj.options.subtable == "formularios.participantes"){
+                                                                            let cantidad;
+                                                                            let participantes ;
+                                                                            try{
+                                                                                cantidad = parseInt(params.filter( el => el.field == 'cantidad')[0].value);
+                                                                                
+                                                                            }catch(e){
+                                                                                cantidad = 0;
+                                                                            }
+                                                                            try{
+                                                                                if( $("#tb_add_total_participantes").val().trim() == ""){
+                                                                                    participantes = 0;
+                                                                                }else{
+                                                                                    participantes =  parseInt( $("#tb_add_total_participantes").val().trim());
+
+                                                                                }
+                                                                                    }catch(e){
+                                                                                participantes  = 0;     
+                                                                            }
+                                                                            $("#tb_add_total_participantes").val( participantes + cantidad );
+                                                                        }else if (obj.options.subtable == "formularios.vehiculos"){
+                                                                            let cantidad;
+                                                                            let vehiculos;
+                                                                            try {
+                                                                                cantidad = parseInt(params.filter( el => el.field == 'cantidad')[0].value);
+                                                                                
+                                                                              } catch (error) {
+                                                                                cantidad = 0;
+                                                                            }
+                                                                            try {
+                                                                                if($("#tb_add_vehiculos_revisados").val().trim() == ""){
+                                                                                    vehiculos = 0
+                                                                                }else{
+                                                                                    vehiculos =  parseInt( $("#tb_add_vehiculos_revisados").val().trim());
+                                                                                }
+                                                                                
+                                                                            } catch (error) {
+                                                                                vehiculos =  0;
+                                                                                
+                                                                            }
+                                                                            $("#tb_add_vehiculos_revisados").val( vehiculos + cantidad);
+                                                                            
+                                                                        }else if (obj.options.subtable == "formularios.infractores"){
+                                                                            $('#tb_add_total_personas').val(cantidad);
+                                                                        }
+                                                                    }
+
+                                                                    /*
+                                                                    * Fin issue
+                                                                    */
+
                                                                  $('body').multirecords('closeWindow');
                                                                  $('body').multirecords('updateRecordList');
                                                             }else{
@@ -577,6 +663,90 @@ $.widget( "custom.customSubtable", {
                                                                   /*
                                                                    * Fin issue
                                                                    */
+
+                                                                 /*
+                                                                  * @Description
+                                                                  * Incrementa el valor del input de dependencias y vehiculos
+                                                                  *
+                                                                  */
+                                                                  if (obj.options.userActive.program == 8) {
+
+                                                                    let cantidad_anterior;
+                                                                    let cantidadNueva;
+                                                                    let total_participantes;
+
+                                                                    if(obj.options.subtable == "formularios.participantes"){
+                                                                        try{
+                                                                            cantidad_anterior = parseInt(obj.options.data.filter(el => el.field == 'cantidad')[0].value);
+                                                                        }catch(e){
+                                                                            cantidad_anterior = 0;
+                                                                        }
+                                                                        
+                                                                        try{
+                                                                             cantidadNueva = parseInt(params.filter( el => el.field == 'cantidad')[0].value);
+                                                                        }catch(e){
+                                                                             cantidadNueva = 0;
+                                                                        }
+                                                                        
+                                                                        try{
+                                                                             if($("#tb_add_total_participantes").val().trim() == ""){
+                                                                                total_participantes = 0;
+                                                                             }else{
+
+                                                                                 total_participantes =  parseInt($("#tb_add_total_participantes").val().trim());
+                                                                             }
+                                                                        }catch(e){
+                                                                             total_participantes = 0;
+                                                                        }
+                                                                        
+
+                                                                        if(cantidad_anterior > cantidadNueva){
+                                                                            $("#tb_add_total_participantes").val( total_participantes - ( cantidad_anterior - cantidadNueva));
+                                                                        }else if (cantidad_anterior < cantidadNueva){
+                                                                            $("#tb_add_total_participantes").val( total_participantes + ( cantidadNueva - cantidad_anterior ));
+                                                                        }
+                                                                       
+                                                                    }else if (obj.options.subtable == "formularios.vehiculos"){
+                                                                       
+                                                                        let cantidad_anterior;
+                                                                        let cantidadNueva;
+                                                                        let total_autos;
+
+                                                                        try{
+                                                                            cantidad_anterior = parseInt(obj.options.data.filter(el => el.field == 'cantidad')[0].value);
+                                                                        }catch(e){
+                                                                            cantidad_anterior = 0;
+                                                                        }
+                                                                        
+                                                                        try{
+                                                                             cantidadNueva = parseInt(params.filter( el => el.field == 'cantidad')[0].value);
+                                                                        }catch(e){
+                                                                             cantidadNueva = 0;
+                                                                        }
+                                                                        try{
+                                                                            if($("#tb_add_vehiculos_revisados").val().trim() == ""){
+                                                                                total_autos = 0;
+                                                                            }else{
+                                                                                total_autos =  parseInt($("#tb_add_vehiculos_revisados").val().trim());
+                                                                            }
+                                                                       }catch(e){
+                                                                            total_autos = 0;
+                                                                       }
+                                                                       
+
+                                                                       if(cantidad_anterior > cantidadNueva){
+                                                                           $("#tb_add_vehiculos_revisados").val( total_autos - ( cantidad_anterior - cantidadNueva));
+                                                                       }else if (cantidad_anterior < cantidadNueva){
+                                                                           $("#tb_add_vehiculos_revisados").val( total_autos + ( cantidadNueva - cantidad_anterior ));
+                                                                       }
+                                                                    }else if (obj.options.subtable == "formularios.infractores"){
+                                                                        $('#tb_add_total_personas').val(cantidad);
+                                                                    }
+                                                                }
+
+                                                                /*
+                                                                * Fin issue
+                                                                */
                                                             $('body').multirecords('closeWindow');
                                                             $('body').multirecords('updateRecordList');
                                                             Alert.show({
@@ -845,18 +1015,7 @@ $.widget( "custom.customSubtable", {
                                          setTimeout(function(){obj.requestNumCombatientes(params)},3000);
                                         //Fin codigo Mike 
                                          }
-                                       
-
-                               if(obj.options.userActive.program==8 )
-                                        {                    
-                                        //codigo Mike Martínez Obtiene el numero total de combatientes para el programa de incendios
-                                        //17/06/2016
-                                         var params= {folio:obj.Folio};                 
-                                         obj.totalVehiculosRevisados(params);
-                                        //Fin codigo Mike 
-                                         }
-
-                           
+                                                                  
 
 			      }else{
 					
@@ -1952,73 +2111,7 @@ requestNumCombatientes : function(params){
                     r = $.extend(r, connections.tabular.getNumIncendio);
                     r.data = {action:'get',user:obj.options.userActive.id,anio:params.anio,id_region:params.region};
                     $.ajax(r);
-          },
-
-
-totalVehiculosRevisados : function(params){
-                    obj=this;
-                    var msg = 'Servicio no disponible intente m&aacute;s tarde';
-                    var r= {
-                            success:function(json,estatus){
-                                var valid=false;
-                                
-                                if ((json)&&(json.response)){
-                                        
-                                    if (json.response.sucessfull){
-                                        valid=true;
-                                        
-                                        //document.getElementById("tb_add_combatientes").innerHTML=json.data;
-                                        
-                                        if($("#tb_add_vehiculos_sin_irregularidades").length>0)
-                                          {
-                                           var x=json.data;
-                                             var y=$("#tb_add_vehiculos_sin_irregularidades").val();
-
-                                             var z = parseInt(x)+parseInt(y);
-                                           $("#tb_add_vehiculos_revisados").val(z);
-                                      }
-                                        else
-                                             $("#tb_add_vehiculos_sin_irregularidades").val(json.data);
-                                        
-                                    }else{
-                                        msg=json.response.message;
-                                    }
-                                }
-                                if (!valid) {
-                                    //obj.showMessage([msg],'error');
-                                         Alert.show({
-                                                  title:'Notificaci&oacute;n',
-                                                  type:'error',
-                                                  messages:[msg],
-                                                  buttons:[{label:'Cerrar'}]
-                                        });
-                                }
-                            },
-                            beforeSend: function(xhr) {
-                               
-                            },
-                            error: function(solicitudAJAX,errorDescripcion,errorExcepcion) {
-                                        Alert.error({
-                                                  title:'Notificaci&oacute;n',
-                                                  type:'error',
-                                                  messages:[msg],
-                                                  buttons:[{label:'Cerrar'}]
-                                        });
-                            },
-                            complete: function(solicitudAJAX,estatus) {
-                                
-                            }
-                            };
-                    r = $.extend(r, connections.tabular.getNumIncendio);
-                    r.data = {action:'getVehiculos',user:obj.options.userActive.id,folio:params.folio};
-                    $.ajax(r);
-          },
-
-
-
-//Fin codigo Mike 
-
-/*rubi ini*/
+          },/*rubi ini*/
 
 
 requestSubcategoria : function(idCategoria){
