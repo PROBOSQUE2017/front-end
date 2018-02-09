@@ -806,7 +806,7 @@ $.widget( "custom.customSubtable", {
                                 var campoCantidad = document.getElementById("sub_add_cantidad").value;
                                 var campoDependencia = document.getElementById("sub_add_dependencia").value;
                                 if ((campoCantidad.length == 0) || (campoDependencia == -1)) {
-                                    Alert.show({
+                                    Alert.error({
                                         title:'Notificaci&oacute;n',
                                         type:'error',
                                         messages:['Llena todos los campos'],
@@ -2409,6 +2409,37 @@ requestNumMujeres : function(params){
 
                             /*
                              * @Description
+                             * issue validacion para el multiregistro de participantes, dependencias y personas en el programa8
+                             * ITH 
+                             */
+                            if(numero_programa == 8 ){
+                                if(datatype == 'numeric' && field=='cantidad'){
+                                     if (validator.isEmpty(value)) {
+                                          msg.push('Ingrese cantidad');
+                                          item.addClass('badInput');
+                                     }
+                                }
+                                
+                                if(datatype='string' && field == 'nombre'){
+                                    if (validator.isEmpty(value)) {
+                                        msg.push('Ingrese nombre');
+                                        item.addClass('badInput');
+                                   }
+                                }
+                                if(datatype='string' && (field == 'nombre_del_predio' || field == 'clave_unica_de_predio')){
+                                    if (validator.isEmpty(value)) {
+                                        msg.push('Ingrese ' + label);
+                                        item.addClass('badInput');
+                                   }
+                                }
+                            }
+                          /*
+                           * Fin bloque issue
+                           */
+
+
+                            /*
+                             * @Description
                              * issue validacion para el multiregistro de sitios en el programa12 
                              * ITH 
                              */
@@ -2601,19 +2632,44 @@ requestNumMujeres : function(params){
                             */
                               if(numero_programa == 2){
                                    switch(field){
-                                        case 'genero':
-                                        if(value == -1){
-                                             msg.push('Seleccione ' + label +'<br>');
-                                             item.addClass('badInput');
-                                        }
-                                        break;
-                                   }
+                                       case 'genero':
+                                       if(value == -1){
+                                            msg.push('Seleccione ' + label +'<br>');
+                                            item.addClass('badInput');
+                                       }
+                                       break;
+                                }
 
                               }
 
                               /*
                                * Fin issue
                                */
+
+                            /*
+                            * @Description
+                            * issue validacion para el formulario participantes y vehiculos  de multiRegitros del programa8
+                            * ITH 
+                            */
+                              if(numero_programa == 8){
+                                switch(field){
+                                     case 'dependencia':
+                                     case 'tipo_producto':
+                                     case 'sexo':
+                                     case 'estatus':
+                                     case 'inspector_forestal':
+                                     if(value == -1){
+                                          msg.push(' Seleccione ' + label +'<br>');
+                                          item.addClass('badInput');
+                                     }
+                                     break;                                    
+                                }
+
+                           }
+
+                           /*
+                            * Fin issue
+                            */
 
                               params.push({field:field,value:value,datatype:datatype,label:label});
                          
