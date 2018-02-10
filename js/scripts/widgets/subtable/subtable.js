@@ -2420,13 +2420,13 @@ requestNumMujeres : function(params){
                                      }
                                 }
                                 
-                                if(datatype='string' && field == 'nombre'){
+                                if(datatype=='string' && field == 'nombre'){
                                     if (validator.isEmpty(value)) {
                                         msg.push('Ingrese nombre');
                                         item.addClass('badInput');
                                    }
                                 }
-                                if(datatype='string' && (field == 'nombre_del_predio' || field == 'clave_unica_de_predio')){
+                                if(datatype=='string' && (field == 'nombre_del_predio' || field == 'clave_unica_de_predio')){
                                     if (validator.isEmpty(value)) {
                                         msg.push('Ingrese ' + label);
                                         item.addClass('badInput');
