@@ -3755,7 +3755,7 @@ jQuery.validator.addMethod("empty",
 
 jQuery.validator.addMethod("decimales",
     function(value, element) {
-        return this.optional(element) || /^[0-9]{1,5}(\.[0-9]{3})+$/.test(value.trim());
+        return this.optional(element) || /^[0-9]{0,5}(\.[0-9]{1,3})*$/.test(value.trim());
     }
 );
 
