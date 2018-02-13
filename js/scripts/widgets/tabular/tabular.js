@@ -950,22 +950,64 @@
                                 case 'new':
 
                                     if (params.action != 'deleteTemporal') {
-                                        Alert.show({
-                                            title: 'Notificaci&oacute;n',
-                                            type: 'notification',
-                                            messages: ['El registro se ha agregado satisfactoriamente'],
-                                            buttons: [{
-                                                label: 'Cerrar',
-                                                event: function() {
-                                                    $(".custom_menu").hide();
-                                                    try {
-                                                        $(".app_" + obj.options.module).search('reset');
-                                                    } catch (e) {}
-                                                    obj.hide();
-                                                    $('.sectionItem_selected').removeClass('sectionItem_selected')
+                                            if(json.response.message == 'OK'){
+                                                Alert.show({
+                                                    title: 'Notificaci&oacute;n',
+                                                    type: 'notification',
+                                                    messages: ['El registro se ha agregado satisfactoriamente'],
+                                                    buttons: [{
+                                                        label: 'Cerrar',
+                                                        event: function() {
+                                                            $(".custom_menu").hide();
+                                                            try {
+                                                                $(".app_" + obj.options.module).search('reset');
+                                                            } catch (e) {}
+                                                            obj.hide();
+                                                            $('.sectionItem_selected').removeClass('sectionItem_selected')
+                                                        }
+                                                    }]
+                                                });
+                                            }else if(json.response.message == '-1'){
+                                                let folio = obj.Folio.trim();
+                                                let consecutivo = parseInt(folio.substr(-3)) + 1;
+                                                let nuevoFolio="";
+                                                if(consecutivo < 9){
+                                                    nuevoFolio="00"+consecutivo;
+                                                }else if( consecutivo < 99){
+                                                    nuevoFolio="0"+consecutivo;
+                                                }else{
+                                                    nuevoFolio = ""+consecutivo;
                                                 }
-                                            }]
-                                        });
+
+                                                
+                                                let tmp = folio.slice(0,-3);
+                                                tmp+=nuevoFolio;
+
+                                                $('#tb_add_folio').val(tmp);
+
+                                                Alert.warningFolio({
+                                                    title:'Notificaci&oacute;n',
+                                                    type:'warning',
+                                                    messages:['El folio '+ folio +' ya existe y se remplazo por: ' + tmp],
+                                                    info: ['Si desea continuar con el registro, haga clic en el botón Guardar.'],
+                                                    info2: ['Si desea ver la información nuevamente sin guardar, haga clic cerrar'],
+                                                    buttons:[
+                                                        {label:'Guardar',
+                                                            event: function() {
+                                                                $('#new_tabular').click();
+                                                            },
+                                                        },{label:'Cerrar'}]
+                                                });
+
+                                            }else{
+                                                Alert.error({
+                                                    title:'Notificaci&oacute;n',
+                                                    type:'error',
+                                                    messages:['Ocurrió un error al intentar agregar un nuevo registro. <br><b>Contacte al administrador del sistema</b>'],
+                                                    buttons:[{label:'Cerrar'}]
+                                                });
+                                            }
+                                            
                                     }
                                     //mostrar ventana y cerrar formulario
 
