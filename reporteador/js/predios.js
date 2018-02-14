@@ -3215,7 +3215,7 @@ function validaFormularioPoligono(element) {
             },
 
             latitud: {
-                maxlength: 7
+                maxlength: 6
             },
 
             longitud: {
@@ -3309,7 +3309,7 @@ function validaFormularioPoligono(element) {
             },
 
             latitud: {
-                maxlength: 'Maximo 7 caracteres'
+                maxlength: 'Maximo 6 caracteres'
             },
 
             longitud: {
@@ -3317,19 +3317,19 @@ function validaFormularioPoligono(element) {
             },
 
             superficie_poligono: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             superficie_cartografica: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             superficie_arbolada: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             superficie_otros_usos: {
-                decimales: 'Max. 9 enteros con 3 decimales'
+                decimales: 'Max. 5 enteros con 3 decimales'
             },
 
             tipo_fisiografia: {
@@ -3534,7 +3534,7 @@ function validaFormulario(element) {
 
             latitud: {
                 numeros: true,
-                maxlength: 7
+                maxlength: 6
             },
 
             longitud: {
@@ -3593,7 +3593,7 @@ function validaFormulario(element) {
 
             latitud: {
                 numeros: 'Ingrese solo números',
-                maxlength: 'Maximo 7 caracteres'
+                maxlength: 'Maximo 6 caracteres'
             },
 
             longitud: {
