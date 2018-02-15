@@ -883,6 +883,49 @@
 
         /*
          * @Description
+         * Peticion http para actualizar el numero de vehiculos revisados en el formulario principal p8 
+         */
+        requestUpdateNumeroVehiculos: function(params) {
+            obj = this;
+            var msg = 'Servicio no disponible intente m&aacute;s tarde';
+            var r = {
+                success: function(json, estatus) {
+                      console.log('resultado update vehciculos',json)
+                      if(!json.response.sucessfull){
+                            Alert.show({
+                                title: 'Notificaci&oacute;n',
+                                type: 'error',
+                                messages: ['No se actualizo número de vehiculos revisados en la base de datos'],
+                                buttons: [{ label: 'Cerrar' }]
+                            });
+                      }
+                },
+                beforeSend: function(xhr) {
+
+                },
+                error: function(solicitudAJAX, errorDescripcion, errorExcepcion) {
+
+                    Alert.show({
+                        title: 'Notificaci&oacute;n',
+                        type: 'error',
+                        messages: [msg],
+                        buttons: [{ label: 'Cerrar' }]
+                    });
+                },
+                complete: function(solicitudAJAX, estatus) {
+
+                }
+            };
+            r = $.extend(r, connections.tabular.add);
+            r.data = params;
+            $.ajax(r);
+        },
+        /*
+         * Fin
+         */
+
+        /*
+         * @Description
          * Peticion http para actualizar el numero de conglomerado en los multi regitros
          */
          requestUpdateConglomerado: function(params) {
@@ -1148,7 +1191,7 @@
             });
             $(obj.mainClass + " .Field .formInput").each(function() {
                 $(this).click(function() {
-                    if (($("#tb_add_anio option:selected").val() != '-1') || ($("#tb_add_anio option:selected").val() != '-1')) {
+                    if (($("#tb_add_anio option:selected").val() != '-1') || ($("#tb_add_anio option:selected").val() != '-1') && obj.options.action != 'new') {
                         $(this).removeClass('badInput');
                         var folio = $("#tb_add_folio").val();
                         var field = $(this).attr('field');
@@ -1156,12 +1199,23 @@
                         var idInput = $(this).attr('id');
                         $('body').multirecords({ data: { label: label, mode: obj.options.action, field: field, userActive: obj.options.userActive, folio: folio, idInput: idInput, parent: obj.element } });
                     } else {
-                        Alert.show({
-                            title: 'Notificaci&oacute;n',
-                            type: 'error',
-                            messages: ['Debe seleccionar el a&ntilde;o y la regi&oacute;n para generar un Folio'],
-                            buttons: [{ label: 'Cerrar' }]
-                        });
+
+                        if(obj.options.action == 'new'){
+                            Alert.show({
+                                title: 'Notificaci&oacute;n',
+                                type: 'error',
+                                messages: ['Debe guardar la ficha principal para agregar multiregistros'],
+                                buttons: [{ label: 'Cerrar' }]
+                            });
+                        }else{
+                            Alert.show({
+                                title: 'Notificaci&oacute;n',
+                                type: 'error',
+                                messages: ['Debe seleccionar el a&ntilde;o y la regi&oacute;n para generar un Folio'],
+                                buttons: [{ label: 'Cerrar' }]
+                            });
+                        }
+
                     }
                 });
             });
@@ -1624,7 +1678,62 @@
                     });
 
 
+                    let vehiculos_irregulares_old;
+                
+                    $('#tb_add_vehiculos_sin_irregularidades').focus(function(){
+                        
+                        try{
+                            if( $(this).val().trim() == ""){
+                                vehiculos_irregulares_old = 0;
+                            }else{
+                                vehiculos_irregulares_old =  parseInt( $(this).val().trim());
+
+                            }
+                                }catch(e){
+                                vehiculos_irregulares_old  = 0;     
+                        }
+
+                    });
+
+                    $('#tb_add_vehiculos_sin_irregularidades').on('change',function(){
+                        
+                        try {
+                            if( $(this).val().trim() == ""){
+                                vehiculos_irregulares_new = 0;
+                            }else{
+                                vehiculos_irregulares_new =  parseInt( $(this).val().trim());
+
+                            }
+                        } catch (error) {
+                            vehiculos_irregulares_new = 0;
+                        }
+
+                        try{
+                            if( $("#tb_add_vehiculos_revisados").val().trim() == ""){
+                                vehiculo_revisado = 0;
+                            }else{
+                                vehiculo_revisado =  parseInt( $("#tb_add_vehiculos_revisados").val().trim());
+
+                            }
+                                }catch(e){
+                                vehiculo_revisado  = 0;     
+                        }
+                        
+                        if(vehiculos_irregulares_old > vehiculos_irregulares_new){
+                            let result = vehiculo_revisado - ( vehiculos_irregulares_old - vehiculos_irregulares_new);
+                            $("#tb_add_vehiculos_revisados").val( result );
+                            let params = { action: 'updateVehiculos', user: obj.options.userActive.id, folio: obj.Folio, cantidad_vehiculos: result, vehiculos_sin_irregu: vehiculos_irregulares_new };
+                            obj.requestUpdateNumeroVehiculos(params)
+                        }else if (vehiculos_irregulares_old < vehiculos_irregulares_new){
+                            let result =  vehiculo_revisado + ( vehiculos_irregulares_new - vehiculos_irregulares_old );
+                            $("#tb_add_vehiculos_revisados").val( result );
+                            let params = { action: 'updateVehiculos', user: obj.options.userActive.id, folio: obj.Folio, cantidad_vehiculos: result, vehiculos_sin_irregu: vehiculos_irregulares_new };
+                            obj.requestUpdateNumeroVehiculos(params)
+                        }
+                    });
             }
+
+ 
 
             if ((obj.options.userActive.program != "1") && (obj.options.userActive.program != "3") && (obj.options.userActive.program != "0")) {
                 $("#tb_add_modulopredio_localidad").change(function() {
@@ -2599,6 +2708,9 @@
                           * Fin bloque issue
                           */
 
+                       
+
+
                          /*
                           * @Description
                           * issue validacion para el formulario principal del programa10
@@ -2678,6 +2790,35 @@
                 var datatype = item.attr('datatype');
                 var label = item.prev().html();
                 var value = $("#" + id + " option:selected").val();
+
+                        /*
+                          * @Description
+                          * issue validacion para el formulario principal del programa8
+                          * superficies con decimales 
+                          * ITH 
+                          */
+                          if (numero_programa == 8) {
+                            //if (datatype == 'list' && !validator.isEmpty(value) && value!='0') {
+
+                                switch (field) {
+                                    case 'zona_critica':
+                                    case 'modulopredio_municipio':
+                                    case 'region':
+                                    case 'anio':
+                                    case 'medidas_seguridad':
+                                    case 'dependencia_expide_documento':
+                                   
+                                        if (!validator.isNumNoDec(value.trim())) {
+                                            item.addClass('badInput');
+                                            msg.push(' Ingrese ' + label);
+                                        }
+                                        break;
+                                }
+                            //}
+                        }
+                        /*
+                         * Fin bloque issue
+                         */
 
                 params.push({ field: field, value: value, datatype: datatype, label: label });
 
