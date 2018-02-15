@@ -4,6 +4,7 @@
             data: [],
             addExecutive: false,
             action: '',
+            controlMultirecords: false,
             fields: {},
             operations: [],
             request: [],
@@ -258,6 +259,14 @@
             var minLength = (i.minLength) ? ' minlength="' + i.minLength + '"' : '';
             var data = id + field + type + datatype + value + maxLength + minLength + clase + readOnly + visible;
 
+            /*
+             * Codigo para pintar input de multiregistro de color gris
+             */
+                data+= (action == "new" && i.type=="form" && !obj.options.controlMultirecords)?' style="background-color:#E6E6E6" ': '';
+            /*
+             * Fin
+             */
+
             var input = '';
             if ((i.type == 'select') && (readOnly == '')) {
                 if ((i.list.list.length > 0) || (i.onlyselect)) {
@@ -330,25 +339,26 @@
             switch (action) {
                 case 'new':
                     buttons = [
-                        { label: 'Aceptar', action: action },
-                        { label: 'Cancelar', action: 'cancel' }
+                        { label: 'Aceptar', action: action, visible: true },
+                        { label: 'Cancelar', action: 'cancel', visible: true },
+                        { label: 'Cerrar', action: 'cerrar', visible: false }
                     ];
                     break;
                 case 'delete':
                     buttons = [
-                        { label: 'Eliminar', action: action },
-                        { label: 'Finalizar', action: 'cancel' }
+                        { label: 'Eliminar', action: action, visible: true },
+                        { label: 'Finalizar', action: 'cancel', visible: true }
                     ];
                     break;
                 case 'edit':
                     buttons = [
-                        { label: 'Aceptar', action: action },
-                        { label: 'Cancelar', action: 'cancel' }
+                        { label: 'Aceptar', action: action, visible: true },
+                        { label: 'Cancelar', action: 'cancel', visible: true }
                     ];
                     break;
                 case 'consult':
                     buttons = [
-                        { label: 'Aceptar', action: 'cancel' }
+                        { label: 'Aceptar', action: 'cancel', visible: true }
                     ];
                     break;
 
@@ -356,7 +366,7 @@
             var chain = '';
             for (var x in buttons) {
                 var b = buttons[x];
-                chain += '<button class="textButton" id="' + b.action + '_tabular">' + b.label + '</button>';
+                chain += '<button class="textButton" id="' + b.action + '_tabular" style="'+ (!b.visible?"display: none;":"")+'" >' + b.label + '</button>';
             }
 
             return chain;
@@ -370,7 +380,18 @@
             obj.forms = {};
             var mainClass = "background_tabular";
             obj.mainClass = "." + mainClass + obj.options.module;
+
             /*
+             * resetea el valor de multiregistros a false para que no puedan volver a insertar
+             * si no guardan la ficha principal
+             */
+              obj.options.controlMultirecords = false;
+             /*
+              * Fin 
+              */
+
+            /*
+        
                     25/07/2017
                          Ramiro Luna Aragon, Erick Daniel Gonzalez 
 
@@ -994,22 +1015,33 @@
 
                                     if (params.action != 'deleteTemporal') {
                                             if(json.response.message == 'OK'){
+
+                                                obj.options.controlMultirecords = true;
+
                                                 Alert.show({
                                                     title: 'Notificaci&oacute;n',
                                                     type: 'notification',
-                                                    messages: ['El registro se ha agregado satisfactoriamente'],
+                                                    messages: ['El registro principal se ha agregado satisfactoriamente'],
                                                     buttons: [{
-                                                        label: 'Cerrar',
+                                                        label: 'OK',
                                                         event: function() {
-                                                            $(".custom_menu").hide();
-                                                            try {
-                                                                $(".app_" + obj.options.module).search('reset');
-                                                            } catch (e) {}
-                                                            obj.hide();
-                                                            $('.sectionItem_selected').removeClass('sectionItem_selected')
+                                                            // $(".custom_menu").hide();
+                                                            // try {
+                                                            //     $(".app_" + obj.options.module).search('reset');
+                                                            // } catch (e) {}
+                                                            // obj.hide();
+                                                            // $('.sectionItem_selected').removeClass('sectionItem_selected')
                                                         }
                                                     }]
                                                 });
+                                                /*
+                                                 * Ejecuta funcion para habilitar los multiregistros en la ficha principal
+                                                 * ya que el registro se guardo correctamente
+                                                 */
+                                                    obj.habilitaMultiRecordsTable();
+                                                 /*
+                                                  * Fin funcion para habilitar multiregistros
+                                                  */
                                             }else if(json.response.message == '-1'){
                                                 let folio = obj.Folio.trim();
                                                 let consecutivo = parseInt(folio.substr(-3)) + 1;
@@ -1191,32 +1223,30 @@
             });
             $(obj.mainClass + " .Field .formInput").each(function() {
                 $(this).click(function() {
-                    if (($("#tb_add_anio option:selected").val() != '-1') || ($("#tb_add_anio option:selected").val() != '-1') && obj.options.action != 'new') {
-                        $(this).removeClass('badInput');
-                        var folio = $("#tb_add_folio").val();
-                        var field = $(this).attr('field');
-                        var label = $(this).prev().html();
-                        var idInput = $(this).attr('id');
-                        $('body').multirecords({ data: { label: label, mode: obj.options.action, field: field, userActive: obj.options.userActive, folio: folio, idInput: idInput, parent: obj.element } });
-                    } else {
-
-                        if(obj.options.action == 'new'){
-                            Alert.show({
-                                title: 'Notificaci&oacute;n',
-                                type: 'error',
-                                messages: ['Debe guardar la ficha principal para agregar multiregistros'],
-                                buttons: [{ label: 'Cerrar' }]
-                            });
+                    if(obj.options.action == 'new'){
+                        if(obj.options.controlMultirecords){
+                            var folio = $("#tb_add_folio").val();
+                            var field = $(this).attr('field');
+                            var label = $(this).prev().html();
+                            var idInput = $(this).attr('id');
+                            $('body').multirecords({ data: { label: label, mode: obj.options.action, field: field, userActive: obj.options.userActive, folio: folio, idInput: idInput, parent: obj.element } });
                         }else{
                             Alert.show({
                                 title: 'Notificaci&oacute;n',
                                 type: 'error',
-                                messages: ['Debe seleccionar el a&ntilde;o y la regi&oacute;n para generar un Folio'],
+                                messages: ['Para agregar multiregistros guarde primero la ficha principal. Haciendo clic en el boton "Aceptar"'],
                                 buttons: [{ label: 'Cerrar' }]
                             });
                         }
-
+                    }else{
+                            $(this).removeClass('badInput');
+                            var folio = $("#tb_add_folio").val();
+                            var field = $(this).attr('field');
+                            var label = $(this).prev().html();
+                            var idInput = $(this).attr('id');
+                            $('body').multirecords({ data: { label: label, mode: obj.options.action, field: field, userActive: obj.options.userActive, folio: folio, idInput: idInput, parent: obj.element } });
                     }
+
                 });
             });
             //Victor Porcayo Altamirano
@@ -1272,7 +1302,11 @@
             }
             //E. Zamora el troll
 
-
+            $('#cerrar_tabular').click(function(){
+                    $(".custom_menu").hide();
+                    obj.hide();
+                    $('.sectionItem_selected').removeClass('sectionItem_selected')
+            });
 
             $("#cancel_tabular").click(function() {
                 var folio = $("#tb_add_folio").val();
@@ -2803,8 +2837,6 @@
                                 switch (field) {
                                     case 'zona_critica':
                                     case 'modulopredio_municipio':
-                                    case 'region':
-                                    case 'anio':
                                     case 'medidas_seguridad':
                                     case 'dependencia_expide_documento':
                                    
@@ -2819,6 +2851,22 @@
                         /*
                          * Fin bloque issue
                          */
+                
+                /*
+                 * Valicacion importante para generar folio antes de insertar
+                 */
+                    switch (field) {
+                        case 'region':
+                        case 'anio':
+                        if(value == undefined ||  value == null || value.trim() == "" || value == -1 ){
+                            item.addClass('badInput');
+                            msg.push(' Ingrese ' + label + '<br>');
+                        }
+                        break;
+                    }
+                 /*
+                  * Fin validacion importante
+                  */
 
                 params.push({ field: field, value: value, datatype: datatype, label: label });
 
@@ -2842,11 +2890,22 @@
                 $("#fm_add_password,#fm_add_c_password").addClass('badInput');
                 msg.push('La contrase&ntilde;a no corresponde a la confirmaci&oacute;n');
             }
-            if (($("#tb_add_anio option:selected").val() == '-1') || ($("#tb_add_anio option:selected").val() == '-1')) {
-                msg.push('Debe seleccionar el a&ntilde;o y la regi&oacute;n para generar un Folio');
-            }
+            // if (($("#tb_add_anio option:selected").val() == '-1') || ($("#tb_add_region option:selected").val() == '-1')) {
+            //     msg.push('Debe seleccionar el a&ntilde;o y la regi&oacute;n para guardar el registro');
+            // }
             params.enabled = true;
             return { params: params, messages: msg };
+        },
+        habilitaMultiRecordsTable: function(){
+            $('.textInput , .multiselect, .selectInput').prop('disabled', true);
+            $('.textInput , .multiselect, .selectInput').css( 'background-color' , '#E6E6E6');
+
+            $( ".multiselect").unbind( "click" );
+            $(".formInput").css("background-color","");
+
+            $('#new_tabular,#cancel_tabular').hide();
+            $('#cerrar_tabular').show();
+            
         },
         new_user: function() {
 

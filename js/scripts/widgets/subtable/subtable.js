@@ -2478,12 +2478,12 @@ requestNumMujeres : function(params){
                                         break;
 
                                         case 'anio':
-                                                  if(!validator.isEmpty(value)){
+                                            if(!validator.isEmpty(value)){
                                                     if(!validator.isYearPrograma1(value)){
                                                   msg.push('Año incorrecto <br>');
                                                   item.addClass('badInput');
                                                 }
-                                             }
+                                            }
                                         break;
                                    }
                              }else if (datatype == 'real' && !validator.isEmpty(value) && value!='0') {
@@ -2614,6 +2614,7 @@ requestNumMujeres : function(params){
                               if(numero_programa== 1){
                                    switch(field){
                                         case 'area_corta':
+                                        case 'area_cortaa':
                                         if(value == -1){
                                              msg.push('Seleccione ' + label +'<br>');
                                              item.addClass('badInput');
