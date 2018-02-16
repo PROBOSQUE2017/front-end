@@ -1423,15 +1423,20 @@
 
 
             if ((obj.options.action == 'new') || (obj.options.action == 'edit')) {
-                $(obj.mainClass + " input[datatype='datetime']").bind("keypress", function(evt) {
-                    return false;
-                }).bind("paste", function(event) {
-                    return false;
-                }).appendDtpicker({
-                    "autodateOnStart": false,
-                    "locale": "es",
-                    "dateformat": "DD/MM/YYYY hh:mm"
-                });
+                $.datetimepicker.setLocale('es');
+                let parametros = {
+                    format:'d/m/Y H:i',
+                    mask: true,
+                    allowBlank: true,
+                    timepicker: true
+                };
+
+                $(obj.mainClass + " input[datatype='datetime']").datetimepicker(parametros);
+
+                if(obj.options.action == 'new'){
+                    $(obj.mainClass + " input[datatype='datetime']").datetimepicker('reset');
+                }
+                
             }
             //VPA
             if ((obj.options.action == 'new') || (obj.options.action == 'edit')) {
@@ -1965,31 +1970,59 @@
             /* E. Zamora El troll 08/06/16*/
 
 
-            //( implementacion 21/06/2016)Codigo Agustin Juarez Para el calculo del traslado, exlusivo para el programa de incendios 
-            $("#tb_add_llegada").keyup(function() {
-                start_actual_time = new Date($("#tb_add_salida").val());
-                end_actual_time = new Date($("#tb_add_llegada").val());
-                var diff = end_actual_time - start_actual_time;
-                var diffSeconds = diff / 1000;
-                var HH = Math.floor(diffSeconds / 3600);
-                var MM = Math.floor(diffSeconds % 3600) / 60;
-                var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                //alert(formatted);
-                $("#tb_add_traslado").val("");
-                $("#tb_add_traslado").val(formatted + " hrs.");
+            //( implementacion 21/06/2016)Codigo Agustin Juarez Para el calculo del traslado, exlusivo para el programa de incendios
+            // Cambio de calendario plugin y correcciones de formulas. 
+            $("#tb_add_llegada").on('change',function() {
+                let start_actual_time = $("#tb_add_salida").datetimepicker('getValue');
+                let end_actual_time = $("#tb_add_llegada").datetimepicker('getValue');
+
+                if( $("#tb_add_salida").val().length > 0 && $("#tb_add_llegada").val().length > 0){
+                    let diff = end_actual_time - start_actual_time;
+                        if(diff>=0){
+                            let diffSeconds = diff / 1000;
+                            let HH = Math.floor(diffSeconds / 3600);
+                            let MM = Math.floor(diffSeconds % 3600) / 60;
+                            let formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
+                            
+                            $("#tb_add_traslado").val("");
+                            $("#tb_add_traslado").val(formatted + " hrs.");
+                        }else{
+                        //     Alert.warning({
+                        //         title: 'Notificaci&oacute;n',
+                        //         type: 'error',
+                        //         messages: ['La hora de llegada es menor a la de salida'],
+                        //         content: '',
+                        //         buttons: [{ label: 'OK' }]
+                        //   })
+                        }
+                }
             });
 
-            $("#tb_add_salida").keyup(function() {
-                start_actual_time = new Date($("#tb_add_salida").val());
-                end_actual_time = new Date($("#tb_add_llegada").val());
-                var diff = end_actual_time - start_actual_time;
-                var diffSeconds = diff / 1000;
-                var HH = Math.floor(diffSeconds / 3600);
-                var MM = Math.floor(diffSeconds % 3600) / 60;
-                var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                //alert(formatted);
-                $("#tb_add_traslado").val("");
-                $("#tb_add_traslado").val(formatted + " hrs.");
+            $("#tb_add_salida").on('change',function() {
+                let start_actual_time = $("#tb_add_salida").datetimepicker('getValue');
+                let end_actual_time = $("#tb_add_llegada").datetimepicker('getValue');
+
+                if( $("#tb_add_llegada").val().length > 0 && $("#tb_add_salida").val().length > 0){
+                            
+                        let diff = end_actual_time - start_actual_time;
+                        if(diff>=0){
+                            let diffSeconds = diff / 1000;
+                            let HH = Math.floor(diffSeconds / 3600);
+                            let MM = Math.floor(diffSeconds % 3600) / 60;
+                            let formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
+                            
+                            $("#tb_add_traslado").val("");
+                            $("#tb_add_traslado").val(formatted + " hrs.");
+                        }else{
+                        //     Alert.warning({
+                        //         title: 'Notificaci&oacute;n',
+                        //         type: 'error',
+                        //         messages: ['La hora de llegada es menor a la de salida'],
+                        //         content: '',
+                        //         buttons: [{ label: 'OK' }]
+                        //   })
+                        }
+                }
 
             });
 
@@ -1999,62 +2032,69 @@
 
             //( implementacion 21/06/2016)Codigo Agustin Juarez Para el calculo de Deteccion, exlusivo para el programa de incendios 
 
-            $("#tb_add_deteccion").keyup(function() {
-                start_actual_time = new Date($("#tb_add_inicio").val());
-                end_actual_time = new Date($("#tb_add_deteccion").val());
-                var diff = end_actual_time - start_actual_time;
-                var diffSeconds = diff / 1000;
-                var HH = Math.floor(diffSeconds / 3600);
-                var MM = Math.floor(diffSeconds % 3600) / 60;
-                var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
+            $("#tb_add_deteccion").on('change',function() {
+                let start_actual_time =  $("#tb_add_inicio").datetimepicker('getValue');
+                let end_actual_time = $("#tb_add_deteccion").datetimepicker('getValue');
+               
 
-                $("#tb_add_atencion").val("");
-                $("#tb_add_atencion").val(formatted + " hrs.");
+                if( $("#tb_add_inicio").val().length > 0 && $("#tb_add_deteccion").val().length > 0){
+                        var diff = end_actual_time - start_actual_time;
+                        var diffSeconds = diff / 1000;
+                        var HH = Math.floor(diffSeconds / 3600);
+                        var MM = Math.floor(diffSeconds % 3600) / 60;
+                        var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
 
-            });
-
-            $("#tb_add_inicio").keyup(function() {
-                start_actual_time = new Date($("#tb_add_inicio").val());
-                end_actual_time = new Date($("#tb_add_deteccion").val());
-                var diff = end_actual_time - start_actual_time;
-                var diffSeconds = diff / 1000;
-                var HH = Math.floor(diffSeconds / 3600);
-                var MM = Math.floor(diffSeconds % 3600) / 60;
-                var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-
-                $("#tb_add_atencion").val("");
-                $("#tb_add_atencion").val(formatted + " hrs.");
+                        $("#tb_add_atencion").val("");
+                        $("#tb_add_atencion").val(formatted + " hrs.");
+                }
 
             });
 
+            $("#tb_add_inicio").on('change',function() {
+                let start_actual_time =  $("#tb_add_inicio").datetimepicker('getValue');
+                let end_actual_time =  $("#tb_add_deteccion").datetimepicker('getValue');
+                let combate = $("#tb_add_combate").datetimepicker('getValue');
+            
+                if( $("#tb_add_inicio").val().length > 0 && $("#tb_add_deteccion").val().length > 0){
+                    let diff = end_actual_time - start_actual_time;
+                    let diffSeconds = diff / 1000;
+                    let HH = Math.floor(diffSeconds / 3600);
+                    let MM = Math.floor(diffSeconds % 3600) / 60;
+                    let formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
 
+                    $("#tb_add_atencion").val("");
+                    $("#tb_add_atencion").val(formatted + " hrs.");
+                }
 
-            $("#tb_add_combate").keyup(function() {
-                start_actual_time = new Date($("#tb_add_inicio").val());
-                end_actual_time = new Date($("#tb_add_combate").val());
-                var diff = end_actual_time - start_actual_time;
-                var diffSeconds = diff / 1000;
-                var HH = Math.floor(diffSeconds / 3600);
-                var MM = Math.floor(diffSeconds % 3600) / 60;
-                var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                //alert(formatted);
-                $("#tb_add_combate2").val("");
-                $("#tb_add_combate2").val(formatted + " hrs.");
+                if( $("#tb_add_inicio").val().length > 0 &&  $("#tb_add_combate").val().length > 0){
+                    let diff = combate - start_actual_time;
+                    let diffSeconds = diff / 1000;
+                    let HH = Math.floor(diffSeconds / 3600);
+                    let MM = Math.floor(diffSeconds % 3600) / 60;
+                    let formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
+                    //alert(formatted);
+                    $("#tb_add_combate2").val("");
+                    $("#tb_add_combate2").val(formatted + " hrs.");
+                }
 
             });
 
-            $("#tb_add_inicio").keyup(function() {
-                start_actual_time = new Date($("#tb_add_inicio").val());
-                end_actual_time = new Date($("#tb_add_combate").val());
-                var diff = end_actual_time - start_actual_time;
-                var diffSeconds = diff / 1000;
-                var HH = Math.floor(diffSeconds / 3600);
-                var MM = Math.floor(diffSeconds % 3600) / 60;
-                var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                //alert(formatted);
-                $("#tb_add_combate2").val("");
-                $("#tb_add_combate2").val(formatted + " hrs.");
+            
 
+            $("#tb_add_combate").on('change',function() {
+                let start_actual_time = $("#tb_add_inicio").datetimepicker('getValue');
+                let end_actual_time =  $("#tb_add_combate").datetimepicker('getValue');
+
+                if( $("#tb_add_inicio").val().length > 0 && $("#tb_add_combate").val().length > 0){
+                        let diff = end_actual_time - start_actual_time;
+                        let diffSeconds = diff / 1000;
+                        let HH = Math.floor(diffSeconds / 3600);
+                        let MM = Math.floor(diffSeconds % 3600) / 60;
+                        let formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
+                        
+                        $("#tb_add_combate2").val("");
+                        $("#tb_add_combate2").val(formatted + " hrs.");
+                }
             });
 
 

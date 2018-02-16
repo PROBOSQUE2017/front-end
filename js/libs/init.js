@@ -3,8 +3,9 @@ requirejs.config({
         Openlayers:'libs/Openlayers/OpenLayers',
         jquery:'libs/jquery/jquery',
         jnumber:'libs/jquery/jquery.number',
-        jqueryui:'libs/jquery/jquery-ui',
-        datetimepicker:'libs/jquery/jquery.simple-dtpicker',
+		jqueryui:'libs/jquery/jquery-ui',
+		mousewheel: 'libs/jquery/jquery-mousewheel',
+        datetimepicker:'libs/jquery/jquery.datetimepicker.full',
 	fileupload_transport:'libs/upload/jquery.iframe-transport',
 	fileupload:'libs/upload/jquery.fileupload',
 	fileupload_widget:'libs/upload/jquery.ui.widget',
@@ -33,7 +34,7 @@ requirejs.config({
 
     datetimepicker:
         		 	{
-						deps:['jquery']        		 				
+						deps:['jquery','mousewheel'],        		 				
         			},			
     jnumber:
         		 	{
@@ -64,6 +65,7 @@ define(["Openlayers","fileupload","datetimepicker","jnumber"], function(){
 		    $('<link>', {rel: 'stylesheet',type: 'text/css',href:'js/scripts/widgets/baseLayers/baseLayers.css?'+v}).appendTo('head'),
 		    $('<link>', {rel: 'stylesheet',type: 'text/css',href:'js/scripts/widgets/modules/modules.css?'+v}).appendTo('head'),
 		    $('<link>', {rel: 'stylesheet',type: 'text/css',href:'js/libs/jquery/jquery.simple-dtpicker.css?'+v}).appendTo('head'), 
+		    $('<link>', {rel: 'stylesheet',type: 'text/css',href:'js/libs/jquery/jquery.datetimepicker.css?'+v}).appendTo('head'), 
 		    $('<link>', {rel: 'stylesheet',type: 'text/css',href:'js/scripts/widgets/overlays/overlays.css?'+v}).appendTo('head'),
 		    $('<link>', {rel: 'stylesheet',type: 'text/css',href:'js/scripts/widgets/tools/tools.css?'+v}).appendTo('head'),
 		    $('<link>', {rel: 'stylesheet',type: 'text/css',href:'js/scripts/widgets/workTeams/workTeams.css?'+v}).appendTo('head'),

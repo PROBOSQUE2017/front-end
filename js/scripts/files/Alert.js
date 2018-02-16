@@ -32,6 +32,38 @@ define(["connections","validator"], function(connections,validator){
      * Fin function errorMultiRegistro
      */
 
+	         /*
+    * @function warnning
+    * @param {String} mensaje. Mensaje que se mostrará al usuario
+    * @param {String }textobtn. Texto del boton
+    */
+
+    var warnningModal=function(params){
+    	let content = params.messages;
+    	let buttons = params.buttons;
+
+    	if($(".custom_alert").length>0)$(".custom_alert").remove();
+		let templateString = '<div class="custom_alert '+((params.clase)?params.clase:'')+'">'+
+			'<div class="custom_alert_veil"></div>'+
+			'<div class="message">'+
+				'<div class="header '+params.type+'" style="background-color:#D68910"><div class="label">'+params.title+'</div></div>'+
+				'<div class="content" align="center">'+
+				    '<b>'+content+'</b>'+
+				    '<div class="buttons" align="center">'+
+							getButtonWarning(params)
+				    '</div>'+
+				'</div>'+
+			'</div>'+
+		    '</div>';
+
+		   $('body').append(templateString);
+
+    };
+
+    /*
+     * Fin function warnning
+     */
+
    /*
     * @Description
     * Evento para cerrar la notificacion de error en
@@ -200,6 +232,25 @@ define(["connections","validator"], function(connections,validator){
      * Fin seccion 
      */
 
+	     /*
+     * @function getButtonWarning
+     * @param {Object} params. Botones que serán mostrados
+     *
+     */
+    var getButtonWarning = function(params) {
+        var buttons = params.buttons;
+        var chain = '';
+        if (buttons[0]) {
+            chain +=  '<button class="textButton textButton_error errorMultiregistro" style="background-color:#D68910">'+buttons[0].label+'</button>';
+
+        }
+        
+        return chain;
+    };
+    /*
+     * Fin seccion 
+     */
+
     var show=function(params){
 	buildAlert(params);
 	event(params);
@@ -280,6 +331,7 @@ define(["connections","validator"], function(connections,validator){
 	    error: errorMultiRegistro,
 		eliminarMulti : eliminarMultiregistro,
 		warningFolio: advertenciaFolio,
+		warning: warnningModal,
 	    hide:hide
     }
     
