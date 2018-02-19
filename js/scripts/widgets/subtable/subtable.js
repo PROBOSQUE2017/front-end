@@ -987,7 +987,7 @@ $.widget( "custom.customSubtable", {
                       }
                              
                     });
-                    
+
                     $("#sub_add_area_corta").change(function(){
                          //alert("area de corta");
                          var params={folio: $("#sub_add_folio").val(), areaCorta: $("#sub_add_area_corta").val()};
@@ -2466,7 +2466,7 @@ requestNumMujeres : function(params){
                              * issue validacion para el multiregistro de sitios en el programa12 
                              * ITH 
                              */
-                             if(numero_programa == 12 ){
+                             if(numero_programa == 12){
                                    if(datatype == 'numeric' && field=='sitio'){
                                         if (validator.isEmpty(value)) {
                                              msg.push('Ingrese numero de sitio');
@@ -2690,6 +2690,30 @@ requestNumMujeres : function(params){
                                 }
 
                            }
+
+                           /*
+                               * Fin issue
+                               */
+
+                            /*
+                            * @Description
+                            * issue validacion para el formulario Sitios de Muestreo para Monitoreo de las Áreas Forestales
+                              de multiRegitros del programa12
+                            * ITH 
+                            */
+                              if(numero_programa == 12){
+                                switch(field){
+                                     case 's400_numero_sitio':
+                                     case 'numero_arbol':
+                                     if(value == -1){
+                                          msg.push(' Seleccione ' + label +'<br>');
+                                          item.addClass('badInput');
+                                     }
+                                     break;                                    
+                                }
+
+                           }
+
 
                            /*
                             * Fin issue
