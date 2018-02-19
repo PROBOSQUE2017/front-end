@@ -958,13 +958,36 @@ $.widget( "custom.customSubtable", {
                       }
                     });
 
+                    
                     $("#sub_add_s400_edad").keyup(function(){
-                         if(obj.options.action!='consult' && obj.options.action!='delete' ){ 
+                      var edad = $("#sub_add_s400_edad").val();
+                      if (edad == '' || edad == 0 || edad == ' '){
+                        var valor = 0;
+                        $("#sub_add_ima").val(valor);
+                      }else{
+                        if(obj.options.action!='consult' && obj.options.action!='delete' ){ 
                               var params={folio: $("#sub_add_folio").val(), sitio: $("#sub_add_s400_numero_sitio option:selected").text(), arbol:$("#sub_add_numero_arbol option:selected").text()};
                               obj.getVolumenArbol(params);      
                         }
                         //alert(JSON.stringify(params));
+                      }                         
                     });
+
+                    $("#sub_add_numero_arbol").change(function(){
+                        var edad = $("#sub_add_s400_edad").val();                        
+                      if (edad == '' || edad == 0 || edad == ' ') {
+                        var valor = 0;
+                        $("#sub_add_ima").val(valor);
+                      }else
+                      {
+                         if(obj.options.action!='consult' && obj.options.action!='delete' ){ 
+                              var params={folio: $("#sub_add_folio").val(), sitio: $("#sub_add_s400_numero_sitio option:selected").text(), arbol:$("#sub_add_numero_arbol option:selected").text()};
+                              obj.getVolumenArbol(params);      
+                        }
+                      }
+                             
+                    });
+                    
                     $("#sub_add_area_corta").change(function(){
                          //alert("area de corta");
                          var params={folio: $("#sub_add_folio").val(), areaCorta: $("#sub_add_area_corta").val()};
