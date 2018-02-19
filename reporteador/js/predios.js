@@ -587,6 +587,7 @@ panelFicha.on('click', '.multiregistro', function() {
     let opcion = $(this).attr('data-multi');
     let btnAgregar = $('#addOptionMultiRegistro');
     btnAgregar.attr('data-option', '');
+    $('#observacionesText').hide();
 
     if (multiregistroBandera) {
 
@@ -657,6 +658,7 @@ cerrarDescObs.on('click',function(e){
 });
 
 
+
 /*
 * @function openModalObsDes
 * @param {Object DOM} el - elemento del DOM
@@ -664,8 +666,6 @@ cerrarDescObs.on('click',function(e){
 */
 function openModalObsDes(el, titulo){
     textoTmp.val($(el).val());
-
-
 
     $(el).attr('disabled',true);
 
@@ -679,6 +679,42 @@ function openModalObsDes(el, titulo){
     modalObsDesc.modal('show');
 }
 
+/*
+* @function ocultarModal
+* @param {Object DOM} el - elemento del DOM
+* @param {Object DOM} option - opcion de multiregistro
+* @Description Oculta formulario y muestra text area
+*/
+function ocultarModal(el, option){
+    let texto =  $(el).val();
+    let divDetalle = $('#detalleObservaciones');
+    let html = `<div id="observacionesText">
+                    <b>:titulo:</b>  
+                    <textarea id="textAreaDetalle" name="textarea" rows="10" cols="120">${ texto }</textarea>
+                </div>`;
+
+    switch(option){
+        case 'poligono':
+            flechaRegreso.attr({'data-option':'observacionesTextArea' });
+            $('#formularioPoligono').hide();
+            divDetalle.html( html.replace(':titulo:', 'Observaciones del polígono') );
+            divDetalle.show();
+        break;
+        case 'propietario':
+            flechaRegreso.attr({'data-option':'observacionesTextArea' });
+            $('#formularioRepresentante').hide();
+            divDetalle.html( html.replace(':titulo:', 'Observaciones de la administración') );
+            divDetalle.show();
+        break;
+        case 'imagen':
+            flechaRegreso.attr({'data-option':'observacionesTextArea' });
+            $('#formularioImagen').hide();
+            divDetalle.html( html.replace(':titulo:', 'Descripción') );
+            divDetalle.show();
+        break;
+    }
+
+}
 
 /*
 * @param {array} arg - Catalogo completo de municipios
@@ -966,6 +1002,32 @@ flechaRegreso.on('click', function(e){
             multiRegistros.show();
             detalleMultiRegistro.hide();
             addOptionMultiRegistro.show();
+
+      }else if($(this).attr('data-option') == 'observacionesTextArea'){
+
+           flechaRegreso.attr({'data-option':'detalleMultiRegistro'});
+           
+           if ($(this).attr('data-seccion')=='Propietario'){
+            
+                let texto = $('#textAreaDetalle').val();
+                $('#inputObservacionesPropietario').val( texto );
+                $('#detalleObservaciones').hide();
+                $('#formularioRepresentante').show();
+            
+            }else if($(this).attr('data-seccion') == 'Poligonos'){
+                let texto = $('#textAreaDetalle').val();
+                $('#inputObservacionesPoligono').val( texto );
+                $('#detalleObservaciones').hide();
+                $('#formularioPoligono').show();
+                
+            }else if(($(this).attr('data-seccion') == 'imagenes')){
+                let texto = $('#textAreaDetalle').val();
+                $('#descripcionImagen').val(texto);
+                $('#detalleObservaciones').hide();
+                $('#formularioImagen').show();
+
+
+            }
 
       }
 });
@@ -1434,7 +1496,7 @@ function plantillaDetallePoligono(element, cVegetacion, cEspecies, cClima){
 
                                 <div class="col-md-6 col-sm-6">
                                     <label>Observaciones del polígono</label>
-                                    <input type="text" class="form-control" name="observaciones_poligono" value="${getTexto(self.observaciones_poligono)}">
+                                    <input id="inputObservacionesPoligono" type="text" class="form-control" name="observaciones_poligono" value="${getTexto(self.observaciones_poligono)}" onclick="ocultarModal(this,'poligono')">
                                 </div>
                             </div>
                         </div>
@@ -1635,7 +1697,7 @@ function plantillaDetalleRepresentante(element){
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <label>Observaciones de la administración</label>
-                                <input type="text" class="form-control" name="observaciones_administracion" value="${getTexto(self.observaciones_administracion)}">
+                                <input type="text" id="inputObservacionesPropietario" class="form-control" name="observaciones_administracion" value="${getTexto(self.observaciones_administracion)}" onclick="ocultarModal(this,'propietario')">
                             </div>                            
                         </div>
                     </div>
@@ -1730,7 +1792,7 @@ function plantillaDetalleImagen(element , arregloCampos){
                                 <div class="row">
                                      <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label>Descripción</label>
-                                        <input type="text" name="descripcion" value="${getTexto(self.descripcion)}" class="form-control">
+                                        <input id="descripcionImagen" type="text" name="descripcion" value="${getTexto(self.descripcion)}" class="form-control" onclick="ocultarModal(this,'imagen')">
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <label>Fecha</label>
