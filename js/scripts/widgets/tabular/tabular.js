@@ -352,8 +352,8 @@
                     break;
                 case 'edit':
                     buttons = [
-                        { label: 'Aceptar', action: action, visible: true },
-                        { label: 'Cancelar', action: 'cancel', visible: true }
+                        { label: 'Actualizar', action: action, visible: true },
+                        { label: 'Salir', action: 'cancel', visible: true }
                     ];
                     break;
                 case 'consult':
@@ -1093,10 +1093,12 @@
                                     Alert.show({
                                         title: 'Notificaci&oacute;n',
                                         type: 'notification',
-                                        messages: ['El registro ha sido editado satisfactoriamente'],
-                                        buttons: [{ label: 'Cerrar', event: function() { $(".custom_menu").hide();
+                                        messages: ['El registro ha sido actualizado satisfactoriamente'],
+                                        buttons: [{ label: 'OK', event: function() {
+                                                /*$(".custom_menu").hide();
                                                 $(".app_" + obj.options.module).search('reset');
-                                                obj.hide(); } }]
+                                                obj.hide(); */
+                                            } }]
                                     });
 
                                     //mostrar ventana y cerrar formulario
@@ -2877,8 +2879,7 @@
                                 switch (field) {
                                     case 'zona_critica':
                                     case 'modulopredio_municipio':
-                                    case 'medidas_seguridad':
-                                    case 'dependencia_expide_documento':
+                                   
                                    
                                         if (!validator.isNumNoDec(value.trim())) {
                                             item.addClass('badInput');
