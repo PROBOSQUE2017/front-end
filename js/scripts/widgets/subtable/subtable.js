@@ -995,12 +995,7 @@ $.widget( "custom.customSubtable", {
                          obj.getAnioAreaCorta(params);
                     });
 
-                    $("#sub_add_entidad_federativa").change(function(){
-                         //alert("estado");
-                         var params={id_estado: $("#sub_add_entidad_federativa").val()};
-                         obj.getListMunicipios(params);
-                    });
-                                         
+                                                          
                     $("#cancel_subtable").click(function(){
                               obj.hide();
                               if (obj.options.action=='new') {
