@@ -158,10 +158,10 @@ function DatosDestinoGermoPlasma(action, like, anio){
                         $.each(data, function(index, data){
                         	//alert($('#'+data.año+'').length);
                         	if ($('#'+data.año+'').length == 0) {
-                        		tabla.append('<tbody id="'+data.año+'"><tr class="info" style="font-weight: normal; font-size:80%;"><th><strong>'+data.año+'</strong></th></tr><tr style="font-weight: normal; font-size:80%;"><th>'+data.Nombre_cientifico+'</th><th>'+data.Nombre_comun+'</th><th>'+data.procedencia+'</th><th>'+data.fecha_alta+'</th><th>'+data.lote_semilla+'</th><th>'+data.viabilidad+'</th><th>'+numeral(data.cantidad).format('(0,0.00)')+'</th><th>'+numeral(data.costo).format('(0,0.00)')+'</th></tr></tbody>');
+                        		tabla.append('<tbody id="'+data.año+'"><tr class="info" style="font-weight: normal; font-size:80%;"><th><strong>'+data.año+'</strong></th></tr><tr style="font-weight: normal; font-size:80%;"><th>'+data.Nombre_cientifico+'</th><th>'+data.Nombre_comun+'</th><th>'+data.procedencia+'</th><th>'+data.destino+'</th><th>'+data.fecha_alta+'</th><th>'+data.lote_semilla+'</th><th>'+data.viabilidad+'</th><th>'+numeral(data.cantidad).format('(0,0.00)')+'</th><th>'+numeral(data.costo).format('(0,0.00)')+'</th></tr></tbody>');
                         	}else{
                         		var tbody = $('#'+data.año+'');
-           						tbody.append('<tr style="font-weight: normal; font-size:80%;"><th>'+data.Nombre_cientifico+'</th><th>'+data.Nombre_comun+'</th><th>'+data.procedencia+'</th><th>'+data.fecha_alta+'</th><th>'+data.lote_semilla+'</th><th>'+data.viabilidad+'</th><th>'+numeral(data.cantidad).format('(0,0.00)')+'</th><th>'+numeral(data.costo).format('(0,0.00)')+'</th></tr>');
+           						tbody.append('<tr style="font-weight: normal; font-size:80%;"><th>'+data.Nombre_cientifico+'</th><th>'+data.Nombre_comun+'</th><th>'+data.procedencia+'</th><th>'+data.destino+'</th><th>'+data.fecha_alta+'</th><th>'+data.lote_semilla+'</th><th>'+data.viabilidad+'</th><th>'+numeral(data.cantidad).format('(0,0.00)')+'</th><th>'+numeral(data.costo).format('(0,0.00)')+'</th></tr>');
                         	}
                             //alert($('#'+data.año+'').length);
                         });
