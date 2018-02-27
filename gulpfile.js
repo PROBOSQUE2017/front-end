@@ -53,6 +53,11 @@ gulp.task('redireccion', function() {
                             .pipe(replace(origen, destino))
                                 .pipe(gulp.dest('./toolMaps/js/'));
 
+    var carpetaModules =  gulp.src(['./js/scripts/widgets/modules/*.js'])
+                        .pipe(debug({ verbose: true }))
+                            .pipe(replace(origen, destino))
+                                .pipe(gulp.dest('./js/scripts/widgets/modules/'));
+
 
 
     //return merge(carpetaJSConfig, carpetaScriptsFiles, carpetaJS, carpetaMaderable, carpetaReporteador,carpetaToolMpas, carpetaToolMpasJs);

@@ -120,21 +120,21 @@ $.widget( "custom.modules", {
                               $(this).click(function(){
                                         var mainItem = $(this).attr('mainItem');
                                         if(mainItem == 'reporteador'){
-                                          window.location.assign("http://187.188.96.133:800/SIFEM/reporteador/index.html?UR="+userReport+"&UPR="+activityReport);
+                                          window.location.assign("http://localhost:800/SIFEM/reporteador/index.html?UR="+userReport+"&UPR="+activityReport);
                                         }
                                         if(mainItem == 'seccionWeb'){
-                                          window.location.assign("http://187.188.96.133:800/SIFEM/reporteador/moduloweb.html?UR="+userReport+"&UPR="+activityReport);
+                                          window.location.assign("http://localhost:800/SIFEM/reporteador/moduloweb.html?UR="+userReport+"&UPR="+activityReport);
                                         }
                                         if(mainItem == 'herramientaMapas'){
                                           var usuario = obj.options.data.user.id * 5;
                                           if(usuario == 5){
-                                            window.location.assign("http://187.188.96.133:800/SIFEM/toolMaps/indexAdmin.php?vuhmepmhac="+usuario+"");  
+                                            window.location.assign("http://localhost:800/SIFEM/toolMaps/indexAdmin.php?vuhmepmhac="+usuario+"");  
                                           }else{
-                                            window.location.assign("http://187.188.96.133:800/SIFEM/toolMaps/index.php?vuhmepmhac="+usuario+"");
+                                            window.location.assign("http://localhost:800/SIFEM/toolMaps/index.php?vuhmepmhac="+usuario+"");
                                           }
                                         }
                                         if(mainItem == 'padron'){
-                                          window.location.assign("http://187.188.96.133:800/SIFEM/maderable/padron");
+                                          window.location.assign("http://localhost:800/SIFEM/maderable/padron");
                                         }
 
                                         if(mainItem == 'auditoria'){
@@ -271,7 +271,7 @@ case 'resumen':
   });
   setTimeout($.unblockUI, 20000); 
 */
-  $.get("http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos", 
+  $.get("http://localhost:8080/ServiceBosque/VentanillaProcesos", 
     { user: obj.options.data.user.id, action:'getSolicitudes' },
     function(data){
       $.each(data, function(index, data){
@@ -346,7 +346,7 @@ case 'excludedDates':
   $("#principal").append(midiv);
   $('#datepicker').datepicker({beforeShowDay: $.datepicker.noWeekends}).datepicker('setDate', 'today');
 
-  $.get("http://187.188.96.133:8080/ServiceBosque/VentanillaProcesos",
+  $.get("http://localhost:8080/ServiceBosque/VentanillaProcesos",
     { user:obj.options.data.user.id, action:'getFechas' },
     function(data){
       $.each(data, function(index, data){
@@ -429,7 +429,7 @@ case 'status':
   var today = new Date(); 
 
   //Llena el contenedor "Inicio de Proceso"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
     { action:'get', folio:0, user:obj.options.data.user.id, tipo:1 },
     function(data){
       var mires1 =$('#contenedor1');
@@ -444,7 +444,7 @@ case 'status':
   });
 
   //Llena el contenedor "Dictaminacion"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
     { action:'get', folio:0, user:obj.options.data.user.id, tipo:2 },
     function(data){
       //alert(JSON.stringify(data));
@@ -462,7 +462,7 @@ case 'status':
   });
 
   //Llena el contenedor "Rechazo"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:obj.options.data.user.id, tipo:3 },
     function(data){
       //alert(JSON.stringify(data));
@@ -475,7 +475,7 @@ case 'status':
   });
 
   //Llena el contenedor "Informacion Adicional"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
     { action:'get', folio:0, user:obj.options.data.user.id, tipo:4 },
       function(data){
         //alert(JSON.stringify(data));
@@ -488,7 +488,7 @@ case 'status':
   });
 
   //Llena el contenedor "Comite de Fomento"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:obj.options.data.user.id, tipo:5 },
     function(data){
       //alert(JSON.stringify(data));
@@ -501,7 +501,7 @@ case 'status':
   });
 
   //Llena el contenedor "Codigo de Identificacion"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:obj.options.data.user.id, tipo:6 },
   function(data){
     //alert(JSON.stringify(data));
@@ -514,7 +514,7 @@ case 'status':
   });
 
   //Llena el contenedor "Negacion"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:obj.options.data.user.id, tipo:7 },
   function(data){
     //alert(JSON.stringify(data));
@@ -527,7 +527,7 @@ case 'status':
   });
 
   //Llena el contenedor "Mia"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:obj.options.data.user.id, tipo:10 },
   function(data){
     //alert(JSON.stringify(data));
@@ -540,7 +540,7 @@ case 'status':
   });
 
   //Llena el contenedor "Vencidas"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:obj.options.data.user.id, tipo:8 },
   function(data){
     //alert(JSON.stringify(data));
@@ -553,7 +553,7 @@ case 'status':
   });
 
   //Llena el contenedor "Autorizadas"
-  $.get("http://187.188.96.133:8080/ServiceBosque/Ventanilla", 
+  $.get("http://localhost:8080/ServiceBosque/Ventanilla", 
   { action:'get', folio:0, user:obj.options.data.user.id, tipo:9 },
   function(data){
     //alert(JSON.stringify(data));
@@ -639,7 +639,7 @@ break;
                     if (a=='inform') {
                            //   if(mainItem == 'executive'){
                                           var usuario = obj.options.data.user.id * 5;
-                                          window.location.assign("http://187.188.96.133:800/SIFEM/reporteador/moduloEjecutivo.html");
+                                          window.location.assign("http://localhost:800/SIFEM/reporteador/moduloEjecutivo.html");
                          //               }
                                          
                        //       $(".app_"+a).executiveReport({data:{userActive:obj.options.data.user}});
